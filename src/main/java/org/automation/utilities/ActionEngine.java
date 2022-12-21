@@ -1,6 +1,10 @@
 package org.automation.utilities;
 
 import org.automation.base.BasePage;
+import org.automation.base.BaseTest;
+import org.automation.elements.Button;
+import org.automation.elements.Element;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -8,29 +12,16 @@ import com.aventstack.extentreports.Status;
 import org.testng.Assert;
 
 
-/**
-     * @author: Prakash Narkhede
-     * @Youtube: https://www.youtube.com/automationtalks
-     * @LinkedIn: https://www.linkedin.com/in/panarkhede89/
-     */
-    public class ActionEngine extends BasePage {
 
-    public ActionEngine(WebDriver driver) {
-        super(driver);
-    }
+    public class ActionEngine   {
 
-    //    public ActionEngine(WebDriver driver) {
-//        super(driver);
-//    }
-public WebDriver ActionEngine() {
-return super.driver;
-}
+   
 
 
-    //Customized sendkeys method-> To log sendkeys message for every occ.
-        public void sendKeys_custom( WebElement element, String valueToBeSent) {
+        public void sendKeys_custom( By path,String fieldName, String valueToBeSent) {
             try {
-                element.sendKeys(valueToBeSent);
+            	Element element = new Element(fieldName ,  path);
+                element.getWebElement().sendKeys(valueToBeSent);
                 //log success message in exgent report
                 ExtentFactory.getInstance().getExtent().log(Status.PASS,"Ented value as: "+valueToBeSent);
             } catch (Exception e) {
@@ -41,9 +32,10 @@ return super.driver;
 
 
         //custom click method to log evey click action in to extent report
-        public void click_custom(WebElement element, String fieldName) {
+        public static void clickBtn_custom(By path, String fieldName) {
             try {
-                element.click();
+            	Button btn =  new Button(fieldName,path);
+            	btn.getWebElement().click();
                 //log success message in exgent report
                 ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Clicked Successfully! ");
             } catch (Exception e) {
@@ -54,8 +46,9 @@ return super.driver;
 
 
         //clear data from field
-        public void clear_custom(WebElement element,String fieldName) {
+        public static  void clear_custom(WebElement element,String fieldName) {
             try {
+            	
                 element.clear();
                 Thread.sleep(250);
                 ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Data Cleared Successfully! ");
@@ -66,7 +59,7 @@ return super.driver;
         }
 
         //custom mouseHover
-        public void moveToElement_custom(WebElement element,String fieldName){
+        public  static void moveToElement_custom(WebElement element,String fieldName){
 //            try{
 //                JavascriptExecutor executor = (JavascriptExecutor) DriverFactory.getInstance().getDriver();
 //                executor.executeScript("arguments[0].scrollIntoView(true);", element);
@@ -82,7 +75,7 @@ return super.driver;
 
 
         //check if element is Present
-        public boolean isElementPresent_custom(WebElement element,String fieldName){
+        public static boolean isElementPresent_custom(WebElement element,String fieldName){
             boolean flag = false;
             try {
                 flag = element.isDisplayed();
@@ -96,7 +89,7 @@ return super.driver;
 
 
         //Select dropdown value value by visibleText
-        public void selectDropDownByVisibleText_custom(WebElement element, String fieldName, String ddVisibleText) throws Throwable {
+        public  static void selectDropDownByVisibleText_custom(WebElement element, String fieldName, String ddVisibleText) throws Throwable {
             try {
                 Select s = new Select(element);
                 s.selectByVisibleText(ddVisibleText);

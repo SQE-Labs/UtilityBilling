@@ -7,15 +7,17 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-	Login login = new Login(driver);
 	@Test(priority = 0,description = "To verify login functionality")
 	public void ValidLogin() throws InterruptedException {
+		Login login = new Login();
 
-		login.enterUsername(driver,PropertiesUtil.getPropertyValue("userName"));
+		login.enterUsername("UserName",PropertiesUtil.getPropertyValue("userName"));
+		
 		Thread.sleep(1000);
-		login.enterPassword(driver,PropertiesUtil.getPropertyValue("password"));
+		login.enterPassword("Password",PropertiesUtil.getPropertyValue("password"));
 		Thread.sleep(1000);
-		login.login(driver);
+		login.clickLoginBtn();
+		
 	//	Assert.assertEquals(driver.getCurrentUrl(),PropertiesUtil.getPropertyValue("https://test.utilitybilling.com/billing/");
 	}
 }

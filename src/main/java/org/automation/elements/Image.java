@@ -66,7 +66,7 @@ public final class Image extends Element {
 	public boolean isAvailable() {
 		Log.info("Check whether the [" + description + "] image is present");
 		try {
-			FileDownloader downloadHandler = new FileDownloader(driver);
+			FileDownloader downloadHandler = new FileDownloader(getDriver());
 			URI fileAsURI = new URI(getAttributeValue("src"));
 			downloadHandler.setURI(fileAsURI);
 			downloadHandler.setHttpRequestMethod(RequestType.GET);

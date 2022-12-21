@@ -8,6 +8,7 @@ package org.automation.utilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -25,43 +26,42 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BrowserFactory {
 
     //create webdriver object for given browser
-    public WebDriver createBrowserInstance(String browser) throws MalformedURLException {
-
-        //	WebDriver driver = null;
-         RemoteWebDriver driver = null;
-
-        if(browser.equalsIgnoreCase("Chrome")) {
-
-            WebDriverManager.chromedriver().setup();
-            System.setProperty("webdriver.chrome.silentOutput", "true");
-
-
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--incognito");
-            driver = new ChromeDriver(options);
-
-        }else if (browser.equalsIgnoreCase("firefox")) {
-
-            WebDriverManager.firefoxdriver().setup();
-            //	FirefoxOptions foptions = new FirefoxOptions();
-            //	foptions.addArguments("-private");
-
-            driver = new RemoteWebDriver(new URL("http:192.168.225.219:4444/wd/hub"), DesiredCapabilities.firefox());
-
-
-            //driver = new FirefoxDriver(foptions);
-
-        } if (browser.equalsIgnoreCase("ie")) {
-
-            WebDriverManager.iedriver().setup();
-            InternetExplorerOptions iOptions = new InternetExplorerOptions();
-            iOptions.addCommandSwitches("-private");
-
-            driver = new InternetExplorerDriver(iOptions);
-        }
-        return driver;
-    }
-
-
-
+//    public ThreadLocal<WebDriver> createBrowserInstance(String browser) throws MalformedURLException {
+//
+//        //	WebDriver driver = null;
+//         ThreadLocal<WebDriver> driver = null;
+//
+//         switch (browser) {
+//         case "chrome":
+//             WebDriverManager.chromedriver().setup();
+//            // driver = new ChromeDriver(BrowserOptions.getChromeOptions());
+//             ((ThreadLocal<WebDriver>) driver).set(new ChromeDriver());
+//             break;
+//
+//         case "fireFox":
+//            // WebDriverManager.firefoxdriver().setup();
+//             //driver = new FirefoxDriver(BrowserOptions.getFirefoxOptions());
+//             break;
+//         default:
+//             throw new IllegalStateException("Unexpected value: " + browser);
+//     }
+//    // driver.set(Objects.requireNonNull(driver));
+//     prepareBrowser();
+//
+//        return driver;
+//    }
+//private static void prepareBrowser(){
+//    getDriver().manage().window().maximize();
+//    getDriver().manage().deleteAllCookies();
+//    getDriver().manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+//    getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+//}
+//public static WebDriver getDriver(){
+//    return Objects.requireNonNull(driver.get());
+//}
+//public static void closeBrowser() {
+//    getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//    getDriver().close();
+//    getDriver().quit();
+//}
 }

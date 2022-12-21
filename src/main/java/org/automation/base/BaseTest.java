@@ -19,15 +19,19 @@ import java.util.Map;
 
 import org.automation.listeners.TestReporter;
 import org.automation.listeners.TestRunListener;
+import org.automation.utilities.ActionEngine;
 import org.automation.utilities.BrowserFactory;
 import org.automation.utilities.PropertiesUtil;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * To extend every test class created.
@@ -38,25 +42,57 @@ import com.codoid.products.fillo.Recordset;
  *
  */
 @Listeners({ TestRunListener.class, TestReporter.class })
-public  class BaseTest {
+public  class BaseTest extends ActionEngine {
+	
+	protected static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+
+
+
 	/**
 	 * Method to execute at the start of the suite execution.
 	 */
-	public  WebDriver driver;
 
+	public static WebDriver getDriver() {
+		return  driver.get();
+	}
+	
+	public static void closeDriver() {
+		getDriver().close();
+		driver.remove();		
+	}
 	@BeforeClass(alwaysRun = true)
 	public void beforeSuite() throws MalformedURLException {
-		BrowserFactory bf = new BrowserFactory();
 		String browser = PropertiesUtil.getPropertyValue("browser");
 		String url = 	PropertiesUtil.getPropertyValue("url");
-		driver = bf.createBrowserInstance(browser);
-		driver.manage().window().maximize();
-		driver.navigate().to(url);
+	//	driver.set(new WebDriver(new URL("http://localhost:4444/wd/hub")));
+		//driver = (ThreadLocal<WebDriver>) BrowserFactory.getDriver();
+
+	         switch (browser) {
+	         case "chrome":
+	             WebDriverManager.chromedriver().setup();
+	            // driver = new ChromeDriver(BrowserOptions.getChromeOptions());
+	              driver.set(new ChromeDriver());
+	             break;
+
+	         case "fireFox":
+	            // WebDriverManager.firefoxdriver().setup();
+	             //driver = new FirefoxDriver(BrowserOptions.getFirefoxOptions());
+	             break;
+	         default:
+	             throw new IllegalStateException("Unexpected value: " + browser);
+	     }
+	    // driver.set(Objects.requireNonNull(driver));
+
+    	getDriver().manage().window().maximize();
+ 		getDriver().navigate().to(url);
 	}
 
 	/**
 	 * Method to execute at the end of each test method execution.
 	 */
+	
+	
+	
 	@AfterMethod(alwaysRun = true)
 	public void afterMethod() {
 		//clearCookies();
@@ -74,12 +110,9 @@ public  class BaseTest {
 	 */
 	@AfterSuite(alwaysRun = true)
 	public void afterSuite() {
-		closeDriverObjects();
+		closeDriver();
 	}
 
-	private void closeDriverObjects() {
-		driver.quit();
-	}
 
 	/**
 	 * Data Provider method to get data from Excel file.

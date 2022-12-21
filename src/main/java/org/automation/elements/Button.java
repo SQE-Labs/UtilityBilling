@@ -21,8 +21,8 @@ public final class Button extends Element {
 	 * @param description description of the Button
 	 * @param locator     locator of the Button
 	 */
-	public Button(String description, By locator) {
-		super(description, locator);
+	public Button(String description, By path) {
+		super(description, path);
 	}
 
 	/**

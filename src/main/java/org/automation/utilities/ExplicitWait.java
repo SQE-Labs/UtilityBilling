@@ -27,7 +27,7 @@ public final class ExplicitWait extends BaseTest {
 	public ExplicitWait() {
 		timeout = 20;
 		polling = 250;
-		wait = new WebDriverWait(driver, timeout, polling);
+		wait = new WebDriverWait(getDriver(), timeout, polling);
 	}
 
 	/**
@@ -37,7 +37,7 @@ public final class ExplicitWait extends BaseTest {
 	 * @param polling poll interval
 	 */
 	public ExplicitWait(long timeout, long polling) {
-		wait = new WebDriverWait(driver, timeout, polling);
+		wait = new WebDriverWait(getDriver(), timeout, polling);
 	}
 
 	/**

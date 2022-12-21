@@ -158,7 +158,7 @@ public class Element extends BaseTest {
 	public void moveMousePointer() {
 		Log.info("Move mouse to [" + description + "] element");
 		WebElement element = wait.until(elementToBeClickable(locator));
-		new Actions(driver).moveToElement(element).perform();
+		new Actions(getDriver()).moveToElement(element).perform();
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class Element extends BaseTest {
 	public void rightClick() {
 		Log.info("Right click [" + description + "] element");
 		WebElement element = wait.until(elementToBeClickable(locator));
-		new Actions(driver).contextClick(element).perform();
+		new Actions(getDriver()).contextClick(element).perform();
 	}
 
 	/**
@@ -179,7 +179,7 @@ public class Element extends BaseTest {
 		Log.info("Drag [" + description + "] element to [" + destination.description + "] element");
 		WebElement source = wait.until(elementToBeClickable(locator));
 		WebElement target = wait.until(elementToBeClickable(destination.locator));
-		new Actions(driver).dragAndDrop(source, target).perform();
+		new Actions(getDriver()).dragAndDrop(source, target).perform();
 	}
 
 	/**

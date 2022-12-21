@@ -38,7 +38,7 @@ public final class Screenshot extends BaseTest {
 			if (Files.notExists(screenshot.getParent(), NOFOLLOW_LINKS))
 				Files.createDirectory(screenshot.getParent());
 			try {
-				base64 = writeScreenshotToFile(driver, screenshot);
+				base64 = writeScreenshotToFile(getDriver(), screenshot);
 			} catch (ClassCastException e) {
 			//	WebDriver driver = new Augmenter().augment(driver);
 			//	base64 = writeScreenshotToFile(driver, screenshot);
@@ -65,7 +65,7 @@ public final class Screenshot extends BaseTest {
 			if (Files.notExists(screenshot.getParent(), NOFOLLOW_LINKS))
 				Files.createDirectory(screenshot.getParent());
 			try {
-				base64 = writeScreenshotToFile(driver, screenshot);
+				base64 = writeScreenshotToFile(getDriver(), screenshot);
 			} catch (ClassCastException e) {
 			//	WebDriver driver = new Augmenter().augment(getDriver());
 			//	base64 = writeScreenshotToFile(driver, screenshot);

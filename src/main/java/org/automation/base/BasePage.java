@@ -5,6 +5,7 @@ import java.io.File;
 
 import org.automation.elements.Element;
 import org.automation.logger.Log;
+import org.automation.utilities.ActionEngine;
 import org.automation.utilities.CheckFileHash;
 import org.automation.utilities.HashType;
 import org.openqa.selenium.NoSuchWindowException;
@@ -18,13 +19,13 @@ import org.openqa.selenium.WebDriver;
  * @since 6/11/2020
  *
  */
-public abstract class BasePage extends  BaseTest {
+public  class BasePage extends BaseTest{
 
 	private String parentWindow;
 
-	public BasePage(WebDriver driver) {
-		super();
-	}
+//	public BasePage(WebDriver getDriver()) {
+//		super();
+//	}
 
 	/**
 	 * Open the specified URL.
@@ -33,7 +34,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void openUrl(String url) {
 		Log.info("Open the URL [" + url + "]");
-		driver.get(url);
+		getDriver().get(url);
 	}
 
 	/**
@@ -43,7 +44,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected String getPageUrl() {
 		Log.info("Get the Current URL");
-		return driver.getCurrentUrl();
+		return getDriver().getCurrentUrl();
 	}
 
 	/**
@@ -53,7 +54,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected String getPageTitle() {
 		Log.info("Get the Current Page Title");
-		return driver.getTitle();
+		return getDriver().getTitle();
 	}
 
 	/**
@@ -61,7 +62,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void refreshPage() {
 		Log.info("Refresh the browser");
-		driver.navigate().refresh();
+		getDriver().navigate().refresh();
 	}
 
 	/**
@@ -88,10 +89,10 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToWindow(String description) {
 		Log.info("Switch to window [" + description + "]");
-		parentWindow = driver.getWindowHandle();
-		for (String windowHandle : driver.getWindowHandles())
+		parentWindow = getDriver().getWindowHandle();
+		for (String windowHandle : getDriver().getWindowHandles())
 			if (!windowHandle.equals(parentWindow))
-				driver.switchTo().window(windowHandle);
+				getDriver().switchTo().window(windowHandle);
 	}
 
 	/**
@@ -102,9 +103,9 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToWindowContainingUrlText(String description, String urlText) {
 		Log.info("Switch to window [" + description + "] which contains URL text [" + urlText + "]");
-		parentWindow = driver.getWindowHandle();
-		driver.getWindowHandles().stream().map(driver.switchTo()::window)
-				.filter(driver -> driver.getCurrentUrl().contains(urlText)).findFirst()
+		parentWindow = getDriver().getWindowHandle();
+		getDriver().getWindowHandles().stream().map(getDriver().switchTo()::window)
+				.filter(driver -> getDriver().getCurrentUrl().contains(urlText)).findFirst()
 				.orElseThrow(() -> new NoSuchWindowException(
 						"Unable to find window [" + description + "] which contains URL text [" + urlText + "]"));
 	}
@@ -117,9 +118,9 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToWindowContainingTitle(String description, String title) {
 		Log.info("Switch to window [" + description + "] which contains title [" + title + "]");
-		parentWindow = driver.getWindowHandle();
-		driver.getWindowHandles().stream().map(driver.switchTo()::window)
-				.filter(driver -> driver.getTitle().contains(title)).findFirst()
+		parentWindow = getDriver().getWindowHandle();
+		getDriver().getWindowHandles().stream().map(getDriver().switchTo()::window)
+				.filter(driver -> getDriver().getTitle().contains(title)).findFirst()
 				.orElseThrow(() -> new NoSuchWindowException(
 						"Unable to find window [" + description + "] which contains title [" + title + "]"));
 	}
@@ -131,7 +132,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToParentWindow(String description) {
 		Log.info("Switch to parent window [" + description + "]");
-		driver.switchTo().window(parentWindow);
+		getDriver().switchTo().window(parentWindow);
 	}
 
 	/**
@@ -142,7 +143,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToFrame(Element element) {
 		Log.info("Switch to frame [" + element.getDescription() + "]");
-		driver.switchTo().frame(element.getWebElement());
+		getDriver().switchTo().frame(element.getWebElement());
 	}
 
 	/**
@@ -153,7 +154,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToFrame(String description, String nameOrId) {
 		Log.info("Switch to frame [" + description + "]");
-		driver.switchTo().frame(nameOrId);
+		getDriver().switchTo().frame(nameOrId);
 	}
 
 	/**
@@ -164,7 +165,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToFrame(String description, int index) {
 		Log.info("Switch to frame [" + description + "]");
-		driver.switchTo().frame(index);
+		getDriver().switchTo().frame(index);
 	}
 
 	/**
@@ -174,7 +175,7 @@ public abstract class BasePage extends  BaseTest {
 	 */
 	protected void switchToDefaultContent(String description) {
 		Log.info("Switch to main window [" + description + "]");
-		driver.switchTo().defaultContent();
+		getDriver().switchTo().defaultContent();
 	}
 
 }
