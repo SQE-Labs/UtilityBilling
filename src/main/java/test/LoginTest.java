@@ -1,23 +1,23 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.Login;
+import org.automation.pageObjects.LoginPage;
 import org.automation.utilities.PropertiesUtil;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-	@Test(priority = 0,description = "To verify login functionality")
+	@Test(description = "To verify login functionality")
 	public void ValidLogin() throws InterruptedException {
-		Login login = new Login();
+		LoginPage login = new LoginPage();
 
 		login.enterUsername("UserName",PropertiesUtil.getPropertyValue("userName"));
-		
-		Thread.sleep(1000);
 		login.enterPassword("Password",PropertiesUtil.getPropertyValue("password"));
-		Thread.sleep(1000);
 		login.clickLoginBtn();
 		
-	//	Assert.assertEquals(driver.getCurrentUrl(),PropertiesUtil.getPropertyValue("https://test.utilitybilling.com/billing/");
+		//Assert.assertEquals(getDriver().getCurrentUrl(),PropertiesUtil.getPropertyValue("https://test.utilitybilling.com/billing/index.jsp"));
 	}
 }

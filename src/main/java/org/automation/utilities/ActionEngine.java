@@ -40,16 +40,16 @@ import org.testng.Assert;
                 ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Clicked Successfully! ");
             } catch (Exception e) {
                 //log failure in extent
-                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Unable to click on field: " +fieldName +" due to exception: "+e);
+               // ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Unable to click on field: " +fieldName +" due to exception: "+e);
             }
         }
 
 
         //clear data from field
-        public static  void clear_custom(WebElement element,String fieldName) {
+        public static  void clear_custom(By element,String fieldName) {
             try {
             	
-                element.clear();
+                ((WebElement) element).clear();
                 Thread.sleep(250);
                 ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Data Cleared Successfully! ");
             } catch (Exception e) {
@@ -59,7 +59,7 @@ import org.testng.Assert;
         }
 
         //custom mouseHover
-        public  static void moveToElement_custom(WebElement element,String fieldName){
+        public  static void moveToElement_custom(By element,String fieldName){
 //            try{
 //                JavascriptExecutor executor = (JavascriptExecutor) DriverFactory.getInstance().getDriver();
 //                executor.executeScript("arguments[0].scrollIntoView(true);", element);

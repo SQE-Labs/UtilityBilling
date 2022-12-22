@@ -12,24 +12,32 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.automation.listeners.TestReporter;
 import org.automation.listeners.TestRunListener;
 import org.automation.utilities.ActionEngine;
 import org.automation.utilities.BrowserFactory;
 import org.automation.utilities.PropertiesUtil;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
+import com.gargoylesoftware.htmlunit.javascript.host.file.File;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -41,8 +49,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * @since 6/11/2020
  *
  */
+
+
+
 @Listeners({ TestRunListener.class, TestReporter.class })
 public  class BaseTest extends ActionEngine {
+	
+	public static ExtentReports extent;
+	public static ExtentTest extentTest;
 	
 	protected static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
@@ -103,7 +117,6 @@ public  class BaseTest extends ActionEngine {
 	public void LaunchApplication() throws Exception {
 
 	}
-
 
 	/**
 	 * Method to execute at the end of the suite execution
@@ -201,5 +214,59 @@ public  class BaseTest extends ActionEngine {
 		return ofNullable(getProperty("password"))
 				.orElseThrow(() -> new NullPointerException("Password was not provided"));
 	}
+	
+	
+
+//	@BeforeSuite
+//	public void setExtent() throws InterruptedException, IOException {
+//		extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ExtentReportResult.html", true);
+//		extent.addSystemInfo("Environment", "QA");
+//		extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
+//	}
+//
+//	@AfterSuite
+//	public void endReport() {
+//		extent.flush();
+//		extent.close();
+//	}
+
+//	@AfterMethod
+//	public void tearDown(ITestResult result) throws IOException {
+//
+//		if (result.getStatus() == ITestResult.FAILURE) {
+//			extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getName());
+//			extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getThrowable());
+//			System.out.println("*** Test execution " + result.getMethod().getMethodName() + " failed...");
+//
+//			String screenshotPath = ExtentReportClass.getScreenshot(driver, result.getName());
+//			extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
+//			// extentTest.log(LogStatus.FAIL, extentTest.addScreencast(screenshotPath));
+//		} else if (result.getStatus() == ITestResult.SKIP) {
+//			extentTest.log(LogStatus.SKIP, "Test Case SKIPPED IS " + result.getName());
+//			System.out.println("*** Test " + result.getMethod().getMethodName() + " skipped...");
+//		} else if (result.getStatus() == ITestResult.SUCCESS) {
+//			extentTest.log(LogStatus.PASS, "Test Case PASSED IS " + result.getName());
+//			System.out.println("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
+//		}
+//		extent.endTest(extentTest);
+//	}
+
+//	public static String getScreenshot(WebDriver driver, String screenshotName) {
+//		Long l = Calendar.getInstance().getTimeInMillis();
+//		String screenshotId = l.toString();
+//		String Path = System.getProperty("user.dir") + "/ExtentReports/";
+//		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//		String imgPath = Path + screenshotId + ".png";
+//		File dest = new File(imgPath);
+//		try {
+//			FileUtils.copyFile(screenshot, dest);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		String ImagePath = "../ExtentReports/" + screenshotId + ".png";
+//		return ImagePath;
+//	}
+//	
 
 }

@@ -6,8 +6,6 @@ import java.io.File;
 import org.automation.elements.Element;
 import org.automation.logger.Log;
 import org.automation.utilities.ActionEngine;
-import org.automation.utilities.CheckFileHash;
-import org.automation.utilities.HashType;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 
@@ -72,15 +70,6 @@ public  class BasePage extends BaseTest{
 	 * @param hashType The hash type of the file
 	 * @return The hash of the specified file
 	 */
-	protected String getFileHash(File file, HashType hashType) {
-		Log.info("Get the hash of the [" + file.getName() + "] file");
-		try {
-			return CheckFileHash.generateHashForFileOfType(file, hashType);
-		} catch (RuntimeException e) {
-			Log.error("Unable to get the hash of the [" + file.getName() + "] file", e);
-			return e.getMessage();
-		}
-	}
 
 	/**
 	 * Switch to the newly opened window.
