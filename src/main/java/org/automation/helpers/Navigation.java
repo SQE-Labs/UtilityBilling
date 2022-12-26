@@ -1,8 +1,13 @@
 package org.automation.helpers;
 
-public class Navigation {
+import org.automation.base.BasePage;
+
+public class Navigation  extends BasePage{
 	
-	public void NavigatetoLoginPage() {
+	public void navigatetoLoginPage() {
+	//	LoginPage loginPage = new LoginPage();
+	//	loginPage.
+		
 		
 	}
 }

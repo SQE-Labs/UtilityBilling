@@ -8,6 +8,7 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 import static org.automation.logger.Log.error;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
@@ -24,19 +25,21 @@ import org.automation.listeners.TestRunListener;
 import org.automation.utilities.ActionEngine;
 import org.automation.utilities.BrowserFactory;
 import org.automation.utilities.PropertiesUtil;
+import org.automation.utilities.Screenshot;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
+
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
-import com.gargoylesoftware.htmlunit.javascript.host.file.File;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -62,6 +65,10 @@ public  class BaseTest extends ActionEngine {
 
 
 
+
+	
+
+
 	/**
 	 * Method to execute at the start of the suite execution.
 	 */
@@ -75,7 +82,7 @@ public  class BaseTest extends ActionEngine {
 		driver.remove();		
 	}
 	@BeforeClass(alwaysRun = true)
-	public void beforeSuite() throws MalformedURLException {
+	public void beforeClass() throws MalformedURLException {
 		String browser = PropertiesUtil.getPropertyValue("browser");
 		String url = 	PropertiesUtil.getPropertyValue("url");
 	//	driver.set(new WebDriver(new URL("http://localhost:4444/wd/hub")));
@@ -107,10 +114,10 @@ public  class BaseTest extends ActionEngine {
 	
 	
 	
-	@AfterMethod(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public void afterMethod() {
 		//clearCookies();
-
+		closeDriver();
 	}
 
 	@BeforeMethod
@@ -200,10 +207,10 @@ public  class BaseTest extends ActionEngine {
 	 * 
 	 * @return user name
 	 */
-	protected String getUsername() {
-		return ofNullable(getProperty("username"))
-				.orElseThrow(() -> new NullPointerException("Username was not provided"));
-	}
+//	protected String getUsername() {
+	//	return ofNullable(getProperty("username"))
+		//		.orElseThrow(() -> new NullPointerException("Username was not provided"));
+	//}
 
 	/**
 	 * Get the password from the command line.
@@ -217,19 +224,6 @@ public  class BaseTest extends ActionEngine {
 	
 	
 
-//	@BeforeSuite
-//	public void setExtent() throws InterruptedException, IOException {
-//		extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ExtentReportResult.html", true);
-//		extent.addSystemInfo("Environment", "QA");
-//		extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
-//	}
-//
-//	@AfterSuite
-//	public void endReport() {
-//		extent.flush();
-//		extent.close();
-//	}
-
 //	@AfterMethod
 //	public void tearDown(ITestResult result) throws IOException {
 //
@@ -238,7 +232,7 @@ public  class BaseTest extends ActionEngine {
 //			extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getThrowable());
 //			System.out.println("*** Test execution " + result.getMethod().getMethodName() + " failed...");
 //
-//			String screenshotPath = ExtentReportClass.getScreenshot(driver, result.getName());
+//			String screenshotPath = Screenshot.getScreenshot(driver, result.getName());
 //			extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
 //			// extentTest.log(LogStatus.FAIL, extentTest.addScreencast(screenshotPath));
 //		} else if (result.getStatus() == ITestResult.SKIP) {
@@ -251,22 +245,7 @@ public  class BaseTest extends ActionEngine {
 //		extent.endTest(extentTest);
 //	}
 
-//	public static String getScreenshot(WebDriver driver, String screenshotName) {
-//		Long l = Calendar.getInstance().getTimeInMillis();
-//		String screenshotId = l.toString();
-//		String Path = System.getProperty("user.dir") + "/ExtentReports/";
-//		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//		String imgPath = Path + screenshotId + ".png";
-//		File dest = new File(imgPath);
-//		try {
-//			FileUtils.copyFile(screenshot, dest);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		String ImagePath = "../ExtentReports/" + screenshotId + ".png";
-//		return ImagePath;
-//	}
-//	
+	
+	
 
 }

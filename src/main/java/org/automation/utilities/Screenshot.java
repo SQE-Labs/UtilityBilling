@@ -5,15 +5,19 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static org.openqa.selenium.OutputType.BASE64;
 import static org.openqa.selenium.OutputType.FILE;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
+import org.apache.commons.io.FileUtils;
 import org.automation.base.BaseTest;
 import org.automation.logger.Log;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
@@ -55,7 +59,7 @@ public final class Screenshot extends BaseTest {
 	 * @param name screenshot file name
 	 * @return base64 string
 	 */
-	public  synchronized String takeScreenShot(String name) {
+	public  synchronized static String takeScreenShot(String name) {
 		String base64 = "";
 		LocalDateTime dateTime = LocalDateTime.now();
 		DateTimeFormatter datePattern = DateTimeFormatter.ofPattern("yyyy.MM.dd.HH.mm.ss.SSS");
@@ -89,5 +93,23 @@ public final class Screenshot extends BaseTest {
 		Files.copy(screenshotOutput, screenshot, REPLACE_EXISTING);
 		return ((TakesScreenshot) driver).getScreenshotAs(BASE64);
 	}
+	
 
+
+public static String getScreenshot(ThreadLocal<WebDriver> driver, String screenshotName) {
+	   Long l = Calendar.getInstance().getTimeInMillis();
+	   String screenshotId = l.toString();
+	   String Path = System.getProperty("user.dir") + "/ExtentReports/";
+	   File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	   String imgPath = Path + screenshotId + ".png";
+	   File dest = new File(imgPath);
+	   try {
+	      FileUtils.copyFile(screenshot, dest);
+	   } catch (IOException e) {
+	      e.printStackTrace();
+	   }
+
+	   String ImagePath = "../ExtentReports/" + screenshotId + ".png";
+	   return ImagePath;
+	}
 }
