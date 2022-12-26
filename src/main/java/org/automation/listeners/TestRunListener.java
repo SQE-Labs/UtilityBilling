@@ -3,6 +3,7 @@ package org.automation.listeners;
 
 import org.automation.base.BaseTest;
 import org.automation.logger.Log;
+import org.automation.utilities.Screenshot;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -40,9 +41,9 @@ public final class TestRunListener extends BaseTest implements ITestListener, IS
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-
+		
 		Log.error("Test [" + result.getName() + "] failed", result.getThrowable());
-		//result.setAttribute("failureScreenshot", takeScreenShot("Failure_" + result.getName()));
+		result.setAttribute("failureScreenshot",Screenshot.takeScreenShot("Failure_" + result.getName()));
 		if (Boolean.getBoolean("remoteDriver")) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			jse.executeScript(
