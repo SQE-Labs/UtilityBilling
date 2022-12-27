@@ -10,8 +10,8 @@ public class WorkFlow {
 	By adminTab = By.xpath("(//*[@class='icon-lock'])[2]");
     By workFlowTypes = By.xpath("(//*[@class='quick-button-small'])[22]");
     By createNewLog = By.id("addBtn");
-    By enterDisplayName = By.xpath("//*[@name='display_name']");
-	By enterTypename = By.xpath("//*[@name='type_name']");
+    By displayNameField = By.xpath("//*[@name='display_name']");
+	By typeNameField = By.xpath("//*[@name='type_name']");
 	By saveButton = By.xpath("//button[@class='btn btn-primary save-logtype']");
 	By searchLog = By.xpath("//*[@id=\"datatableLogType_filter\"]/label/input");
 	By firstRecord = By.xpath("//tbody[@id='logtypeListBody']//tr[1]//td[]");
@@ -31,11 +31,11 @@ public class WorkFlow {
 	}
 	
 	public void enterDisplayName(String userNameText ) {
-		loginPage.sendKeys_custom(enterDisplayName, userNameText);
+		loginPage.sendKeys_custom(displayNameField, userNameText);
 	    }
 	
 	public void enterTypename(String userNameText ) {
-		loginPage.sendKeys_custom(enterTypename, userNameText);
+		loginPage.sendKeys_custom(typeNameField, userNameText);
 	    }
 	
 	public void clickSaveButton() {
