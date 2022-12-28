@@ -63,12 +63,6 @@ public  class BaseTest extends ActionEngine {
 	
 	protected static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
-
-
-
-	
-
-
 	/**
 	 * Method to execute at the start of the suite execution.
 	 */
@@ -130,7 +124,6 @@ public  class BaseTest extends ActionEngine {
 	 */
 	@AfterSuite(alwaysRun = true)
 	public void afterSuite() {
-		closeDriver();
 	}
 
 

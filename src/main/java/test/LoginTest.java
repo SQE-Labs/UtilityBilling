@@ -15,6 +15,5 @@ public class LoginTest extends BaseTest {
 		login.enterPassword(PropertiesUtil.getPropertyValue("password"));
 		login.clickLoginBtn();
 		
-		//Assert.assertEquals(getDriver().getCurrentUrl(),PropertiesUtil.getPropertyValue("https://test.utilitybilling.com/billing/index.jsp"));
 	}
 }

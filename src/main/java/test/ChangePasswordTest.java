@@ -35,8 +35,8 @@ public class ChangePasswordTest extends BaseTest {
 		ChangePassword cp = new ChangePassword();
 		cp.clickAdmin();
 		cp.clickPassword();
-		cp.enterNewPassword("");
-		cp.ReEnterNewPassword("");
+		cp.enterNewPassword("sqe.user");
+		cp.ReEnterNewPassword("sqe.user");
 		cp.clickChangePassword();
 		cp.clickConfirmPopup();
 		cp.getInformationMessage();

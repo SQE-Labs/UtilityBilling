@@ -1,11 +1,10 @@
 package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
+import org.automation.utilities.ActionEngine;
 import org.openqa.selenium.By;
 
 public class ChangePassword {
-	
-	BasePage loginPage = new BasePage();
 	
 	By adminTab = By.xpath("(//*[@class='icon-lock'])[2]");
 	By passwordTab = By.xpath("//p[contains(text(),'Password')]");
@@ -18,30 +17,30 @@ public class ChangePassword {
     
 	
     public void clickAdmin() {
-		loginPage.clickBtn_custom(adminTab);
+		ActionEngine.clickBtn_custom(adminTab);
 	    }
     
     public void clickPassword() {
-		loginPage.clickBtn_custom(passwordTab);
+		ActionEngine.clickBtn_custom(passwordTab);
 	    }
 
     public void enterNewPassword(String userNameText ) {
-		loginPage.sendKeys_custom(newPasswordField, userNameText);
+		ActionEngine.sendKeys_custom(newPasswordField, userNameText);
 	    }
     
     public void ReEnterNewPassword(String userNameText ) {
-		loginPage.sendKeys_custom(reNewPassword, userNameText);
+		ActionEngine.sendKeys_custom(reNewPassword, userNameText);
 	    }
 
     public void clickChangePassword() {
-		loginPage.clickBtn_custom(changePasswordBtn);
+		ActionEngine.clickBtn_custom(changePasswordBtn);
 	    }
     
     public void clickConfirmPopup() {
-		loginPage.clickBtn_custom(confirmationPopUp);
+		ActionEngine.clickBtn_custom(confirmationPopUp);
 	    }
     
     public void getInformationMessage() {
-		loginPage.clickBtn_custom(informationMessage);
+		ActionEngine.clickBtn_custom(informationMessage);
 	    }
 }

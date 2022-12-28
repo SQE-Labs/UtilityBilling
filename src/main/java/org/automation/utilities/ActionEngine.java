@@ -16,7 +16,7 @@ import org.testng.Assert;
     public class ActionEngine   {
 
 
-        public void sendKeys_custom( By path, String valueToBeSent,String... fieldName) {
+        public static void sendKeys_custom( By path, String valueToBeSent,String... fieldName) {
             try {
             	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
             	Element element = new Element( var,  path);
@@ -28,12 +28,12 @@ import org.testng.Assert;
               //  ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Value enter in field: is failed due to exception: "+e);
             }
         }
-        public void sendKeys_withClear(By path ,String... fieldName) {
+        public static void sendKeys_withClear(By path ,String valueToBeSent,String... fieldName) {
             try {
             	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
             	Element element = new Element(var,path);
-            	element.getWebElement().clear();
-                element.getWebElement().sendKeys();
+            	element.clear();
+                element.getWebElement().sendKeys(valueToBeSent);;
                 //log success message in extent report
                 ExtentFactory.getInstance().getExtent().log(Status.PASS,"Ented value as: ");
             } catch (Exception e) {
@@ -49,7 +49,7 @@ import org.testng.Assert;
             	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
 
             	Button btn =  new Button(var,path);
-            	btn.getWebElement().click();
+            	btn.click();
                 //log success message in exgent report
                 ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Clicked Successfully! ");
             } catch (Exception e) {

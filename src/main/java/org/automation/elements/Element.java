@@ -73,6 +73,11 @@ public class Element extends BaseTest {
 		Log.info("Get text from [" + description + "] element");
 		return wait.until(visibilityOfElementLocated(locator)).getText();
 	}
+	public void clear() {
+		Log.info("Get text from [" + description + "] element");
+		 wait.until(visibilityOfElementLocated(locator)).clear();;
+	}
+	
 
 	/**
 	 * Get the value of the specified attribute.
