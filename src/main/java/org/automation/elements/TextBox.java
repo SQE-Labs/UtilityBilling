@@ -45,7 +45,8 @@ public final class TextBox extends Element {
 	 * 
 	 * @return text
 	 */
-	public String getText() {
+	public  String getText()
+	{
 		Log.info("Get text from [" + description + "] text box");
 		return wait.until(elementToBeClickable(locator)).getText();
 	}

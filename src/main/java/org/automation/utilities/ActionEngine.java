@@ -3,8 +3,10 @@ package org.automation.utilities;
 import org.automation.base.BasePage;
 import org.automation.base.BaseTest;
 import org.automation.elements.Button;
+import org.automation.elements.DropDown;
 import org.automation.elements.Element;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -16,7 +18,7 @@ import org.testng.Assert;
     public class ActionEngine   {
 
 
-        public void sendKeys_custom( By path, String valueToBeSent,String... fieldName) {
+        public static void sendKeys_custom( By path, String valueToBeSent,String... fieldName) {
             try {
             	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
             	Element element = new Element( var,  path);
@@ -28,7 +30,7 @@ import org.testng.Assert;
               //  ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Value enter in field: is failed due to exception: "+e);
             }
         }
-        public void sendKeys_withClear(By path ,String... fieldName) {
+        public static void sendKeys_withClear(By path ,String... fieldName) {
             try {
             	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
             	Element element = new Element(var,path);
@@ -60,14 +62,14 @@ import org.testng.Assert;
 
 
         //clear data from field
-        public void clear_custom(By element, String userNameText,String fieldName) {
+        public static void clear_custom(By element) {
             try {
             	
                 ((WebElement) element).clear();
                 Thread.sleep(250);
-                ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Data Cleared Successfully! ");
+                ExtentFactory.getInstance().getExtent().log(Status.PASS,"==> Data Cleared Successfully! ");
             } catch (Exception e) {
-                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Unable to clear Data on field: " +fieldName +" due to exception: "+e);
+                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Unable to clear Data on field:  due to exception: "+e);
 
             }
         }
@@ -103,10 +105,11 @@ import org.testng.Assert;
 
 
         //Select dropdown value value by visibleText
-        public  static void selectDropDownByVisibleText_custom(WebElement element, String ddVisibleText, String fieldName) throws Throwable {
+        public  static void selectDropDownByVisibleText_custom(By path, String ddVisibleText, String... fieldName)  {
             try {
-                Select s = new Select(element);
-                s.selectByVisibleText(ddVisibleText);
+            	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
+            	DropDown dd= new DropDown(var,path);
+                   dd.selectByVisibleText(ddVisibleText);
                 ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Dropdown Value Selected by visible text: "+ ddVisibleText);
             } catch (Exception e) {
                 ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Dropdown value not selected for field: " +fieldName +"  due to exception: "+e);
@@ -114,10 +117,24 @@ import org.testng.Assert;
         }
 
         //Select dropdown value value by value
-        public void selectDropDownByValue_custom(WebElement element, String fieldName, String ddValue) throws Throwable {
+        public static void selectDropDownByValue_custom(By path,String ddValue,String... fieldName) 
+        {
             try {
-                Select s = new Select(element);
-                s.selectByValue(ddValue);
+            	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
+            	DropDown dd= new DropDown(var,path);
+            	dd.selectByValue(ddValue);
+                ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Dropdown Value Selected by visible text: "+ ddValue);
+            } catch (Exception e) {
+                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Dropdown value not selected for field: " +fieldName +"  due to exception: "+e);
+            }
+        }
+        //Select dropdown list by index
+        public static void  selectDropDownByIndex_custom(By  path,int ddValue, String... fieldName) 
+        {
+            try {
+            	String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
+            	DropDown dd= new DropDown(var,path);
+            	dd.selectByIndex(ddValue);
                 ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Dropdown Value Selected by visible text: "+ ddValue);
             } catch (Exception e) {
                 ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Dropdown value not selected for field: " +fieldName +"  due to exception: "+e);
@@ -139,18 +156,21 @@ import org.testng.Assert;
         }
 
         //Get text from webelement
-        public String getText_custom(WebElement element, String fieldName) {
+        public static  String getText_custom(By path) {
             String text = "";
             try {
+            	Element element=new Element("",path);
                 text = element.getText();
-                ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Text retried is: "+ text);
+                ExtentFactory.getInstance().getExtent().log(Status.PASS, "==> Text retried is: "+ text);
                 return text;
             } catch (Exception e) {
-                ExtentFactory.getInstance().getExtent().log(Status.FAIL, fieldName+"==> Text not retried due to exception: "+ e);
+                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "==> Text not retried due to exception: "+ e);
 
             }
             return text;
         }
+	
+        
 
     }
 

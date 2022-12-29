@@ -6,6 +6,7 @@ import java.io.File;
 import org.automation.elements.Element;
 import org.automation.logger.Log;
 import org.automation.utilities.ActionEngine;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 
@@ -166,5 +167,22 @@ public  class BasePage extends BaseTest{
 		Log.info("Switch to main window [" + description + "]");
 		getDriver().switchTo().defaultContent();
 	}
+    public  void ScrollDownThePage(int x, int y) 
+    {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+           js.executeScript("window.scrollBy(x, y)", "");
+    }
+    
+    public  void ScrollDownThePageMax(int x, int y) 
+    {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+           js.executeScript("window.scrollBy(x,y)", "");
+    }
+    
+    public  void ScrollUpThePage(int x, int y) 
+    {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+           js.executeScript("window.scrollBy(x, y)", "");
+    }
 
 }
