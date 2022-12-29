@@ -3,6 +3,7 @@ package test;
 import java.util.Date;
 
 import org.automation.base.BaseTest;
+import org.automation.pageObjects.ChangePassword;
 import org.automation.pageObjects.EditUser;
 import org.automation.pageObjects.LoginPage;
 import org.automation.pageObjects.WorkFlow;
@@ -12,11 +13,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class WorkFlowTest extends BaseTest {
+public class ChangePasswordTest extends BaseTest {
 	
-	public  Select select;
-	public  Date date = new Date();
-
 	@BeforeClass
 	public void login(){
 		try {
@@ -32,21 +30,15 @@ public class WorkFlowTest extends BaseTest {
 	 }
 	}
 	
-	@Test(priority = 1,description = "To Edit User ")
-	public void workFlowTypes()  {
-		WorkFlow wft = new WorkFlow();
-		wft.clickAdmin();
-		wft.clickWorkFlowTypes();
-		wft.clickCreateNewlog();
-	    String clname=date.toString();
-		clname= clname.replace(":", "");
-		clname=clname.replace(" ", "");
-		wft.enterTypename("AA TN"+clname);
-		wft.enterDisplayName("AA DN"+clname);
-	    wft.clickSaveButton();
-	    wft.clickSaveButton();
-	    wft.enterSearchLog("AA TN"+clname);  
-	  //  Assert.assertEquals(false, true);
+	@Test(priority = 1,description = "Change Password")
+	public void changePassword()  {
+		ChangePassword cp = new ChangePassword();
+		cp.clickAdmin();
+		cp.clickPassword();
+		cp.enterNewPassword("sqe.user");
+		cp.ReEnterNewPassword("sqe.user");
+		cp.clickChangePassword();
+		cp.clickConfirmPopup();
+		cp.getInformationMessage();
   }
 }
-	
