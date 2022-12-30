@@ -9,20 +9,6 @@ import org.testng.annotations.Test;
 
 public class EditUserTest extends BaseTest {
 	
-	@BeforeClass
-	public void login(){
-		try {
-	
-			LoginPage loginPage = new LoginPage();
-		    System.out.println(      getDriver().getTitle());
-			loginPage.login(PropertiesUtil.getPropertyValue("userName"),PropertiesUtil.getPropertyValue("password"));
-
-		}
-	 catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	 }
-	}
 
 	@Test(priority = 1,description = "To Edit User ")
 	public void EditUser() throws InterruptedException {
