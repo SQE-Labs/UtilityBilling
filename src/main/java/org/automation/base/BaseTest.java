@@ -22,6 +22,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.automation.listeners.TestReporter;
 import org.automation.listeners.TestRunListener;
+import org.automation.pageObjects.LoginPage;
 import org.automation.utilities.ActionEngine;
 import org.automation.utilities.BrowserFactory;
 import org.automation.utilities.PropertiesUtil;
@@ -117,6 +118,24 @@ public  class BaseTest extends ActionEngine {
 	@BeforeMethod
 	public void LaunchApplication() throws Exception {
 
+	}
+	
+	
+	
+	
+	@BeforeClass
+	public void login(){
+		try {
+	
+			LoginPage loginPage = new LoginPage();
+		    System.out.println(getDriver().getTitle());
+			loginPage.login(PropertiesUtil.getPropertyValue("userName"),PropertiesUtil.getPropertyValue("password"));
+
+		}
+	 catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	 }
 	}
 
 	/**

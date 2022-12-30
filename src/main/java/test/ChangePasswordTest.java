@@ -15,21 +15,6 @@ import org.testng.annotations.Test;
 
 public class ChangePasswordTest extends BaseTest {
 	
-	@BeforeClass
-	public void login(){
-		try {
-	
-			LoginPage loginPage = new LoginPage();
-		    System.out.println(getDriver().getTitle());
-			loginPage.login(PropertiesUtil.getPropertyValue("userName"),PropertiesUtil.getPropertyValue("password"));
-
-		}
-	 catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	 }
-	}
-	
 	@Test(priority = 1,description = "Change Password")
 	public void changePassword()  {
 		ChangePassword cp = new ChangePassword();
