@@ -3,6 +3,8 @@ package org.automation.pageObjects;
 import org.automation.base.BasePage;
 import org.automation.elements.TextBox;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.Assertions;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -10,9 +12,8 @@ import test.LoginTest;
 
 public class CustomerPage extends BasePage
 {
-	BasePage bp;
-	TextBox tb;
-	
+	BasePage bp=new BasePage();
+	Assertions as;
     public  By customerTab = By.xpath("//a[@title='Customer']"); 
 	public  By categoryDropdownField = By.xpath("//select[@name='category']");    
 	public  By firstNameField= By.xpath("//input[@name='firstName']");
@@ -31,8 +32,8 @@ public class CustomerPage extends BasePage
 	public  By saveCustomerbutton= By.xpath("//div[@class='col-lg-12 text-left']/a/i");
 	public  By okbutton= By.xpath("//button[contains(text(),'OK')]");
 	public  By companyNameField= By.xpath("(//input[@name='company'])[1]");
-	public  By notificationSuccessMessage= By.xpath("//div[@id='notification']//center");
-    String successMessage="Successfully saved customer.";
+	public  By successMessageForCustomerCreation= By.xpath("//div[@id='notification']//center");
+    String SUCCESS_MESG="Successfully saved customer.";
     
     public By customerID=By.xpath("(//label[@class='col-sm-12 control-label'])[1]");
     
@@ -45,7 +46,7 @@ public class CustomerPage extends BasePage
 
     public void selectCategoryDropdownField(String categoryText) 
     {
-    	ActionEngine.clickBtn_custom(categoryDropdownField, "Category");
+    	//ActionEngine.clickBtn_custom(categoryDropdownField, "Category");
     	ActionEngine.selectDropDownByVisibleText_custom(categoryDropdownField, categoryText,"Category");
     }
     
@@ -70,6 +71,7 @@ public class CustomerPage extends BasePage
     
     public void enterEmailField(String emailText) 
     {
+    	bp.scrollIntoView(emailField);
     	ActionEngine.sendKeys_custom(emailField, emailText, "Email");
     }
     
@@ -116,6 +118,7 @@ public class CustomerPage extends BasePage
     }
     public void clickSaveCustomerBtn() 
     {
+    	bp.scrollIntoView(saveCustomerbutton);
     	ActionEngine.clickBtn_custom(saveCustomerbutton, "Save Customer");
     }
     public void clickOkBtn() 
@@ -129,16 +132,24 @@ public class CustomerPage extends BasePage
     	
     	
     }
-    public String createCustomer(String category , String companyName, String firstName, String lastName, String phoneNumber, String email, String billingEmail, String addressOne, String addressTwo, String city , String zipCode, String country,String plan, int x, int y)
+    
+    public String getSuccessMsgText()
+    
     {
-    	bp=new BasePage();
+    	WebdriverWaits.waitForElementVisible(successMessageForCustomerCreation, 40);
+    	return ActionEngine.getText_custom(successMessageForCustomerCreation);
+    }
+    
+    public String createCustomer(String category , String companyName, String firstName, String lastName, String phoneNumber, String email, String billingEmail, String addressOne, String addressTwo, String city , String zipCode, String country,String plan) throws InterruptedException
+    {
+    	as=new Assertions();
         clickCustomerTab();
     	selectCategoryDropdownField(category);
     	enterCompanyNameField(companyName);
+    	Thread.sleep(1000);
     	enterFirstNameField(firstName);
     	enterLastNameField(lastName);
     	enterPhoneNumber(phoneNumber);
-    	bp.ScrollDownThePage(x, y);
     	enterEmailField(email);
     	enterBillingEmailField(billingEmail);
     	enterAddressOneField(addressOne);
@@ -148,9 +159,9 @@ public class CustomerPage extends BasePage
     	enterCountryField(country);
     	selectPlanDropdownField(plan);
     	clickPhysicalAddressToggleBtn();
-    	bp.ScrollDownThePage(x, y);
     	clickSaveCustomerBtn();
     	clickOkBtn();
+    	as.assertStrings(getSuccessMsgText(), SUCCESS_MESG);
     	return getCustomerId();
 	}
     }

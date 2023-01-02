@@ -1,14 +1,19 @@
 package org.automation.pageObjects;
 
+import java.util.List;
+
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.Assertions;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class ChargePage 
+public class ChargePage  extends BasePage
 {
 	BasePage bp=new BasePage();
-	
+	Assertions as;
 	//Charges
 	public  By Chargetab= By.xpath("//a[text()=' Charges']");
 	public  By AddIconForManualCharge= By.xpath("//a[@title='Add Charge']");
@@ -22,7 +27,8 @@ public class ChargePage
 	public  By SaveButton= By.xpath("//a[@value='Save']");  
 	public  By ClickOnDatepickerField= By.xpath("//input[@id='dateStart']");  
 	public  By clickOnOkButton= By.xpath("//button[@class='btn btn-default'])[2]");
-	
+	String SUCCESS_MSG = "Showing 1 to 1 of 1 entries";
+	public  By entryMsgOnAddingManualMessage= By.xpath("(//div[@class='dataTables_info'])[1]");
 	//Recurring Charges
 	public  By AddIconForRecurringCharge= By.xpath("(//i[@class='icon-plus'])[2]");
 	public  By ServiceDropdownRecurringField= By.xpath("//select[@name='lineSeqNo']");
@@ -31,7 +37,7 @@ public class ChargePage
 	public  By PlanNameField= By.xpath("//input[@name='planName']");
 	public  By NumberOfPeriodsField= By.xpath("//input[@name='cycleInMonth']");
 	public  By ChargeOngoingField= By.xpath("//input[@name='chargeOngoing']");
-	
+	public  By entryMsgOnAddingRecurringMessage= By.xpath("(//div[@class='dataTables_info'])[2]");
 	
 	public  void clickOnChargeTab() 
 	{
@@ -48,6 +54,7 @@ public class ChargePage
 	
 	public void selectService(int serviceByIndex)
 	{
+		ActionEngine.clickBtn_custom(ServiceDropdownField, "Service");
 		ActionEngine.selectDropDownByIndex_custom(ServiceDropdownField, serviceByIndex, "Service");
 	}
 	
@@ -56,9 +63,9 @@ public class ChargePage
 		ActionEngine.sendKeys_custom(ChargeDescriptionField, chargeDescriptionText," Charge Desciption" );
 	}
 	
-	public void enterRolupDesciption(String rollupDescriptionText)
+	public void enterRollupDesciption(String rollupDescriptionText)
 	{
-		ActionEngine.sendKeys_custom(ChargeDescriptionField, rollupDescriptionText," Rollup Desciption" );
+		ActionEngine.sendKeys_custom(RollupDescriptionField, rollupDescriptionText," Rollup Desciption" );
 	}
 	
 	public void enterStartDate()
@@ -69,6 +76,7 @@ public class ChargePage
 	
 	public void enterUnitsRate(String unitText)
 	{
+		bp.scrollIntoView(unitsField);
 		ActionEngine.sendKeys_custom(unitsField, unitText,"Unit" );
 	}
 	
@@ -87,23 +95,6 @@ public class ChargePage
 		ActionEngine.clickBtn_custom(clickOnOkButton, "Ok");
 	}
 	
-	public void addOnceOffCharges(int selectService,String ChargeDescriptionText, String rollUpText, int x, int y, String unitRateText, String flatRateText, String priceChargeText   ) throws InterruptedException
-	{
-		clickOnChargeTab();
-		clickOnPlusIcon();
-		selectService(selectService);
-		enterChargeDesciption(ChargeDescriptionText);
-		Thread.sleep(1000);
-		enterRolupDesciption(rollUpText);
-		enterStartDate();
-		bp.ScrollDownThePage(x, y);
-		enterUnitsRate(unitRateText);
-		enterFlatRate(flatRateText);
-		enterPriceChargeDollar(priceChargeText);
-		clickOnSaveBtn();
-		clickOkButton();
-	}
-
 
 	public void clickOnRecurringPlusIcon()
 	{
@@ -112,12 +103,14 @@ public class ChargePage
 	
 	public void enterServiceDropdownOption(int serviceText)
 	{
+		ActionEngine.clickBtn_custom(ServiceDropdownRecurringField, "Service");
 		ActionEngine.selectDropDownByIndex_custom(ServiceDropdownRecurringField, serviceText,"Service" );
 	}
 	
 	public void enterChargeDescriptionDropdownOption(int chargeText)
 	{
-		ActionEngine.selectDropDownByIndex_custom(CodeField, chargeText,"Service" );
+		ActionEngine.clickBtn_custom(CodeField, "Charge Description");
+		ActionEngine.selectDropDownByIndex_custom(CodeField, chargeText,"Charge Description" );
 	}
 	
 	public void clickOnGoingToggleBtn()
@@ -129,16 +122,50 @@ public class ChargePage
 	{
 		ActionEngine.sendKeys_custom(NumberOfPeriodsField, PeriodOfChargeText,"Period Of Charge" );
 	}
-public void addNewRecurringCharge(int serviceText, int chargeText, String PeriodOfChargeText)
+	
+	public String newRowAddUnderManualCharge()
+	{
+		WebdriverWaits.waitForElementVisible(entryMsgOnAddingManualMessage, 40);
+    	return ActionEngine.getText_custom(entryMsgOnAddingManualMessage);
+	}
+	
+	public String newRowAddUnderRecurringCharge()
+	{
+		WebdriverWaits.waitForElementVisible(entryMsgOnAddingRecurringMessage, 40);
+    	return ActionEngine.getText_custom(entryMsgOnAddingRecurringMessage);
+	}
+
+public void addOnceOffCharges(int selectServiceIndex,String ChargeDescriptionText, String rollUpText, String unitRateText, String flatRateText, String priceChargeText   ) throws InterruptedException
 {
+	as=new Assertions();
+	clickOnChargeTab();
+	clickOnPlusIcon();
+	selectService(selectServiceIndex);	
+	enterChargeDesciption(ChargeDescriptionText);
+	Thread.sleep(3000);
+	enterRollupDesciption(rollUpText);
+	enterStartDate();	
+	enterUnitsRate(unitRateText);
+	enterFlatRate(flatRateText);
+	enterPriceChargeDollar(priceChargeText);
+	clickOnSaveBtn();
+	as.assertStrings(newRowAddUnderManualCharge(), SUCCESS_MSG);
+	
+}
+
+public void addNewRecurringCharge(int serviceText, int chargeText, String PeriodOfChargeText) throws InterruptedException
+{
+	as=new Assertions();
 	clickOnRecurringPlusIcon();
 	enterServiceDropdownOption(serviceText);
-	enterStartDate();
+	Thread.sleep(3000);
 	enterChargeDescriptionDropdownOption(chargeText);
+	enterStartDate();
+	Thread.sleep(2000);	
 	clickOnGoingToggleBtn();
 	enterPeriodOFCharge(PeriodOfChargeText);
 	clickOnSaveBtn();
-	clickOkButton();
+	as.assertStrings(newRowAddUnderRecurringCharge(), SUCCESS_MSG);
 	
 }
 

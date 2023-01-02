@@ -6,10 +6,11 @@ import java.io.File;
 import org.automation.elements.Element;
 import org.automation.logger.Log;
 import org.automation.utilities.ActionEngine;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 /**
  * To extend every page class created.
  * 
@@ -184,5 +185,11 @@ public  class BasePage extends BaseTest{
         JavascriptExecutor js = (JavascriptExecutor) driver;
            js.executeScript("window.scrollBy(x, y)", "");
     }
+    public  void scrollIntoView(By element)
+    {
+        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
+        WebElement ele = getDriver().findElement(element);
+       jse.executeScript("arguments[0].scrollIntoView(true);", ele);
 
+    }
 }

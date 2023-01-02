@@ -6,15 +6,14 @@ import java.util.Calendar;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.Assertions;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class CreateServicePage {
-	
+	Assertions as;
 	BasePage bp=new BasePage();
-	static String mno="";
-	static String wno="";
-	static String gno="";
-	static String de="";
+	
 	
 	static String waterPlan = "Water Flat Template Plan";
 	static String gasPlan = "Gas Flat Template Plan";
@@ -74,7 +73,7 @@ public class CreateServicePage {
 	public static By AssertElectricity = By.xpath("//tr[@class='odd']/td[2]");
 
 	public static By EditWaterPlan = By.xpath("//select[@id='planNo']");
-
+    String SUCCESS_MSG="Electricity";
 
 	
 	
@@ -101,7 +100,7 @@ public class CreateServicePage {
 	DateFormat dateFormat = new SimpleDateFormat("HHmmss");
 	Calendar cal = Calendar.getInstance();
 	System.out.println(dateFormat.format(cal.getTime()));
-	mno=cal.getTime().toString(); 
+	String mno=cal.getTime().toString(); 
 	System.out.println(mno=mno.substring(11,19));
 	mno=mno.replaceAll(":","");
 	ActionEngine.sendKeys_custom(MeterNo,"Ele"+mno ,"First Name");
@@ -118,7 +117,7 @@ public class CreateServicePage {
 	}
 	
 	public void selectreadType(String readingTypeText)
-	{		
+	{	bp.scrollIntoView(ReadType);	
 		ActionEngine.clickBtn_custom(ReadType, "Reading Type");
     	ActionEngine.selectDropDownByVisibleText_custom(ReadType, readingTypeText,"Reading Type");	
 	}
@@ -132,6 +131,7 @@ public class CreateServicePage {
 	
 	public void clickCreateService()
 	{
+		bp.scrollIntoView(CreateElectServ);
 		ActionEngine.clickBtn_custom(CreateElectServ, "Create Service");
 		
 	}
@@ -142,26 +142,29 @@ public class CreateServicePage {
 		ActionEngine.clickBtn_custom(OK_btn, "Ok");
 		
 	}
+	public String createNewRetailElectrcityService()
+	{
+		WebdriverWaits.waitForElementVisible(AssertElectricity, 40);
+    	return ActionEngine.getText_custom(AssertElectricity);
+	}
 	
-	
-	public void newRetailElectricitySevice(String selectPlanText,String MeterConfigurationText, String readingTypeText,int x,int y,int z)
+	public void newRetailElectricitySevice(String selectPlanText,String MeterConfigurationText, String readingTypeText)
 	
 	{
 		//1. Customer is already created using Customer flow.
 		//2. Adding electricity service to a customer. 
 		//3. Overview > Electricity
-		
+		as=new Assertions();
 		clickOnOverview();
 		clickRetailElectricity();
 		selectPlan(selectPlanText);
 		enterMeterNumber();
 		selectMeterConfiguration(MeterConfigurationText);
 		selectreadType(readingTypeText);
-		bp.ScrollDownThePage(x, y);
 		clickDemandToggleButton();
-		bp.ScrollDownThePage(x, z);
 		clickCreateService();
 		clickOkButton();
+		as.assertStrings(createNewRetailElectrcityService(), SUCCESS_MSG);
 	}
 		
 		
