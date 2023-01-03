@@ -112,7 +112,7 @@ public  class BaseTest extends ActionEngine {
 	@AfterClass(alwaysRun = true)
 	public void afterMethod() {
 		//clearCookies();
-		closeDriver();
+		//closeDriver();
 	}
 
 	@BeforeMethod
