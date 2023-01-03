@@ -66,6 +66,12 @@ public class WebdriverWaits extends BaseTest {
 		WebElement e = wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 	
+	public static WebElement waitForElementUntilVisible(By locator, int waitTime)
+	{
+		WebDriverWait wait = new WebDriverWait(getDriver(), waitTime);
+		WebElement e = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		return e;
+	}
 	
 	/**
 	 * Waits for the page to have a given title

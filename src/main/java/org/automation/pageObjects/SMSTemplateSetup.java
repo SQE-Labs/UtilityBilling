@@ -2,15 +2,17 @@ package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
-import org.automation.utilities.WebdriverWaits;
+import org.automation.utilities.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-public class SMTPPage
+public class SMSTemplateSetup
 
 {
-	public static String CUSTnum;
+
 	BasePage bp = new BasePage();
+	Assertions as;
+	
+	
 	public  By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
 	public  By MsgType = By.xpath("//select[@id='email_message_type']");
 	public  By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -73,57 +75,37 @@ public class SMTPPage
 		ActionEngine.clickBtn_custom(Admin, "Admin");
 	}
 
-	public void clickOnSMTPIcon() {
-		ActionEngine.clickBtn_custom(SMTPicon, "Admin");
+	public void clickOnTemplateIcon() {
+		ActionEngine.clickBtn_custom(TemplateIcon, "Template");
 	}
 
-	public void sendDetailOnServerField(String serverNameText) 
-	{
-		ActionEngine.sendKeys_withClear(SrverField, serverNameText, "Server");
+	public void clickOnSMSTab() {
+		ActionEngine.clickBtn_custom(SMStab, "SMS");
 	}
 	
-	public void sendDetailOnPortField(String portNameText)
+	public void selectMessageDropdownOption(int messageText) 
 	{
-		ActionEngine.sendKeys_withClear(PortField, portNameText, "Port");
+		ActionEngine.clickBtn_custom(SMSmsg, "Message Type");
+		ActionEngine.selectDropDownByIndex_custom(SMSmsg, messageText, "Message Type");
 	}
-	
-	public void checkAuthenticationCheckboxField()
+	public void sendSMSMessage(String smsText) {
+		ActionEngine.sendKeys_custom(SMSmsg, smsText, "SMS Message");
+	}
+	public void clickOnSaveBtn() 
 	{
-		WebElement AuthCheckbox = WebdriverWaits.waitForElementUntilVisible(UserAuthCheckbox,10);		
-		ActionEngine.selectCheckBox(UserAuthCheckbox);
+		bp.scrollIntoView(SaveSMS);
+	ActionEngine.clickBtn_custom(SaveSMS, "Save");
 		
 	}
-	
-	
-	public void sendUsername(String usernameText)
-	{
-		ActionEngine.sendKeys_withClear(Username, usernameText, "Username");
-	}
-	
-	public void sendPassword(String passwordText)
-	{
-		ActionEngine.sendKeys_withClear(Password, passwordText, "Password");
-	}
-	
-	public void clickOnUpdateButton()
-	{
-		bp.scrollIntoView(UpdateSMTPbutton);
-		ActionEngine.clickBtn_custom(UpdateSMTPbutton, "Update");
-	}
-	
-	public void smtpInformation(String serverNameText, String portNameText,String usernameText,String passwordText)
+	public void smsSetup(int messageText, String smsText)
 	{
 		clickOnAdminTab();
-		clickOnSMTPIcon();
-		sendDetailOnServerField(serverNameText) ;
-		sendDetailOnPortField(portNameText);
-		checkAuthenticationCheckboxField();
-		sendUsername(usernameText);
-		sendPassword(passwordText);
-		clickOnUpdateButton();
-		
+		clickOnTemplateIcon() ;
+		clickOnSMSTab();
+		selectMessageDropdownOption( messageText) ;		
+		sendSMSMessage(smsText);
+		clickOnSaveBtn();
 		
 	}
+	
 }
-
-
