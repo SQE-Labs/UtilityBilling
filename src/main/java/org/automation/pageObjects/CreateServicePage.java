@@ -12,15 +12,13 @@ import org.openqa.selenium.By;
 
 public class CreateServicePage {
 	Assertions as;
-	BasePage bp=new BasePage();
-	
-	
+	BasePage bp = new BasePage();
+
 	static String waterPlan = "Water Flat Template Plan";
 	static String gasPlan = "Gas Flat Template Plan";
 	static String notesstr = "Editing done";
-	
 
-	public static By Overviewtab = By.xpath("//i[@class='icon-eye-open']");	
+	public static By Overviewtab = By.xpath("//i[@class='icon-eye-open']");
 	public static By AddRetailelect = By.xpath("(//a[@class='addicon'])[2]");
 
 	public static By SelectPlan = By.xpath("//select[@id='planNo']");
@@ -42,7 +40,6 @@ public class CreateServicePage {
 	public static By NewProRataDate = By.xpath("//input[@class='date-picker readOnlyText']");
 	public static By MoveOutbtn = By.xpath("//i[@class='icon-signout']");
 	public static By MoveOutOK = By.xpath("(//button[@class='btn btn-primary'])[2]");
-
 
 	public static By AddGenericService = By.xpath("(//a[@class='addicon'])[6]");
 	public static By ProductDesc = By.xpath("//input[@id='meterName']");
@@ -69,92 +66,83 @@ public class CreateServicePage {
 	public static By SuccessMoveOutMsg = By.xpath("//p[@class='message']");
 
 	public static By GenServcExpand = By.xpath("//i[@class='pull-right icon-chevron-down']");
-	public static By CreatedGenericService = By.xpath("//*[@id='content']/div[2]/div[3]/div[1]/div[1]/ul[2]/li/ul/li/span/span[1]/a");
+	public static By CreatedGenericService = By
+			.xpath("//*[@id='content']/div[2]/div[3]/div[1]/div[1]/ul[2]/li/ul/li/span/span[1]/a");
 	public static By AssertElectricity = By.xpath("//tr[@class='odd']/td[2]");
 
 	public static By EditWaterPlan = By.xpath("//select[@id='planNo']");
-    String SUCCESS_MSG="Electricity";
+	String SUCCESS_MSG = "Electricity";
 
-	
-	
-	public void clickOnOverview()
-	{
-	
+	public void clickOnOverview() {
+
 		ActionEngine.clickBtn_custom(Overviewtab, "Overview");
 	}
-	
-	public void clickRetailElectricity() 
-	{
+
+	public void clickRetailElectricity() {
 		ActionEngine.clickBtn_custom(AddRetailelect, "Retail Electricity Icon");
 	}
-	
-	public void selectPlan(String selectPlanText) 
-	{
-		ActionEngine.clickBtn_custom(SelectPlan, "Plan");
-    	ActionEngine.selectDropDownByVisibleText_custom(SelectPlan, selectPlanText,"Plan");
-	}
-	
-	public void enterMeterNumber() 
-	{
-		
-	DateFormat dateFormat = new SimpleDateFormat("HHmmss");
-	Calendar cal = Calendar.getInstance();
-	System.out.println(dateFormat.format(cal.getTime()));
-	String mno=cal.getTime().toString(); 
-	System.out.println(mno=mno.substring(11,19));
-	mno=mno.replaceAll(":","");
-	ActionEngine.sendKeys_custom(MeterNo,"Ele"+mno ,"First Name");
-	String MeterNumberEntered =  ActionEngine.getText_custom(MeterNo);
 
-	System.out.println("........");
-	System.out.println(MeterNumberEntered);
+	public void selectPlan(String selectPlanText) {
+		ActionEngine.clickBtn_custom(SelectPlan, "Plan");
+		ActionEngine.selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
 	}
-	
-	public void selectMeterConfiguration(String MeterConfigurationText)
-	{		
+
+	public void enterMeterNumber() {
+
+		DateFormat dateFormat = new SimpleDateFormat("HHmmss");
+		Calendar cal = Calendar.getInstance();
+		System.out.println(dateFormat.format(cal.getTime()));
+		String mno = cal.getTime().toString();
+		System.out.println(mno = mno.substring(11, 19));
+		mno = mno.replaceAll(":", "");
+		ActionEngine.sendKeys_custom(MeterNo, "Ele" + mno, "First Name");
+		String MeterNumberEntered = ActionEngine.getText_custom(MeterNo);
+
+		System.out.println("........");
+		System.out.println(MeterNumberEntered);
+	}
+
+	public void selectMeterConfiguration(String MeterConfigurationText) {
 		ActionEngine.clickBtn_custom(MeterConfig, "Meter Cnfiguration");
-    	ActionEngine.selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText,"Meter Configuration");	
+		ActionEngine.selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText, "Meter Configuration");
 	}
-	
-	public void selectreadType(String readingTypeText)
-	{	bp.scrollIntoView(ReadType);	
+
+	public void selectreadType(String readingTypeText) {
+		bp.scrollIntoView(ReadType);
 		ActionEngine.clickBtn_custom(ReadType, "Reading Type");
-    	ActionEngine.selectDropDownByVisibleText_custom(ReadType, readingTypeText,"Reading Type");	
+		ActionEngine.selectDropDownByVisibleText_custom(ReadType, readingTypeText, "Reading Type");
 	}
-	
+
 	public void clickDemandToggleButton()
-	
+
 	{
 		ActionEngine.clickBtn_custom(DemandReadsToggle, "Enable Demand Type");
-		
+
 	}
-	
-	public void clickCreateService()
-	{
+
+	public void clickCreateService() {
 		bp.scrollIntoView(CreateElectServ);
 		ActionEngine.clickBtn_custom(CreateElectServ, "Create Service");
-		
-	}
-	
 
-	public void clickOkButton()
-	{
+	}
+
+	public void clickOkButton() {
 		ActionEngine.clickBtn_custom(OK_btn, "Ok");
-		
+
 	}
-	public String createNewRetailElectrcityService()
-	{
+
+	public String createNewRetailElectrcityService() {
 		WebdriverWaits.waitForElementVisible(AssertElectricity, 40);
-    	return ActionEngine.getText_custom(AssertElectricity);
+		return ActionEngine.getText_custom(AssertElectricity);
 	}
-	
-	public void newRetailElectricitySevice(String selectPlanText,String MeterConfigurationText, String readingTypeText)
-	
+
+	public void newRetailElectricitySevice(String selectPlanText, String MeterConfigurationText, String readingTypeText)
+
 	{
-		//1. Customer is already created using Customer flow.
-		//2. Adding electricity service to a customer. 
-		//3. Overview > Electricity
-		as=new Assertions();
+		// 1. Customer is already created using Customer flow.
+		// 2. Adding electricity service to a customer.
+		// 3. Overview > Electricity
+		as = new Assertions();
 		clickOnOverview();
 		clickRetailElectricity();
 		selectPlan(selectPlanText);
@@ -166,8 +154,5 @@ public class CreateServicePage {
 		clickOkButton();
 		as.assertStrings(createNewRetailElectrcityService(), SUCCESS_MSG);
 	}
-		
-		
-	
 
 }
