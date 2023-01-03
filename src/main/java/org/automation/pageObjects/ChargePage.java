@@ -108,12 +108,12 @@ public class ChargePage extends BasePage {
 	}
 
 	public String newRowAddUnderManualCharge() {
-		WebdriverWaits.waitForElementVisible(entryMsgOnAddingManualMessage, 40);
+		WebdriverWaits.waitForElementVisible(entryMsgOnAddingManualMessage, 10);
 		return ActionEngine.getText_custom(entryMsgOnAddingManualMessage);
 	}
 
 	public String newRowAddUnderRecurringCharge() {
-		WebdriverWaits.waitForElementVisible(entryMsgOnAddingRecurringMessage, 40);
+		WebdriverWaits.waitForElementVisible(entryMsgOnAddingRecurringMessage, 10);
 		return ActionEngine.getText_custom(entryMsgOnAddingRecurringMessage);
 	}
 
