@@ -10,6 +10,7 @@
 			<class name="test.WorkFlowTest" />
 			<class name="test.EditUserTest" />
 			<class name="test.ChangePasswordTest" />
+			<class name="test.EditGroupTest"/>
 
 		</classes>
 	</test> <!-- Test -->

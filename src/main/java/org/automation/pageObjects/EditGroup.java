@@ -1,9 +1,13 @@
 package org.automation.pageObjects;
 
+import static org.testng.Assert.assertEquals;
+
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class EditGroup extends BasePage{
 	
@@ -44,22 +48,40 @@ public class EditGroup extends BasePage{
 	By operationFax = By.xpath(("//*[@name='operationFax']"));
 	By financeFax = By.xpath(("//*[@name='financeFax']"));
 	By salesFax = By.xpath(("//*[@name='salesFax']"));
+	By collectionsFax = By.xpath(("//*[@name='collectionFax']"));
+	
 	By bankName = By.xpath(("//*[@name='bankName']"));
-	By bankAccount = By.xpath(("//*[@name='bankAccount']"));
-	By bankAccountNumber = By.xpath(("//*[@name='bankAccountNumber']"));
+	By accountName = By.xpath(("//*[@name='bankAccount']"));
+	By accountNumber = By.xpath(("//*[@name='bankAccountNumber']"));
 	By creditCardHolder = By.xpath(("//*[@name='creditcardHolder']"));
-	By dateExpired = By.xpath(("//*[@name='dateExpired']"));
+	By creditCardType = By.xpath(("//*[@name='typeOfCreditcard']"));
+	By creditCardNumber = By.xpath(("//*[@name='creditCardNumber']"));
+	By creditCardExpiry = By.xpath(("//*[@name='dateExpired']"));
+	
 	By postAddress = By.xpath(("//*[@name='postAddress']"));
 	By postSub = By.xpath(("//*[@name='postSub']"));
 	By postState = By.xpath(("//*[@name='postState']"));
 	By postCode = By.xpath(("//*[@name='postCode']"));
 	By billingAddress = By.xpath(("//*[@name='billingAddress']"));
-	By billingSub =  By.xpath(("//*[@name='billingAddress']"));
-	By billingState = By.xpath(("//*[@name='//*[@id='hState']|.//*[@name='billingState']']"));
+	By billingSub =  By.xpath(("//*[@name='billingSub']"));
+	By billingState = By.xpath(("//*[@id='hState']|.//*[@name='billingState']"));
 	By billingCode = By.xpath(("//*[@name='billingCode']"));
+	
+	By primaryFrontInvoice = By.id("primary_front_id");
+	By primaryBackInvoice = By.id("primary_back_id");
+	By secondaryFrontInvoice = By.id("secondary_front_id");
+	By secondaryBackInvoice = By.id("secondary_back_id");
+	
+	By enableAllocationOptions = By.xpath("(//*[@class='switch-handle'])[13]");
+	By enableCustomerAttachments = By.xpath("(//*[@class='switch-handle'])[18]");
+	
 	By tiabNotes = By.xpath(("//*[@name='tiabNotes']"));
 	By franchiseeNotes = By.xpath(("//*[@name='franchiseeNotes']"));
-	By save_changes = By.xpath(("//*[text()=' Save changes']"));
+	By saveChanges = By.xpath(("//*[text()=' Save changes']"));
+	By okButton = By.xpath("//*[@class='btn btn-primary']");
+	By successMessage = By.xpath("//*[@class='alert alert-success']");
+	
+	String  SUCCESS_MESG="Success! Changes have been updated successfully.";
 	
 	
 	
@@ -69,7 +91,7 @@ public class EditGroup extends BasePage{
 	    }
 	
 	public void clickEditGroup() {
-		ActionEngine.clickBtn_custom(adminTab);
+		ActionEngine.clickBtn_custom(editGroup);
 	    }
 	
 	public void enterCompanyName(String userNameText) {
@@ -153,7 +175,144 @@ public class EditGroup extends BasePage{
 	public void enterCollectionsPhone2(String userNameText) {
 		ActionEngine.sendKeys_withClear(collectionsPhone2, userNameText);
 	    } 
-}
+	
+	
+	public void enterOwner1Fax(String userNameText) {
+		ActionEngine.sendKeys_withClear(owner1Fax, userNameText);
+	    }
+	public void enterOwner2Fax(String userNameText) {
+		ActionEngine.sendKeys_withClear(owner2Fax, userNameText);
+	    }
+	public void enterFinanceFax (String userNameText) {
+		ActionEngine.sendKeys_withClear(financeFax, userNameText);
+	    }
+	public void enterContactFax(String userNameText) {
+		ActionEngine.sendKeys_withClear(operationFax, userNameText);
+	    }
+	public void enterSalesFax(String userNameText) {
+		ActionEngine.sendKeys_withClear(salesFax, userNameText);
+	    }
+	public void enterCollectionsFax(String userNameText) {
+		ActionEngine.sendKeys_withClear(collectionsFax, userNameText);
+	    } 
+	
+	
+	public void enterBankName(String userNameText) {
+		ActionEngine.sendKeys_withClear(bankName, userNameText);
+	    }
+	public void enterAccountName(String userNameText) {
+		ActionEngine.sendKeys_withClear(accountName, userNameText);
+	    }
+	public void enterAccountNumber(String userNameText) {
+		ActionEngine.sendKeys_withClear(accountNumber, userNameText);
+	    }
+	public void enterCreditCardHolder(String userNameText) {
+		ActionEngine.sendKeys_withClear(creditCardHolder, userNameText);
+	    } 
+	public void selectDropDownByVisibleText_custom(String creditCardText) {
+		WebdriverWaits.waitForElementVisible(creditCardType, 1);
+		ActionEngine.selectDropDownByVisibleText_custom(creditCardType, creditCardText,"Type of Credit card");
+	      } 
+	
+	public void enterCreditCardNumber(String userNameText) {
+		ActionEngine.sendKeys_withClear(creditCardNumber, userNameText);
+	    } 
+	
+	public void enterCreditCardExpiry(String userNameText) {
+		ActionEngine.sendKeys_withClear(creditCardExpiry, userNameText);
+	    } 
+	
+	public void enterPostAddress(String userNameText) {
+		ActionEngine.sendKeys_withClear(postAddress, userNameText);
+	    }
+	
+	public void enterPostSub(String userNameText) {
+		ActionEngine.sendKeys_withClear(postSub, userNameText);
+	    }
+	public void enterPostState(String userNameText) {
+		ActionEngine.sendKeys_withClear(postState, userNameText);
+	    }
+	public void enterPostCode(String userNameText) {
+		ActionEngine.sendKeys_withClear(postCode, userNameText);
+	    }
+	public void enterBillingAddress(String userNameText) {
+		ActionEngine.sendKeys_withClear(billingAddress, userNameText);
+	    }
+	public void enterBillingSub(String userNameText) {
+		ActionEngine.sendKeys_withClear(billingSub, userNameText);
+	    }
+	public void enterBillingState(String userNameText) {
+		ActionEngine.sendKeys_withClear(billingState, userNameText);
+	    }
+	public void enterBillingCode(String userNameText) {
+		ActionEngine.sendKeys_withClear(billingCode, userNameText);
+	    }
+	
+	public void selectPrimaryFrontInvoice(String PFrontInvoice) {
+		WebdriverWaits.waitForElementVisible(primaryFrontInvoice, 1);
+		ActionEngine.selectDropDownByVisibleText_custom(primaryFrontInvoice, PFrontInvoice,"selectPrimaryFrontInvoice");
+	      } 
+	
+	public void selectPrimaryBackInvoice(String PBackInvoice) {
+		WebdriverWaits.waitForElementVisible(primaryBackInvoice, 1);
+		ActionEngine.selectDropDownByVisibleText_custom(primaryBackInvoice, PBackInvoice,"selectPrimaryBackInvoice");
+	      } 
+	
+	public void selectSecondaryFrontInvoice(String SFrontInvoice) {
+		WebdriverWaits.waitForElementVisible(primaryFrontInvoice, 1);
+		ActionEngine.selectDropDownByVisibleText_custom(secondaryFrontInvoice, SFrontInvoice,"selectPrimaryFrontInvoice");
+	      } 
+	
+	public void selectSecondaryBackInvoice(String SBackInvoice) {
+		WebdriverWaits.waitForElementVisible(primaryFrontInvoice, 1);
+		ActionEngine.selectDropDownByVisibleText_custom(secondaryBackInvoice, SBackInvoice,"selectPrimaryBackInvoice");
+		scrollIntoView(enableAllocationOptions);
+		scrollIntoView(tiabNotes);
+	      } 
+	
+	public void enableAllocationBucketOption() {
+		WebdriverWaits.waitForElementVisible(enableAllocationOptions, 1);
+		
+			ActionEngine.clickBtn_custom(enableAllocationOptions);
+			scrollIntoView(enableCustomerAttachments);
+	}
+	
+	public void enableAttachmentsCustomer() {
+		WebdriverWaits.waitForElementVisible(enableCustomerAttachments, 1);
+			ActionEngine.clickBtn_custom(enableCustomerAttachments);
+			scrollIntoView(tiabNotes);
+	}
+	
+	public void enterTiabNotes(String userNameText) {
+		ActionEngine.sendKeys_withClear(tiabNotes, userNameText);
+	    }
+	
+	public void enterFranchiseeNotes(String userNameText) {
+		ActionEngine.sendKeys_withClear(franchiseeNotes, userNameText);
+		scrollIntoView(saveChanges);
+	    }
+	
+	public void clickSaveChanges() {
+		ActionEngine.clickBtn_custom(saveChanges);
+		
+	    }
+	
+	public void clickOkButton() {
+		ActionEngine.clickBtn_custom(okButton);
+	}
+	
+	public void assertSuccessMessage() 
+	{
+		WebdriverWaits.sleep(2);
+		Assertions ass=new Assertions();
+		ass.assertStrings(SUCCESS_MESG,ActionEngine.getText_custom(successMessage));
+		
+	}
+  }
+
+	
+	
+
 
 
 

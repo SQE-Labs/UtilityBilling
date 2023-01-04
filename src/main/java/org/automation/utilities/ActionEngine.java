@@ -196,5 +196,7 @@ import org.testng.Assert;
           	CheckBox checkBox =new CheckBox(var,path);
           	return checkBox.isChecked();
            }
+        
+        
     }
 
