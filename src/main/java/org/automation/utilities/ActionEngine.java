@@ -3,6 +3,7 @@ package org.automation.utilities;
 import org.automation.base.BasePage;
 import org.automation.base.BaseTest;
 import org.automation.elements.Button;
+import org.automation.elements.CheckBox;
 import org.automation.elements.DropDown;
 import org.automation.elements.Element;
 import org.openqa.selenium.By;
@@ -179,8 +180,21 @@ import org.testng.Assert;
             }
             return text;
         }
-	
+        public static void selectCheckBox(By path,String... fieldName) {
+       	 String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
+        	CheckBox checkBox =new CheckBox(var,path);
+        	checkBox.check();
+         }
         
-
+        public static void uncheckCheckBox(By path,String... fieldName) {
+          	 String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
+           	CheckBox checkBox =new CheckBox(var,path);
+           	checkBox.uncheck();
+            }
+        public static boolean getCheckBoxValue(By path,String... fieldName) {
+         	 String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
+          	CheckBox checkBox =new CheckBox(var,path);
+          	return checkBox.isChecked();
+           }
     }
 
