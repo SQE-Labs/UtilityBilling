@@ -2,15 +2,17 @@ package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-public class SMTPPage
+public class EmailTemplateSetup 
 
 {
-	public static String CUSTnum;
 	BasePage bp = new BasePage();
+	Assertions as;
+	
+	
 	public  By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
 	public  By MsgType = By.xpath("//select[@id='email_message_type']");
 	public  By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -69,66 +71,56 @@ public class SMTPPage
 	public  By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
 	public  By NextDay = By.xpath("//td[@class='new day']");
 
+
 	public void clickOnAdminTab() {
 		ActionEngine.clickBtn_custom(Admin, "Admin");
 	}
-
-	public void clickOnSMTPIcon() {
-		ActionEngine.clickBtn_custom(SMTPicon, "Admin");
-	}
-//
-//	public void clickOnServerField() {
-//		ActionEngine.clickBtn_custom(14, "Admin");
-//	}
-
-
-	public void sendDetailOnServerField(String serverNameText) 
+	
+	public void clickOnTemplateIcon() 
 	{
-		ActionEngine.sendKeys_withClear(SrverField, serverNameText, "Server");
+		ActionEngine.clickBtn_custom(TemplateIcon, "Admin");
 	}
 	
-	public void sendDetailOnPortField(String portNameText)
+	public void selectMessageDropdownOption(String messageText) 
 	{
-		ActionEngine.sendKeys_withClear(PortField, portNameText, "Port");
+		ActionEngine.clickBtn_custom(MsgType, "Message Type");
+		ActionEngine.selectDropDownByVisibleText_custom(MsgType, messageText, "Message Type");
 	}
 	
-	public void checkAuthenticationCheckboxField()
+	public void enterEmailBcc(String emailText) 
 	{
-		WebElement AuthCheckbox = WebdriverWaits.waitForElementUntilVisible(UserAuthCheckbox,10);		
-		ActionEngine.selectCheckBox(UserAuthCheckbox);
+		ActionEngine.sendKeys_withClear(Emailbcc, emailText, "Email Bcc");
+		
+	}
+	public void enterEmailSubject(String EmailSubjectText) 
+	{
+		ActionEngine.sendKeys_withClear(Emailbcc, EmailSubjectText, "Email Subject");
 		
 	}
 	
-	
-	public void sendUsername(String usernameText)
+	public void clickOnSaveBtn() 
 	{
-		ActionEngine.sendKeys_withClear(Username, usernameText, "Username");
+		bp.scrollIntoView(SaveEmailTemp);
+	ActionEngine.clickBtn_custom(SaveEmailTemp, "Save");
+		
 	}
 	
-	public void sendPassword(String passwordText)
+	public String newRowAddUnderRecurringCharge()
 	{
-		ActionEngine.sendKeys_withClear(Password, passwordText, "Password");
+
+		WebdriverWaits.waitForElementVisible(SavedEmailMsg, 40);
+		return ActionEngine.getText_custom(SavedEmailMsg);
 	}
 	
-	public void clickOnUpdateButton()
-	{
-		bp.scrollIntoView(UpdateSMTPbutton);
-		ActionEngine.clickBtn_custom(UpdateSMTPbutton, "Update");
-	}
 	
-	public void smtpInformation(String serverNameText, String portNameText,String usernameText,String passwordText)
+	public void emailSetup(String messageText, String emailText, String EmailSubjectText)
 	{
 		clickOnAdminTab();
-		clickOnSMTPIcon();
-		sendDetailOnServerField(serverNameText) ;
-		sendDetailOnPortField(portNameText);
-		checkAuthenticationCheckboxField();
-		sendUsername(usernameText);
-		sendPassword(passwordText);
-		clickOnUpdateButton();
-		
-		
+		clickOnTemplateIcon() ;
+		selectMessageDropdownOption( messageText) ;
+		enterEmailBcc( emailText);
+		enterEmailSubject( EmailSubjectText);
+		clickOnSaveBtn();
+		as.assertStrings(newRowAddUnderRecurringCharge(), SUCCESS_MSG);
 	}
 }
-
-

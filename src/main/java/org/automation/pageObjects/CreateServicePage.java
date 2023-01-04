@@ -18,59 +18,59 @@ public class CreateServicePage {
 	static String gasPlan = "Gas Flat Template Plan";
 	static String notesstr = "Editing done";
 
-	public static By Overviewtab = By.xpath("//i[@class='icon-eye-open']");
-	public static By AddRetailelect = By.xpath("(//a[@class='addicon'])[2]");
+	public  By Overviewtab = By.xpath("//i[@class='icon-eye-open']");
+	public  By AddRetailelect = By.xpath("(//a[@class='addicon'])[2]");
 
-	public static By SelectPlan = By.xpath("//select[@id='planNo']");
-	public static By MeterNo = By.xpath("//input[@id='userName']");
-	public static By MeterConfig = By.xpath("//select[@id='meterConfig']");
-	public static By ReadType = By.xpath("//select[@id='readType']");
-	public static By DemandReadsToggle = By.xpath("//span[@class='switch-label']");
-	public static By CreateElectServ = By.xpath("//a[@class='btn btn-mini btn-primary']");
-	public static By OK_btn = By.xpath("//button[text()='OK']");
-	public static By CreatedElectServc = By.xpath("//td[@class='sorting_1']");
-	public static By CreateWaterSrvc = By.xpath("//button[@id='createServBtn']");
+	public  By SelectPlan = By.xpath("//select[@id='planNo']");
+	public  By MeterNo = By.xpath("//input[@id='userName']");
+	public  By MeterConfig = By.xpath("//select[@id='meterConfig']");
+	public  By ReadType = By.xpath("//select[@id='readType']");
+	public  By DemandReadsToggle = By.xpath("//span[@class='switch-label']");
+	public  By CreateElectServ = By.xpath("//a[@class='btn btn-mini btn-primary']");
+	public  By OK_btn = By.xpath("//button[text()='OK']");
+	public  By CreatedElectServc = By.xpath("//td[@class='sorting_1']");
+	public  By CreateWaterSrvc = By.xpath("//button[@id='createServBtn']");
 
-	public static By AddWaterServc = By.xpath("(//i[@class='icon-plus'])[4]");
-	public static By AddGasServc = By.xpath("(//a[@class='addicon'])[1]");
-	public static By NotesSectn = By.xpath("//textarea[@name='notes']");
-	public static By SaveServiceChanges = By.xpath("(//a[@class='btn btn-primary'])[4]");
-	public static By ChangesSavedText = By.xpath("//p[@class='message']");
-	public static By addProrata = By.xpath("//a[@class='btn btn-primary']");
-	public static By NewProRataDate = By.xpath("//input[@class='date-picker readOnlyText']");
-	public static By MoveOutbtn = By.xpath("//i[@class='icon-signout']");
-	public static By MoveOutOK = By.xpath("(//button[@class='btn btn-primary'])[2]");
+	public  By AddWaterServc = By.xpath("(//i[@class='icon-plus'])[4]");
+	public  By AddGasServc = By.xpath("(//a[@class='addicon'])[1]");
+	public  By NotesSectn = By.xpath("//textarea[@name='notes']");
+	public  By SaveServiceChanges = By.xpath("(//a[@class='btn btn-primary'])[4]");
+	public  By ChangesSavedText = By.xpath("//p[@class='message']");
+	public  By addProrata = By.xpath("//a[@class='btn btn-primary']");
+	public  By NewProRataDate = By.xpath("//input[@class='date-picker readOnlyText']");
+	public  By MoveOutbtn = By.xpath("//i[@class='icon-signout']");
+	public  By MoveOutOK = By.xpath("(//button[@class='btn btn-primary'])[2]");
 
-	public static By AddGenericService = By.xpath("(//a[@class='addicon'])[6]");
-	public static By ProductDesc = By.xpath("//input[@id='meterName']");
-	public static By ProrataDate = By.xpath("//input[@id='start-date']");
-	public static By Todaydate = By.xpath("//td[@class='active day']");
-	public static By Quantity = By.xpath("//input[@id='quantity']");
-	public static By RollupDesc = By.xpath("//input[@id='rollup-desc']");
-	public static By ChargeType = By.xpath("//select[@id='charge-type']");
-	public static By UnitType = By.xpath("//select[@id='unit-type']");
-	public static By Rate = By.xpath("//input[@id='rate']");
-	public static By SaveServ = By.xpath("//button[@id='saveSrv']");
-	public static By OKbtn = By.xpath("//button[text()='OK']");
-	public static By Finishbtn = By.xpath("//button[@id='finishBtn']");
-	public static By Services = By.xpath("//ul[@class='nav nav-tabs']/li[3]");
-	public static By ManageService = By.xpath("//button[@class='btn btn-primary toolt']");
-	public static By UpdtServc = By.xpath("//a[@id='updateSrv']");
-	public static By UpdtAllert = By.xpath("//div[@id='successAlert']");
-	public static By NewDay = By.xpath("//td[@class='new day']");
-	public static By MovereadDate = By.xpath("//input[@id='moveOutDate']");
-	public static By FinalreadDate = By.xpath("//input[@id='finalreaddate']");
-	public static By FinalRead = By.xpath("//input[@name='finalRead']");
-	public static By ContmoveOut = By.xpath("//a[@name='continueMoveOut']");
-	public static By MoveOutConfOK = By.xpath("(//button[text()='OK'])[2]");
-	public static By SuccessMoveOutMsg = By.xpath("//p[@class='message']");
+	public  By AddGenericService = By.xpath("(//a[@class='addicon'])[6]");
+	public  By ProductDesc = By.xpath("//input[@id='meterName']");
+	public  By ProrataDate = By.xpath("//input[@id='start-date']");
+	public  By Todaydate = By.xpath("//td[@class='active day']");
+	public  By Quantity = By.xpath("//input[@id='quantity']");
+	public  By RollupDesc = By.xpath("//input[@id='rollup-desc']");
+	public  By ChargeType = By.xpath("//select[@id='charge-type']");
+	public  By UnitType = By.xpath("//select[@id='unit-type']");
+	public  By Rate = By.xpath("//input[@id='rate']");
+	public  By SaveServ = By.xpath("//button[@id='saveSrv']");
+	public  By OKbtn = By.xpath("//button[text()='OK']");
+	public  By Finishbtn = By.xpath("//button[@id='finishBtn']");
+	public  By Services = By.xpath("//ul[@class='nav nav-tabs']/li[3]");
+	public  By ManageService = By.xpath("//button[@class='btn btn-primary toolt']");
+	public  By UpdtServc = By.xpath("//a[@id='updateSrv']");
+	public  By UpdtAllert = By.xpath("//div[@id='successAlert']");
+	public  By NewDay = By.xpath("//td[@class='new day']");
+	public  By MovereadDate = By.xpath("//input[@id='moveOutDate']");
+	public  By FinalreadDate = By.xpath("//input[@id='finalreaddate']");
+	public  By FinalRead = By.xpath("//input[@name='finalRead']");
+	public  By ContmoveOut = By.xpath("//a[@name='continueMoveOut']");
+	public  By MoveOutConfOK = By.xpath("(//button[text()='OK'])[2]");
+	public  By SuccessMoveOutMsg = By.xpath("//p[@class='message']");
 
-	public static By GenServcExpand = By.xpath("//i[@class='pull-right icon-chevron-down']");
-	public static By CreatedGenericService = By
+	public  By GenServcExpand = By.xpath("//i[@class='pull-right icon-chevron-down']");
+	public  By CreatedGenericService = By
 			.xpath("//*[@id='content']/div[2]/div[3]/div[1]/div[1]/ul[2]/li/ul/li/span/span[1]/a");
-	public static By AssertElectricity = By.xpath("//tr[@class='odd']/td[2]");
+	public  By AssertElectricity = By.xpath("//tr[@class='odd']/td[2]");
 
-	public static By EditWaterPlan = By.xpath("//select[@id='planNo']");
+	public  By EditWaterPlan = By.xpath("//select[@id='planNo']");
 	String SUCCESS_MSG = "Electricity";
 
 	public void clickOnOverview() {

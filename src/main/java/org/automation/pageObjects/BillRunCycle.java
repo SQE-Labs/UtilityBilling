@@ -4,13 +4,11 @@ import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
-public class SMTPPage
-
-{
+public class BillRunCycle {
 	public static String CUSTnum;
 	BasePage bp = new BasePage();
+	WebdriverWaits ww=new WebdriverWaits();
 	public  By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
 	public  By MsgType = By.xpath("//select[@id='email_message_type']");
 	public  By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -69,66 +67,31 @@ public class SMTPPage
 	public  By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
 	public  By NextDay = By.xpath("//td[@class='new day']");
 
-	public void clickOnAdminTab() {
-		ActionEngine.clickBtn_custom(Admin, "Admin");
-	}
-
-	public void clickOnSMTPIcon() {
-		ActionEngine.clickBtn_custom(SMTPicon, "Admin");
-	}
-//
-//	public void clickOnServerField() {
-//		ActionEngine.clickBtn_custom(14, "Admin");
-//	}
-
-
-	public void sendDetailOnServerField(String serverNameText) 
-	{
-		ActionEngine.sendKeys_withClear(SrverField, serverNameText, "Server");
-	}
-	
-	public void sendDetailOnPortField(String portNameText)
-	{
-		ActionEngine.sendKeys_withClear(PortField, portNameText, "Port");
-	}
-	
-	public void checkAuthenticationCheckboxField()
-	{
-		WebElement AuthCheckbox = WebdriverWaits.waitForElementUntilVisible(UserAuthCheckbox,10);		
-		ActionEngine.selectCheckBox(UserAuthCheckbox);
+	 public void getSuccessMsgText()
+	    
+	    {
+		 WebdriverWaits.waitForElementVisible(CustNumberCreated, 5);
+		 ActionEngine.getText_custom(CustNumberCreated);
+	    }
+	 public void clickOnAdminTab() {
+			ActionEngine.clickBtn_custom(Admin, "Admin");
+		}
 		
-	}
-	
-	
-	public void sendUsername(String usernameText)
-	{
-		ActionEngine.sendKeys_withClear(Username, usernameText, "Username");
-	}
-	
-	public void sendPassword(String passwordText)
-	{
-		ActionEngine.sendKeys_withClear(Password, passwordText, "Password");
-	}
-	
-	public void clickOnUpdateButton()
-	{
-		bp.scrollIntoView(UpdateSMTPbutton);
-		ActionEngine.clickBtn_custom(UpdateSMTPbutton, "Update");
-	}
-	
-	public void smtpInformation(String serverNameText, String portNameText,String usernameText,String passwordText)
-	{
-		clickOnAdminTab();
-		clickOnSMTPIcon();
-		sendDetailOnServerField(serverNameText) ;
-		sendDetailOnPortField(portNameText);
-		checkAuthenticationCheckboxField();
-		sendUsername(usernameText);
-		sendPassword(passwordText);
-		clickOnUpdateButton();
+		public void clickOnBillRunIcon() 
+		{
+			ActionEngine.clickBtn_custom(BillRunCycle, "Bill Run");
+		}
+		public void clickOnCreateCycle() 
+		{
+			ActionEngine.clickBtn_custom(CreateCycle, "Create New");
+		}
 		
-		
-	}
+		public void sendCycleName() 
+		{	ActionEngine.sendKeys_custom(CycleName,CUSTnum, "Cycle Name");
+		}
+		public void sendSearchCustForCycle() 
+		{	ActionEngine.sendKeys_custom(SearchCustForCycle,CUSTnum, "Filter");
+		}
+
+
 }
-
-

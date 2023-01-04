@@ -8,20 +8,20 @@ import org.openqa.selenium.By;
 
 public class PaymentsPage extends BasePage {
 	Assertions as;
-	// remove static
-	public static By transactionsubtab = By.xpath("(//i[@class='icon-money'])[1]");
-	public static By transactintypedropdownfield = By.xpath("//select[@name='tranType']");
-	public static By paymentMethoddropdownfield = By.xpath("//select[@name='tranSubType']");
-	public static By emailfortransactionfield = By.xpath("//input[@name='receiptEmail']");
-	public static By amountfield = By.xpath("//input[@name='amount']");
-	public static By allowduplicatecheckbox = By.xpath("//input[@name='allowDupes']");
-	public static By commentfield = By.xpath("//input[@name='comment']");
-	public static By transactionsubmitbutton = By.xpath("//a[@name='submitBtn']");
-	public static By okbuttonfortransaction = By.xpath("(//button[@class='btn btn-primary'])[3]");
-	public static By makeNewPaymentButton = By.xpath("//span[text()='Make New Payment']");
-	public static By viewHistoryButton = By.xpath("//span[text()='View History']");
-	public static By entryMsgOnAddingPaymentByCreditCard = By.xpath("//div[@id='tbl-trans-history_info']");
-	public static By entryMsgOnAddingPaymentBySecurityDeposit = By.xpath("//div[@id='tbl-trans-history_info']");
+	
+	public  By transactionsubtab = By.xpath("(//i[@class='icon-money'])[1]");
+	public  By transactintypedropdownfield = By.xpath("//select[@name='tranType']");
+	public  By paymentMethoddropdownfield = By.xpath("//select[@name='tranSubType']");
+	public  By emailfortransactionfield = By.xpath("//input[@name='receiptEmail']");
+	public  By amountfield = By.xpath("//input[@name='amount']");
+	public  By allowduplicatecheckbox = By.xpath("//input[@name='allowDupes']");
+	public  By commentfield = By.xpath("//input[@name='comment']");
+	public  By transactionsubmitbutton = By.xpath("//a[@name='submitBtn']");
+	public  By okbuttonfortransaction = By.xpath("(//button[@class='btn btn-primary'])[3]");
+	public  By makeNewPaymentButton = By.xpath("//span[text()='Make New Payment']");
+	public  By viewHistoryButton = By.xpath("//span[text()='View History']");
+	public  By entryMsgOnAddingPaymentByCreditCard = By.xpath("//div[@id='tbl-trans-history_info']");
+	public  By entryMsgOnAddingPaymentBySecurityDeposit = By.xpath("//div[@id='tbl-trans-history_info']");
 	String SUCCESS_MSG = "Showing 1 to 1 of 1 entries";
 	String SUCCESS_MSG_SECURITY = "Showing 1 to 2 of 2 entries";
 
