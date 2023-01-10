@@ -214,6 +214,8 @@ public class EditGroup extends BasePage{
 		ActionEngine.selectDropDownByVisibleText_custom(creditCardType, creditCardText,"Type of Credit card");
 	      } 
 	
+	
+	
 	public void enterCreditCardNumber(String userNameText) {
 		ActionEngine.sendKeys_withClear(creditCardNumber, userNameText);
 	    } 

@@ -63,6 +63,7 @@ public class ElectPayment extends BaseTest
 	public void addSecurityDeposit() throws InterruptedException {
 		pp.PaymentsFromCreditCard("Security Deposit", "Deposit", "sqelabs11@gmail.com", "75",
 				"Hey!!! this is the comment section under payment tab(Security Tab)");
+		
 	}
 
 }

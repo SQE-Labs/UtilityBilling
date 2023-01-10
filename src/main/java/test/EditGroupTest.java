@@ -2,12 +2,9 @@ package test;
 
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.EditGroup;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 public class EditGroupTest extends BaseTest {
-	
-	public static JavascriptExecutor executor;
 	
 	@Test
 	public void editGroup() throws InterruptedException {
@@ -87,7 +84,5 @@ public class EditGroupTest extends BaseTest {
 		groupPage.assertSuccessMessage();	 
 
 		
-		
 	}
-
 }
