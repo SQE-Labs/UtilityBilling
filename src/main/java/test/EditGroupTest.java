@@ -82,7 +82,6 @@ public class EditGroupTest extends BaseTest {
 		groupPage.clickSaveChanges();
 		groupPage.clickOkButton();
 		groupPage.assertSuccessMessage();	 
-
-		
+	
 	}
 }

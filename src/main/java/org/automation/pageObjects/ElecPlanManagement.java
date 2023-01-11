@@ -2,6 +2,7 @@ package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
@@ -26,12 +27,28 @@ public class ElecPlanManagement extends BasePage {
 	By rate = By.xpath("//*[@name='rate']");
 	By taxType = By.xpath("//*[@name='tax-type']");
 	By addButton = By.id("addTrf");
+	By publish = By.id("publishBtn");
+	By successMsg = By.xpath("//*[@id=\"successPlnAlrt\"]/div/center/p/strong");
 	
+	String  SUCCESS_MESG="Adam johhns has been sucessfully";
+	
+	
+	public void assertSuccessMessage() 
+	{
+		WebdriverWaits.sleep(2);
+		Assertions ass=new Assertions();
+		ass.assertStrings(SUCCESS_MESG,ActionEngine.getText_custom(successMsg));	
+	}
+	
+	public void clickPublish() {
+		ActionEngine.clickBtn_custom(publish);
+		WebdriverWaits.waitForElementVisible(publish, 2);	
+	}
 	
 
 	    public void clickAdd() {
 		ActionEngine.clickBtn_custom(addButton);
-		WebdriverWaits.waitForElementVisible(addButton, 2);	
+		WebdriverWaits.waitForElementVisible(publish, 2);	
 	}
 	
 
@@ -60,13 +77,15 @@ public class ElecPlanManagement extends BasePage {
 		    }
 		
 		public void selectDateFrom(String dateFrom ) {
-			WebdriverWaits.waitForElementVisible(dateValidFrom, 1);
+			WebdriverWaits.waitForElementVisible(dateValidFrom, 5);
 			ActionEngine.selectDropDownByVisibleText_custom(dateValidFrom, dateFrom,"Select Today Date");
+			ActionEngine.clickBtn_custom(dateValidFrom);
 		      } 
 	
 		public void selectDateTo(String dateTo) {
 			WebdriverWaits.waitForElementVisible(dateValidTo, 1);
 			ActionEngine.selectDropDownByVisibleText_custom(dateValidTo, dateTo,"Select Today Date");
+			ActionEngine.clickBtn_custom(dateValidTo);
 		      } 
 		
 		public void clickDateFrom() {
@@ -97,20 +116,23 @@ public class ElecPlanManagement extends BasePage {
 		    }
 		
 		public void selectChargeType(String chargeTypeText) {
-			WebdriverWaits.waitForElementVisible(chargeType, 1);
+			WebdriverWaits.waitForElementVisible(chargeType, 2);
 			ActionEngine.selectDropDownByVisibleText_custom(chargeType, chargeTypeText,"Select Charge Type");
 		      } 
 		public void selectAllocation(String allocationText) {
-			WebdriverWaits.waitForElementVisible(allocation, 3);
+			WebdriverWaits.waitForElementVisible(allocation, 4);
 			ActionEngine.selectDropDownByVisibleText_custom(allocation, allocationText,"Select Allocation");
 		      } 
 		public void selectRatingMethod(String ratingMethodText) {
+			ActionEngine.clickBtn_custom(ratingMethod);
 			WebdriverWaits.waitForElementVisible(ratingMethod, 3);
 			ActionEngine.selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText,"Select Rating Method");
 		      } 
 		public void selectUnit(String unitText) {
-			WebdriverWaits.waitForElementVisible(unit, 2);
+			ActionEngine.clickBtn_custom(unit);
+			WebdriverWaits.waitForElementVisible(unit, 5);
 			ActionEngine.selectDropDownByVisibleText_custom(unit, unitText,"Select Unit");
+
 		      } 
 		public void selectTaxType(String textTypeText) {
 			WebdriverWaits.waitForElementVisible(taxType, 1);

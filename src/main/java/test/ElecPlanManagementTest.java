@@ -15,26 +15,24 @@ public class ElecPlanManagementTest extends BaseTest {
 		planPage.clickCreateNewPlan();
 		planPage.selectGroup("testing002");
 		planPage.selectUsageTypes("Retail Electricity");
-		planPage.enterName("Adam Johns");
+		planPage.enterName("Adam Johhns");
 		planPage.clickDateFrom();
-		Thread.sleep(2000);
-		planPage.selectDateFrom("dd/mm/yyyy");
-		Thread.sleep(2000);
+		planPage.selectDateFrom("");
 		planPage.clickDateTo();
-		Thread.sleep(2000);
-		planPage.selectDateTo("DD/MM/YYYY");
+		planPage.selectDateTo("");
 		planPage.clickAddTarif();
 		planPage.enterChargeDescriptrion("Usage charge");
 		planPage.enterRollupDescriptrion("None");
 		planPage.selectChargeType("Water Charges");
 		planPage.selectAllocation("Tester1");
 		planPage.selectRatingMethod("Network Usage Flat Rate");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		planPage.selectUnit("Kiloliter (kL)");
 		planPage.enterRate("65");
 		planPage.clickAdd();
-				
-		
+		planPage.clickPublish();
+		planPage.assertSuccessMessage();
+			
 	}
 
 }
