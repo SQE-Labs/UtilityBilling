@@ -13,6 +13,7 @@
 			<class name="test.EditGroupTest"/>
 			<class name="test.ElecPlanManagementTest"/>
 			<class name="test.CreateAdminAccountTest"/>
+			<class name="test.LoginCreatedAccountTest"/>
 
 		</classes>
 	</test> <!-- Test -->

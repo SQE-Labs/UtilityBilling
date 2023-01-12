@@ -52,7 +52,6 @@ public class CreateAdminAccount extends BasePage {
 	
 	public void clickSaveUser() {
 		ActionEngine.clickBtn_custom(saveUser);
-	//	WebdriverWaits.waitForElementVisible(Users, 2);
 	}
 
 }

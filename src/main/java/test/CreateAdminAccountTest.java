@@ -8,7 +8,7 @@ public class CreateAdminAccountTest extends BaseTest{
 	
 	
 	@Test
-	public void createAccount() {
+	public void createAccount() throws InterruptedException {
 		
 		CreateAdminAccount adminPage = new CreateAdminAccount();
 		
@@ -16,7 +16,8 @@ public class CreateAdminAccountTest extends BaseTest{
 		adminPage.clickUsers();
 		adminPage.clickCreateNewUser();
 		adminPage.selectGroup("testing002");
-		adminPage.enterUsername("sawwfss");
+		adminPage.enterUsername("shawss");
+		Thread.sleep(1000);
 		adminPage.enterPassword("Test@12345");
 		adminPage.clickSaveUser();
 		
