@@ -75,12 +75,12 @@ public class PaymentsPage extends BasePage {
 	}
 
 	public String entryMsgOnAddingPaymentByCreditCard() {
-		WebdriverWaits.waitForElementVisible(entryMsgOnAddingPaymentByCreditCard, 40);
+		WebdriverWaits.waitForElementVisible(entryMsgOnAddingPaymentByCreditCard, 10);
 		return ActionEngine.getText_custom(entryMsgOnAddingPaymentByCreditCard);
 	}
 
 	public String entryMsgOnAddingPaymentBySecurityDeposit() {
-		WebdriverWaits.waitForElementVisible(entryMsgOnAddingPaymentBySecurityDeposit, 40);
+		WebdriverWaits.waitForElementVisible(entryMsgOnAddingPaymentBySecurityDeposit, 10);
 		return ActionEngine.getText_custom(entryMsgOnAddingPaymentBySecurityDeposit);
 	}
 

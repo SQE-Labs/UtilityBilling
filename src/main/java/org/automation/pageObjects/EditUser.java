@@ -2,7 +2,9 @@ package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 public class EditUser extends BasePage {
@@ -21,9 +23,11 @@ public class EditUser extends BasePage {
 	
 	public void clickUsersDetails() {
 	ActionEngine.clickBtn_custom(usersDetailsBtn);
+	
     }
 	
 	public void enterFirstName(String userNameText) {
+		WebdriverWaits.waitForElementVisible(firstNameField, 10);
 	ActionEngine.sendKeys_withClear(firstNameField, userNameText);
 	}
 	

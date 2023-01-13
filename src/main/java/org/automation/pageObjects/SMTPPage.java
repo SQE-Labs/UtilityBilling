@@ -76,6 +76,11 @@ public class SMTPPage
 	public void clickOnSMTPIcon() {
 		ActionEngine.clickBtn_custom(SMTPicon, "Admin");
 	}
+//
+//	public void clickOnServerField() {
+//		ActionEngine.clickBtn_custom(14, "Admin");
+//	}
+
 
 	public void sendDetailOnServerField(String serverNameText) 
 	{

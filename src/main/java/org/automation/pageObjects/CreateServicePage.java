@@ -132,7 +132,7 @@ public class CreateServicePage {
 	}
 
 	public String createNewRetailElectrcityService() {
-		WebdriverWaits.waitForElementVisible(AssertElectricity, 40);
+		WebdriverWaits.waitForElementVisible(AssertElectricity, 10);
 		return ActionEngine.getText_custom(AssertElectricity);
 	}
 

@@ -11,13 +11,11 @@ public class Assertions {
 		Assertion softAssert = new SoftAssert();
 		softAssert.assertEquals(actual, expected);
 		
-		
 	}
 
 public void assertBoolean(boolean value) {
 	Assertion softAssert = new SoftAssert();
 	softAssert.assertTrue(value);
-	
 		
 	}
 }

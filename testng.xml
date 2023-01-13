@@ -5,11 +5,15 @@
 
 		<classes>
 
+            <class name="test.LoginTest" />
 			<class name="test.ElectPayment" />
 			<class name="test.WorkFlowTest" />
 			<class name="test.EditUserTest" />
-			<class name="test.ElectPayment" />
-			<class name="test.ChangPasswordTest" />
+			<class name="test.ChangePasswordTest" />
+			<class name="test.EditGroupTest"/>
+			<class name="test.ElecPlanManagementTest"/>
+			<class name="test.CreateAdminAccountTest"/>
+			<class name="test.LoginCreatedAccountTest"/>
 
 		</classes>
 	</test> <!-- Test -->

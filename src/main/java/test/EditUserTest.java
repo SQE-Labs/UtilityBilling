@@ -12,14 +12,14 @@ public class EditUserTest extends BaseTest {
 
 	@Test(priority = 1,description = "To Edit User ")
 	public void EditUser() throws InterruptedException {
-		EditUser srvAdm = new EditUser();
-		srvAdm.clickAdmin();
-		srvAdm.clickUsersDetails();
+		EditUser Eu = new EditUser();
+		Eu.clickAdmin();
+		Eu.clickUsersDetails();
 		Thread.sleep(2000);
-		srvAdm.enterFirstName("Adams");
-		srvAdm.enterLastName("josh");
+		Eu.enterFirstName("Adams");
+		Eu.enterLastName("josh");
 		Thread.sleep(2000);
-		srvAdm.clickSaveBtn();
-		srvAdm.clickOkBtn();
+		Eu.clickSaveBtn();
+		Eu.clickOkBtn();
   }
 }
