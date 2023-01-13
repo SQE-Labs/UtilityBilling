@@ -6,7 +6,7 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class ChangeCustEmail {
+public class ChangeCustEmail extends  BasePage {
 	BasePage bp = new BasePage();
 	Assertions as;
 	public By customerTab = By.xpath("//a[@title='Customer']");
@@ -35,79 +35,79 @@ public class ChangeCustEmail {
 	public void clickCustomerTab()
 
 	{
-		ActionEngine.clickBtn_custom(customerTab, "Customers");
+		clickBtn_custom(customerTab, "Customers");
 	}
 
 	public void selectCategoryDropdownField(String categoryText) {
-		// ActionEngine.clickBtn_custom(categoryDropdownField, "Category");
-		ActionEngine.selectDropDownByVisibleText_custom(categoryDropdownField, categoryText, "Category");
+		// clickBtn_custom(categoryDropdownField, "Category");
+		selectDropDownByVisibleText_custom(categoryDropdownField, categoryText, "Category");
 	}
 
 	public void enterFirstNameField(String firstNameText) {
-		ActionEngine.sendKeys_custom(firstNameField, firstNameText, "First Name");
+		sendKeys_custom(firstNameField, firstNameText, "First Name");
 	}
 
 	public void enterLastNameField(String lastnameText) {
-		ActionEngine.sendKeys_custom(lastNameField, lastnameText, "Last Name");
+		sendKeys_custom(lastNameField, lastnameText, "Last Name");
 	}
 
 	public void enterPhoneNumber(String phoneNumberText) {
-		ActionEngine.sendKeys_custom(phoneNumberField, phoneNumberText, "Phone");
+		sendKeys_custom(phoneNumberField, phoneNumberText, "Phone");
 	}
 
 	public void enterEmailField(String emailText) {
 		bp.scrollIntoView(emailField);
-		ActionEngine.sendKeys_custom(emailField, emailText, "Email");
+		sendKeys_custom(emailField, emailText, "Email");
 	}
 
 	public void enterBillingEmailField(String billingEmailText) {
-		ActionEngine.sendKeys_custom(billingEmailField, billingEmailText, "Billing Email");
+		sendKeys_custom(billingEmailField, billingEmailText, "Billing Email");
 	}
 
 	public void enterAddressOneField(String addressOneText) {
-		ActionEngine.sendKeys_custom(addressOneField, addressOneText, "Address1");
+		sendKeys_custom(addressOneField, addressOneText, "Address1");
 	}
 
 	public void enterAddressTwoField(String addressTwoText) {
-		ActionEngine.sendKeys_custom(addressTwoField, addressTwoText, "Address2");
+		sendKeys_custom(addressTwoField, addressTwoText, "Address2");
 	}
 
 	public void enterCityField(String cityText) {
-		ActionEngine.sendKeys_custom(cityField, cityText, "City");
+		sendKeys_custom(cityField, cityText, "City");
 	}
 
 	public void enterStateField(String stateText) {
-		ActionEngine.sendKeys_custom(stateField, stateText, "State");
+		sendKeys_custom(stateField, stateText, "State");
 	}
 
 	public void enterZipCodeField(String zipCodeText) {
-		ActionEngine.sendKeys_custom(zipCodeField, zipCodeText, "State");
+		sendKeys_custom(zipCodeField, zipCodeText, "State");
 	}
 
 	public void enterCountryField(String countryText) {
-		ActionEngine.sendKeys_custom(countryField, countryText, "Country");
+		sendKeys_custom(countryField, countryText, "Country");
 	}
 
 	public void selectPlanDropdownField(String PlanText) {
-		ActionEngine.clickBtn_custom(planDropdownField, "Plan");
-		ActionEngine.selectDropDownByVisibleText_custom(planDropdownField, PlanText, "Plan ");
+		clickBtn_custom(planDropdownField, "Plan");
+		selectDropDownByVisibleText_custom(planDropdownField, PlanText, "Plan ");
 	}
 
 	public void clickPhysicalAddressToggleBtn() {
-		ActionEngine.clickBtn_custom(physicalAddressTogglebutton, "Use Physical Address ?");
+		clickBtn_custom(physicalAddressTogglebutton, "Use Physical Address ?");
 	}
 
 	public void clickSaveCustomerBtn() {
 		bp.scrollIntoView(saveCustomerbutton);
-		ActionEngine.clickBtn_custom(saveCustomerbutton, "Save Customer");
+		clickBtn_custom(saveCustomerbutton, "Save Customer");
 	}
 
 	public void clickOkBtn() {
-		ActionEngine.clickBtn_custom(okbutton, "Ok");
+		clickBtn_custom(okbutton, "Ok");
 	}
 
 	public String getCustomerId() {
-		return ActionEngine.getText_custom(customerID);
+		return getText_custom(customerID);
 
 	}
 
@@ -115,7 +115,7 @@ public class ChangeCustEmail {
 
 	{
 		WebdriverWaits.waitForElementVisible(successMessageForCustomerCreation, 40);
-		return ActionEngine.getText_custom(successMessageForCustomerCreation);
+		return getText_custom(successMessageForCustomerCreation);
 	}
 
 	public String createCustomer(String category, String firstName, String lastName, String phoneNumber, String email,

@@ -6,7 +6,7 @@ import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class SMTPPage
+public class SMTPPage extends BasePage
 
 {
 	public static String CUSTnum;
@@ -70,52 +70,52 @@ public class SMTPPage
 	public  By NextDay = By.xpath("//td[@class='new day']");
 
 	public void clickOnAdminTab() {
-		ActionEngine.clickBtn_custom(Admin, "Admin");
+		clickBtn_custom(Admin, "Admin");
 	}
 
 	public void clickOnSMTPIcon() {
-		ActionEngine.clickBtn_custom(SMTPicon, "Admin");
+		clickBtn_custom(SMTPicon, "Admin");
 	}
 //
 //	public void clickOnServerField() {
-//		ActionEngine.clickBtn_custom(14, "Admin");
+//		clickBtn_custom(14, "Admin");
 //	}
 
 
-	public void sendDetailOnServerField(String serverNameText) 
+	public void sendDetailOnServerField(String serverNameText)
 	{
-		ActionEngine.sendKeys_withClear(SrverField, serverNameText, "Server");
+		sendKeys_withClear(SrverField, serverNameText, "Server");
 	}
-	
+
 	public void sendDetailOnPortField(String portNameText)
 	{
-		ActionEngine.sendKeys_withClear(PortField, portNameText, "Port");
+		sendKeys_withClear(PortField, portNameText, "Port");
 	}
-	
+
 	public void checkAuthenticationCheckboxField()
 	{
-		WebElement AuthCheckbox = WebdriverWaits.waitForElementUntilVisible(UserAuthCheckbox,10);		
-		ActionEngine.selectCheckBox(UserAuthCheckbox);
-		
+		WebElement AuthCheckbox = WebdriverWaits.waitForElementUntilVisible(UserAuthCheckbox,10);
+		selectCheckBox(UserAuthCheckbox);
+
 	}
-	
-	
+
+
 	public void sendUsername(String usernameText)
 	{
-		ActionEngine.sendKeys_withClear(Username, usernameText, "Username");
+		sendKeys_withClear(Username, usernameText, "Username");
 	}
-	
+
 	public void sendPassword(String passwordText)
 	{
-		ActionEngine.sendKeys_withClear(Password, passwordText, "Password");
+		sendKeys_withClear(Password, passwordText, "Password");
 	}
-	
+
 	public void clickOnUpdateButton()
 	{
 		bp.scrollIntoView(UpdateSMTPbutton);
-		ActionEngine.clickBtn_custom(UpdateSMTPbutton, "Update");
+		clickBtn_custom(UpdateSMTPbutton, "Update");
 	}
-	
+
 	public void smtpInformation(String serverNameText, String portNameText,String usernameText,String passwordText)
 	{
 		clickOnAdminTab();
@@ -126,9 +126,7 @@ public class SMTPPage
 		sendUsername(usernameText);
 		sendPassword(passwordText);
 		clickOnUpdateButton();
-		
-		
+
+
 	}
 }
-
-

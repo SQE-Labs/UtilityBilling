@@ -47,7 +47,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * To extend every test class created.
- * 
+ *
  * @author Sujay Sawant
  * @version 1.0.0
  * @since 6/11/2020
@@ -58,10 +58,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 @Listeners({ TestRunListener.class, TestReporter.class })
 public  class BaseTest extends ActionEngine {
-	
+
 	public static ExtentReports extent;
 	public static ExtentTest extentTest;
-	
+
 	protected static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
 	/**
@@ -71,10 +71,10 @@ public  class BaseTest extends ActionEngine {
 	public static WebDriver getDriver() {
 		return  driver.get();
 	}
-	
+
 	public static void closeDriver() {
 		getDriver().close();
-		driver.remove();		
+		driver.remove();
 	}
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() throws MalformedURLException {
@@ -106,27 +106,27 @@ public  class BaseTest extends ActionEngine {
 	/**
 	 * Method to execute at the end of each test method execution.
 	 */
-	
-	
-	
+
+
+
 	@AfterClass(alwaysRun = true)
 	public void afterMethod() {
 		//clearCookies();
-		//closeDriver();
+		closeDriver();
 	}
 
 	@BeforeMethod
 	public void LaunchApplication() throws Exception {
 
 	}
-	
-	
-	
-	
+
+
+
+
 	@BeforeClass
 	public void login(){
 		try {
-	
+
 			LoginPage loginPage = new LoginPage();
 		    System.out.println(getDriver().getTitle());
 			loginPage.login(PropertiesUtil.getPropertyValue("userName"),PropertiesUtil.getPropertyValue("password"));
@@ -148,7 +148,7 @@ public  class BaseTest extends ActionEngine {
 
 	/**
 	 * Data Provider method to get data from Excel file.
-	 * 
+	 *
 	 * @param method test method executed
 	 * @return excel data
 	 */
@@ -184,7 +184,7 @@ public  class BaseTest extends ActionEngine {
 
 	/**
 	 * Data Provider method to get data from CSV file.
-	 * 
+	 *
 	 * @param method test method executed
 	 * @return CSV data
 	 */
@@ -216,7 +216,7 @@ public  class BaseTest extends ActionEngine {
 
 	/**
 	 * Get the user name from the command line.
-	 * 
+	 *
 	 * @return user name
 	 */
 //	protected String getUsername() {
@@ -226,15 +226,15 @@ public  class BaseTest extends ActionEngine {
 
 	/**
 	 * Get the password from the command line.
-	 * 
+	 *
 	 * @return password
 	 */
 	protected String getPassword() {
 		return ofNullable(getProperty("password"))
 				.orElseThrow(() -> new NullPointerException("Password was not provided"));
 	}
-	
-	
+
+
 
 //	@AfterMethod
 //	public void tearDown(ITestResult result) throws IOException {
@@ -257,7 +257,7 @@ public  class BaseTest extends ActionEngine {
 //		extent.endTest(extentTest);
 //	}
 
-	
-	
+
+
 
 }

@@ -12,10 +12,9 @@ import test.LoginTest;
 
 public class CustomerPage extends BasePage
 {
-	BasePage bp=new BasePage();
 	Assertions as;
-    public  By customerTab = By.xpath("//a[@title='Customer']"); 
-	public  By categoryDropdownField = By.xpath("//select[@name='category']");    
+    public  By customerTab = By.xpath("//a[@title='Customer']");
+	public  By categoryDropdownField = By.xpath("//select[@name='category']");
 	public  By firstNameField= By.xpath("//input[@name='firstName']");
 	public  By lastNameField= By.xpath("//input[@name='surname']");
 	public  By phoneNumberField= By.xpath("//input[@name='contact_mobile']");
@@ -34,112 +33,112 @@ public class CustomerPage extends BasePage
 	public  By companyNameField= By.xpath("(//input[@name='company'])[1]");
 	public  By successMessageForCustomerCreation= By.xpath("//div[@id='notification']//center");
     String SUCCESS_MESG="Successfully saved customer.";
-    
+
     public By customerID=By.xpath("(//label[@class='col-sm-12 control-label'])[1]");
-    
+
     public void clickCustomerTab()
-    
-    
+
+
     {
-    	ActionEngine.clickBtn_custom(customerTab, "Customers");
+    	clickBtn_custom(customerTab, "Customers");
     }
 
-    public void selectCategoryDropdownField(String categoryText) 
+    public void selectCategoryDropdownField(String categoryText)
     {
-    	//ActionEngine.clickBtn_custom(categoryDropdownField, "Category");
-    	ActionEngine.selectDropDownByVisibleText_custom(categoryDropdownField, categoryText,"Category");
+    	//clickBtn_custom(categoryDropdownField, "Category");
+    	selectDropDownByVisibleText_custom(categoryDropdownField, categoryText,"Category");
     }
-    
-    public void enterCompanyNameField(String companyNameText) 
+
+    public void enterCompanyNameField(String companyNameText)
     {
-    	ActionEngine.sendKeys_custom(companyNameField, companyNameText, "Company Name");
+    	sendKeys_custom(companyNameField, companyNameText, "Company Name");
     }
-    public void enterFirstNameField(String firstNameText) 
+    public void enterFirstNameField(String firstNameText)
     {
-    	ActionEngine.sendKeys_custom(firstNameField, firstNameText, "First Name");
+    	sendKeys_custom(firstNameField, firstNameText, "First Name");
     }
-    
-    public void enterLastNameField(String lastnameText) 
+
+    public void enterLastNameField(String lastnameText)
     {
-    	ActionEngine.sendKeys_custom(lastNameField,lastnameText, "Last Name");
+    	sendKeys_custom(lastNameField,lastnameText, "Last Name");
     }
-    
-    public void enterPhoneNumber(String phoneNumberText) 
+
+    public void enterPhoneNumber(String phoneNumberText)
     {
-    	ActionEngine.sendKeys_custom(phoneNumberField, phoneNumberText, "Phone");
+    	sendKeys_custom(phoneNumberField, phoneNumberText, "Phone");
     }
-    
-    public void enterEmailField(String emailText) 
+
+    public void enterEmailField(String emailText)
     {
-    	bp.scrollIntoView(emailField);
-    	ActionEngine.sendKeys_custom(emailField, emailText, "Email");
+    	scrollIntoView(emailField);
+    	sendKeys_custom(emailField, emailText, "Email");
     }
-    
-    public void enterBillingEmailField(String billingEmailText) 
+
+    public void enterBillingEmailField(String billingEmailText)
     {
-    	ActionEngine.sendKeys_custom(billingEmailField, billingEmailText, "Billing Email");
+    	sendKeys_custom(billingEmailField, billingEmailText, "Billing Email");
     }
-    
-    public void enterAddressOneField(String addressOneText) 
+
+    public void enterAddressOneField(String addressOneText)
     {
-    	ActionEngine.sendKeys_custom(addressOneField,addressOneText, "Address1");
+    	sendKeys_custom(addressOneField,addressOneText, "Address1");
     }
-    
-    public void enterAddressTwoField(String addressTwoText) 
+
+    public void enterAddressTwoField(String addressTwoText)
     {
-    	ActionEngine.sendKeys_custom(addressTwoField,addressTwoText, "Address2");
+    	sendKeys_custom(addressTwoField,addressTwoText, "Address2");
     }
-    
-    public void enterCityField(String cityText) 
+
+    public void enterCityField(String cityText)
     {
-    	ActionEngine.sendKeys_custom(cityField,cityText, "City");
+    	sendKeys_custom(cityField,cityText, "City");
     }
-    public void enterStateField(String stateText) 
+    public void enterStateField(String stateText)
     {
-    	ActionEngine.sendKeys_custom(stateField,stateText, "State");
+    	sendKeys_custom(stateField,stateText, "State");
     }
-    public void enterZipCodeField(String zipCodeText) 
+    public void enterZipCodeField(String zipCodeText)
     {
-    	ActionEngine.sendKeys_custom(zipCodeField,zipCodeText, "State");
+    	sendKeys_custom(zipCodeField,zipCodeText, "State");
     }
-    
-    public void enterCountryField(String countryText) 
+
+    public void enterCountryField(String countryText)
     {
-    	ActionEngine.sendKeys_custom(countryField,countryText, "Country");
+    	sendKeys_custom(countryField,countryText, "Country");
     }
-    public void selectPlanDropdownField(String PlanText) 
+    public void selectPlanDropdownField(String PlanText)
     {
-    	ActionEngine.clickBtn_custom(planDropdownField, "Plan");
-    	ActionEngine.selectDropDownByVisibleText_custom(planDropdownField, PlanText,"Plan ");	
+    	clickBtn_custom(planDropdownField, "Plan");
+    	selectDropDownByVisibleText_custom(planDropdownField, PlanText,"Plan ");
     }
-    public void clickPhysicalAddressToggleBtn() 
+    public void clickPhysicalAddressToggleBtn()
     {
-    	ActionEngine.clickBtn_custom(physicalAddressTogglebutton, "Use Physical Address ?");
+    	clickBtn_custom(physicalAddressTogglebutton, "Use Physical Address ?");
     }
-    public void clickSaveCustomerBtn() 
+    public void clickSaveCustomerBtn()
     {
-    	bp.scrollIntoView(saveCustomerbutton);
-    	ActionEngine.clickBtn_custom(saveCustomerbutton, "Save Customer");
+    	scrollIntoView(saveCustomerbutton);
+    	clickBtn_custom(saveCustomerbutton, "Save Customer");
     }
-    public void clickOkBtn() 
+    public void clickOkBtn()
     {
-    	ActionEngine.clickBtn_custom(okbutton, "Ok");
+    	clickBtn_custom(okbutton, "Ok");
     }
-    
+
     public String getCustomerId()
     {
-    	return ActionEngine.getText_custom(customerID);
-    	
-    	
+    	return getText_custom(customerID);
+
+
     }
-    
+
     public String getSuccessMsgText()
-    
+
     {
     	WebdriverWaits.waitForElementVisible(successMessageForCustomerCreation, 5);
-    	return ActionEngine.getText_custom(successMessageForCustomerCreation);
+    	return getText_custom(successMessageForCustomerCreation);
     }
-    
+
     public String createCustomer(String category , String companyName, String firstName, String lastName, String phoneNumber, String email, String billingEmail, String addressOne, String addressTwo, String city , String zipCode, String country,String plan) throws InterruptedException
     {
     	as=new Assertions();
@@ -165,4 +164,3 @@ public class CustomerPage extends BasePage
     	return getCustomerId();
 	}
     }
-

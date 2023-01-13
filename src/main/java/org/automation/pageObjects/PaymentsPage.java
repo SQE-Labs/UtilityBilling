@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 public class PaymentsPage extends BasePage {
 	Assertions as;
-	
+
 	public  By transactionsubtab = By.xpath("(//i[@class='icon-money'])[1]");
 	public  By transactintypedropdownfield = By.xpath("//select[@name='tranType']");
 	public  By paymentMethoddropdownfield = By.xpath("//select[@name='tranSubType']");
@@ -26,62 +26,62 @@ public class PaymentsPage extends BasePage {
 	String SUCCESS_MSG_SECURITY = "Showing 1 to 2 of 2 entries";
 
 	public void clickOnTransactionTab() {
-		ActionEngine.clickBtn_custom(transactionsubtab, "Transaction");
+		clickBtn_custom(transactionsubtab, "Transaction");
 	}
 
 	public void selectTransactionTypeOption(String transactionTypeText) {
-		ActionEngine.selectDropDownByVisibleText_custom(transactintypedropdownfield, transactionTypeText,
+		selectDropDownByVisibleText_custom(transactintypedropdownfield, transactionTypeText,
 				" Transaction Type");
 	}
 
 	public void selectPaymentMethodOption(String paymentMethodTypeText) {
 
-		ActionEngine.selectDropDownByVisibleText_custom(paymentMethoddropdownfield, paymentMethodTypeText,
+		selectDropDownByVisibleText_custom(paymentMethoddropdownfield, paymentMethodTypeText,
 				" Payment Method");
 	}
 
 	public void enterReceiptEmail(String receiptEmailText) {
-		ActionEngine.sendKeys_withClear(emailfortransactionfield, receiptEmailText, " Receipt Email");
+		sendKeys_withClear(emailfortransactionfield, receiptEmailText, " Receipt Email");
 	}
 
 	public void enterAmount(String amountText) {
-		ActionEngine.sendKeys_custom(amountfield, amountText, "Amount");
+		sendKeys_custom(amountfield, amountText, "Amount");
 	}
 
 	public void clickduplicateCheckBoxToggleButton() {
-		ActionEngine.clickBtn_custom(allowduplicatecheckbox, "Allow Duplicate transcation");
+		clickBtn_custom(allowduplicatecheckbox, "Allow Duplicate transcation");
 
 	}
 
 	public void enterComments(String commentText) {
-		ActionEngine.sendKeys_custom(commentfield, commentText, "Commnets");
+		sendKeys_custom(commentfield, commentText, "Commnets");
 
 	}
 
 	public void clickSubmitTransactionButton() {
-		ActionEngine.clickBtn_custom(transactionsubmitbutton, "Submit Transaction");
+		clickBtn_custom(transactionsubmitbutton, "Submit Transaction");
 	}
 
 	public void clickOkButton() {
-		ActionEngine.clickBtn_custom(okbuttonfortransaction, "Ok");
+		clickBtn_custom(okbuttonfortransaction, "Ok");
 	}
 
 	public void clickOnMakePaymentButton() {
-		ActionEngine.clickBtn_custom(makeNewPaymentButton, "Make New Payment");
+		clickBtn_custom(makeNewPaymentButton, "Make New Payment");
 	}
 
 	public void clickOnViewHistoryButton() {
-		ActionEngine.clickBtn_custom(viewHistoryButton, "View History");
+		clickBtn_custom(viewHistoryButton, "View History");
 	}
 
 	public String entryMsgOnAddingPaymentByCreditCard() {
 		WebdriverWaits.waitForElementVisible(entryMsgOnAddingPaymentByCreditCard, 10);
-		return ActionEngine.getText_custom(entryMsgOnAddingPaymentByCreditCard);
+		return getText_custom(entryMsgOnAddingPaymentByCreditCard);
 	}
 
 	public String entryMsgOnAddingPaymentBySecurityDeposit() {
 		WebdriverWaits.waitForElementVisible(entryMsgOnAddingPaymentBySecurityDeposit, 10);
-		return ActionEngine.getText_custom(entryMsgOnAddingPaymentBySecurityDeposit);
+		return getText_custom(entryMsgOnAddingPaymentBySecurityDeposit);
 	}
 
 	public void PaymentsFromCreditCard(String transactionTypeText, String paymentMethodTypeText,

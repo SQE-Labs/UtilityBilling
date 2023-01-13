@@ -6,13 +6,13 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class EmailTemplateSetup 
+public class EmailTemplateSetup  extends  BasePage
 
 {
 	BasePage bp = new BasePage();
 	Assertions as;
-	
-	
+
+
 	public  By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
 	public  By MsgType = By.xpath("//select[@id='email_message_type']");
 	public  By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -73,46 +73,46 @@ public class EmailTemplateSetup
 
 
 	public void clickOnAdminTab() {
-		ActionEngine.clickBtn_custom(Admin, "Admin");
+		clickBtn_custom(Admin, "Admin");
 	}
-	
-	public void clickOnTemplateIcon() 
+
+	public void clickOnTemplateIcon()
 	{
-		ActionEngine.clickBtn_custom(TemplateIcon, "Admin");
+		clickBtn_custom(TemplateIcon, "Admin");
 	}
-	
-	public void selectMessageDropdownOption(String messageText) 
+
+	public void selectMessageDropdownOption(String messageText)
 	{
-		ActionEngine.clickBtn_custom(MsgType, "Message Type");
-		ActionEngine.selectDropDownByVisibleText_custom(MsgType, messageText, "Message Type");
+		clickBtn_custom(MsgType, "Message Type");
+		selectDropDownByVisibleText_custom(MsgType, messageText, "Message Type");
 	}
-	
-	public void enterEmailBcc(String emailText) 
+
+	public void enterEmailBcc(String emailText)
 	{
-		ActionEngine.sendKeys_withClear(Emailbcc, emailText, "Email Bcc");
-		
+		sendKeys_withClear(Emailbcc, emailText, "Email Bcc");
+
 	}
-	public void enterEmailSubject(String EmailSubjectText) 
+	public void enterEmailSubject(String EmailSubjectText)
 	{
-		ActionEngine.sendKeys_withClear(Emailbcc, EmailSubjectText, "Email Subject");
-		
+		sendKeys_withClear(Emailbcc, EmailSubjectText, "Email Subject");
+
 	}
-	
-	public void clickOnSaveBtn() 
+
+	public void clickOnSaveBtn()
 	{
 		bp.scrollIntoView(SaveEmailTemp);
-	ActionEngine.clickBtn_custom(SaveEmailTemp, "Save");
-		
+	clickBtn_custom(SaveEmailTemp, "Save");
+
 	}
-	
+
 	public String newRowAddUnderRecurringCharge()
 	{
 
 		WebdriverWaits.waitForElementVisible(SavedEmailMsg, 40);
-		return ActionEngine.getText_custom(SavedEmailMsg);
+		return getText_custom(SavedEmailMsg);
 	}
-	
-	
+
+
 	public void emailSetup(String messageText, String emailText, String EmailSubjectText)
 	{
 		clickOnAdminTab();

@@ -5,9 +5,8 @@ import org.automation.utilities.ActionEngine;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class BillRunCycle {
+public class BillRunCycle extends BasePage {
 	public static String CUSTnum;
-	BasePage bp = new BasePage();
 	WebdriverWaits ww=new WebdriverWaits();
 	public  By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
 	public  By MsgType = By.xpath("//select[@id='email_message_type']");
@@ -68,29 +67,29 @@ public class BillRunCycle {
 	public  By NextDay = By.xpath("//td[@class='new day']");
 
 	 public void getSuccessMsgText()
-	    
+
 	    {
 		 WebdriverWaits.waitForElementVisible(CustNumberCreated, 5);
-		 ActionEngine.getText_custom(CustNumberCreated);
+		 getText_custom(CustNumberCreated);
 	    }
 	 public void clickOnAdminTab() {
-			ActionEngine.clickBtn_custom(Admin, "Admin");
+			clickBtn_custom(Admin, "Admin");
 		}
-		
-		public void clickOnBillRunIcon() 
+
+		public void clickOnBillRunIcon()
 		{
-			ActionEngine.clickBtn_custom(BillRunCycle, "Bill Run");
+			clickBtn_custom(BillRunCycle, "Bill Run");
 		}
-		public void clickOnCreateCycle() 
+		public void clickOnCreateCycle()
 		{
-			ActionEngine.clickBtn_custom(CreateCycle, "Create New");
+			clickBtn_custom(CreateCycle, "Create New");
 		}
-		
-		public void sendCycleName() 
-		{	ActionEngine.sendKeys_custom(CycleName,CUSTnum, "Cycle Name");
+
+		public void sendCycleName()
+		{	sendKeys_custom(CycleName,CUSTnum, "Cycle Name");
 		}
-		public void sendSearchCustForCycle() 
-		{	ActionEngine.sendKeys_custom(SearchCustForCycle,CUSTnum, "Filter");
+		public void sendSearchCustForCycle()
+		{	sendKeys_custom(SearchCustForCycle,CUSTnum, "Filter");
 		}
 
 

@@ -34,7 +34,7 @@ import org.testng.Assert;
         }
 
         public static void sendKeys_withClear(By path ,String valueToBeSent,String... fieldName) {
-           
+
         	String var="";
         	try {
             	 var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
@@ -70,7 +70,7 @@ import org.testng.Assert;
         //clear data from field
         public static void clear_custom(By element) {
             try {
-            	
+
                 ((WebElement) element).clear();
                 Thread.sleep(250);
                 ExtentFactory.getInstance().getExtent().log(Status.PASS,"==> Data Cleared Successfully! ");
@@ -112,7 +112,7 @@ import org.testng.Assert;
 
         //Select dropdown value value by visibleText
         public  static void selectDropDownByVisibleText_custom(By path, String ddVisibleText, String... fieldName)  {
-            
+
         	String var="";
         	try {
             	 var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
@@ -125,7 +125,7 @@ import org.testng.Assert;
         }
 
         //Select dropdown value value by value
-        public static void selectDropDownByValue_custom(By path,String ddValue,String... fieldName) 
+        public static void selectDropDownByValue_custom(By path,String ddValue,String... fieldName)
         {
         	String var="";
             try {
@@ -138,7 +138,7 @@ import org.testng.Assert;
             }
         }
         //Select dropdown list by index
-        public static void  selectDropDownByIndex_custom(By  path,int ddValue, String... fieldName) 
+        public static void  selectDropDownByIndex_custom(By  path,int ddValue, String... fieldName)
         {
         	String var="";
             try {
@@ -169,7 +169,7 @@ import org.testng.Assert;
         public static  String getText_custom(By path) {
             String text = "";
             try {
-            	
+
             	Element element=new Element("",path);
                 text = element.getText();
               //  ExtentFactory.getInstance().getExtent().log(Status.PASS, "==> Text retried is: "+ text);
@@ -185,7 +185,7 @@ import org.testng.Assert;
         	CheckBox checkBox =new CheckBox(var,path);
         	checkBox.check();
          }
-        
+
         public static void uncheckCheckBox(By path,String... fieldName) {
           	 String var =fieldName.length > 0 ? (String)fieldName[0]  : path.toString() ;
            	CheckBox checkBox =new CheckBox(var,path);
@@ -196,7 +196,6 @@ import org.testng.Assert;
           	CheckBox checkBox =new CheckBox(var,path);
           	return checkBox.isChecked();
            }
-        
-        
-    }
 
+
+    }

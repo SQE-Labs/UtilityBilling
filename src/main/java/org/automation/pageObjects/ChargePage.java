@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ChargePage extends BasePage {
-	BasePage bp = new BasePage();
 	Assertions as;
 	// Charges
 	public By Chargetab = By.xpath("//a[text()=' Charges']");
@@ -39,82 +38,82 @@ public class ChargePage extends BasePage {
 	public By entryMsgOnAddingRecurringMessage = By.xpath("(//div[@class='dataTables_info'])[2]");
 
 	public void clickOnChargeTab() {
-		ActionEngine.clickBtn_custom(Chargetab, "Charge");
+		clickBtn_custom(Chargetab, "Charge");
 	}
 
 	public void clickOnSaveBtn() {
-		ActionEngine.clickBtn_custom(SaveButton, "Save");
+		clickBtn_custom(SaveButton, "Save");
 	}
 
 	public void clickOnPlusIcon() {
-		ActionEngine.clickBtn_custom(AddIconForManualCharge, "Plus Icon");
+		clickBtn_custom(AddIconForManualCharge, "Plus Icon");
 	}
 
 	public void selectService(int serviceByIndex) {
-		ActionEngine.clickBtn_custom(ServiceDropdownField, "Service");
-		ActionEngine.selectDropDownByIndex_custom(ServiceDropdownField, serviceByIndex, "Service");
+		clickBtn_custom(ServiceDropdownField, "Service");
+		selectDropDownByIndex_custom(ServiceDropdownField, serviceByIndex, "Service");
 	}
 
 	public void enterChargeDesciption(String chargeDescriptionText) {
-		ActionEngine.sendKeys_custom(ChargeDescriptionField, chargeDescriptionText, " Charge Desciption");
+		sendKeys_custom(ChargeDescriptionField, chargeDescriptionText, " Charge Desciption");
 	}
 
 	public void enterRollupDesciption(String rollupDescriptionText) {
-		ActionEngine.sendKeys_custom(RollupDescriptionField, rollupDescriptionText, " Rollup Desciption");
+		sendKeys_custom(RollupDescriptionField, rollupDescriptionText, " Rollup Desciption");
 	}
 
 	public void enterStartDate() {
-		ActionEngine.clickBtn_custom(ClickOnDatepickerField, "Start Date");
-		ActionEngine.clickBtn_custom(ActiveDayField, "Datepicker");
+		clickBtn_custom(ClickOnDatepickerField, "Start Date");
+		clickBtn_custom(ActiveDayField, "Datepicker");
 	}
 
 	public void enterUnitsRate(String unitText) {
-		bp.scrollIntoView(unitsField);
-		ActionEngine.sendKeys_custom(unitsField, unitText, "Unit");
+		scrollIntoView(unitsField);
+		sendKeys_custom(unitsField, unitText, "Unit");
 	}
 
 	public void enterFlatRate(String rateText) {
-		ActionEngine.sendKeys_custom(rateField, rateText, "Rate");
+		sendKeys_custom(rateField, rateText, "Rate");
 	}
 
 	public void enterPriceChargeDollar(String PriceChargetext) {
-		ActionEngine.sendKeys_custom(PriceChargeDollarField, PriceChargetext, "Charge");
+		sendKeys_custom(PriceChargeDollarField, PriceChargetext, "Charge");
 	}
 
 	public void clickOkButton() {
-		ActionEngine.clickBtn_custom(clickOnOkButton, "Ok");
+		clickBtn_custom(clickOnOkButton, "Ok");
 	}
 
 	public void clickOnRecurringPlusIcon() {
-		ActionEngine.clickBtn_custom(AddIconForRecurringCharge, "Plus Icon ");
+		clickBtn_custom(AddIconForRecurringCharge, "Plus Icon ");
 	}
 
 	public void enterServiceDropdownOption(int serviceText) {
-		ActionEngine.clickBtn_custom(ServiceDropdownRecurringField, "Service");
-		ActionEngine.selectDropDownByIndex_custom(ServiceDropdownRecurringField, serviceText, "Service");
+		clickBtn_custom(ServiceDropdownRecurringField, "Service");
+		selectDropDownByIndex_custom(ServiceDropdownRecurringField, serviceText, "Service");
 	}
 
 	public void enterChargeDescriptionDropdownOption(int chargeText) {
-		ActionEngine.clickBtn_custom(CodeField, "Charge Description");
-		ActionEngine.selectDropDownByIndex_custom(CodeField, chargeText, "Charge Description");
+		clickBtn_custom(CodeField, "Charge Description");
+		selectDropDownByIndex_custom(CodeField, chargeText, "Charge Description");
 	}
 
 	public void clickOnGoingToggleBtn() {
-		ActionEngine.clickBtn_custom(ChargeOngoingField, "On Going - always Recurring");
+		clickBtn_custom(ChargeOngoingField, "On Going - always Recurring");
 	}
 
 	public void enterPeriodOFCharge(String PeriodOfChargeText) {
-		ActionEngine.sendKeys_custom(NumberOfPeriodsField, PeriodOfChargeText, "Period Of Charge");
+		sendKeys_custom(NumberOfPeriodsField, PeriodOfChargeText, "Period Of Charge");
 	}
 
 	public String newRowAddUnderManualCharge() {
 		WebdriverWaits.waitForElementVisible(entryMsgOnAddingManualMessage, 10);
-		return ActionEngine.getText_custom(entryMsgOnAddingManualMessage);
+		return getText_custom(entryMsgOnAddingManualMessage);
 	}
 
 	public String newRowAddUnderRecurringCharge() {
 		WebdriverWaits.waitForElementVisible(entryMsgOnAddingRecurringMessage, 10);
-		return ActionEngine.getText_custom(entryMsgOnAddingRecurringMessage);
+		return getText_custom(entryMsgOnAddingRecurringMessage);
 	}
 
 	public void addOnceOffCharges(int selectServiceIndex, String ChargeDescriptionText, String rollUpText,

@@ -5,14 +5,14 @@ import org.automation.utilities.ActionEngine;
 import org.automation.utilities.Assertions;
 import org.openqa.selenium.By;
 
-public class SMSTemplateSetup
+public class SMSTemplateSetup extends BasePage
 
 {
 
 	BasePage bp = new BasePage();
 	Assertions as;
-	
-	
+
+
 	public  By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
 	public  By MsgType = By.xpath("//select[@id='email_message_type']");
 	public  By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -72,40 +72,40 @@ public class SMSTemplateSetup
 	public  By NextDay = By.xpath("//td[@class='new day']");
 
 	public void clickOnAdminTab() {
-		ActionEngine.clickBtn_custom(Admin, "Admin");
+		clickBtn_custom(Admin, "Admin");
 	}
 
 	public void clickOnTemplateIcon() {
-		ActionEngine.clickBtn_custom(TemplateIcon, "Template");
+		clickBtn_custom(TemplateIcon, "Template");
 	}
 
 	public void clickOnSMSTab() {
-		ActionEngine.clickBtn_custom(SMStab, "SMS");
+		clickBtn_custom(SMStab, "SMS");
 	}
-	
-	public void selectMessageDropdownOption(int messageText) 
+
+	public void selectMessageDropdownOption(int messageText)
 	{
-		ActionEngine.clickBtn_custom(SMSmsg, "Message Type");
-		ActionEngine.selectDropDownByIndex_custom(SMSmsg, messageText, "Message Type");
+		clickBtn_custom(SMSmsg, "Message Type");
+		selectDropDownByIndex_custom(SMSmsg, messageText, "Message Type");
 	}
 	public void sendSMSMessage(String smsText) {
-		ActionEngine.sendKeys_custom(SMSmsg, smsText, "SMS Message");
+		sendKeys_custom(SMSmsg, smsText, "SMS Message");
 	}
-	public void clickOnSaveBtn() 
+	public void clickOnSaveBtn()
 	{
 		bp.scrollIntoView(SaveSMS);
-	ActionEngine.clickBtn_custom(SaveSMS, "Save");
-		
+	clickBtn_custom(SaveSMS, "Save");
+
 	}
 	public void smsSetup(int messageText, String smsText)
 	{
 		clickOnAdminTab();
 		clickOnTemplateIcon() ;
 		clickOnSMSTab();
-		selectMessageDropdownOption( messageText) ;		
+		selectMessageDropdownOption( messageText) ;
 		sendSMSMessage(smsText);
 		clickOnSaveBtn();
-		
+
 	}
-	
+
 }

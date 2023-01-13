@@ -10,9 +10,8 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class CreateServicePage {
+public class CreateServicePage  extends  BasePage{
 	Assertions as;
-	BasePage bp = new BasePage();
 
 	static String waterPlan = "Water Flat Template Plan";
 	static String gasPlan = "Gas Flat Template Plan";
@@ -75,16 +74,16 @@ public class CreateServicePage {
 
 	public void clickOnOverview() {
 
-		ActionEngine.clickBtn_custom(Overviewtab, "Overview");
+		clickBtn_custom(Overviewtab, "Overview");
 	}
 
 	public void clickRetailElectricity() {
-		ActionEngine.clickBtn_custom(AddRetailelect, "Retail Electricity Icon");
+		clickBtn_custom(AddRetailelect, "Retail Electricity Icon");
 	}
 
 	public void selectPlan(String selectPlanText) {
-		ActionEngine.clickBtn_custom(SelectPlan, "Plan");
-		ActionEngine.selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
+		clickBtn_custom(SelectPlan, "Plan");
+		selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
 	}
 
 	public void enterMeterNumber() {
@@ -95,45 +94,45 @@ public class CreateServicePage {
 		String mno = cal.getTime().toString();
 		System.out.println(mno = mno.substring(11, 19));
 		mno = mno.replaceAll(":", "");
-		ActionEngine.sendKeys_custom(MeterNo, "Ele" + mno, "First Name");
-		String MeterNumberEntered = ActionEngine.getText_custom(MeterNo);
+		sendKeys_custom(MeterNo, "Ele" + mno, "First Name");
+		String MeterNumberEntered = getText_custom(MeterNo);
 
 		System.out.println("........");
 		System.out.println(MeterNumberEntered);
 	}
 
 	public void selectMeterConfiguration(String MeterConfigurationText) {
-		ActionEngine.clickBtn_custom(MeterConfig, "Meter Cnfiguration");
-		ActionEngine.selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText, "Meter Configuration");
+		clickBtn_custom(MeterConfig, "Meter Cnfiguration");
+		selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText, "Meter Configuration");
 	}
 
 	public void selectreadType(String readingTypeText) {
-		bp.scrollIntoView(ReadType);
-		ActionEngine.clickBtn_custom(ReadType, "Reading Type");
-		ActionEngine.selectDropDownByVisibleText_custom(ReadType, readingTypeText, "Reading Type");
+		scrollIntoView(ReadType);
+		clickBtn_custom(ReadType, "Reading Type");
+		selectDropDownByVisibleText_custom(ReadType, readingTypeText, "Reading Type");
 	}
 
 	public void clickDemandToggleButton()
 
 	{
-		ActionEngine.clickBtn_custom(DemandReadsToggle, "Enable Demand Type");
+		clickBtn_custom(DemandReadsToggle, "Enable Demand Type");
 
 	}
 
 	public void clickCreateService() {
-		bp.scrollIntoView(CreateElectServ);
-		ActionEngine.clickBtn_custom(CreateElectServ, "Create Service");
+		scrollIntoView(CreateElectServ);
+		clickBtn_custom(CreateElectServ, "Create Service");
 
 	}
 
 	public void clickOkButton() {
-		ActionEngine.clickBtn_custom(OK_btn, "Ok");
+		clickBtn_custom(OK_btn, "Ok");
 
 	}
 
 	public String createNewRetailElectrcityService() {
 		WebdriverWaits.waitForElementVisible(AssertElectricity, 10);
-		return ActionEngine.getText_custom(AssertElectricity);
+		return getText_custom(AssertElectricity);
 	}
 
 	public void newRetailElectricitySevice(String selectPlanText, String MeterConfigurationText, String readingTypeText)
