@@ -3,6 +3,4 @@ target
 test-output
 .project
 .classpath
-.idea
-
-
+.idea/

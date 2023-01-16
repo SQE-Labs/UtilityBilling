@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 
 public class ChangePassword extends BasePage {
 
-	By adminTab = By.xpath("(//*[@class='icon-lock'])[2]");
-	By passwordTab = By.xpath("//p[contains(text(),'Password')]");
+    By adminTab = By.xpath("(//*[@class='icon-lock'])[2]");
+    By passwordTab = By.xpath("//p[contains(text(),'Password')]");
     By newPasswordField = By.xpath("//input[@id='predigpass']");
     By reNewPassword = By.xpath("//input[@id='repredigpass']");
     By changePasswordBtn = By.xpath("//*[@class='buttonLrg']");
@@ -15,32 +15,31 @@ public class ChangePassword extends BasePage {
     By informationMessage = By.xpath("//p[@class='message']");
 
 
-
     public void clickAdmin() {
-		ActionEngine.clickBtn_custom(adminTab);
-	    }
+        clickBtn_custom(adminTab);
+    }
 
     public void clickPassword() {
-		ActionEngine.clickBtn_custom(passwordTab);
-	    }
+        clickBtn_custom(passwordTab);
+    }
 
-    public void enterNewPassword(String userNameText ) {
-		ActionEngine.sendKeys_custom(newPasswordField, userNameText);
-	    }
+    public void enterNewPassword(String userNameText) {
+        sendKeys_custom(newPasswordField, userNameText);
+    }
 
-    public void ReEnterNewPassword(String userNameText ) {
-		ActionEngine.sendKeys_custom(reNewPassword, userNameText);
-	    }
+    public void ReEnterNewPassword(String userNameText) {
+        sendKeys_custom(reNewPassword, userNameText);
+    }
 
     public void clickChangePassword() {
-		ActionEngine.clickBtn_custom(changePasswordBtn);
-	    }
+        clickBtn_custom(changePasswordBtn);
+    }
 
     public void clickConfirmPopup() {
-		ActionEngine.clickBtn_custom(confirmationPopUp);
-	    }
+        clickBtn_custom(confirmationPopUp);
+    }
 
     public void getInformationMessage() {
-		ActionEngine.clickBtn_custom(informationMessage);
-	    }
+        clickBtn_custom(informationMessage);
+    }
 }
