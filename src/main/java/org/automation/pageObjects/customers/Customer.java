@@ -5,7 +5,7 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class CustomerPage extends BasePage {
+public class Customer extends BasePage {
     public By customerTab = By.xpath("//a[@title='Customer']");
     public By categoryDropdownField = By.xpath("//select[@name='category']");
     public By firstNameField = By.xpath("//input[@name='firstName']");

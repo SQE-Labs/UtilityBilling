@@ -2,6 +2,7 @@ package org.automation.pageObjects.admin;
 
 import org.automation.base.BasePage;
 import org.automation.pageObjects.admin.groupManager.EditGroup;
+import org.automation.pageObjects.admin.importSetupTools.Imports;
 import org.automation.pageObjects.admin.miscellaneous.InvoiceSetup;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
@@ -41,6 +42,18 @@ public class AdminPage extends BasePage {
     public  void navigateToPlans(){
         clickBtn_custom(AdminIcon);
         clickBtn_custom(plans);
+
+    }
+    public  Imports navigateToMeterNumberImports(){
+        clickBtn_custom(AdminIcon);
+        clickBtn_custom(plans);
+        return new Imports();
+
+    }
+    public  Imports navigateToMeterReadingsImports(){
+        clickBtn_custom(AdminIcon);
+        clickBtn_custom(plans);
+        return new Imports();
 
     }
 }
