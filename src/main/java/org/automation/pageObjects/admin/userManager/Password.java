@@ -1,10 +1,9 @@
 package org.automation.pageObjects.admin.userManager;
 
 import org.automation.base.BasePage;
-import org.automation.utilities.ActionEngine;
 import org.openqa.selenium.By;
 
-public class ChangePassword extends BasePage {
+public class Password extends BasePage {
 
     By adminTab = By.xpath("(//*[@class='icon-lock'])[2]");
     By passwordTab = By.xpath("//p[contains(text(),'Password')]");

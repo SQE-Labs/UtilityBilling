@@ -2,10 +2,10 @@ package test;
 
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.ChangeCustEmail;
-import org.automation.pageObjects.EmailTemplateSetup;
+import org.automation.pageObjects.admin.commmunications.EmailTemplateSetup;
 import org.automation.pageObjects.LoginPage;
-import org.automation.pageObjects.SMSTemplateSetup;
-import org.automation.pageObjects.SMTPPage;
+import org.automation.pageObjects.admin.commmunications.SMSTemplateSetup;
+import org.automation.pageObjects.admin.commmunications.SMTPSetup;
 import org.automation.utilities.PropertiesUtil;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class BillRun extends BaseTest
 
 {
-	SMTPPage sp=new SMTPPage();
+	SMTPSetup sp=new SMTPSetup();
 	EmailTemplateSetup et=new EmailTemplateSetup();
 	SMSTemplateSetup ss=new SMSTemplateSetup();
 	ChangeCustEmail cce=new ChangeCustEmail();

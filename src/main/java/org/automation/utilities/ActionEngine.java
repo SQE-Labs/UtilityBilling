@@ -13,10 +13,10 @@ import org.testng.Assert;
 public class ActionEngine {
 
 
-    public  void sendKeys_custom(By path, String valueToBeSent, String... fieldName) {
+    public  void sendKeys_custom(By path, String valueToBeSent, String... label) {
         String var = "";
         try {
-            var = fieldName.length > 0 ? fieldName[0] : path.toString();
+            var = label.length > 0 ? label[0] : path.toString();
             Element element = new Element(var, path);
             element.getWebElement().sendKeys(valueToBeSent);
             //log success message in extent report
@@ -27,11 +27,11 @@ public class ActionEngine {
         }
     }
 
-    public  void sendKeys_withClear(By path, String valueToBeSent, String... fieldName) {
+    public  void sendKeys_withClear(By path, String valueToBeSent, String... label) {
 
         String var = "";
         try {
-            var = fieldName.length > 0 ? fieldName[0] : path.toString();
+            var = label.length > 0 ? label[0] : path.toString();
             Element element = new Element(var, path);
             element.clear();
             element.getWebElement().sendKeys(valueToBeSent);
@@ -45,10 +45,10 @@ public class ActionEngine {
 
 
     //custom click method to log evey click action in to extent report
-    public  void clickBtn_custom(By path, String... fieldName) {
+    public  void clickBtn_custom(By path, String... label) {
         String var = "";
         try {
-            var = fieldName.length > 0 ? fieldName[0] : path.toString();
+            var = label.length > 0 ? label[0] : path.toString();
 
             Button btn = new Button(var, path);
             btn.click();

@@ -1,11 +1,12 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.admin.commmunications;
 
 import org.automation.base.BasePage;
-import org.automation.utilities.Assertions;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-public class SMSTemplateSetup extends BasePage {
-
+public class SMTPSetup extends BasePage {
+    public static String CUSTnum;
     public By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
     public By MsgType = By.xpath("//select[@id='email_message_type']");
     public By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -60,44 +61,59 @@ public class SMSTemplateSetup extends BasePage {
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
     BasePage bp = new BasePage();
-    Assertions as;
     String SUCCESS_MSG = "Successfully saved message.";
 
     public void clickOnAdminTab() {
         clickBtn_custom(Admin, "Admin");
     }
 
-    public void clickOnTemplateIcon() {
-        clickBtn_custom(TemplateIcon, "Template");
+    public void clickOnSMTPIcon() {
+        clickBtn_custom(SMTPicon, "Admin");
+    }
+//
+//	public void clickOnServerField() {
+//		clickBtn_custom(14, "Admin");
+//	}
+
+
+    public void sendDetailOnServerField(String serverNameText) {
+        sendKeys_withClear(SrverField, serverNameText, "Server");
     }
 
-    public void clickOnSMSTab() {
-        clickBtn_custom(SMStab, "SMS");
+    public void sendDetailOnPortField(String portNameText) {
+        sendKeys_withClear(PortField, portNameText, "Port");
     }
 
-    public void selectMessageDropdownOption(int messageText) {
-        clickBtn_custom(SMSmsg, "Message Type");
-        selectDropDownByIndex_custom(SMSmsg, messageText, "Message Type");
-    }
-
-    public void sendSMSMessage(String smsText) {
-        sendKeys_custom(SMSmsg, smsText, "SMS Message");
-    }
-
-    public void clickOnSaveBtn() {
-        bp.scrollIntoView(SaveSMS);
-        clickBtn_custom(SaveSMS, "Save");
+    public void checkAuthenticationCheckboxField() {
+        WebElement AuthCheckbox = WebdriverWaits.waitForElementUntilVisible(UserAuthCheckbox, 10);
+        selectCheckBox(UserAuthCheckbox);
 
     }
 
-    public void smsSetup(int messageText, String smsText) {
+
+    public void sendUsername(String usernameText) {
+        sendKeys_withClear(Username, usernameText, "Username");
+    }
+
+    public void sendPassword(String passwordText) {
+        sendKeys_withClear(Password, passwordText, "Password");
+    }
+
+    public void clickOnUpdateButton() {
+        bp.scrollIntoView(UpdateSMTPbutton);
+        clickBtn_custom(UpdateSMTPbutton, "Update");
+    }
+
+    public void smtpInformation(String serverNameText, String portNameText, String usernameText, String passwordText) {
         clickOnAdminTab();
-        clickOnTemplateIcon();
-        clickOnSMSTab();
-        selectMessageDropdownOption(messageText);
-        sendSMSMessage(smsText);
-        clickOnSaveBtn();
+        clickOnSMTPIcon();
+        sendDetailOnServerField(serverNameText);
+        sendDetailOnPortField(portNameText);
+        checkAuthenticationCheckboxField();
+        sendUsername(usernameText);
+        sendPassword(passwordText);
+        clickOnUpdateButton();
+
 
     }
-
 }

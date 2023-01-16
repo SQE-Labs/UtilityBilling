@@ -1,14 +1,14 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.admin.userManager.ChangePassword;
+import org.automation.pageObjects.admin.userManager.Password;
 import org.testng.annotations.Test;
 
-public class ChangePasswordTest extends BaseTest {
+public class PasswordTest extends BaseTest {
 
 	@Test(priority = 1,description = "Change Password")
 	public void changePassword()  {
-		ChangePassword cp = new ChangePassword();
+		Password cp = new Password();
 		cp.clickAdmin();
 		cp.clickPassword();
 		cp.enterNewPassword("sqe.user");

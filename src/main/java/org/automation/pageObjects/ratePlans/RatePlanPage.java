@@ -1,11 +1,11 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.ratePlans;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class ElecPlanManagement extends BasePage {
+public class RatePlanPage extends BasePage {
 
     By ratePlans = By.xpath("//*[@title='Plans']");
     By createNewPlan = By.xpath("//*[@id='addBtn']");

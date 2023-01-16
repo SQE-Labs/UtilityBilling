@@ -3,23 +3,18 @@ package test;
 import java.util.Date;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.EditUser;
-import org.automation.pageObjects.LoginPage;
-import org.automation.pageObjects.WorkFlow;
-import org.automation.utilities.PropertiesUtil;
+import org.automation.pageObjects.admin.miscellaneous.WorkFlowTypes;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class WorkFlowTest extends BaseTest {
-	
+public class WorkFlowTypesTest extends BaseTest {
+
 	public  Select select;
 	public  Date date = new Date();
 
 	@Test(priority = 1,description = "To Edit User ")
 	public void workFlowTypes()  {
-		WorkFlow wft = new WorkFlow();
+		WorkFlowTypes wft = new WorkFlowTypes();
 		wft.clickAdmin();
 		wft.clickWorkFlowTypes();
 		wft.clickCreateNewlog();
@@ -30,8 +25,7 @@ public class WorkFlowTest extends BaseTest {
 		wft.enterDisplayName("AA DN"+clname);
 	    wft.clickSaveButton();
 	    wft.clickSaveButton();
-	    wft.enterSearchLog("AA TN"+clname);  
+	    wft.enterSearchLog("AA TN"+clname);
 	  //  Assert.assertEquals(false, true);
   }
 }
-	

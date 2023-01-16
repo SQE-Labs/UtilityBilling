@@ -1,10 +1,10 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.admin.userManager;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class EditUser extends BasePage {
+public class UserDetails extends BasePage {
 
 
     By adminTab = By.xpath("(//*[@class='icon-lock'])[2]");

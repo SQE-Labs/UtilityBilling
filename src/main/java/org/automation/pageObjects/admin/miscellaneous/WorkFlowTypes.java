@@ -1,9 +1,9 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.admin.miscellaneous;
 
 import org.automation.base.BasePage;
 import org.openqa.selenium.By;
 
-public class WorkFlow extends BasePage {
+public class WorkFlowTypes extends BasePage {
 
 
     By adminTab = By.xpath("(//*[@class='icon-lock'])[2]");

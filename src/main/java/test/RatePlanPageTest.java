@@ -1,14 +1,14 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.ElecPlanManagement;
+import org.automation.pageObjects.ratePlans.RatePlanPage;
 import org.testng.annotations.Test;
 
-public class ElecPlanManagementTest extends BaseTest {
+public class RatePlanPageTest extends BaseTest {
 
 	@Test
 	public void createPlan() throws InterruptedException {
-		ElecPlanManagement planPage = new ElecPlanManagement();
+		RatePlanPage planPage = new RatePlanPage();
 
 		planPage.clickRatePlans();
 		planPage.clickCreateNewPlan();
