@@ -3,9 +3,9 @@ package test;
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.ChargePage;
 import org.automation.pageObjects.CreateServicePage;
-import org.automation.pageObjects.CustomerPage;
+import org.automation.pageObjects.customers.CustomerPage;
 import org.automation.pageObjects.LoginPage;
-import org.automation.pageObjects.PaymentsPage;
+import org.automation.pageObjects.admin.paymentGateway.PaymentsPage;
 import org.automation.utilities.PropertiesUtil;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -32,7 +32,7 @@ public class ElectPayment extends BaseTest
 		}
 	}
 
-	@Test(priority = 1, description = "Create a Customer")
+	@Test(priority = 1, description = "Create Business Customer")
 	public void createACustomer() throws InterruptedException {
 		cp.createCustomer("Business", "SSLabs", "Dino", "Anotonello", "9988907865", "test12@gmail.com", "t12@gmail.com",
 				"38 Decca Road", "35 Decca Road", "Goldsborough", "3156", "Australia", "Electricity Residential plan");
@@ -63,7 +63,7 @@ public class ElectPayment extends BaseTest
 	public void addSecurityDeposit() throws InterruptedException {
 		pp.PaymentsFromCreditCard("Security Deposit", "Deposit", "sqelabs11@gmail.com", "75",
 				"Hey!!! this is the comment section under payment tab(Security Tab)");
-		
+
 	}
 
 }
