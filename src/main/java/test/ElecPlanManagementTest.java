@@ -1,16 +1,15 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.EditGroup;
 import org.automation.pageObjects.ElecPlanManagement;
 import org.testng.annotations.Test;
 
 public class ElecPlanManagementTest extends BaseTest {
-	
+
 	@Test
 	public void createPlan() throws InterruptedException {
 		ElecPlanManagement planPage = new ElecPlanManagement();
-		
+
 		planPage.clickRatePlans();
 		planPage.clickCreateNewPlan();
 		planPage.selectGroup("testing002");
@@ -32,7 +31,7 @@ public class ElecPlanManagementTest extends BaseTest {
 		planPage.clickAdd();
 		planPage.clickPublish();
 		planPage.assertSuccessMessage();
-			
+
 	}
 
 }

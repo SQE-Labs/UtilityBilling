@@ -1,4 +1,4 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.admin.groupManager;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;

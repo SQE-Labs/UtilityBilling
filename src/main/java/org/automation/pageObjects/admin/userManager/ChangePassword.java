@@ -1,4 +1,4 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.admin.userManager;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.ActionEngine;
