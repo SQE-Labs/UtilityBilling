@@ -44,7 +44,7 @@ public class BaseTest extends ActionEngine {
     public static ExtentReports extent;
     public static ExtentTest extentTest;
 
-    protected static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+    public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 
     /**
      * Method to execute at the start of the suite execution.
