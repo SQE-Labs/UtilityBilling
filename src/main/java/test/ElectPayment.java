@@ -3,7 +3,7 @@ package test;
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.ChargePage;
 import org.automation.pageObjects.CreateServicePage;
-import org.automation.pageObjects.customers.CustomerPage;
+import org.automation.pageObjects.customers.Customer;
 import org.automation.pageObjects.LoginPage;
 import org.automation.pageObjects.admin.paymentGateway.PaymentsPage;
 import org.automation.utilities.PropertiesUtil;
@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class ElectPayment extends BaseTest
 
 {
-	CustomerPage cp = new CustomerPage();
+	Customer cp = new Customer();
 	ChargePage sn = new ChargePage();
 	CreateServicePage cs = new CreateServicePage();
 	PaymentsPage pp = new PaymentsPage();
