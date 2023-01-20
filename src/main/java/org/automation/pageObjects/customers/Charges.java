@@ -1,11 +1,11 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.customers;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class ChargePage extends BasePage {
+public class Charges extends BasePage {
     // Charges
     public By Chargetab = By.xpath("//a[text()=' Charges']");
     public By AddIconForManualCharge = By.xpath("//a[@title='Add Charge']");
