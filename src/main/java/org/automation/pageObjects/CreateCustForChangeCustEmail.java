@@ -6,7 +6,7 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class ChangeCustEmail {
+public class CreateCustForChangeCustEmail {
 	BasePage bp = new BasePage();
 	Assertions as;
 	public By customerTab = By.xpath("//a[@title='Customer']");
@@ -32,6 +32,7 @@ public class ChangeCustEmail {
 
 	public By customerID = By.xpath("(//label[@class='col-sm-12 control-label'])[1]");
 
+	public static By CustDetailsTab = By.xpath("//ul[@class='nav nav-tabs']/li[2]");
 	public void clickCustomerTab()
 
 	{
@@ -117,6 +118,18 @@ public class ChangeCustEmail {
 		WebdriverWaits.waitForElementVisible(successMessageForCustomerCreation, 40);
 		return ActionEngine.getText_custom(successMessageForCustomerCreation);
 	}
+	
+	public void clickOnCustomerDetailsTab()
+	{
+		ActionEngine.clickBtn_custom(CustDetailsTab, "Customer Details");
+	}
+	
+	public void clearPreviousEnteredEmailAddress(String emailText) 
+	{
+		bp.scrollIntoView(emailField);
+		ActionEngine.sendKeys_withClear(emailField, emailText, " Email");
+		
+	}
 
 	public String createCustomer(String category, String firstName, String lastName, String phoneNumber, String email,
 			String billingEmail, String addressOne, String addressTwo, String city, String zipCode, String country,
@@ -141,5 +154,13 @@ public class ChangeCustEmail {
 		clickOkBtn();
 		as.assertStrings(getSuccessMsgText(), SUCCESS_MESG);
 		return getCustomerId();
+	}
+	
+	public void changeCustomerEmailAddress(String emailText)
+	{
+		clickOnCustomerDetailsTab();
+		clearPreviousEnteredEmailAddress(emailText);
+		clickSaveCustomerBtn();
+		clickOkBtn();
 	}
 }

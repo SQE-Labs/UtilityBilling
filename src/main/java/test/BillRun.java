@@ -1,7 +1,7 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.ChangeCustEmail;
+import org.automation.pageObjects.CreateCustForChangeCustEmail;
 import org.automation.pageObjects.EmailTemplateSetup;
 import org.automation.pageObjects.LoginPage;
 import org.automation.pageObjects.SMSTemplateSetup;
@@ -16,7 +16,7 @@ public class BillRun extends BaseTest
 	SMTPPage sp=new SMTPPage();
 	EmailTemplateSetup et=new EmailTemplateSetup();
 	SMSTemplateSetup ss=new SMSTemplateSetup();
-	ChangeCustEmail cce=new ChangeCustEmail();
+	CreateCustForChangeCustEmail cce=new CreateCustForChangeCustEmail();
 	
 	
 	
