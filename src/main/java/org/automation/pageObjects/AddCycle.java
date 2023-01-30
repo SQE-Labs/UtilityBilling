@@ -67,7 +67,7 @@ public class AddCycle
 	
 	public void getCustNoCreated() 
 	{
-		CUSTnum=
+		//CUSTnum=
 		
 	}
 }

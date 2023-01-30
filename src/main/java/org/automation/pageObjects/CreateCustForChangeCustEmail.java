@@ -6,7 +6,7 @@ import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 
-public class ChangeCustEmail extends BasePage {
+public class CreateCustForChangeCustEmail extends BasePage {
     public By customerTab = By.xpath("//a[@title='Customer']");
     public By categoryDropdownField = By.xpath("//select[@name='category']");
     public By firstNameField = By.xpath("//input[@name='firstName']");
@@ -129,31 +129,7 @@ public class ChangeCustEmail extends BasePage {
 		
 	}
 
-	public String createCustomer(String category, String firstName, String lastName, String phoneNumber, String email,
-			String billingEmail, String addressOne, String addressTwo, String city, String zipCode, String country,
-			String plan) throws InterruptedException {
-		as = new Assertions();
-		clickCustomerTab();
-		selectCategoryDropdownField(category);
-		Thread.sleep(1000);
-		enterFirstNameField(firstName);
-		enterLastNameField(lastName);
-		enterPhoneNumber(phoneNumber);
-		enterEmailField(email);
-		enterBillingEmailField(billingEmail);
-		enterAddressOneField(addressOne);
-		enterAddressTwoField(addressTwo);
-		enterCityField(city);
-		enterZipCodeField(zipCode);
-		enterCountryField(country);
-		selectPlanDropdownField(plan);
-		clickPhysicalAddressToggleBtn();
-		clickSaveCustomerBtn();
-		clickOkBtn();
-		as.assertStrings(getSuccessMsgText(), SUCCESS_MESG);
-		return getCustomerId();
-	}
-	
+
 	public void changeCustomerEmailAddress(String emailText)
 	{
 		clickOnCustomerDetailsTab();
