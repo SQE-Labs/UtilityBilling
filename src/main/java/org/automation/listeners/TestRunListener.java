@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.*;
 
 
+
 public final class TestRunListener extends BaseTest implements ITestListener, ISuiteListener {
 
     @Override
@@ -19,7 +20,7 @@ public final class TestRunListener extends BaseTest implements ITestListener, IS
     public void onTestSuccess(ITestResult result) {
         Log.info("Test [" + result.getName() + "] passed");
         if (Boolean.getBoolean("remoteDriver")) {
-            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            JavascriptExecutor jse = (JavascriptExecutor) getDriver();
             jse.executeScript(
                     "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\"}}");
         }

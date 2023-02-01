@@ -1,2 +1,4 @@
-package org.automation.pageObjects.billRun;public class Attachments {
+package org.automation.pageObjects.customers;
+
+public class Attachments {
 }

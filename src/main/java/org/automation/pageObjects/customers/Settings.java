@@ -1,2 +1,4 @@
-package org.automation.pageObjects.customers;public class Settings {
+package org.automation.pageObjects.customers;
+
+public class Settings {
 }

@@ -10,7 +10,7 @@ import org.automation.utilities.PropertiesUtil;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class ElectPayment extends BaseTest
+public class ElectPaymentTest extends BaseTest
 
 {
 	Customer customer = new Customer();

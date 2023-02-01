@@ -1,2 +1,4 @@
-package org.automation.pageObjects.customers;public class WaterService {
+package org.automation.pageObjects.customers;
+
+public class WaterService {
 }

@@ -10,7 +10,7 @@ import org.automation.utilities.PropertiesUtil;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class BillRun extends BaseTest
+public class BillRunTest extends BaseTest
 
 {
 	SMTPSetup sp=new SMTPSetup();

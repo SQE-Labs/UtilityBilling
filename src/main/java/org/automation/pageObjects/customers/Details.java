@@ -1,2 +1,4 @@
-package org.automation.pageObjects.customers;public class Details {
+package org.automation.pageObjects.customers;
+
+public class Details {
 }

@@ -6,7 +6,7 @@
 		<classes>
 
             <class name="test.LoginTest" />
-			<class name="test.ElectPayment" />
+			<class name="test.ElectPaymentTest" />
 			<class name="test.WorkFlowTypesTest" />
 			<class name="test.EditUserTest" />
 			<class name="test.PasswordTest" />

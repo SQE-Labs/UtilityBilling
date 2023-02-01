@@ -1,2 +1,4 @@
-package org.automation.pageObjects.customers;public class GenericService {
+package org.automation.pageObjects.customers;
+
+public class GenericService {
 }

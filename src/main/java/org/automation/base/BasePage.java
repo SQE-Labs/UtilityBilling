@@ -176,4 +176,5 @@ public class BasePage extends BaseTest {
         jse.executeScript("arguments[0].scrollIntoView(true);", ele);
 
     }
+
 }

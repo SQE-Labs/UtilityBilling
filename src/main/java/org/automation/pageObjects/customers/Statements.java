@@ -1,2 +1,4 @@
-package org.automation.pageObjects.customers;public class Statements {
+package org.automation.pageObjects.customers;
+
+public class Statements {
 }

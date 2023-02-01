@@ -6,6 +6,8 @@ import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class Customer extends BasePage {
+
+
     public By customerTab = By.xpath("//a[@title='Customer']");
     public By categoryDropdownField = By.xpath("//select[@name='category']");
     public By firstNameField = By.xpath("//input[@name='firstName']");
@@ -139,4 +141,6 @@ public class Customer extends BasePage {
         as.assertStrings(getSuccessMsgText(), SUCCESS_MESG);
         return getCustomerId();
     }
+
+
 }
