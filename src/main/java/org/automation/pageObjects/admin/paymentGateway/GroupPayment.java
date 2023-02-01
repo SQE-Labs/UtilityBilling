@@ -5,7 +5,7 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class PaymentsPage extends BasePage {
+public class Payments extends BasePage {
     public By transactionsubtab = By.xpath("(//i[@class='icon-money'])[1]");
     public By transactintypedropdownfield = By.xpath("//select[@name='tranType']");
     public By paymentMethoddropdownfield = By.xpath("//select[@name='tranSubType']");

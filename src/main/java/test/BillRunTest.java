@@ -1,7 +1,7 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.ChangeCustEmail;
+import org.automation.pageObjects.customers.ChangeCustEmail;
 import org.automation.pageObjects.admin.commmunications.EmailTemplateSetup;
 import org.automation.pageObjects.LoginPage;
 import org.automation.pageObjects.admin.commmunications.SMSTemplateSetup;

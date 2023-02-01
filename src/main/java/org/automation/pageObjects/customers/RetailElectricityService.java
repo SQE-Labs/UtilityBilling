@@ -8,12 +8,7 @@ import org.openqa.selenium.By;
 
 
 public class Services  extends BasePage {
-    // Search Field
-    public  By SearchField = By.xpath("//*[@id=\"search_input\"]");
-    public  By SearchIcon = By.xpath("//*[@class=\"glyphicon glyphicon-search\"]");
-    public  By OverviewTab = By.xpath("//*[@class=\"icon-eye-open\"]"); // //*[contains(text(),'Overview')]
-
-    // Add Service for Residential/Business/Commercial customer
+       // Add Service for Residential/Business/Commercial customer
     public  By RetailElectricity_Plus_Subtab = By.xpath("(//*[@class='icon-minus'])[2]");
     public  By Market_Type_Field = By.xpath("//*[@id='marketTypeSel']");
     public  By NMI_Field = By.xpath("//*[@id=\"NMI\"]");
@@ -39,22 +34,19 @@ public class Services  extends BasePage {
     public  By SaveChanges_Button = By.xpath("//*[@class=\"btn btn-primary iseditable\"]");
     public  By OkButton = By.xpath("//*[contains(text(),'OK')]");
     public  By CustomerSuccessEditMsg = By.xpath("//div[@class='alert alert-success']/center");
+    public  By OverviewTab = By.xpath("//*[@class=\"icon-eye-open\"]"); // //*[contains(text(),'Overview')]
 
     public DateGenerator dateGenerator = new DateGenerator();
     public RandomGenerator random = new RandomGenerator();
 
-    public  String addService(String customerId ) throws InterruptedException {
-        clickBtn_custom(SearchIcon);
-        clickBtn_custom(SearchField);
-        sendKeys_custom(SearchField, customerId);
-        clickBtn_custom(SearchIcon);
+    public  String addRetailElectricityService( ) throws InterruptedException {
         clickBtn_custom(OverviewTab);
+        String serviceId = random.requiredDigits(10);
         clickBtn_custom(RetailElectricity_Plus_Subtab);
         clickBtn_custom(Market_Type_Field);
         selectDropDownByVisibleText_custom(Market_Type_Field,"Off Market");
         scrollIntoView(NMI_Field);
         clickBtn_custom(NMI_Field);
-        String serviceId = random.requiredDigits(10);
         sendKeys_custom(NMI_Field, serviceId);
         clickBtn_custom(Service_Plan_Dropdown);
         selectDropDownByVisibleText_custom(Service_Plan_Dropdown,"Electricity Template Plan");
