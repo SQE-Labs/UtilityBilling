@@ -5,11 +5,11 @@ import org.automation.pageObjects.LoginCreatedAccount;
 import org.testng.annotations.Test;
 
 public class LoginCreatedAccountTest extends BaseTest{
-	
+
 	@Test
 	public void loginAccount() {
 		LoginCreatedAccount userPage = new LoginCreatedAccount();
-		
+
 		userPage.clickAdmin();
 		userPage.clickUsers();
 		userPage.enterSearch("sqe.user");
@@ -24,7 +24,7 @@ public class LoginCreatedAccountTest extends BaseTest{
 		userPage.clickInquiryCheckbox();
 		userPage.clickUserIcon();
 		userPage.clickLogout();
-		
+
 	}
 
 }
