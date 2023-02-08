@@ -5,9 +5,10 @@ package org.automation.utilities;
  * @LinkedIn: https://www.linkedin.com/in/panarkhede89/
  */
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.FileInputStream;
 import java.util.Properties;
-import org.apache.commons.lang3.StringUtils;
 
 public class PropertiesUtil {
 
