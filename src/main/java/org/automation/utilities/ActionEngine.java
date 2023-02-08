@@ -145,7 +145,7 @@ public class ActionEngine {
     }
 
     //Get text from webelement
-    public  String getText_custom(By path) {
+    public   String getText_custom(By path) {
         String text = "";
         try {
 

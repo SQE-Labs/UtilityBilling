@@ -1,12 +1,16 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.ChangeCustEmail;
+import org.automation.pageObjects.AddCycle;
+import org.automation.pageObjects.CreateCustForChangeCustEmail;
+import org.automation.pageObjects.CreateServicePage;
 import org.automation.pageObjects.admin.commmunications.EmailTemplateSetup;
 import org.automation.pageObjects.LoginPage;
 import org.automation.pageObjects.admin.commmunications.SMSTemplateSetup;
 import org.automation.pageObjects.admin.commmunications.SMTPSetup;
+import org.automation.pageObjects.customers.Customer;
 import org.automation.utilities.PropertiesUtil;
+import org.automation.utilities.RandomGenerator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,9 +20,11 @@ public class BillRun extends BaseTest
 	SMTPSetup sp=new SMTPSetup();
 	EmailTemplateSetup et=new EmailTemplateSetup();
 	SMSTemplateSetup ss=new SMSTemplateSetup();
-	ChangeCustEmail cce=new ChangeCustEmail();
-
-
+	Customer cp = new Customer();
+	CreateCustForChangeCustEmail cce=new CreateCustForChangeCustEmail();
+	RandomGenerator rand=new RandomGenerator();
+	AddCycle addcycle=new AddCycle();
+	CreateServicePage cs = new CreateServicePage();
 
 	@BeforeClass
 	public void login() {
@@ -50,8 +56,24 @@ public class BillRun extends BaseTest
 	};
 	@Test(priority = 4, description = "Create a Customer")
 	public void createACustomer() throws InterruptedException {
-		String customerId=cce.createCustomer("Residential", "Daino", "Antelleo", "9988907865", "test12@gmail.com", "t12@gmail.com",
+		cp.createCustomer("Business", "SSLabs", "Dino", "Anotonello", "9988907865", "test12@gmail.com", "t12@gmail.com",
 				"38 Decca Road", "35 Decca Road", "Goldsborough", "3156", "Australia", "Electricity Residential plan");
 	}
+	@Test(priority = 5, description = "change  a Customer Email")
+	public void changeCustEmail() throws InterruptedException {
+		cce.changeCustomerEmailAddress("Test13@gmail.com");
+	}
+	@Test(priority = 6, description = "Add a cycle.")
+	public void addACycle() throws InterruptedException {
+		String billRuncycleName=rand.requiredDigits(5);
+		
+		addcycle.AddANewCycle(billRuncycleName,billRuncycleName);
+	}
+	
+	@Test(priority = 7, description = "Create a service.")
+	public void createAService() throws InterruptedException {		
+		cs.newRetailElectricitySevice("Electricity Flat Template Plan", "Flat Rate", "Consumption");
+	}
+	
 }
-;
+
