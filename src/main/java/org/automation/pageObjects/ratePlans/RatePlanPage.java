@@ -127,11 +127,12 @@ public class RatePlanPage extends BasePage {
         clickBtn_custom(ratingMethod);
         WebdriverWaits.waitForElementVisible(ratingMethod, 3);
         selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
+      
     }
 
     public void selectUnit(String unitText) {
         clickBtn_custom(unit);
-        WebdriverWaits.waitForElementVisible(unit, 5);
+        WebdriverWaits.waitForElementVisible(addButton, 5);
         selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
     }
@@ -139,6 +140,31 @@ public class RatePlanPage extends BasePage {
     public void selectTaxType(String textTypeText) {
         WebdriverWaits.waitForElementVisible(taxType, 1);
         selectDropDownByVisibleText_custom(taxType, textTypeText, "Select TaxType");
+    }
+    
+    public void createPlan(String groupSelect, String usagetype, String nameText, String dateFrom, String dateTo, String descriptionText,String rollupText, String chargeTypeText,String allocationText,String ratingMethodText,String unitText,String rateText) throws InterruptedException {
+    
+    	clickRatePlans();
+		clickCreateNewPlan();
+		selectGroup(groupSelect);
+		selectUsageTypes(usagetype);
+		enterName(nameText);
+		clickDateFrom();
+		selectDateFrom(dateFrom);
+		clickDateTo();
+		selectDateTo(dateTo);
+		clickAddTarif();
+		enterChargeDescriptrion(descriptionText);
+		enterRollupDescriptrion(rollupText);
+		selectChargeType(chargeTypeText);
+		selectAllocation(allocationText);
+		selectRatingMethod(ratingMethodText);
+		Thread.sleep(1000);
+		selectUnit(unitText);
+		enterRate(rateText);
+		clickAdd();
+		clickPublish();
+		assertSuccessMessage();
     }
 
 
