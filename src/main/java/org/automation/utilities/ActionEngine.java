@@ -28,10 +28,10 @@ public class ActionEngine extends BaseTest {
             Element element = new Element(var, path);
             element.getWebElement().sendKeys(valueToBeSent);
             //log success message in extent report
-            extentTest.log(PASS, "Entered value as: " + valueToBeSent);
+            extentTest.log(PASS, "Entered value  in field "+var+ "as: " + valueToBeSent);
         } catch (Exception e) {
             //log failure in extent
-            extentTest.log(FAIL, "Value enter in field: is failed due to exception: " + e);
+            extentTest.log(FAIL, "Sendkeys in field: "+var+" is failed due to exception:        " + e);
             throw new RuntimeException(e);
         }
     }
@@ -45,10 +45,10 @@ public class ActionEngine extends BaseTest {
             element.clear();
             element.getWebElement().sendKeys(valueToBeSent);
             //log success message in extent report
-            extentTest.log(PASS, "Ented value as: ");
+            extentTest.log(PASS, "Entered value  in field "+var+ "as: " + valueToBeSent);
         } catch (Exception e) {
             //  log failure in extent
-            extentTest.log(FAIL, "Value enter in field: is failed due to exception: " + e);
+            extentTest.log(FAIL, "Sendkeys in field: "+var+" is failed due to exception:     " + e);
             throw new RuntimeException(e);
 
         }
@@ -64,10 +64,10 @@ public class ActionEngine extends BaseTest {
             Button btn = new Button(var, path);
             btn.click();
             //log success message in exgent report
-            extentTest.log(PASS, var + "==> Clicked Successfully! ");
+            extentTest.log(PASS, "Clicked Successfully! "+var );
         } catch (Exception e) {
             //log failure in extent
-            extentTest.log(FAIL, "Unable to click on field: " + var + " due to exception: " + e);
+            extentTest.log(FAIL, "Unable to click on field: " + var + " due to exception: \n " + e);
             throw new RuntimeException(e);
 
         }
@@ -80,7 +80,7 @@ public class ActionEngine extends BaseTest {
 
             ((WebElement) element).clear();
             Thread.sleep(250);
-            extentTest.log(PASS, "==> Data Cleared Successfully! ");
+            extentTest.log(PASS, "Data Cleared Successfully!");
         } catch (Exception e) {
             extentTest.log(FAIL, "Unable to clear Data on field:  due to exception: " + e);
             throw new RuntimeException(e);
@@ -109,7 +109,7 @@ public class ActionEngine extends BaseTest {
         boolean flag = false;
         try {
             flag = element.isDisplayed();
-            extentTest.log(PASS, fieldName + "==> Presence of field is: " + flag);
+            extentTest.log(PASS,  "==> Is  "+fieldName +" element present => " +flag);
             return flag;
         } catch (Exception e) {
             extentTest.log(FAIL, "Checking for presence of field: " + fieldName + " not tested due to exception: " + e);
@@ -172,10 +172,10 @@ public class ActionEngine extends BaseTest {
             Element element = new Element("", path);
             text = element.getText();
             Log.info("Text for " + path + " is " + text);
-            extentTest.log(PASS, "==> Text retried is: " + text);
+            extentTest.log(PASS, "Text retrieved is: " + text);
             return text;
         } catch (Exception e) {
-            extentTest.log(FAIL, "==> Text not retried due to exception: " + e);
+            extentTest.log(FAIL, "Unable to get text due to exception : \n" + e);
 
         }
         return text;
