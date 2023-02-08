@@ -104,9 +104,9 @@ public class BaseTest {
             String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
             extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
 
-            extent.endTest(extentTest);
-            extent.flush();
         }
+        extent.endTest(extentTest);
+        extent.flush();
     }
     public void login() {
         try {
