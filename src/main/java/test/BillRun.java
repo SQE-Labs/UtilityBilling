@@ -26,19 +26,7 @@ public class BillRun extends BaseTest
 	AddCycle addcycle=new AddCycle();
 	CreateServicePage cs = new CreateServicePage();
 
-	@BeforeClass
-	public void login() {
-		try {
 
-			LoginPage loginPage = new LoginPage();
-			System.out.println(getDriver().getTitle());
-			loginPage.login(PropertiesUtil.getPropertyValue("userName"), PropertiesUtil.getPropertyValue("password"));
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	@Test(priority = 1, description = "SMTP Setup")
 	public void smtpInformationSetup() throws InterruptedException {
@@ -66,14 +54,13 @@ public class BillRun extends BaseTest
 	@Test(priority = 6, description = "Add a cycle.")
 	public void addACycle() throws InterruptedException {
 		String billRuncycleName=rand.requiredDigits(5);
-		
+
 		addcycle.AddANewCycle(billRuncycleName,billRuncycleName);
 	}
-	
+
 	@Test(priority = 7, description = "Create a service.")
-	public void createAService() throws InterruptedException {		
+	public void createAService() throws InterruptedException {
 		cs.newRetailElectricitySevice("Electricity Flat Template Plan", "Flat Rate", "Consumption");
 	}
-	
-}
 
+}
