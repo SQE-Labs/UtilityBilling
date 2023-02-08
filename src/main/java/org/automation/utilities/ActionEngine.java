@@ -1,17 +1,23 @@
 package org.automation.utilities;
 
 import com.aventstack.extentreports.Status;
+import org.apache.log4j.Logger;
+import org.automation.base.BasePage;
+import org.automation.base.BaseTest;
 import org.automation.elements.Button;
 import org.automation.elements.CheckBox;
 import org.automation.elements.DropDown;
 import org.automation.elements.Element;
+import org.automation.logger.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import static com.relevantcodes.extentreports.LogStatus.FAIL;
+import static com.relevantcodes.extentreports.LogStatus.PASS;
 
-public class ActionEngine {
 
+public class ActionEngine extends BaseTest {
 
     public  void sendKeys_custom(By path, String valueToBeSent, String... label) {
         String var = "";
@@ -20,10 +26,10 @@ public class ActionEngine {
             Element element = new Element(var, path);
             element.getWebElement().sendKeys(valueToBeSent);
             //log success message in extent report
-            // ExtentFactory.getInstance().getExtent().log(Status.PASS,"Entered value as: "+valueToBeSent);
+            extentTest.log(PASS,"Entered value as: "+valueToBeSent);
         } catch (Exception e) {
             //log failure in extent
-            //  ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Value enter in field: is failed due to exception: "+e);
+            extentTest.log(FAIL, "Value enter in field: is failed due to exception: "+e);
         }
     }
 
@@ -36,10 +42,10 @@ public class ActionEngine {
             element.clear();
             element.getWebElement().sendKeys(valueToBeSent);
             //log success message in extent report
-            ExtentFactory.getInstance().getExtent().log(Status.PASS, "Ented value as: ");
+         extentTest.log(PASS, "Ented value as: ");
         } catch (Exception e) {
             //  log failure in extent
-            //  ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Value enter in field: is failed due to exception: "+e);
+           extentTest.log(FAIL, "Value enter in field: is failed due to exception: "+e);
         }
     }
 
@@ -53,10 +59,10 @@ public class ActionEngine {
             Button btn = new Button(var, path);
             btn.click();
             //log success message in exgent report
-            ExtentFactory.getInstance().getExtent().log(Status.PASS, var + "==> Clicked Successfully! ");
+           extentTest.log(PASS, var + "==> Clicked Successfully! ");
         } catch (Exception e) {
             //log failure in extent
-            // ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Unable to click on field: " +fieldName +" due to exception: "+e);
+            extentTest.log(FAIL, "Unable to click on field: " +var +" due to exception: "+e);
         }
     }
 
@@ -67,9 +73,9 @@ public class ActionEngine {
 
             ((WebElement) element).clear();
             Thread.sleep(250);
-            ExtentFactory.getInstance().getExtent().log(Status.PASS, "==> Data Cleared Successfully! ");
+           extentTest.log(PASS, "==> Data Cleared Successfully! ");
         } catch (Exception e) {
-            ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Unable to clear Data on field:  due to exception: " + e);
+         extentTest.log(FAIL, "Unable to clear Data on field:  due to exception: " + e);
 
         }
     }
@@ -81,10 +87,10 @@ public class ActionEngine {
 //                executor.executeScript("arguments[0].scrollIntoView(true);", element);
 //                Actions actions = new Actions(DriverFactory.getInstance().getDriver());
 //                actions.moveToElement(element).build().perform();
-//                ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName+"==> Mouse hovered Successfully! ");
+//                ExtentFactory.getInstance().getExtent().log(PASS, fieldName+"==> Mouse hovered Successfully! ");
 //                Thread.sleep(1000);
 //            }catch(Exception e){
-//                ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Unable to hover mouse on field: " +fieldName +" due to exception: "+e);
+//                ExtentFactory.getInstance().getExtent().log(FAIL, "Unable to hover mouse on field: " +fieldName +" due to exception: "+e);
 //
 //            }
     }
@@ -95,10 +101,10 @@ public class ActionEngine {
         boolean flag = false;
         try {
             flag = element.isDisplayed();
-            ExtentFactory.getInstance().getExtent().log(Status.PASS, fieldName + "==> Presence of field is: " + flag);
+           extentTest.log(PASS, fieldName + "==> Presence of field is: " + flag);
             return flag;
         } catch (Exception e) {
-            ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Checking for presence of field: " + fieldName + " not tested due to exception: " + e);
+         extentTest.log(FAIL, "Checking for presence of field: " + fieldName + " not tested due to exception: " + e);
             return flag;
         }
     }
@@ -112,9 +118,9 @@ public class ActionEngine {
             var = fieldName.length > 0 ? fieldName[0] : path.toString();
             DropDown dd = new DropDown(var, path);
             dd.selectByVisibleText(ddVisibleText);
-            //   ExtentFactory.getInstance().getExtent().log(Status.PASS, var+"==> Dropdown Value Selected by visible text: "+ ddVisibleText);
+            //   ExtentFactory.getInstance().getExtent().log(PASS, var+"==> Dropdown Value Selected by visible text: "+ ddVisibleText);
         } catch (Exception e) {
-            //    ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Dropdown value not selected for field: " +var +"  due to exception: "+e);
+            //    ExtentFactory.getInstance().getExtent().log(FAIL, "Dropdown value not selected for field: " +var +"  due to exception: "+e);
         }
     }
 
@@ -125,9 +131,9 @@ public class ActionEngine {
             var = fieldName.length > 0 ? fieldName[0] : path.toString();
             DropDown dd = new DropDown(var, path);
             dd.selectByValue(ddValue);
-            //   ExtentFactory.getInstance().getExtent().log(Status.PASS, var+"==> Dropdown Value Selected by visible text: "+ ddValue);
+            //   ExtentFactory.getInstance().getExtent().log(PASS, var+"==> Dropdown Value Selected by visible text: "+ ddValue);
         } catch (Exception e) {
-            //   ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Dropdown value not selected for field: " +var +"  due to exception: "+e);
+            //   ExtentFactory.getInstance().getExtent().log(FAIL, "Dropdown value not selected for field: " +var +"  due to exception: "+e);
         }
     }
 
@@ -138,9 +144,9 @@ public class ActionEngine {
             var = fieldName.length > 0 ? fieldName[0] : path.toString();
             DropDown dd = new DropDown(var, path);
             dd.selectByIndex(ddValue);
-            //   ExtentFactory.getInstance().getExtent().log(Status.PASS, var+"==> Dropdown Value Selected by visible text: "+ ddValue);
+            //   ExtentFactory.getInstance().getExtent().log(PASS, var+"==> Dropdown Value Selected by visible text: "+ ddValue);
         } catch (Exception e) {
-            //  ExtentFactory.getInstance().getExtent().log(Status.FAIL, "Dropdown value not selected for field: " +var +"  due to exception: "+e);
+           extentTest.log(FAIL, "Dropdown value not selected for field: " +var +"  due to exception: "+e);
         }
     }
 
@@ -151,10 +157,11 @@ public class ActionEngine {
 
             Element element = new Element("", path);
             text = element.getText();
-            //  ExtentFactory.getInstance().getExtent().log(Status.PASS, "==> Text retried is: "+ text);
+            Log.info("Text for "+path+" is "+text );
+           extentTest.log(PASS, "==> Text retried is: "+ text);
             return text;
         } catch (Exception e) {
-            //   ExtentFactory.getInstance().getExtent().log(Status.FAIL, "==> Text not retried due to exception: "+ e);
+               extentTest.log(FAIL, "==> Text not retried due to exception: "+ e);
 
         }
         return text;

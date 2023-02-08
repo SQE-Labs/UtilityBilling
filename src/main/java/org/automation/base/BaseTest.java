@@ -29,17 +29,9 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 import static org.automation.logger.Log.error;
 
-/**
- * To extend every test class created.
- *
- * @author Sujay Sawant
- * @version 1.0.0
- * @since 6/11/2020
- */
-
 
 @Listeners({TestRunListener.class, TestReporter.class})
-public class BaseTest extends ActionEngine {
+public class BaseTest  {
 
     public static ExtentReports extent;
     public static ExtentTest extentTest;
@@ -63,8 +55,6 @@ public class BaseTest extends ActionEngine {
     public void beforeClass() throws MalformedURLException {
         String browser = PropertiesUtil.getPropertyValue("browser");
         String url = PropertiesUtil.getPropertyValue("url");
-        //	driver.set(new WebDriver(new URL("http://localhost:4444/wd/hub")));
-        //driver = (ThreadLocal<WebDriver>) BrowserFactory.getDriver();
 
         switch (browser) {
             case "chrome":
@@ -124,7 +114,20 @@ public class BaseTest extends ActionEngine {
     public void afterSuite() {
     }
 
+    @BeforeMethod
+    public void beforeMethod(Method method){
+        Test test = method.getAnnotation(Test.class);
+        extentTest = extent.startTest(method.getName());
+        extentTest.setDescription(test.description());
 
+
+
+
+    }
+    @AfterSuite
+    public void endReport() {
+        extent.close();
+    }
     /**
      * Data Provider method to get data from Excel file.
      *
