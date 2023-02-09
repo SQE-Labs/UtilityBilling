@@ -1,9 +1,5 @@
 package org.automation.utilities;
-/**
- * @author: Prakash Narkhede
- * @Youtube: https://www.youtube.com/automationtalks
- * @LinkedIn: https://www.linkedin.com/in/panarkhede89/
- */
+
 
 import org.apache.commons.lang3.StringUtils;
 

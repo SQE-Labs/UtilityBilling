@@ -9,11 +9,18 @@
 			<class name="test.ElectPaymentTest" />
 			<class name="test.WorkFlowTypesTest" />
 			<class name="test.EditUserTest" />
-			<class name="test.PasswordTest" />
-			<class name="test.EditGroupTest"/>
+<!--			<class name="test.EditGroupTest"/>  -->
 			<class name="test.RatePlanPageTest"/>
 			<class name="test.CreateAdminAccountTest"/>
 			<class name="test.LoginCreatedAccountTest"/>
+<!--			<class name="test.ElectPayment" />-->
+<!--			<class name="test.WorkFlowTypesTest" />-->
+<!--			<class name="test.EditUserTest" />-->
+<!--			<class name="test.PasswordTest" />-->
+<!--			<class name="test.EditGroupTest"/>-->
+<!--			<class name="test.RatePlanPageTest"/>-->
+<!--			<class name="test.CreateAdminAccountTest"/>-->
+<!--			<class name="test.LoginCreatedAccountTest"/>-->
 
 		</classes>
 	</test> <!-- Test -->

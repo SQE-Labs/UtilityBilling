@@ -87,12 +87,12 @@ public class RatePlanPage extends BasePage {
     }
 
     public void clickDateFrom() {
-        clickBtn_custom(dateFromValid);
+    	click_custom(dateFromValid);
         WebdriverWaits.waitForElementVisible(dateValidFrom, 2);
     }
 
     public void clickDateTo() {
-        clickBtn_custom(dateToValid);
+    	click_custom(dateToValid);
         WebdriverWaits.waitForElementVisible(dateValidTo, 2);
     }
 
