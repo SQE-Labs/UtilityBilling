@@ -28,7 +28,7 @@ public class ElecPlanManagementTest extends BaseTest {
 	public void addTarif() throws InterruptedException {
 		tarifPlan.addTarif("Usage charge","None","Electricity Charges","Tester1","Network Usage Flat Rate","Kilowatt (KW)","65");		
 	   }
-	
+//	
 	@Test(priority = 3, description = "Add Monthly Tarif")
 	public void addMonthlyTarif() throws InterruptedException {
 		monthlyTarif.addMonthlyTarif("monthly administration fee","None","Electricity Charges","Tester1","Usage Tiered Monthly","Kilowatt (kW)","No Tax","10","100","1000");		
@@ -42,7 +42,7 @@ public class ElecPlanManagementTest extends BaseTest {
 	@Test(priority = 5, description = "Add Commercial Plan")
 	public void addCommercialPlan() throws InterruptedException {
 		commercialPlan.createCommercialPlan("testing002","Retail Electricity","Adams Johhons","","","Usage commerical","None","Electricity Charges","Tester1","Usage Peak","Kilowatt (kW)","65");	
-	   }
+	   }	
 	
 	@Test(priority = 6, description = "Add Monthly Plan")
 	public void addMonthlyPlan() throws InterruptedException {

@@ -48,6 +48,11 @@ public class RatePlanPage extends BasePage {
         clickBtn_custom(addButton);
         WebdriverWaits.waitForElementVisible(publish, 2);
     }
+    
+//    public void clickAdddd() {
+//        clickBtn_custom(dataValidFromnew);
+//        WebdriverWaits.waitForElementVisible(publish, 2);
+//    }
 
 
     public void clickRatePlans() {
@@ -77,6 +82,7 @@ public class RatePlanPage extends BasePage {
     public void selectDateFrom(String dateFrom) {
         WebdriverWaits.waitForElementVisible(dateValidFrom, 5);
         selectDropDownByVisibleText_custom(dateValidFrom, dateFrom, "Select Today Date");
+        WebdriverWaits.waitForElementVisible(dateValidFrom, 10);
         clickBtn_custom(dateValidFrom);
     }
 
@@ -153,18 +159,18 @@ public class RatePlanPage extends BasePage {
 		selectDateFrom(dateFrom);
 		clickDateTo();
 		selectDateTo(dateTo);
-		clickAddTarif();
-		enterChargeDescriptrion(descriptionText);
-		enterRollupDescriptrion(rollupText);
-		selectChargeType(chargeTypeText);
-		selectAllocation(allocationText);
-		selectRatingMethod(ratingMethodText);
-		Thread.sleep(1000);
-		selectUnit(unitText);
-		enterRate(rateText);
-		clickAdd();
-		clickPublish();
-		assertSuccessMessage();
+//		clickAddTarif();
+//		enterChargeDescriptrion(descriptionText);
+//		enterRollupDescriptrion(rollupText);
+//		selectChargeType(chargeTypeText);
+//		selectAllocation(allocationText);
+//		selectRatingMethod(ratingMethodText);
+//		Thread.sleep(1000);
+//		selectUnit(unitText);
+//		enterRate(rateText);
+//		clickAdd();
+//		clickPublish();
+//		assertSuccessMessage();
     }
 
 

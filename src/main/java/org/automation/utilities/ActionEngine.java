@@ -225,6 +225,4 @@ public class ActionEngine extends BaseTest {
         CheckBox checkBox = new CheckBox(var, path);
         return checkBox.isChecked();
     }
-
-
 }

@@ -127,7 +127,7 @@ public class BaseTest {
      */
     @AfterClass(alwaysRun = true)
     public void afterMethod() {
-        closeDriver();
+     //   closeDriver();
     }
 
     @AfterSuite(alwaysRun = true)
