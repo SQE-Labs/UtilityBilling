@@ -1,0 +1,3 @@
+Customer No,Product/Charge Description,Prorata Date,End Date,Quantity,Notes,Rollup Description,Unit,Rate,Is Once Off?,Charge Type
+10005,Car,27/11/2014,,1,This is just a test.,Elec Rollup Description,KW,1.5,No,Electricity Charges
+10005,Phone,11/12/2014,12/12/2014,1,This is just a test.,Elec Rollup Description,Kl,1.5,Yes,Water Charges
