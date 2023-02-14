@@ -6,9 +6,37 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
+<<<<<<< HEAD
+public class Customer extends BasePage {
+
+
+    public By customerTab = By.xpath("//a[@title='Customer']");
+    public By categoryDropdownField = By.xpath("//select[@name='category']");
+    public By firstNameField = By.xpath("//input[@name='firstName']");
+    public By lastNameField = By.xpath("//input[@name='surname']");
+    public By phoneNumberField = By.xpath("//input[@name='contact_mobile']");
+    public By emailField = By.xpath("//input[@name='contact_email']");
+    public By billingEmailField = By.xpath("//input[@name='billingEmail']");
+    public By addressOneField = By.xpath("//input[@name='hAddress']");
+    public By addressTwoField = By.xpath("//input[@name='hAddress2']");
+    public By cityField = By.xpath("//input[@name='hSuburb']");
+    public By stateField = By.xpath("//input[@name='hState']");
+    public By zipCodeField = By.xpath("//input[@name='pcode']");
+    public By countryField = By.xpath("//input[@name='hCountry']");
+    public By planDropdownField = By.xpath("//select[@name='planNo']");
+    public By physicalAddressTogglebutton = By.xpath("(//span[@class='switch-handle'])[1]");
+    public By saveCustomerbutton = By.xpath("//div[@class='col-lg-12 text-left']/a/i");
+    public By okbutton = By.xpath("//button[contains(text(),'OK')]");
+    public By companyNameField = By.xpath("(//input[@name='company'])[1]");
+    public By successMessageForCustomerCreation = By.xpath("//div[@id='notification']//center");
+    public By customerID = By.xpath("(//label[@class='col-sm-12 control-label'])[1]");
+    Assertions as;
+    String SUCCESS_MESG = "Successfully saved customer.";
+=======
 public class Customer  extends BasePage {
 	BasePage bp=new BasePage();
     String SUCCESS_MESG="Successfully saved customer.";
+>>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3
 
     public By customer_id = By.xpath("//label[@class=\"col-sm-12 control-label\"]");
     public  By customerTab = By.xpath("//a[@title='Customer']"); 
@@ -322,3 +350,9 @@ public class Customer  extends BasePage {
 	
     }
     }
+<<<<<<< HEAD
+
+
+}
+=======
+>>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3

@@ -4,10 +4,7 @@ package org.automation.utilities;
 import org.automation.base.BaseTest;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class CSVHelper extends BaseTest {
 
@@ -164,23 +161,27 @@ public class CSVHelper extends BaseTest {
 //            e.printStackTrace();
 //        }
 //    }
-    public static void createCSVGeneric(String fileName, ArrayList<String> headerList, ArrayList<String> rowValues) throws Exception {
+    public static void createCSVGeneric(String fileName, String [] headerList, String [] rowValues) throws Exception {
 
         FileWriter fileWriter = null;
+        ArrayList<String> rowList = new ArrayList<String>(
+                Arrays.asList(rowValues));
+        ArrayList<String> columnList = new ArrayList<String>(
+                Arrays.asList(headerList));
 
 
         try {
-            if (headerList.size()!=rowValues.size()){
+            if (columnList.size()!=rowList.size()){
                 throw new Exception("rows and columns size is not equal in csv file");
             }
 
             fileWriter = new FileWriter(fileName);
             StringBuilder header = new StringBuilder();
-            for (int i = 0; i < headerList.size(); i++) {
-                if (i == (headerList.size() - 1)) {
-                    header.append(headerList.get(i));
+            for (int i = 0; i < columnList.size(); i++) {
+                if (i == (columnList.size() - 1)) {
+                    header.append(columnList.get(i));
                 } else {
-                    header.append(headerList.get(i));
+                    header.append(columnList.get(i));
                     header.append(",");
                 }
 
@@ -189,11 +190,11 @@ public class CSVHelper extends BaseTest {
             fileWriter.append(header);
             fileWriter.append(NEW_LINE_SEPARATOR);
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < rowValues.size(); i++) {
-                if (i == (rowValues.size() - 1)) {
-                    sb.append(rowValues.get(i));
+            for (int i = 0; i < rowList.size(); i++) {
+                if (i == (rowList.size() - 1)) {
+                    sb.append(rowList.get(i));
                 } else {
-                    sb.append(rowValues.get(i));
+                    sb.append(rowList.get(i));
                     sb.append(",");
                 }
             }

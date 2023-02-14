@@ -4,10 +4,13 @@ import org.automation.base.BasePage;
 import org.automation.pageObjects.admin.groupManager.EditGroup;
 import org.automation.pageObjects.admin.importSetupTools.Imports;
 import org.automation.pageObjects.admin.miscellaneous.InvoiceSetup;
+<<<<<<< HEAD
+=======
 import org.automation.utilities.ActionEngine;
 import org.automation.utilities.WebdriverWaits;
+>>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3
 import org.openqa.selenium.By;
-import test.BillRun;
+import test.BillRunTest;
 
 public class AdminPage extends BasePage {
     public  By MeterNumbersIcon = By.xpath("//p[text()='Meter Numbers']");
@@ -19,6 +22,7 @@ public class AdminPage extends BasePage {
     public  By groupEditBtn = By.xpath("//p[text()='Edit Group']");
     public  By billRun = By.xpath("//span[text()='Bill Run']");
     public  By plans = By.xpath("//span[text()='Plans']");
+    public  By customers = By.xpath("//p[text()='Customers']");
 
     public InvoiceSetup navigateToInvoiceSetup(){
         clickBtn_custom(AdminIcon);
@@ -32,11 +36,11 @@ public class AdminPage extends BasePage {
         return new EditGroup();
 
     }
-    public  BillRun navigateToBillRun(){
+    public BillRunTest navigateToBillRun(){
         clickBtn_custom(AdminIcon);
         scrollIntoView(billRun);
         clickBtn_custom(billRun);
-        return new BillRun();
+        return new BillRunTest();
 
 
     }
@@ -54,6 +58,13 @@ public class AdminPage extends BasePage {
     public  Imports navigateToMeterReadingsImports(){
         clickBtn_custom(AdminIcon);
         clickBtn_custom(plans);
+        return new Imports();
+
+    }
+    public  Imports navigateToCustomerImport(){
+        clickBtn_custom(AdminIcon);
+        scrollIntoView(customers);
+        clickBtn_custom(customers);
         return new Imports();
 
     }
