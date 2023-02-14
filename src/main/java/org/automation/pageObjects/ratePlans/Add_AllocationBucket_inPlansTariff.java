@@ -99,7 +99,7 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
     }
    
     
-    public void add_Allocation(String planNameText,String descriptionText , String rollupText,String allocationText,String chargeText,String ratingMethodText,String unitText, String rateText) {
+    public void add_Allocation(String planNameText,String descriptionText , String rollupText,String allocationText,String chargeText,String ratingMethodText,String unitText, String rateText) throws InterruptedException {
 		clickRatePlans();
 		enterPlanName(planNameText);
 		clickPlanEditIcon();
@@ -109,7 +109,9 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
 		enterRollupDescriptrion(rollupText);
 		selectAllocation(allocationText);
 		enterChargeDescriptrion(chargeText);
+		Thread.sleep(1000);
 		selectUnit(unitText);
+		Thread.sleep(1000);
 		enterRate(rateText);
 		clickUpdateTarif();
 		clickPublish();

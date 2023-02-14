@@ -35,7 +35,7 @@ public class EditRatePlan_WithAllocaionBucket extends BasePage {
 	
 	public void clickCrossIcon() {
 		click_custom(crossIcon);
-        WebdriverWaits.waitForElementVisible(crossIcon, 2);
+      //  WebdriverWaits.waitForElementVisible(crossIcon, 2);
     }
 	
     public void enterPlanName(String planNameText) {
