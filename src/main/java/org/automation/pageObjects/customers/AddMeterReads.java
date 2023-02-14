@@ -1,15 +1,13 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.customers;
 
 import org.automation.base.BasePage;
-import org.automation.utilities.ActionEngine;
-import org.openqa.selenium.By;
 import org.automation.utilities.WebdriverWaits;
+import org.openqa.selenium.By;
 
-public class AddCycle extends BasePage
-
+public class AddMeterReads extends BasePage
 {
-	
-	
+	public By searchBtn=By.xpath("//button[@id=\"btn_search\"]");
+	public By recordId=By.xpath("//input[@id='search_input']");
 	public  By Admin = By.xpath("//a[@title='Administration']");
 	public  By SMTPicon = By.xpath("(//i[@class='icon-hdd'])[2]");
 	public  By SrverField = By.xpath("//input[@name='smtpServer']");
@@ -66,62 +64,96 @@ public class AddCycle extends BasePage
 	public  By CycleNumber = By.xpath("//select[@id='cycleno']");
 	public  By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
 	public  By NextDay = By.xpath("//td[@class='new day']");
-	
-	
 
-	
-	public void clickOnAdminTab(	)
-	{
-		clickBtn_custom(Admin, "Admin");
-	}
-	
-	public void clickBillRunCycleBtn()
-	{
-		clickBtn_custom(BillRunCycle, "Bill Run Cycle");
-	}
-	
-	public void createCycle()
-	{
-		clickBtn_custom(CreateCycle, "Create New");
-	}
-	
-	public void sendCycleName(String cycleNameText)
-	{
-		 WebdriverWaits.waitForElementVisible(CycleName, 5);
-		sendKeys_custom(CycleName, cycleNameText,"Cycle Name");
-	}
-	public void searchCycleName(String cycleNameText)
-	{
-		sendKeys_custom(SearchCustForCycle,cycleNameText,"Filter");
-	}
-	public void selectCustCycle()
-	{
-		sendKeys_custom(SelectCust, "Select Cycle");
-	}
-	
-	public void clickOnRightArrow() {
-		clickBtn_custom(RightArrow, "Right Arrow");
-	}
-	
-	public void clickOnSaveBtn() {
-		clickBtn_custom(SaveCyc, "Save");
-	}
-	public void getText() {
-		clickBtn_custom(SaveCyc, "Save");
-	}
 
-	
-	public void AddANewCycle(String cycleNameText,String cycleNameTextForSearch)
-	{
-		
-		clickOnAdminTab();
-		clickBillRunCycleBtn();
-		createCycle();
-		sendCycleName(cycleNameText);
-		searchCycleName(cycleNameTextForSearch);
-		selectCustCycle();
-		clickOnRightArrow();
-		clickOnSaveBtn();
-	}
+public void clickOnMeterReadsTab()
+{
+	clickBtn_custom(MeterReadsTab, "Meter Reads");
 }
 
+public void clickOnAddReads()
+{
+	clickBtn_custom(AddRead, "Add Read");
+}
+public void selectOptionFromMeterNumberDropdownlist(int indexNo)
+{
+	selectDropDownByIndex_custom(SelectMeterNumbr,indexNo, "Meter Number");
+	
+}
+
+public void selectReadTypeFromDropdownlist(String categoryText)
+{
+	selectDropDownByVisibleText_custom(ReadType, categoryText, "Add Read Type");
+	
+}
+
+
+public void selectReadDateFromDatepickerForToday()
+{
+	clickBtn_custom(ReadDate, "Read Date");
+	clickBtn_custom(TodayDate, "Date");
+	
+}
+public void selectReadDateFromDatepickerForNxtDay()
+{
+	clickBtn_custom(ReadDate, "Read Date");
+	clickBtn_custom(NextDate, "Date");
+	
+}
+public void sendMeterReadings(String meterReadingText)
+{
+	sendKeys_custom(ReadReadings, meterReadingText, "Meter Read(flat)");
+}
+public void selectReadDateFromDatepickerForNextDay()
+{
+	clickBtn_custom(ReadDate, "Read Date");
+	clickBtn_custom(NextDate, "Date");
+	
+}
+public void clickOnSaveBtn()
+{
+	clickBtn_custom(SaveReads, "Save");
+}
+
+public void addMeterReadsForInitial(int indexNo,String categoryText,String meterReadingText )
+{
+	clickOnMeterReadsTab();
+	selectOptionFromMeterNumberDropdownlist(indexNo);
+	clickOnAddReads();
+	selectReadTypeFromDropdownlist(categoryText);
+	selectReadDateFromDatepickerForToday();
+	sendMeterReadings(meterReadingText);
+	clickOnSaveBtn();
+}
+public void clickOnSearchBtn(String recordIdText)
+{
+	sendKeys_custom(recordId, recordIdText, "Record Id");
+	WebdriverWaits.waitForElementVisible(searchBtn, 10);
+	clickBtn_custom(searchBtn, "Search icon");
+	 
+	
+}
+public void addMeterReadsForActual(int indexNo,String categoryText,String meterReadingText )
+{
+	clickOnMeterReadsTab();
+	selectOptionFromMeterNumberDropdownlist(indexNo);
+	clickOnAddReads();
+	selectReadTypeFromDropdownlist(categoryText);
+	selectReadDateFromDatepickerForNextDay();
+	sendMeterReadings(meterReadingText);
+	clickOnSaveBtn();
+}
+
+public void addMeterReadsForEstimate(String recordIdText,int indexNo,String categoryText,String meterReadingText )
+{
+	clickOnSearchBtn(recordIdText);
+	clickOnMeterReadsTab();
+	selectOptionFromMeterNumberDropdownlist(indexNo);
+	clickOnAddReads();
+	selectReadTypeFromDropdownlist(categoryText);
+	selectReadDateFromDatepickerForNxtDay();
+	sendMeterReadings(meterReadingText);
+	clickOnSaveBtn();
+}
+}
+;

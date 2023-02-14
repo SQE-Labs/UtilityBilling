@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 public class ElectPayment extends BaseTest
 
 {
+	String customerId;
 	Customer cp = new Customer();
 	ChargePage sn = new ChargePage();
 	CreateServicePage cs = new CreateServicePage();
@@ -40,7 +41,7 @@ public class ElectPayment extends BaseTest
 
 	@Test(priority = 2, description = "Create a Retail Electricity Service")
 	public void createARetailElectricity() {
-		cs.newRetailElectricitySevice("Electricity Flat Template Plan", "Flat Rate", "Consumption");
+		cs.newRetailElectricitySevice(customerId,"Electricity Flat Template Plan", "Flat Rate", "Consumption");
 	}
 
 	@Test(priority = 3, description = "Add a Manual Charge")
