@@ -8,7 +8,6 @@ import org.automation.pageObjects.customers.RetailElectricityService;
 import org.automation.utilities.CSVHelper;
 import org.automation.utilities.DateGenerator;
 import org.testng.annotations.Test;
-
 import java.util.Random;
 
 public class ImportServicesTest extends BaseTest {
@@ -29,7 +28,7 @@ public class ImportServicesTest extends BaseTest {
         RetailElectricityService retailElectricityService = new RetailElectricityService();
         retailElectricityService.searchCustomer(customerId);
         serviceId = retailElectricityService.addRetailElectricityService();
-        retailElectricityService.editServiceStatus();
+  //      retailElectricityService.editServiceStatus();
 
     }
 

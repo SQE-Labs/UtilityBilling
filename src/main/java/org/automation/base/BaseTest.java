@@ -6,16 +6,22 @@ import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.automation.elements.Element;
 import org.automation.listeners.TestReporter;
 import org.automation.listeners.TestRunListener;
 import org.automation.pageObjects.LoginPage;
 import org.automation.utilities.ActionEngine;
 import org.automation.utilities.PropertiesUtil;
+import org.automation.utilities.Screenshot;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
@@ -29,26 +35,13 @@ import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 import static org.automation.logger.Log.error;
 
-/**
- * To extend every test class created.
- *
- * @author Sujay Sawant
- * @version 1.0.0
- * @since 6/11/2020
- */
-
 
 @Listeners({TestRunListener.class, TestReporter.class})
-public class BaseTest extends ActionEngine {
+public class BaseTest {
 
     public static ExtentReports extent;
     public static ExtentTest extentTest;
-
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-
-    /**
-     * Method to execute at the start of the suite execution.
-     */
 
     public static WebDriver getDriver() {
         return driver.get();
@@ -59,12 +52,17 @@ public class BaseTest extends ActionEngine {
         driver.remove();
     }
 
+    @BeforeSuite
+    public void setExtent() throws InterruptedException, IOException {
+        extent = new ExtentReports(System.getProperty("user.dir") + "/test-report/ExtentReportResult.html", true);
+        extent.addSystemInfo("Environment", "QA");
+        extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
+    }
+
     @BeforeClass(alwaysRun = true)
     public void beforeClass() throws MalformedURLException {
         String browser = PropertiesUtil.getPropertyValue("browser");
         String url = PropertiesUtil.getPropertyValue("url");
-        //	driver.set(new WebDriver(new URL("http://localhost:4444/wd/hub")));
-        //driver = (ThreadLocal<WebDriver>) BrowserFactory.getDriver();
 
         switch (browser) {
             case "chrome":
@@ -84,6 +82,7 @@ public class BaseTest extends ActionEngine {
 
         getDriver().manage().window().maximize();
         getDriver().navigate().to(url);
+        login();
     }
 
     /**
@@ -91,28 +90,34 @@ public class BaseTest extends ActionEngine {
      */
 
 
-    @AfterClass(alwaysRun = true)
-    public void afterMethod() {
-        //clearCookies();
-        closeDriver();
-    }
-
     @BeforeMethod
-    public void LaunchApplication() throws Exception {
-
+    public void beforeMethod(Method method) {
+        Test test = method.getAnnotation(Test.class);
+        extentTest = extent.startTest(method.getName());
+        extentTest.setDescription(test.description());
     }
 
 
-    @BeforeClass
+    @AfterMethod
+    public void tearDown(ITestResult result) throws IOException {
+
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
+            extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
+
+        }
+        extent.endTest(extentTest);
+        extent.flush();
+    }
     public void login() {
         try {
-
-            LoginPage loginPage = new LoginPage();
-            System.out.println(getDriver().getTitle());
-            loginPage.login(PropertiesUtil.getPropertyValue("userName"), PropertiesUtil.getPropertyValue("password"));
-
+           Element username=  new Element("var", By.xpath("//input[@name='j_username']"));
+            username.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("userName"));
+            Element password=  new Element("var", By.xpath("//input[@name='predigpass']"));
+            password.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("password"));
+            Element button=  new Element("var", By.xpath("//*[@name='submit']"));
+            button.getWebElement().click();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -120,6 +125,11 @@ public class BaseTest extends ActionEngine {
     /**
      * Method to execute at the end of the suite execution
      */
+    @AfterClass(alwaysRun = true)
+    public void afterMethod() {
+     //   closeDriver();
+    }
+
     @AfterSuite(alwaysRun = true)
     public void afterSuite() {
     }
@@ -192,48 +202,5 @@ public class BaseTest extends ActionEngine {
         }
         return csvData.iterator();
     }
-
-    /**
-     * Get the user name from the command line.
-     *
-     * @return user name
-     */
-//	protected String getUsername() {
-    //	return ofNullable(getProperty("username"))
-    //		.orElseThrow(() -> new NullPointerException("Username was not provided"));
-    //}
-
-    /**
-     * Get the password from the command line.
-     *
-     * @return password
-     */
-    protected String getPassword() {
-        return ofNullable(getProperty("password"))
-                .orElseThrow(() -> new NullPointerException("Password was not provided"));
-    }
-
-
-//	@AfterMethod
-//	public void tearDown(ITestResult result) throws IOException {
-//
-//		if (result.getStatus() == ITestResult.FAILURE) {
-//			extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getName());
-//			extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getThrowable());
-//			System.out.println("*** Test execution " + result.getMethod().getMethodName() + " failed...");
-//
-//			String screenshotPath = Screenshot.getScreenshot(driver, result.getName());
-//			extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
-//			// extentTest.log(LogStatus.FAIL, extentTest.addScreencast(screenshotPath));
-//		} else if (result.getStatus() == ITestResult.SKIP) {
-//			extentTest.log(LogStatus.SKIP, "Test Case SKIPPED IS " + result.getName());
-//			System.out.println("*** Test " + result.getMethod().getMethodName() + " skipped...");
-//		} else if (result.getStatus() == ITestResult.SUCCESS) {
-//			extentTest.log(LogStatus.PASS, "Test Case PASSED IS " + result.getName());
-//			System.out.println("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
-//		}
-//		extent.endTest(extentTest);
-//	}
-
 
 }
