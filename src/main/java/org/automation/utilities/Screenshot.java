@@ -6,6 +6,7 @@ import org.automation.logger.Log;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Augmenter;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,8 +45,8 @@ public final class Screenshot extends BaseTest {
             try {
                 base64 = writeScreenshotToFile(getDriver(), screenshot);
             } catch (ClassCastException e) {
-                //	WebDriver driver = new Augmenter().augment(getDriver());
-                //	base64 = writeScreenshotToFile(driver, screenshot);
+                	WebDriver driver = new Augmenter().augment(getDriver());
+                	base64 = writeScreenshotToFile(driver, screenshot);
             }
         } catch (IOException e) {
             Log.error("Unable to take screen shot", e);
@@ -67,10 +68,10 @@ public final class Screenshot extends BaseTest {
         return ((TakesScreenshot) driver).getScreenshotAs(BASE64);
     }
 
-    public static String getScreenshot(ThreadLocal<WebDriver> driver, String screenshotName) {
+    public static String getScreenshot(WebDriver driver, String screenshotName) {
         Long l = Calendar.getInstance().getTimeInMillis();
         String screenshotId = l.toString();
-        String Path = System.getProperty("user.dir") + "/ExtentReports/";
+        String Path = System.getProperty("user.dir") + "/test-report/";
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String imgPath = Path + screenshotId + ".png";
         File dest = new File(imgPath);
@@ -80,7 +81,7 @@ public final class Screenshot extends BaseTest {
             e.printStackTrace();
         }
 
-        String ImagePath = "../ExtentReports/" + screenshotId + ".png";
+        String ImagePath = "../test-report/" + screenshotId + ".png";
         return ImagePath;
     }
 

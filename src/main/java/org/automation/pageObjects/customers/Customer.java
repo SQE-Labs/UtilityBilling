@@ -88,6 +88,7 @@ public class Customer extends BasePage {
     }
 
     public void selectPlanDropdownField(String PlanText) {
+        scrollIntoView(planDropdownField);
         clickBtn_custom(planDropdownField, "Plan");
         selectDropDownByVisibleText_custom(planDropdownField, PlanText, "Plan ");
     }

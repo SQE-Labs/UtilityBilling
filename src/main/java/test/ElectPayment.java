@@ -19,19 +19,7 @@ public class ElectPayment extends BaseTest
 	CreateServicePage cs = new CreateServicePage();
 	PaymentsPage pp = new PaymentsPage();
 
-	@BeforeClass
-	public void login() {
-		try {
 
-			LoginPage loginPage = new LoginPage();
-			System.out.println(getDriver().getTitle());
-			loginPage.login(PropertiesUtil.getPropertyValue("userName"), PropertiesUtil.getPropertyValue("password"));
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	@Test(priority = 1, description = "Create Business Customer")
 	public void createACustomer() throws InterruptedException {

@@ -33,6 +33,7 @@ public class BillRun extends BaseTest
 	BillWithDownloadPdfAndCommit runTheCycle=new BillWithDownloadPdfAndCommit();
 	PaymentsPage addPayment=new PaymentsPage();
 
+
 	
 	  @Test(priority = 1, description = "SMTP Setup") 
 	  public void smtpInformationSetup() throws InterruptedException {
@@ -92,6 +93,7 @@ public class BillRun extends BaseTest
 		addPayment.PaymentsFromCreditCard("Payment", "Credit Card", "test11@gmail.com", "10",
 				"Hey!!! this is the comment section under payment tab");
 	}
-	
 }
 
+
+	

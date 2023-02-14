@@ -5,13 +5,13 @@ import org.automation.pageObjects.CreateAdminAccount;
 import org.testng.annotations.Test;
 
 public class CreateAdminAccountTest extends BaseTest{
-	
-	
+
+
 	@Test
 	public void createAccount() throws InterruptedException {
-		
+
 		CreateAdminAccount adminPage = new CreateAdminAccount();
-		
+
 		adminPage.clickAdmin();
 		adminPage.clickUsers();
 		adminPage.clickCreateNewUser();
@@ -20,7 +20,7 @@ public class CreateAdminAccountTest extends BaseTest{
 		Thread.sleep(1000);
 		adminPage.enterPassword("Test@12345");
 		adminPage.clickSaveUser();
-		
+
 	}
 
 }
