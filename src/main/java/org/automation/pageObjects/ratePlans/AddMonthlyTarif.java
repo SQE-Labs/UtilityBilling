@@ -23,6 +23,7 @@ import org.openqa.selenium.By;
 	    By tieredRatesTo = By.id("uhigh");
 	    By tieredRatesRate = By.id("rateR");
 	    By addRange =By.id("addRangeBtn");
+	    By crossIcon = By.xpath("//*[@id='closeBtn']/i"); 
 	    By successMsg =By.xpath("//*[@id='datatablePreview_info']");
 		 
 	    String SUCCESS_MESG = "Showing 1 to 1 of 1 entries";
@@ -35,9 +36,14 @@ import org.openqa.selenium.By;
 	    }
 	   
 
+	    public void clickCrossIcon() {
+	    	WebdriverWaits.waitForElementVisible(crossIcon, 2);
+	    	click_custom(crossIcon);
+	       // WebdriverWaits.waitForElementVisible(crossIcon, 2);
+	    }
 	    
 	    public void clickAddRange() {
-	        clickBtn_custom(addRange);
+	    	click_custom(addRange);
 	        WebdriverWaits.waitForElementVisible(addRange, 2);
 	    }
 
@@ -55,24 +61,27 @@ import org.openqa.selenium.By;
 
 
 	    public void clickAdd() {
-	        clickBtn_custom(addButton);
-	        WebdriverWaits.waitForElementVisible(addButton, 2);
+	    	
+	    	//WebdriverWaits.waitForElementVisible(addButton, 2);
+	    	click_custom(addButton);
+	     //   WebdriverWaits.waitForElementVisible(addButton, 2);
 	    }
 
 
 	    public void clickRatePlans() {
-	        clickBtn_custom(ratePlans);
+	    	click_custom(ratePlans);
 	        WebdriverWaits.waitForElementVisible(ratePlans, 2);
 	    }
 
 	    public void clickCreateNewPlan() {
-	        clickBtn_custom(createNewPlan);
+	    	click_custom(createNewPlan);
 	        //WebdriverWaits.waitForElementVisible(dateValidFrom, 2);
 	    }
 
 	    public void clickAddTarif() {
-	        clickBtn_custom(addTarrif);
 	        WebdriverWaits.waitForElementVisible(addTarrif, 2);
+	    	click_custom(addTarrif);
+	    //    WebdriverWaits.waitForElementVisible(addTarrif, 2);
 	    }
 
 	    public void enterChargeDescriptrion(String descriptionText) {
@@ -98,14 +107,13 @@ import org.openqa.selenium.By;
 	    }
 
 	    public void selectRatingMethod(String ratingMethodText) {
-	        clickBtn_custom(ratingMethod);
+	    	click_custom(ratingMethod);
 	        WebdriverWaits.waitForElementVisible(ratingMethod, 3);
 	        selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
-	        clickBtn_custom(unit);
 	    }
 
 	    public void selectUnit(String unitText){
-	        clickBtn_custom(unit);
+	    	click_custom(unit);
 	        WebdriverWaits.waitForElementVisible(unit, 5);
 	        selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
@@ -123,16 +131,18 @@ import org.openqa.selenium.By;
 			enterRollupDescriptrion(rollupText);
 			selectChargeType(chargeTypeText);
 			selectAllocation(allocationText);
+			Thread.sleep(2000);
 			selectRatingMethod(ratingMethodText);
+			selectTaxType(textTypeText);
 			Thread.sleep(1000);
 			selectUnit(unitText);
-			selectTaxType(textTypeText);
 			enterTieredRatesFrom(fromRateText);
 			enterTieredRatesTo(toRateText);
 			enterTieredRatesRate(rateText);
 			clickAddRange();
 			clickAdd();
 			assertSuccessMessage();
+			clickCrossIcon();
 		
 	    }
 

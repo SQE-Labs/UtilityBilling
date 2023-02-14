@@ -14,8 +14,8 @@ public class RatePlanPage extends BasePage {
     By name = By.xpath("//*[@id='name']");
     By dateFromValid = By.xpath("//*[@name='dateValidFrom']");
     By dateToValid = By.xpath("//*[@name='dateValidTo']");
-    By dateValidFrom = By.xpath("//td[@class='active day']");
-    By dateValidTo = By.xpath("//td[@class='active day']");
+    By dateValidFrom = By.xpath("//div[@class='datepicker-days']//tr/td[@class='active day']");
+    By dateValidTo = By.xpath("//div[@class='datepicker-days']//tr/td[@class='active day']");
     By addTarrif = By.id("addTrfBtn");
     By chargeDescription = By.xpath("//*[@name='charge-desc']");
     By rollupDescription = By.xpath("//*[@name='rollup-desc']");
@@ -27,6 +27,7 @@ public class RatePlanPage extends BasePage {
     By taxType = By.xpath("//*[@name='tax-type']");
     By addButton = By.id("addTrf");
     By publish = By.id("publishBtn");
+    By crossIcon = By.xpath("//*[@id='closePlnBtn']/i");
     By successMsg = By.xpath("//*[@id=\"successPlnAlrt\"]/div/center/p/strong");
 
     String SUCCESS_MESG = "Adam johhns has been sucessfully";
@@ -38,30 +39,29 @@ public class RatePlanPage extends BasePage {
         ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
     }
 
-    public void clickPublish() {
-        clickBtn_custom(publish);
-        WebdriverWaits.waitForElementVisible(publish, 2);
+    public void clickCrossIcon() {
+    	click_custom(crossIcon);
+      //  WebdriverWaits.waitForElementVisible(crossIcon, 2);
     }
 
+    public void clickPublish() {
+    	click_custom(publish);
+        WebdriverWaits.waitForElementVisible(publish, 2);
+    }
 
     public void clickAdd() {
-        clickBtn_custom(addButton);
+    	 WebdriverWaits.waitForElementVisible(addTarrif, 2);
+    	click_custom(addButton);
         WebdriverWaits.waitForElementVisible(publish, 2);
     }
-    
-//    public void clickAdddd() {
-//        clickBtn_custom(dataValidFromnew);
-//        WebdriverWaits.waitForElementVisible(publish, 2);
-//    }
-
 
     public void clickRatePlans() {
-        clickBtn_custom(ratePlans);
+    	click_custom(ratePlans);
         WebdriverWaits.waitForElementVisible(ratePlans, 2);
     }
 
     public void clickCreateNewPlan() {
-        clickBtn_custom(createNewPlan);
+    	click_custom(createNewPlan);
         //WebdriverWaits.waitForElementVisible(dateValidFrom, 2);
     }
 
@@ -79,17 +79,14 @@ public class RatePlanPage extends BasePage {
         sendKeys_withClear(name, nameText);
     }
 
-    public void selectDateFrom(String dateFrom) {
-        WebdriverWaits.waitForElementVisible(dateValidFrom, 5);
-        selectDropDownByVisibleText_custom(dateValidFrom, dateFrom, "Select Today Date");
-        WebdriverWaits.waitForElementVisible(dateValidFrom, 10);
-        clickBtn_custom(dateValidFrom);
+    public void clickCurrentDateFrom() {
+    	click_custom(dateValidFrom);
+     //   WebdriverWaits.waitForElementVisible(dateValidFrom, 5);
     }
 
-    public void selectDateTo(String dateTo) {
-        WebdriverWaits.waitForElementVisible(dateValidTo, 1);
-        selectDropDownByVisibleText_custom(dateValidTo, dateTo, "Select Today Date");
-        clickBtn_custom(dateValidTo);
+    public void clickCurrentDateTo() {
+    	click_custom(dateValidTo);
+      //  WebdriverWaits.waitForElementVisible(dateValidTo, 1);
     }
 
     public void clickDateFrom() {
@@ -103,7 +100,7 @@ public class RatePlanPage extends BasePage {
     }
 
     public void clickAddTarif() {
-        clickBtn_custom(addTarrif);
+    	click_custom(addTarrif);
         WebdriverWaits.waitForElementVisible(addTarrif, 2);
     }
 
@@ -130,14 +127,14 @@ public class RatePlanPage extends BasePage {
     }
 
     public void selectRatingMethod(String ratingMethodText) {
-        clickBtn_custom(ratingMethod);
+    	click_custom(ratingMethod);
         WebdriverWaits.waitForElementVisible(ratingMethod, 3);
         selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
       
     }
 
     public void selectUnit(String unitText) {
-        clickBtn_custom(unit);
+    	click_custom(unit);
         WebdriverWaits.waitForElementVisible(addButton, 5);
         selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
@@ -148,7 +145,7 @@ public class RatePlanPage extends BasePage {
         selectDropDownByVisibleText_custom(taxType, textTypeText, "Select TaxType");
     }
     
-    public void createPlan(String groupSelect, String usagetype, String nameText, String dateFrom, String dateTo, String descriptionText,String rollupText, String chargeTypeText,String allocationText,String ratingMethodText,String unitText,String rateText) throws InterruptedException {
+    public void createPlan(String groupSelect, String usagetype, String nameText,String descriptionText,String rollupText, String chargeTypeText,String allocationText,String ratingMethodText,String unitText,String rateText) throws InterruptedException {
     
     	clickRatePlans();
 		clickCreateNewPlan();
@@ -156,21 +153,23 @@ public class RatePlanPage extends BasePage {
 		selectUsageTypes(usagetype);
 		enterName(nameText);
 		clickDateFrom();
-		selectDateFrom(dateFrom);
+		clickCurrentDateFrom();
 		clickDateTo();
-		selectDateTo(dateTo);
-//		clickAddTarif();
-//		enterChargeDescriptrion(descriptionText);
-//		enterRollupDescriptrion(rollupText);
-//		selectChargeType(chargeTypeText);
-//		selectAllocation(allocationText);
-//		selectRatingMethod(ratingMethodText);
-//		Thread.sleep(1000);
-//		selectUnit(unitText);
-//		enterRate(rateText);
-//		clickAdd();
-//		clickPublish();
-//		assertSuccessMessage();
+		clickCurrentDateTo();
+		clickAddTarif();
+		enterChargeDescriptrion(descriptionText);
+		enterRollupDescriptrion(rollupText);
+		selectChargeType(chargeTypeText);
+		selectAllocation(allocationText);
+		Thread.sleep(1000);
+		selectRatingMethod(ratingMethodText);
+		Thread.sleep(1000);
+		selectUnit(unitText);
+		enterRate(rateText);
+		clickAdd();
+		clickPublish();
+		assertSuccessMessage();
+		clickCrossIcon();
     }
 
 

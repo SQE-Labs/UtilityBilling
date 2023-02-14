@@ -36,7 +36,7 @@ import org.openqa.selenium.By;
 	   
 	    
 	    public void clickAddRange() {
-	        clickBtn_custom(addRange);
+	    	click_custom(addRange);
 	        WebdriverWaits.waitForElementVisible(addRange, 2);
 	    }
 
@@ -54,23 +54,25 @@ import org.openqa.selenium.By;
 
 
 	    public void clickAdd() {
-	        clickBtn_custom(addButton);
+	    	 WebdriverWaits.waitForElementVisible(addTarrif, 2);
+	    	click_custom(addButton);
 	        WebdriverWaits.waitForElementVisible(addButton, 2);
+	        click_custom(addButton);
 	    }
 
 
 	    public void clickRatePlans() {
-	        clickBtn_custom(ratePlans);
+	    	click_custom(ratePlans);
 	        WebdriverWaits.waitForElementVisible(ratePlans, 2);
 	    }
 
 	    public void clickCreateNewPlan() {
-	        clickBtn_custom(createNewPlan);
+	    	click_custom(createNewPlan);
 	        //WebdriverWaits.waitForElementVisible(dateValidFrom, 2);
 	    }
 
 	    public void clickAddTarif() {
-	        clickBtn_custom(addTarrif);
+	    	click_custom(addTarrif);
 	        WebdriverWaits.waitForElementVisible(addTarrif, 2);
 	    }
 
@@ -97,14 +99,14 @@ import org.openqa.selenium.By;
 	    }
 
 	    public void selectRatingMethod(String ratingMethodText) {
-	        clickBtn_custom(ratingMethod);
+	    	click_custom(ratingMethod);
 	        WebdriverWaits.waitForElementVisible(ratingMethod, 3);
 	        selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
-	        clickBtn_custom(unit);
+	        click_custom(unit);
 	    }
 
 	    public void selectUnit(String unitText){
-	        clickBtn_custom(unit);
+	    	click_custom(unit);
 	        WebdriverWaits.waitForElementVisible(unit, 5);
 	        selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
@@ -122,6 +124,7 @@ import org.openqa.selenium.By;
 			enterRollupDescriptrion(rollupText);
 			selectChargeType(chargeTypeText);
 			selectAllocation(allocationText);
+			Thread.sleep(1000);
 			selectRatingMethod(ratingMethodText);
 			Thread.sleep(1000);
 			selectUnit(unitText);

@@ -21,6 +21,7 @@ public class AddTarifPlan extends BasePage{
     By taxType = By.xpath("//*[@name='tax-type']");
     By addButton = By.id("addTrf");
     By publish = By.id("publishBtn");
+    By crossIcon = By.xpath("//*[@id='closeBtn']/i"); 
     By successMsg = By.xpath("//*[@id=\"errAlert\"]/div/center/text()");
     
 
@@ -33,29 +34,36 @@ public class AddTarifPlan extends BasePage{
     }
 
     public void clickPublish() {
-        clickBtn_custom(publish);
+    	click_custom(publish);
         WebdriverWaits.waitForElementVisible(publish, 2);
     }
 
 
+    public void clickCrossIcon() {
+    	WebdriverWaits.waitForElementVisible(crossIcon, 2);
+    	click_custom(crossIcon);
+       // WebdriverWaits.waitForElementVisible(crossIcon, 2);
+    }
     public void clickAdd() {
-        clickBtn_custom(addButton);
+    	 WebdriverWaits.waitForElementVisible(addTarrif, 2);
+    	click_custom(addButton);
         WebdriverWaits.waitForElementVisible(publish, 2);
     }
 
 
     public void clickRatePlans() {
-        clickBtn_custom(ratePlans);
+    	click_custom(ratePlans);
         WebdriverWaits.waitForElementVisible(ratePlans, 2);
     }
 
     public void clickCreateNewPlan() {
-        clickBtn_custom(createNewPlan);
+    	click_custom(createNewPlan);
     }
 
     public void clickAddTarif() {
-        clickBtn_custom(addTarrif);
-        WebdriverWaits.waitForElementVisible(addTarrif, 2);
+    	// WebdriverWaits.waitForElementVisible(addTarrif, 2);
+    	click_custom(addTarrif);
+      //  WebdriverWaits.waitForElementVisible(addTarrif, 2);
     }
 
     public void enterChargeDescriptrion(String descriptionText) {
@@ -81,14 +89,14 @@ public class AddTarifPlan extends BasePage{
     }
 
     public void selectRatingMethod(String ratingMethodText) {
-        clickBtn_custom(ratingMethod);
+    	click_custom(ratingMethod);
         WebdriverWaits.waitForElementVisible(ratingMethod, 3);
         selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
        
     }
 
     public void selectUnit(String unitText){
-        clickBtn_custom(unit);
+    	click_custom(unit);
         WebdriverWaits.waitForElementVisible(unit, 8);
         selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
@@ -106,12 +114,14 @@ public class AddTarifPlan extends BasePage{
 		enterRollupDescriptrion(rollupText);
 		selectChargeType(chargeTypeText);
 		selectAllocation(allocationText);
+		Thread.sleep(1000);
 		selectRatingMethod(ratingMethodText);
 		Thread.sleep(1000);
-		selectUnit(unitText);
 		enterRate(rateText);
+		selectUnit(unitText);
 		clickAdd();
 		assertSuccessMessage();
+		clickCrossIcon();
 		
     }
 
