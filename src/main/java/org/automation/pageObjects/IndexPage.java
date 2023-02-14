@@ -1,6 +1,7 @@
 package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
+<<<<<<< HEAD
 import org.automation.pageObjects.customers.Details;
 import org.openqa.selenium.By;
 
@@ -10,6 +11,7 @@ public class IndexPage extends BasePage {
     public By SearchField = By.xpath("//*[@id=\"search_input\"]");
     public  By SearchIcon = By.xpath("//*[@class=\"glyphicon glyphicon-search\"]");
     public  By OverviewTab = By.xpath("//*[@class=\"icon-eye-open\"]"); // //*[contains(text(),'Overview')]
+    public By footerVersion = By.xpath("//footer/div[2]");
 
     public Details searchCustomer(String customerId){
         clickBtn_custom(SearchIcon);
@@ -18,5 +20,7 @@ public class IndexPage extends BasePage {
         clickBtn_custom(SearchIcon);
         return new Details();
     }
-
+    public  String getTextVersion(){
+       return getText_custom(footerVersion)    ;
+    }
 }

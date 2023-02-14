@@ -37,6 +37,7 @@ public class Charges extends BasePage {
     }
 
     public void clickOnSaveBtn() {
+        scrollIntoView(SaveButton);
         clickBtn_custom(SaveButton, "Save");
     }
 

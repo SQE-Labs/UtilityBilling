@@ -1,10 +1,11 @@
-package org.automation.pageObjects.billRun;
+package org.automation.pageObjects.admin.billing;
 
 import org.automation.base.BasePage;
-import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class BillRunCycle extends BasePage {
+public class BillWithDownloadPdfAndCommit extends BasePage
+{
+	
 	public  String CUSTnum;
     public By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
     public By MsgType = By.xpath("//select[@id='email_message_type']");
@@ -59,33 +60,52 @@ public class BillRunCycle extends BasePage {
     public By CycleNumber = By.xpath("//select[@id='cycleno']");
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
-    WebdriverWaits ww = new WebdriverWaits();
-    String SUCCESS_MSG = "Successfully saved message.";
-
-    public void getSuccessMsgText() {
-        WebdriverWaits.waitForElementVisible(CustNumberCreated, 5);
-        getText_custom(CustNumberCreated);
+    
+    
+    public void clickOnBillRunTab()
+    {
+    	 clickBtn_custom(BillRunTab, "Bill Run");
     }
-
-    public void clickOnAdminTab() {
-        clickBtn_custom(Admin, "Admin");
+    public void clickOnRuntheBillBtn()
+    {
+    	 clickBtn_custom(RunTheBills, "Run the Bill");
     }
-
-    public void clickOnBillRunIcon() {
-        clickBtn_custom(BillRunCycle, "Bill Run");
+    public void clickOnReccurringDate()
+    {
+    	 clickBtn_custom(Reccurringdate, "Reccurring Date");
+    	 clickBtn_custom(TodayDate, "Today Date");
+    	 
     }
-
-    public void clickOnCreateCycle() {
-        clickBtn_custom(CreateCycle, "Create New");
+    public void clickOnIssueDate()
+    {
+    	
+    	 clickBtn_custom(IssueDate, "Issue Date");
+    	 clickBtn_custom(TodayDate, "Today Date");
     }
-
-    public void sendCycleName() {
-        sendKeys_custom(CycleName, CUSTnum, "Cycle Name");
+    public void clickOnDueDate()
+    {
+    	 clickBtn_custom(DueDate, "Due Date");
+    	 clickBtn_custom(TodayDate, "Today Date");
     }
-
-    public void sendSearchCustForCycle() {
-        sendKeys_custom(SearchCustForCycle, CUSTnum, "Filter");
+    
+    public void selectRunBillCycleOptionFromDropdownlist(String cycleNoText)
+    		{
+    	selectDropDownByVisibleText_custom(CycleNumber, cycleNoText, "Bill Run Cycle");
+    		}
+    public void clickonBillRunBtn()
+	{
+    	 clickBtn_custom(RunBillBtn, "Run Bill");
+	}
+    
+    
+    public void runTheBillRunCycle(String cycleNoText)
+    {
+    	clickOnBillRunTab();
+    	clickOnRuntheBillBtn();
+    	clickOnReccurringDate();
+    	clickOnIssueDate();
+    	 clickOnDueDate();
+    	 selectRunBillCycleOptionFromDropdownlist(cycleNoText);
+    	 clickonBillRunBtn();
     }
-
-
 }

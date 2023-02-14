@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class CreateServicePage extends BasePage {
+	
+	public By searchBtn=By.xpath("//button[@id='btn_search']");
+	public By recordId=By.xpath("//input[@id='search_input']");
     static String waterPlan = "Water Flat Template Plan";
     static String gasPlan = "Gas Flat Template Plan";
     static String notesstr = "Editing done";
@@ -125,11 +128,20 @@ public class CreateServicePage extends BasePage {
         return getText_custom(AssertElectricity);
     }
 
-    public void newRetailElectricitySevice(String selectPlanText, String MeterConfigurationText, String readingTypeText) {
+    public void clickOnSearchBtn(String recordIdText)
+    {
+    	sendKeys_custom(recordId, recordIdText, "Record Id");
+    	WebdriverWaits.waitForElementVisible(searchBtn, 10);
+    	clickBtn_custom(searchBtn, "Search icon");
+    	 
+    	
+    }
+    public void newRetailElectricitySevice(String recordIdText,String selectPlanText, String MeterConfigurationText, String readingTypeText) {
         // 1. Customer is already created using Customer flow.
         // 2. Adding electricity service to a customer.
         // 3. Overview > Electricity
         as = new Assertions();
+        clickOnSearchBtn(recordIdText);
         clickOnOverview();
         clickRetailElectricity();
         selectPlan(selectPlanText);
