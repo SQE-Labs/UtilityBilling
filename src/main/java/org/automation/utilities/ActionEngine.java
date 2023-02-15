@@ -160,9 +160,10 @@ public class ActionEngine {
         return text;
     }
 
-    public  void selectCheckBox(By path, String... fieldName) {
+    public  void selectCheckBox(By path, String... fieldName)  {
         String var = fieldName.length > 0 ? fieldName[0] : path.toString();
         CheckBox checkBox = new CheckBox(var, path);
+
         checkBox.check();
     }
 
