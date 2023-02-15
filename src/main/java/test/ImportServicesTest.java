@@ -21,7 +21,6 @@ public class ImportServicesTest extends BaseTest {
 
     @Test(priority = 0)
     public void Add_Customer_and_Service_for_Imports() throws Exception {
-        extentTest = extent.startTest("Add_Customer_and_Service");
         customerId = customer.createCustomer("Business", "SSLabs", "Dino", "Anotonello", "9988907865", "test12@gmail.com", "t12@gmail.com",
                 "38 Decca Road", "35 Decca Road", "Goldsborough", "3156", "Australia", "Electricity Residential plan");
         ;
@@ -55,8 +54,6 @@ public class ImportServicesTest extends BaseTest {
 
     @Test(priority = 2, enabled = true)
     public void Import_Meter_Register() throws Exception {
-        extentTest = extent.startTest(" Meter Register Import ");
-        extentTest.setDescription(" Verify that User is able to run meter register using Import");
         String path = System.getProperty("user.dir") + "/TestData/Register Import Template.csv";
         DateGenerator dateGenerator = new DateGenerator();
         String prodate = dateGenerator.DateTimeGenerator("dd/MM/yyyy");
@@ -70,8 +67,8 @@ public class ImportServicesTest extends BaseTest {
 
     @Test(priority = 3, enabled = true)
     public void Import_Meter_Reads_Initial() throws Exception {
-        extentTest = extent.startTest(" Meter Reads Import ");
-        extentTest.setDescription(" Verify that User is able to   Import Meter reads");
+//        extentTest = extent.startTest(" Meter Reads Import ");
+//        extentTest.setDescription(" Verify that User is able to   Import Meter reads");
         String path = System.getProperty("user.dir") + "/TestData/Meter Read Import Template - Manual.csv";
         DateGenerator dateGenerator = new DateGenerator();
 
@@ -114,27 +111,27 @@ public class ImportServicesTest extends BaseTest {
 
     }
 
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void Import_Recurring_Charge() throws Exception {
 
     }
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void Import_Generic_Service() throws Exception {
 
     }
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void Import_Payments() throws Exception {
 
     }
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void Import_Demand_Reads() throws Exception {
 
     }
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void Import_Prorated_Tariff() throws Exception {
 
     }
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 4, enabled = false)
     public void Import_Security_Deposit() throws Exception {
 
     }

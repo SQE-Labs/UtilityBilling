@@ -1,11 +1,11 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.customers.Charges;
+import org.automation.pageObjects.customers.ChargePage;
 import org.automation.pageObjects.customers.CreateServicePage;
 import org.automation.pageObjects.customers.Customer;
 import org.automation.pageObjects.LoginPage;
-import org.automation.pageObjects.admin.paymentGateway.GroupPayment;
+import org.automation.pageObjects.admin.paymentGateway.PaymentsPage;
 import org.automation.utilities.PropertiesUtil;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,21 +14,24 @@ public class ElectPaymentTest extends BaseTest
 
 {
 	Customer customer = new Customer();
-	Charges charges = new Charges();
+	ChargePage charges = new ChargePage();
 	CreateServicePage service = new CreateServicePage();
-	GroupPayment gPayment = new GroupPayment();
+	PaymentsPage gPayment = new PaymentsPage();
+	String customerId;
+
 
 
 
 	@Test(priority = 1, description = "Create Business Customer")
 	public void createACustomer() throws InterruptedException {
-		customer.createCustomer("Business", "SSLabs", "Dino", "Anotonello", "9988907865", "test12@gmail.com", "t12@gmail.com",
+		customerId =customer.createCustomer("Business", "SSLabs", "Dino", "Anotonello", "9988907865", "test12@gmail.com", "t12@gmail.com",
 				"38 Decca Road", "35 Decca Road", "Goldsborough", "3156", "Australia", "Electricity Residential plan");
 	}
 
 	@Test(priority = 2, description = "Create a Retail Electricity Service")
 	public void createARetailElectricity() {
-		service.newRetailElectricitySevice("Electricity Flat Template Plan", "Flat Rate", "Consumption");
+		service.newRetailElectricitySevice(customerId,"Electricity Flat Template Plan", "Flat Rate", "Consumption");;
+
 	}
 
 	@Test(priority = 3, description = "Add a Manual Charge")

@@ -126,8 +126,8 @@ public class BaseTest {
      * Method to execute at the end of the suite execution
      */
     @AfterClass(alwaysRun = true)
-    public void afterMethod() {
-     //   closeDriver();
+    public void afterClass() {
+        closeDriver();
     }
 
     @AfterSuite(alwaysRun = true)

@@ -2,11 +2,14 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<test thread-count="1" parallel="classes" name="Test">
+	
+	<packages>
+	<package name="test.*"></package>
+	</packages>
 
 		<classes>
 
-            <class name="test.LoginTest" />
-			<class name="test.ElectPaymentTest" />
+			<!--<class name="test.ElectPaymentTest" />
 			<class name="test.WorkFlowTypesTest" />
 			<class name="test.EditUserTest" />
 			<class name="test.RatePlanPageTest"/>
@@ -18,7 +21,7 @@
 		    <class name="test.RatePlanPageTest"/>
 		    <class name="test.CreateAdminAccountTest"/>
 	    	<class name="test.LoginCreatedAccountTest"/>
-	    	<class name="test.ElecPlanManagementTest"/>
+	    	<class name="test.ElecPlanManagementTest"/>  -->
 
 		</classes>
 	</test> <!-- Test -->

@@ -28,32 +28,25 @@ public class AddTarifPlan extends BasePage{
     String SUCCESS_MESG = "The following errors have occured:";
 
     public void assertSuccessMessage() {
-        WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
         ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
     }
 
     public void clickPublish() {
     	click_custom(publish);
-        WebdriverWaits.waitForElementVisible(publish, 2);
     }
 
 
     public void clickCrossIcon() {
-    	WebdriverWaits.waitForElementVisible(crossIcon, 2);
     	click_custom(crossIcon);
-       // WebdriverWaits.waitForElementVisible(crossIcon, 2);
     }
     public void clickAdd() {
-    	 WebdriverWaits.waitForElementVisible(addTarrif, 2);
     	click_custom(addButton);
-        WebdriverWaits.waitForElementVisible(publish, 2);
     }
 
 
     public void clickRatePlans() {
     	click_custom(ratePlans);
-        WebdriverWaits.waitForElementVisible(ratePlans, 2);
     }
 
     public void clickCreateNewPlan() {
@@ -90,20 +83,17 @@ public class AddTarifPlan extends BasePage{
 
     public void selectRatingMethod(String ratingMethodText) {
     	click_custom(ratingMethod);
-        WebdriverWaits.waitForElementVisible(ratingMethod, 3);
         selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
        
     }
 
     public void selectUnit(String unitText){
     	click_custom(unit);
-        WebdriverWaits.waitForElementVisible(unit, 8);
         selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
     }
 
     public void selectTaxType(String textTypeText) {
-        WebdriverWaits.waitForElementVisible(taxType, 1);
         selectDropDownByVisibleText_custom(taxType, textTypeText, "Select TaxType");
     }
     public void addTarif(String descriptionText,String rollupText, String chargeTypeText,String allocationText,String ratingMethodText,String unitText,String rateText) throws InterruptedException {
