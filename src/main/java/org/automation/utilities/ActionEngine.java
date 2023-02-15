@@ -20,6 +20,33 @@ import static com.relevantcodes.extentreports.LogStatus.PASS;
 
 
 public class ActionEngine extends BaseTest {
+	
+	public void click_custom(By path, String... label) {
+	    String var = "";
+	    try {
+
+	        var = label.length > 0 ? label[0] : path.toString();
+
+	        Element btn = new Element(var, path);
+	        btn.click();
+	        Log.info("Clicked on " + var);
+	        //log success message in exgent report
+	        extentTest.log(PASS, "==> Clicked element Successfully! " + var);
+	    } catch (Exception e) {
+	        extentTest.log(FAIL, "==> Unable to click on => " + var+" due to exception "+e);
+
+	    }
+
+	}
+
+	public void click_custom(WebElement element, String... label) {
+	    try {
+	        element.click();
+	        extentTest.log(PASS, "==> Clicked element Successfully! " + label);
+	    } catch (Exception e) {
+	        extentTest.log(FAIL, "==> Unable to click  " + label+" due to exception "+e);
+	    }
+	}
 
     public void sendKeys_custom(By path, String valueToBeSent, String... label) {
         String var = "";
@@ -198,6 +225,4 @@ public class ActionEngine extends BaseTest {
         CheckBox checkBox = new CheckBox(var, path);
         return checkBox.isChecked();
     }
-
-
 }

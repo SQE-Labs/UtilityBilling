@@ -1,9 +1,9 @@
 package test;
 
 import org.automation.base.BaseTest;
-import org.automation.pageObjects.ChargePage;
-import org.automation.pageObjects.CreateServicePage;
 import org.automation.pageObjects.LoginPage;
+import org.automation.pageObjects.customers.ChargePage;
+import org.automation.pageObjects.customers.CreateServicePage;
 import org.automation.pageObjects.customers.Customer;
 import org.automation.utilities.PropertiesUtil;
 import org.testng.annotations.BeforeClass;
