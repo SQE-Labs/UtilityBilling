@@ -1,9 +1,9 @@
+
 package test;
 
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.AddCycle;
 import org.automation.pageObjects.CreateCustForChangeCustEmail;
-import org.automation.pageObjects.CreateServicePage;
 import org.automation.pageObjects.admin.billing.BillWithDownloadPdfAndCommit;
 import org.automation.pageObjects.admin.commmunications.EmailTemplateSetup;
 import org.automation.pageObjects.LoginPage;
@@ -11,13 +11,14 @@ import org.automation.pageObjects.admin.commmunications.SMSTemplateSetup;
 import org.automation.pageObjects.admin.commmunications.SMTPSetup;
 import org.automation.pageObjects.admin.paymentGateway.PaymentsPage;
 import org.automation.pageObjects.customers.AddMeterReads;
+import org.automation.pageObjects.customers.CreateServicePage;
 import org.automation.pageObjects.customers.Customer;
 import org.automation.utilities.PropertiesUtil;
 import org.automation.utilities.RandomGenerator;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class BillRun extends BaseTest
+public class BillRunTest extends BaseTest
 
 {
 	String customerId;
@@ -96,4 +97,3 @@ public class BillRun extends BaseTest
 }
 
 
-	

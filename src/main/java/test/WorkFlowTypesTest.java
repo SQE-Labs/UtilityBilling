@@ -27,6 +27,5 @@ public class WorkFlowTypesTest extends BaseTest {
 	    wft.clickSaveButton();
 	    wft.clickSaveButton();
 	    wft.enterSearchLog("AA TN"+clname);
-	  //  Assert.assertEquals(false, true);
   }
 }

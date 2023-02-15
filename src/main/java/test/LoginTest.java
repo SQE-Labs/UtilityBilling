@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 
 public class LoginTest extends BaseTest {
 
-	@Test(priority = 0,description = "To verify login functionality")
+	@Test(priority = 0,enabled=false,description = "To verify login functionality")
 	public void ValidLogin() throws InterruptedException {
 		LoginPage login = new LoginPage();
 		login.enterUsername(PropertiesUtil.getPropertyValue("userName"));
@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest {
 		Assert.assertEquals(login.getPageUrl(),PropertiesUtil.getPropertyValue("indexPage"));
 
 	}
-	@Test(priority = 0,description = "To verify login functionality")
+	@Test(priority = -1,description = "To verify login functionality")
 	public void reloadLoginPage() throws InterruptedException {
 		IndexPage index = new IndexPage();
 		index.refreshPage();

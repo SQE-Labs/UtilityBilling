@@ -4,7 +4,7 @@ import org.automation.base.BaseTest;
 import org.automation.pageObjects.admin.userManager.Password;
 import org.testng.annotations.Test;
 
-public class PasswordTest extends BaseTest {
+public class ChangePasswordTest extends BaseTest {
 
 	@Test(priority = 1,description = "Change Password")
 	public void changePassword()  {

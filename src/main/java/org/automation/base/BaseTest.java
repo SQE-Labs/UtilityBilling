@@ -89,6 +89,7 @@ public class BaseTest {
      * Method to execute at the end of each test method execution.
      */
 
+
     @BeforeMethod
     public void beforeMethod(Method method) {
         Test test = method.getAnnotation(Test.class);
@@ -125,7 +126,7 @@ public class BaseTest {
      * Method to execute at the end of the suite execution
      */
     @AfterClass(alwaysRun = true)
-    public void afterMethod() {
+    public void afterClass() {
         closeDriver();
     }
 
