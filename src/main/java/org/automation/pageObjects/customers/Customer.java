@@ -54,7 +54,7 @@ public class Customer  extends BasePage {
 	public By BankAccountNo = By.xpath("//input[@name='bankAccountNo']");
 	public By BankRoute = By.xpath("//input[@name='bankBSB']");
 	public By BankName = By.xpath("//input[@name='bankName']");
-    public By customerID=By.xpath("(//label[@class='col-sm-12 control-label'])[1]");
+    public By customerID=By.xpath("(//label[@class='col-sm-12 control-label'])[1]/a/p/b");
 
 
 	public  By planDropdownField= By.xpath("//select[@name='planNo']");
@@ -141,7 +141,7 @@ public class Customer  extends BasePage {
 	    public void clickSaveCustomerBtn() 
 	    {
 	    	bp.scrollIntoView(saveCustomerbutton);
-	    	clickBtn_custom(saveCustomerbutton, "Save Customer");
+	    	click_custom(saveCustomerbutton, "Save Customer");
 	    }
 	    public void clickOkBtn() 
 	    {
@@ -150,7 +150,7 @@ public class Customer  extends BasePage {
 	    
 	    public String getCustomerId()
 	    {
-	    	 String id = getText_custom(customerID);
+	    	 String id = getText_custom(customerID).trim();
 	    	 System.out.println(id);
 	    	   return id ;
 	    	
@@ -239,7 +239,7 @@ public class Customer  extends BasePage {
       	    
     	    public void selectPlanDropdownField(String PlanText) 
     	    {
-    	    	clickBtn_custom(planDropdownField, "Plan");
+    	    	click_custom(planDropdownField, "Plan");
     	    	selectDropDownByVisibleText_custom(planDropdownField, PlanText,"Plan ");	
     	    }
     	        

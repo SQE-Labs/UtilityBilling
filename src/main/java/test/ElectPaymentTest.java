@@ -24,8 +24,8 @@ public class ElectPaymentTest extends BaseTest
 
 	@Test(priority = 1, description = "Create Business Customer")
 	public void createACustomer() throws InterruptedException {
-		customerId =customer.createCustomer("Business", "SSLabs", "Dino", "Anotonello", "9988907865", "test12@gmail.com", "t12@gmail.com",
-				"38 Decca Road", "35 Decca Road", "Goldsborough", "3156", "Australia", "Electricity Residential plan");
+		customerId =customer.createCustomer("Business", "SRLabs", "Devi", "Anotonello", "9988907865", "test12@gmail.com", "t12@gmail.com",
+				"38 Decca Road", "35 Decca Road", "Goldsborough", "3159", "Australia", "Electricity Residential plan");
 	}
 
 	@Test(priority = 2, description = "Create a Retail Electricity Service")
