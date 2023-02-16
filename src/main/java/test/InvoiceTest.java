@@ -1,8 +1,6 @@
 package test;
 
-import java.util.random.RandomGenerator;
 
-import org.automation.base.BasePage;
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.LoginPage;
 import org.automation.pageObjects.admin.AdminPage;
@@ -17,15 +15,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class InvoiceTest extends BaseTest {
-	
+
 	AdminPage adminPage = new AdminPage();
 	invoiceSetupPage invoiceSetup= new invoiceSetupPage();
 	createNewInvoiceSetupPage createInvoice= new createNewInvoiceSetupPage();
 	invoiveSetupPageAction finish= new invoiveSetupPageAction();
 	EditGroup editGroup= new EditGroup();
 	String invoiceName="vikas";
-	
-	
+
+
 	@BeforeClass
 	public void login() {
 		try {
@@ -37,12 +35,12 @@ public class InvoiceTest extends BaseTest {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
-		
+
 						}
 	@Test(priority = 1, description = "Create New Invoice")
-	public void create_NewInvoice() throws InterruptedException 
+	public void create_NewInvoice() throws InterruptedException
 	{
 		//ss.clickOnAdminTab();
 		invoiceSetup =adminPage.navigateToInvoiceSetup();
@@ -50,11 +48,11 @@ public class InvoiceTest extends BaseTest {
 		createInvoice.setInvoiceName(invoiceName);
 		createInvoice.setPaperSize();
 		createInvoice.setMargins();
-		
+
 		createInvoice.setCategory();
 		finish=createInvoice.saveInvoice();
 		invoiceSetup=finish.clkFininshBtn();
-		
+
 	}
 	@Test(priority=2, description ="Edit Existing invoice")
 	public void edit_invoice()
@@ -64,7 +62,7 @@ public class InvoiceTest extends BaseTest {
 		finish=createInvoice.clkNext();
 		invoiceSetup=finish.clkFininshBtn();
 	}
-	
+
 	@Test(priority=3, description ="Updating invoice setting in Edit group")
 	public void update_invoice_settings()
 	{
@@ -72,13 +70,13 @@ public class InvoiceTest extends BaseTest {
 		editGroup.clickEditGroup();
 		editGroup.selectPrimaryFrontInvoice(invoiceName);
 		editGroup.selectPrimaryBackInvoice(invoiceName);
-		
+
 		editGroup.clickSaveChanges();
 		editGroup.clickOkButton();
 		editGroup.assertSuccessMessage();
-		
-		
+
+
 	}
-	
+
 
 }
