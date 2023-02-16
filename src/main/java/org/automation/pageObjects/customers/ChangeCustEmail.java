@@ -133,7 +133,7 @@ public class ChangeCustEmail extends BasePage {
         clickPhysicalAddressToggleBtn();
         clickSaveCustomerBtn();
         clickOkBtn();
-        as.assertStrings(getSuccessMsgText(), SUCCESS_MESG);
+        as.assertEquals(getSuccessMsgText(), SUCCESS_MESG);
         return getCustomerId();
     }
 }

@@ -30,13 +30,13 @@ public class AddCommercialPlan extends BasePage {
 	    By successMsg = By.xpath("//*[@id=\"successPlnAlrt\"]/div/center/p/strong");
 	    By crossIcon = By.xpath("//*[@id=\"closePlnBtn\"]/i");
 
-	    String SUCCESS_MESG = "Adams Johhons has been successfully  created.  ";
+	    String SUCCESS_MESG = "Adams Johhons has been successfully created.  ";
 
 
 	    public void assertSuccessMessage() {
 	        WebdriverWaits.sleep(2);
 	        Assertions ass = new Assertions();
-	        ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
+	        ass.assertEquals(SUCCESS_MESG.trim(), getText_custom(successMsg).trim());
 	    }
 
 	    public void clickPublish() {

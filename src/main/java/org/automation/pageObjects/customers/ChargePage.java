@@ -126,7 +126,7 @@ public class ChargePage extends BasePage {
         enterFlatRate(flatRateText);
         enterPriceChargeDollar(priceChargeText);
         clickOnSaveBtn();
-        as.assertStrings(newRowAddUnderManualCharge(), SUCCESS_MSG);
+        as.assertEquals(newRowAddUnderManualCharge(), SUCCESS_MSG);
 
     }
 
@@ -142,7 +142,7 @@ public class ChargePage extends BasePage {
         clickOnGoingToggleBtn();
         enterPeriodOFCharge(PeriodOfChargeText);
         clickOnSaveBtn();
-        as.assertStrings(newRowAddUnderRecurringCharge(), SUCCESS_MSG);
+        as.assertEquals(newRowAddUnderRecurringCharge(), SUCCESS_MSG);
 
     }
 

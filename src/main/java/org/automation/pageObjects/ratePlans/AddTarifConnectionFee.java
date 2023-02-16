@@ -32,7 +32,7 @@ public class AddTarifConnectionFee extends BasePage {
 		    public void assertSuccessMessage() {
 		        WebdriverWaits.sleep(2);
 		        Assertions ass = new Assertions();
-		        ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
+		        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
 		    }
 		   
 		    

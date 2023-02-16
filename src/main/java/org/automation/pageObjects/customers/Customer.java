@@ -239,7 +239,7 @@ public class Customer  extends BasePage {
       	    
     	    public void selectPlanDropdownField(String PlanText) 
     	    {
-    	    	clickBtn_custom(planDropdownField, "Plan");
+    	    	click_custom(planDropdownField, "Plan");
     	    	selectDropDownByVisibleText_custom(planDropdownField, PlanText,"Plan ");	
     	    }
     	        
@@ -294,7 +294,7 @@ public class Customer  extends BasePage {
     	    	clickPhysicalAddressToggleBtn();
     	    	clickSaveCustomerBtn();
     	    	clickOkBtn();
-    	    	as.assertStrings(getSuccessMsgText(), SUCCESS_MESG);
+    	    	as.assertEquals(getSuccessMsgText(), SUCCESS_MESG);
     	    	return getCustomerId();
     		}
 

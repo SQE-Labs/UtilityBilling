@@ -32,19 +32,17 @@ import org.openqa.selenium.By;
 	    public void assertSuccessMessage() {
 	        WebdriverWaits.sleep(2);
 	        Assertions ass = new Assertions();
-	        ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
+	        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
 	    }
 	   
 
 	    public void clickCrossIcon() {
-	    	WebdriverWaits.waitForElementVisible(crossIcon, 2);
 	    	click_custom(crossIcon);
 	       // WebdriverWaits.waitForElementVisible(crossIcon, 2);
 	    }
 	    
 	    public void clickAddRange() {
 	    	click_custom(addRange);
-	        WebdriverWaits.waitForElementVisible(addRange, 2);
 	    }
 
 	    public void enterTieredRatesFrom(String fromRateText) {
@@ -63,7 +61,7 @@ import org.openqa.selenium.By;
 	    public void clickAdd() {
 	    	
 	    	//WebdriverWaits.waitForElementVisible(addButton, 2);
-	    	click_custom(addButton);
+	    	click_custom(addButton,"Add Button");
 	     //   WebdriverWaits.waitForElementVisible(addButton, 2);
 	    }
 

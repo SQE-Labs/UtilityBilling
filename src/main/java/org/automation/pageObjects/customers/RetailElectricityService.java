@@ -61,7 +61,7 @@ public class RetailElectricityService extends IndexPage {
         String ActualMsg = getText_custom(CustomerSuccessEditMsg);
         String ExpectedMsg1 = "Successfully saved service details.";
         Assertions assertions = new Assertions();
-        assertions.assertStrings(ExpectedMsg1, ActualMsg);
+        assertions.assertEquals(ExpectedMsg1, ActualMsg);
 
     }
 }

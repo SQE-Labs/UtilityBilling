@@ -29,7 +29,7 @@ public class AddTarifPlan extends BasePage{
 
     public void assertSuccessMessage() {
         Assertions ass = new Assertions();
-        ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
+        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
     }
 
     public void clickPublish() {
@@ -82,6 +82,7 @@ public class AddTarifPlan extends BasePage{
     }
 
     public void selectRatingMethod(String ratingMethodText) {
+    	WebdriverWaits.waitForElementClickable(ratingMethod, 4);
     	click_custom(ratingMethod);
         selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
        
@@ -104,9 +105,7 @@ public class AddTarifPlan extends BasePage{
 		enterRollupDescriptrion(rollupText);
 		selectChargeType(chargeTypeText);
 		selectAllocation(allocationText);
-		Thread.sleep(1000);
 		selectRatingMethod(ratingMethodText);
-		Thread.sleep(1000);
 		enterRate(rateText);
 		selectUnit(unitText);
 		clickAdd();
