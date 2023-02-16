@@ -1,11 +1,11 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.billRun;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class BillRunCycle extends BasePage {
-    public static String CUSTnum;
+	public  String CUSTnum;
     public By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
     public By MsgType = By.xpath("//select[@id='email_message_type']");
     public By Emailfrom = By.xpath("//input[@id='email_rem_from']");

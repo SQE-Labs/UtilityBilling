@@ -12,14 +12,13 @@ public class LocaleSettingTest extends BaseTest{
 
 		localePage.clickAdmin();
 		localePage.clickLocalesetting();
-		Thread.sleep(3000);
 		localePage.selectCurrencySymbol("Dollar");
 		localePage.selectDecimalPoints("3");
-		localePage.selectDecimalSymbol("Comma(,)");
+		localePage.selectThousandsSeparator("Comma(,)");
      	localePage.enterDecimalSymbol("0");
-     	localePage.selectDateFormat("dd/MM/yyyy");
-     	localePage.selectTimeFormat("hh:mm a");
-     	localePage.clickSaveChanges();
+     	localePage.clickDateFormat();
+    	localePage.clickTimeFormat();
+     	localePage.clickSaveChanges();;
      	localePage.assertSuccessMessage();
 
 

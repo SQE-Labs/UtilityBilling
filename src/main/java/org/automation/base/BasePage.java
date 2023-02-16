@@ -3,12 +3,13 @@ package org.automation.base;
 
 import org.automation.elements.Element;
 import org.automation.logger.Log;
+import org.automation.utilities.ActionEngine;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebElement;
 
-public class BasePage extends BaseTest {
+public class BasePage extends ActionEngine {
 
     private String parentWindow;
 
@@ -18,7 +19,7 @@ public class BasePage extends BaseTest {
      *
      * @param url URL to open
      */
-    protected void openUrl(String url) {
+    public void openUrl(String url) {
         Log.info("Open the URL [" + url + "]");
         getDriver().get(url);
     }
@@ -28,7 +29,7 @@ public class BasePage extends BaseTest {
      *
      * @return page URL
      */
-    protected String getPageUrl() {
+    public String getPageUrl() {
         Log.info("Get the Current URL");
         return getDriver().getCurrentUrl();
     }
@@ -38,7 +39,7 @@ public class BasePage extends BaseTest {
      *
      * @return page title
      */
-    protected String getPageTitle() {
+    public String getPageTitle() {
         Log.info("Get the Current Page Title");
         return getDriver().getTitle();
     }
@@ -46,7 +47,7 @@ public class BasePage extends BaseTest {
     /**
      * Refresh the current page.
      */
-    protected void refreshPage() {
+    public void refreshPage() {
         Log.info("Refresh the browser");
         getDriver().navigate().refresh();
     }
@@ -64,7 +65,7 @@ public class BasePage extends BaseTest {
      *
      * @param description description of the new window
      */
-    protected void switchToWindow(String description) {
+    public void switchToWindow(String description) {
         Log.info("Switch to window [" + description + "]");
         parentWindow = getDriver().getWindowHandle();
         for (String windowHandle : getDriver().getWindowHandles())
@@ -78,7 +79,7 @@ public class BasePage extends BaseTest {
      * @param description description of the new window
      * @param urlText     URL text that the window contains
      */
-    protected void switchToWindowContainingUrlText(String description, String urlText) {
+    public void switchToWindowContainingUrlText(String description, String urlText) {
         Log.info("Switch to window [" + description + "] which contains URL text [" + urlText + "]");
         parentWindow = getDriver().getWindowHandle();
         getDriver().getWindowHandles().stream().map(getDriver().switchTo()::window)
@@ -93,7 +94,7 @@ public class BasePage extends BaseTest {
      * @param description description of the new window
      * @param title       title that the window contains
      */
-    protected void switchToWindowContainingTitle(String description, String title) {
+    public void switchToWindowContainingTitle(String description, String title) {
         Log.info("Switch to window [" + description + "] which contains title [" + title + "]");
         parentWindow = getDriver().getWindowHandle();
         getDriver().getWindowHandles().stream().map(getDriver().switchTo()::window)
@@ -107,7 +108,7 @@ public class BasePage extends BaseTest {
      *
      * @param description description of the main window
      */
-    protected void switchToParentWindow(String description) {
+    public void switchToParentWindow(String description) {
         Log.info("Switch to parent window [" + description + "]");
         getDriver().switchTo().window(parentWindow);
     }
@@ -118,7 +119,7 @@ public class BasePage extends BaseTest {
      * @param description description of the frame
      * @param element     element of the frame
      */
-    protected void switchToFrame(Element element) {
+    public void switchToFrame(Element element) {
         Log.info("Switch to frame [" + element.getDescription() + "]");
         getDriver().switchTo().frame(element.getWebElement());
     }
@@ -129,7 +130,7 @@ public class BasePage extends BaseTest {
      * @param description description of the frame
      * @param nameOrId    name or ID of the frame
      */
-    protected void switchToFrame(String description, String nameOrId) {
+    public void switchToFrame(String description, String nameOrId) {
         Log.info("Switch to frame [" + description + "]");
         getDriver().switchTo().frame(nameOrId);
     }
@@ -140,7 +141,7 @@ public class BasePage extends BaseTest {
      * @param description description of the frame
      * @param index       index number of the frame
      */
-    protected void switchToFrame(String description, int index) {
+    public void switchToFrame(String description, int index) {
         Log.info("Switch to frame [" + description + "]");
         getDriver().switchTo().frame(index);
     }
@@ -150,7 +151,7 @@ public class BasePage extends BaseTest {
      *
      * @param description description of the window
      */
-    protected void switchToDefaultContent(String description) {
+    public void switchToDefaultContent(String description) {
         Log.info("Switch to main window [" + description + "]");
         getDriver().switchTo().defaultContent();
     }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.admin.miscellaneous.WorkFlowTypes;
+import org.automation.utilities.ActionEngine;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -26,6 +27,5 @@ public class WorkFlowTypesTest extends BaseTest {
 	    wft.clickSaveButton();
 	    wft.clickSaveButton();
 	    wft.enterSearchLog("AA TN"+clname);
-	  //  Assert.assertEquals(false, true);
   }
 }

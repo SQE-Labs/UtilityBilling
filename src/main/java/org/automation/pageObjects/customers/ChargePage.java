@@ -1,4 +1,4 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.customers;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;
@@ -37,6 +37,7 @@ public class ChargePage extends BasePage {
     }
 
     public void clickOnSaveBtn() {
+        scrollIntoView(SaveButton);
         clickBtn_custom(SaveButton, "Save");
     }
 
