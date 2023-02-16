@@ -3,6 +3,7 @@ package org.automation.pageObjects.admin;
 import org.automation.base.BasePage;
 import org.automation.pageObjects.admin.groupManager.EditGroup;
 import org.automation.pageObjects.admin.importSetupTools.Imports;
+import org.automation.pageObjects.admin.invoice.invoiceSetupPage;
 import org.automation.pageObjects.admin.miscellaneous.InvoiceSetup;
 
 import org.openqa.selenium.By;
@@ -20,10 +21,10 @@ public class AdminPage extends BasePage {
     public  By plans = By.xpath("//span[text()='Plans']");
     public  By customers = By.xpath("//p[text()='Customers']");
 
-    public InvoiceSetup navigateToInvoiceSetup(){
+    public invoiceSetupPage navigateToInvoiceSetup(){
         clickBtn_custom(AdminIcon);
         clickBtn_custom(invoiceSetupBtn);
-        return new InvoiceSetup();
+        return new invoiceSetupPage();
 
     }
     public  EditGroup navigateToEditGroup(){

@@ -47,7 +47,7 @@ public class BaseTest {
         return driver.get();
     }
 
-    public static void closeDriver() {
+   public static void closeDriver() {
         getDriver().close();
         driver.remove();
     }
