@@ -151,7 +151,7 @@ public class CreateServicePage extends BasePage {
         clickDemandToggleButton();
         clickCreateService();
         clickOkButton();
-        as.assertStrings(createNewRetailElectrcityService(), SUCCESS_MSG);
+        as.assertEquals(createNewRetailElectrcityService(), SUCCESS_MSG);
     }
 
 }

@@ -48,7 +48,7 @@ public class BaseTest {
     }
 
     public static void closeDriver() {
-        getDriver().close();
+     //   getDriver().close();
         driver.remove();
     }
 
@@ -108,6 +108,7 @@ public class BaseTest {
         }
         extent.endTest(extentTest);
         extent.flush();
+        getDriver().navigate().refresh();
     }
     public void login() {
         try {
@@ -127,7 +128,7 @@ public class BaseTest {
      */
     @AfterClass(alwaysRun = true)
     public void afterClass() {
-       // closeDriver();
+        closeDriver();
     }
 
     @AfterSuite(alwaysRun = true)

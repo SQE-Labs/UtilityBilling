@@ -30,13 +30,13 @@ public class RatePlanPage extends BasePage {
     By crossIcon = By.xpath("//*[@id='closePlnBtn']/i");
     By successMsg = By.xpath("//*[@id=\"successPlnAlrt\"]/div/center/p/strong");
 
-    String SUCCESS_MESG = "Adam johhns has been sucessfully";
+    String SUCCESS_MESG = "Adam Johhns has been successfully created.";
 
 
     public void assertSuccessMessage() {
         WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
-        ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
+        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
     }
 
     public void clickCrossIcon() {

@@ -29,7 +29,7 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
     public void assertSuccessMessage() {
         WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
-        ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
+        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
     }
     
 	
@@ -77,6 +77,13 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
     }
     
     public void selectUnit(String unitText) {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     	click_custom(unit);
         WebdriverWaits.waitForElementVisible(unit, 5);
         selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
@@ -84,6 +91,13 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
     }
     
     public void enterRate(String rateText) {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
         sendKeys_withClear(rate, rateText);
     }
     
@@ -109,9 +123,7 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
 		enterRollupDescriptrion(rollupText);
 		selectAllocation(allocationText);
 		enterChargeDescriptrion(chargeText);
-		Thread.sleep(2000);
 		selectUnit(unitText);
-		Thread.sleep(1000);
 		enterRate(rateText);
 		clickUpdateTarif();
 		clickPublish();

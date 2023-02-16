@@ -1,22 +1,79 @@
 package org.automation.utilities;
 
-import com.aventstack.extentreports.Status;
+import static com.relevantcodes.extentreports.LogStatus.PASS;
+import static com.relevantcodes.extentreports.LogStatus.FAIL;
+
+
+import org.automation.base.BaseTest;
+import org.automation.logger.Log;
 import org.testng.Assert;
-import org.testng.asserts.Assertion;
-import org.testng.asserts.SoftAssert;
-
-public class Assertions {
 
 
-    public void assertStrings(String actual, String expected) {
-        Assertion softAssert = new SoftAssert();
-        softAssert.assertEquals(actual, expected);
+public class Assertions extends BaseTest {
+	
 
+    public void assertEquals(String actual, String expected) {
+
+    	try {
+    		Assert.assertEquals(actual, expected);
+    		extentTest.log(PASS, "Assertion passed , Value is : "+actual);
+    	}
+    	catch(AssertionError e) {
+    		Log.info("excpetion in assertEquals method");
+            extentTest.log(FAIL, "Assertion failed => "+"Actual Value : '"+ actual + "' | Expected Value : '" + expected +"'" );
+    	}
     }
 
-    public void assertBoolean(boolean value) {
-        Assertion softAssert = new SoftAssert();
-        softAssert.assertTrue(value);
+    
+    public void assertNotEquals(String actual, String expected) {
+       
+    	try {
+    		Assert.assertNotEquals(actual, expected);
+           extentTest.log(PASS, "Assertion passed , Value is : "+actual);
+    	}
+    	catch(AssertionError e) {
+    		Log.info("excpetion in assertEquals method");
+            extentTest.log(FAIL, "Assertion failed : "+"Actual Value is "+ actual + " , Expected Value is " + expected );
+    	}
+    }
+    
+    
+    public void assertTrue(boolean value) {
+    	try {
+        Assert.assertTrue(value);
+        extentTest.log(PASS, "Assertion passed  : "+value );
+
+    	}
+    	catch(Exception e) {
+            extentTest.log(FAIL, "Assertion failed : "+"Actual Value "+value );
+          //  throw new RuntimeException(e);
+    	}
+
+    }
+    
+    public void assertFalse(boolean value) {
+    	try {
+        Assert.assertFalse(value);
+        extentTest.log(PASS, "Assertion passed :  "+value );
+
+    	}
+    	catch(Exception e) {
+            extentTest.log(FAIL, "Assertion failed : "+"Actual Value "+value );
+          //  throw new RuntimeException(e);
+    	}
+
+    }
+    
+    public void assertNotNull(String value) {
+    	try {
+        Assert.assertNotNull(FAIL);
+        extentTest.log(PASS, "Assertion passed "+value );
+
+    	}
+    	catch(Exception e) {
+            extentTest.log(FAIL, "Assertion failed : "+"Actual Value "+value );
+          //  throw new RuntimeException(e);
+    	}
 
     }
     //String Asserts

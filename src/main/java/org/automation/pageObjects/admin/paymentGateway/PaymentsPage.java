@@ -96,7 +96,7 @@ public class PaymentsPage  extends BasePage {
         clickSubmitTransactionButton();
         clickOkButton();
         clickOnViewHistoryButton();
-        as.assertStrings(entryMsgOnAddingPaymentByCreditCard(), SUCCESS_MSG);
+        as.assertEquals(entryMsgOnAddingPaymentByCreditCard(), SUCCESS_MSG);
         Thread.sleep(3000);
         clickOnMakePaymentButton();
 
@@ -114,7 +114,7 @@ public class PaymentsPage  extends BasePage {
         enterComments(commentText);
         clickSubmitTransactionButton();
         clickOkButton();
-        as.assertStrings(entryMsgOnAddingPaymentByCreditCard(), SUCCESS_MSG_SECURITY);
+        as.assertEquals(entryMsgOnAddingPaymentByCreditCard(), SUCCESS_MSG_SECURITY);
 
     }
 }

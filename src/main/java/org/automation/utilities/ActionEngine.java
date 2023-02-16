@@ -98,6 +98,7 @@ public class ActionEngine extends BaseTest {
             throw new RuntimeException(e);
 
         }
+       
     }
 
 
@@ -126,7 +127,7 @@ public class ActionEngine extends BaseTest {
                 Thread.sleep(1000);
             }catch(Exception e){
                extentTest.log(FAIL, "Unable to hover mouse on field: " +fieldName +" due to exception: "+e);
-
+               throw new RuntimeException(e);
             }
     }
 
@@ -209,9 +210,16 @@ public class ActionEngine extends BaseTest {
     }
 
     public void selectCheckBox(By path, String... fieldName) {
+    	try {
         String var = fieldName.length > 0 ? fieldName[0] : path.toString();
         CheckBox checkBox = new CheckBox(var, path);
         checkBox.check();
+        extentTest.log(PASS, "Check box selected");
+
+    	 } catch (Exception e) {
+             extentTest.log(FAIL, "Unable to get text due to exception : \n" + e);
+
+         }
     }
 
     public void uncheckCheckBox(By path, String... fieldName) {

@@ -18,13 +18,13 @@ public class EditRatePlan_WithAllocaionBucket extends BasePage {
     By successMsg = By.xpath("//*[@id=\"successPlnAlrt\"]/div/center/p/strong");
     By crossIcon = By.xpath("//*[@id=\"closePlnBtn\"]");  //*[@id="closePlnBtn"]/i
 
-    String SUCCESS_MESG = "Adam johhons has been sucessfully updated.";
+    String SUCCESS_MESG = "Commercial plan has been sucessfully updated.";
 
 
     public void assertSuccessMessage() {
         WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
-        ass.assertStrings(SUCCESS_MESG, getText_custom(successMsg));
+        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
     }
 	
 	
