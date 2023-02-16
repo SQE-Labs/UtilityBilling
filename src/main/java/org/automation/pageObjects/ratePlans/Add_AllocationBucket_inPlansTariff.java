@@ -109,7 +109,7 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
 		enterRollupDescriptrion(rollupText);
 		selectAllocation(allocationText);
 		enterChargeDescriptrion(chargeText);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		selectUnit(unitText);
 		Thread.sleep(1000);
 		enterRate(rateText);

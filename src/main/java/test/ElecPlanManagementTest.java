@@ -62,7 +62,7 @@ public class ElecPlanManagementTest extends BaseTest {
 	
 	@Test(priority = 8, description = "Add Allocation Bucket in Plans Tariff")
 	public void addAllocationBucket() throws InterruptedException {
-	addAllocation.add_Allocation("Commercial Plan","Electric Discount","None","Add New Bucket2 105414","Electricity Charges","Usage Flat Rate","Kilowatt (KW)","10");
+	addAllocation.add_Allocation("Commercial Plan","Electric Discount","None","Add New Bucket2 105414","Electricity Charges","Usage Flat Rate","Kilowatt (kW)","10");
 	}
 	
 	@Test(priority = 9, description = "Autogenrate_Four_plans")

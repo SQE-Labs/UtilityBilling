@@ -22,12 +22,21 @@ public class LocaleSetting extends BasePage {
 
 
     public void clickAdmin() {
-        clickBtn_custom(adminTab);
+    	click_custom(adminTab);
+        //	WebdriverWaits.waitForElementVisible(editGroup, 2);
+    }
+    
+    public void clickDateFormat() {
+    	click_custom(dateFormat);
+        //	WebdriverWaits.waitForElementVisible(editGroup, 2);
+    }
+    public void clickTimeFormat() {
+    	click_custom(timeFormat);
         //	WebdriverWaits.waitForElementVisible(editGroup, 2);
     }
 
     public void clickLocalesetting() {
-        clickBtn_custom(localeSubTab);
+    	click_custom(localeSubTab);
     }
 
     public void selectCurrencySymbol(String currencySymbolText) {
@@ -46,26 +55,27 @@ public class LocaleSetting extends BasePage {
     }
 
     public void selectDecimalSymbol(String decimalSymbolText) {
-        WebdriverWaits.waitForElementVisible(decimalPoints, 1);
+        WebdriverWaits.waitForElementVisible(decimalPoints, 2);
         selectDropDownByVisibleText_custom(decimalPoints, decimalSymbolText, "Type of decimal symbol");
     }
 
     public void selectDateFormat(String dateFormatText) {
-        WebdriverWaits.waitForElementVisible(dateFormat, 1);
+    	 WebdriverWaits.waitForElementVisible(dateFormat, 2);
         selectDropDownByVisibleText_custom(dateFormat, dateFormatText, "Select Date Format");
     }
 
     public void selectTimeFormat(String timeFormatText) {
-        WebdriverWaits.waitForElementVisible(timeFormat, 1);
+        WebdriverWaits.waitForElementVisible(timeFormat, 2);
         selectDropDownByVisibleText_custom(timeFormat, timeFormatText, "Select time Format");
     }
 
     public void enterDecimalSymbol(String userNameText) {
         sendKeys_withClear(decimalSymbol, userNameText);
+      
     }
 
     public void clickSaveChanges() {
-        clickBtn_custom(saveChanges);
+    	click_custom(saveChanges);
 
     }
 

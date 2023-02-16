@@ -11,10 +11,12 @@ public class ChangePasswordTest extends BaseTest {
 		Password cp = new Password();
 		cp.clickAdmin();
 		cp.clickPassword();
-		cp.enterNewPassword("sqe.user");
-		cp.ReEnterNewPassword("sqe.user");
+		cp.enterNewPassword("Sqeuser@1");
+		cp.ReEnterNewPassword("Sqeuser@1");
 		cp.clickChangePassword();
 		cp.clickConfirmPopup();
 		cp.getInformationMessage();
   }
 }
+//Sqe#1234
+//password=Sqe123!@#

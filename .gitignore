@@ -7,4 +7,5 @@ test-output
 extent-reports
 .idea
 test-report
+test-report/
 /.metadata/
