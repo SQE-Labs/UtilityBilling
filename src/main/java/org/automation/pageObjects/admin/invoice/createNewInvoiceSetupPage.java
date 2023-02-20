@@ -1,6 +1,5 @@
 package org.automation.pageObjects.admin.invoice;
 
-import java.util.random.RandomGenerator;
 
 import org.automation.base.BasePage;
 import org.automation.pageObjects.admin.miscellaneous.InvoiceSetup;
@@ -8,9 +7,9 @@ import org.automation.utilities.ExplicitWait;
 import org.openqa.selenium.By;
 
 public class createNewInvoiceSetupPage extends BasePage {
-	 
-	
-	
+
+
+
 
 	By invoiceName= By.xpath("//input[@id='invoice_name']");
 	By paperSize= By.xpath("//*[@name='paper_size']");
@@ -42,55 +41,55 @@ public class createNewInvoiceSetupPage extends BasePage {
 	By category22 =By.xpath("//input[@id='ITEMIZATION-ACCOUNT-LEVEL-LIST']");
 	By saveInvoiceBtn = By.xpath("//button[@id='saveInvoice']");
 	By next= By.xpath("//button[@id='btnNext']");
-	
+
 	public void setInvoiceName(String name)
 	{
 		sendKeys_withClear(invoiceName, name, "InvoiceName");
-		
-		
+
+
 	}
-	
+
 	public void setPaperSize()
 	{
 		selectDropDownByIndex_custom(paperSize,2, "PaperSize");
-		
+
 	}
-	
-	public void setMargins() 
+
+	public void setMargins()
 	{
 		sendKeys_custom(marginTop,"", "Top");
 		sendKeys_custom(marginBottom,"", "Bottom");
 		sendKeys_custom(marginLeft,"", "Left");
 		sendKeys_custom(marginRight,"", "Right");
-		
+
 	}
-	
-	public void setCategory()  
+
+	public void setCategory()
 	{
 		ScrollDownThePage(0, 1000);
 		selectCheckBox(category2, "CHARGESUMMARY");
 		selectCheckBox(category3, "CHARGESUMMARY-LIST");
 		selectCheckBox(category4, "ITEMIZATION");
-		selectCheckBox(category5, "ITEMIZATION-LIST-HEADER");		
+		selectCheckBox(category5, "ITEMIZATION-LIST-HEADER");
 	}
-	
+
 	public invoiveSetupPageAction saveInvoice()
 	{
 		ScrollDownThePageMax(800);
 		clickBtn_custom(saveInvoiceBtn, "Save Invoice");
 		return new invoiveSetupPageAction();
 	}
-	
+
 	public InvoiceSetup backToInvoice()
 	{
 		clickBtn_custom(backToInvoiceList, "backToInvoiceList");
 		return new InvoiceSetup();
-		
+
 	}
 	public invoiveSetupPageAction clkNext()
 	{
 		clickBtn_custom(next,"Next");
 		return new invoiveSetupPageAction();
 	}
-	
+
 }
