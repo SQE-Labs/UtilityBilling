@@ -209,10 +209,12 @@ public class ActionEngine extends BaseTest {
         return text;
     }
 
+
     public void selectCheckBox(By path, String... fieldName) {
     	try {
         String var = fieldName.length > 0 ? fieldName[0] : path.toString();
         CheckBox checkBox = new CheckBox(var, path);
+
         checkBox.check();
         extentTest.log(PASS, "Check box selected");
 
