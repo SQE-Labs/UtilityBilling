@@ -6,29 +6,42 @@ import org.automation.utilities.RandomGenerator;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class SetUpAddNewBucket extends BasePage {
+public class UpdateAllocationBucket extends BasePage {
 
 	BasePage bp = new BasePage();
 	RandomGenerator randomGenerator = new RandomGenerator();
 
 	public By adminIcon = By.xpath("//a[@title='Administration']/i");
 	public By allocation = By.xpath("(//*[@class='quick-button-small'])[19]");
-	public By addAllocation = By.xpath("//*[@class='btn btn-mini btn-primary']");
-	public By discription = By.id("newBucket");
-	public By list = By.xpath("//*[@id=\"myModal\"]/div/div/div/div/div[3]/div[2]/button");
-	public By newBucket = By.xpath("//tbody/tr[last()]/td[3]");
+	public By editAllocation = By.xpath("(//*[@class='btn btn-success'])[1]");
+	public By discription = By.id("editBucket");
+	public By update = By.xpath("(//*[@class='btn btn-primary'])[2]");
+	public By updatedAllocation = By.xpath("//*[@id='Desc_617']");
+	public By newBucket = By.xpath("//*[@id='Desc_626']");
 	public By saveChanges = By.xpath("//*[@class='btn btn-mini btn-success']");
 	public By successMsg = By.id("successMsg");
-
+	
 	String SUCCESS_MESG = "Allocation setup has been successfully saved.";
+	
+	
+	public void fetchdetails() {
+			getText_custom(newBucket);
+			bp.scrollIntoView(saveChanges);
+		}
 
 	public void clickSaveChanges() {
+		bp.scrollIntoView(saveChanges);
 		click_custom(saveChanges);
 	}
 
-	public void fetchBucket() {
+	public void clickUpdate() {
+		click_custom(update);
+	}
+
+	public void bucketName() {
 		getText_custom(newBucket);
 		bp.scrollIntoView(saveChanges);
+
 	}
 
 	public void clickAdmin() {
@@ -40,30 +53,26 @@ public class SetUpAddNewBucket extends BasePage {
 		click_custom(allocation);
 	}
 
-	public void clickAddAllocation() {
-		bp.scrollIntoView(addAllocation);
-		click_custom(addAllocation);
+	public void clickEditAllocation() {
+		click_custom(editAllocation);
 	}
 
-	public void clickAddToList() {
-		click_custom(list);
-	}
-
+	
 	public void assertSuccessMessage() {
 		WebdriverWaits.sleep(2);
 		Assertions ass = new Assertions();
 		ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
 	}
+	
 
-	public void setUpBucket(String discriptionText) throws InterruptedException {
+	public void updateBucket(String discriptionText) throws InterruptedException {
 		clickAdmin();
 		clickAllocation();
-		clickAddAllocation();
-		String allocationBucket = "New Bucket" + randomGenerator.requiredDigits(3);
-		sendKeys_custom(discription, allocationBucket);
-		Thread.sleep(1000);
-		clickAddToList();
-		fetchBucket();
+		clickEditAllocation();
+		String allocationBucket = "Update Bucket" + randomGenerator.requiredDigits(5);
+		sendKeys_withClear(discription, allocationBucket);
+		clickUpdate();
+		fetchdetails();
 		clickSaveChanges();
 		assertSuccessMessage();
 

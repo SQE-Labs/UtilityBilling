@@ -136,7 +136,7 @@ public class Customer  extends BasePage {
 	    }
 	   public void clickPhysicalAddressToggleBtn() 
 	    {
-	    	clickBtn_custom(physicalAddressTogglebutton, "Use Physical Address ?");
+	    	click_custom(physicalAddressTogglebutton, "Use Physical Address ?");
 	    }
 	    public void clickSaveCustomerBtn() 
 	    {
@@ -246,26 +246,26 @@ public class Customer  extends BasePage {
     	 public void entercustomerPortaldetails(String AllowAccessToggleText,String PasswprdText)
     	  {
     		  
- 	    	clickBtn_custom(CustomerPortalToogle, "Allow Access");
+    		 click_custom(CustomerPortalToogle, "Allow Access");
  	    	
  	    	sendKeys_custom(CustomerPortalPassword, PasswprdText, "Password");
- 	    	clickBtn_custom(CustomerPortalPassword, "Password");
+ 	    	click_custom(CustomerPortalPassword, "Password");
 
     	 }
     	 
     	    
     	  public void newCustomerDefaultSetting(String ToggleText1,String ToggleText2 )
     	  {
-   	    	clickBtn_custom(NewCustomerDefaultToggle1, "Apply Group's Invoice Setting?");
-   	    	clickBtn_custom(NewCustomerDefaultToggle2, "Apply Group's Billing Option?");
+    		  click_custom(NewCustomerDefaultToggle1, "Apply Group's Invoice Setting?");
+    		  click_custom(NewCustomerDefaultToggle2, "Apply Group's Billing Option?");
 
     	  }
     	  public void enterNoteAndSave(String NoteText)
     	  {
     		   sendKeys_custom(Note, NoteText, "Notes");
     	    	bp.scrollIntoView(saveCustomerbutton);
-    		   clickBtn_custom(saveCustomerbutton, "Save Customer");
-    		   clickBtn_custom(okbutton, "OK");
+    	    	click_custom(saveCustomerbutton, "Save Customer");
+    	    	click_custom(okbutton, "OK");
     	  }
     	  public void getCustomerIdText()
     	  {
