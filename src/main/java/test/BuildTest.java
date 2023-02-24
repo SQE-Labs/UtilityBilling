@@ -1,102 +1,185 @@
 package test;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
+import java.net.MalformedURLException;
 import static com.relevantcodes.extentreports.LogStatus.FAIL;
+import static com.relevantcodes.extentreports.LogStatus.PASS;
 import org.automation.base.BaseTest;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.PropertiesUtil;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BuildTest extends BaseTest {
 
 	By copyright = By.xpath("/html/body/div[3]/p/span[1]");
 
-	@Test(priority = 1, enabled = true, description = "Verify First URL")
+	  @BeforeClass(alwaysRun = true)
+	    public void beforeClass() throws MalformedURLException {
+	        String browser = PropertiesUtil.getPropertyValue("browser");
+	        String url = PropertiesUtil.getPropertyValue("url");
+
+	        switch (browser) {
+	            case "chrome":
+	                WebDriverManager.chromedriver().setup();
+	                // driver = new ChromeDriver(BrowserOptions.getChromeOptions());
+	                driver.set(new ChromeDriver());
+	                break;
+
+	            case "fireFox":
+	                // WebDriverManager.firefoxdriver().setup();
+	                //driver = new FirefoxDriver(BrowserOptions.getFirefoxOptions());
+	                break;
+	            default:
+	                throw new IllegalStateException("Unexpected value: " + browser);
+	        }
+	  
+
+	        getDriver().manage().window().maximize();
+	        
+	    }
+	@Test(priority = 1, enabled = true, description = "Verify markettest.utilibill.com URL")
 	public void validate_MarketTest() throws InterruptedException {
 
 		SoftAssert softAssert = new SoftAssert();
-
+		By copyright = By.className("copyright-text");
 		String versiontext = "https://markettest.utilibill.com.au/marketbilling/";
-		Thread.sleep(5000);
-		versiontext = getDriver().findElement(copyright).getText();
-		Thread.sleep(5000);
-		softAssert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL1", "buildversion.properties"));
-		extentTest.log(PASS, "==> Version Text " + versiontext);
+		try {
+			getDriver().get(versiontext);
+			WebdriverWaits.waitForElementVisible(copyright, 5);
+          versiontext = getDriver().findElement(copyright).getText();
+		}catch(Exception e) {
+			extentTest.log(FAIL, "Element not found Version Text " + versiontext);
 
-		softAssert.assertAll();
+		}
+		Assertions sassert = new Assertions();
+		sassert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL1", "buildversion.properties"));
+
+
 	}
 
-	@Test(priority = 2, enabled = true, description = "Verify Second URL")
+	@Test(priority = 2, enabled = true, description = "Verify utbr8.utilibill.com URL")
 	public void validate_Utbr8Test() {
 
 		SoftAssert softAssert = new SoftAssert();
-
 		String versiontext = "https://utbr8.utilibill.com.au/billing/";
-		versiontext = getDriver().findElement(copyright).getText();
-		softAssert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL2", "buildversion.properties"));
-		extentTest.log(PASS, "==> Version Text " + versiontext);
-		softAssert.assertAll();
+		try {
+			getDriver().get(versiontext);
+			WebdriverWaits.waitForElementVisible(copyright, 5);
+          versiontext = getDriver().findElement(copyright).getText();
+		}catch(Exception e) {
+			extentTest.log(FAIL, "Element not found Version Text " + versiontext);
+
+		}
+		Assertions sassert = new Assertions();
+		sassert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL2", "buildversion.properties"));
+
+
 	}
 
-	@Test(priority = 3, enabled = true, description = "Verfiy Third URL")
+	@Test(priority = 3, enabled = true, description = "Verfiy nuruat.utilibill.com URL")
 	public void validateNuruatTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 
 		String versiontext = "https://nuruat.utilibill.com.au/nur/";
-		versiontext = getDriver().findElement(copyright).getText();
-		softAssert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL3", "buildversion.properties"));
-		extentTest.log(PASS, "==> Version Text " + versiontext);
-		softAssert.assertAll();
+		try {
+			getDriver().get(versiontext);
+			WebdriverWaits.waitForElementVisible(copyright, 5);
+          versiontext = getDriver().findElement(copyright).getText();
+		}catch(Exception e) {
+			extentTest.log(FAIL, "Element not found Version Text " + versiontext);
+
+		}
+		Assertions sassert = new Assertions();
+		sassert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL3", "buildversion.properties"));
+
+
 	}
 
-	@Test(priority = 4, enabled = true, description = "Verfiy Fourth URL")
+	@Test(priority = 4, enabled = true, description = "Verfiy utbr8uat.utilibill.com URL")
 	public void validateUtbr8uatTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 
 		String versiontext = "https://utbr8uat.utilibill.com.au/billing";
-		versiontext = getDriver().findElement(copyright).getText();
-		softAssert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL4", "buildversion.properties"));
-		extentTest.log(PASS, "==> Version Text " + versiontext);
-		softAssert.assertAll();
+		try {
+			getDriver().get(versiontext);
+			WebdriverWaits.waitForElementVisible(copyright, 5);
+          versiontext = getDriver().findElement(copyright).getText();
+		}catch(Exception e) {
+			extentTest.log(FAIL, "Element not found Version Text " + versiontext);
+
+		}
+		Assertions sassert = new Assertions();
+		sassert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL4", "buildversion.properties"));
+
+
 	}
 
-	@Test(priority = 5, enabled = true, description = "Verfiy Fifth URL")
+	@Test(priority = 5, enabled = true, description = "Verfiy test.utilitybilling.com URL")
 	public void validatetestTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 
 		String versiontext = "https://test.utilitybilling.com/billing/";
-		versiontext = getDriver().findElement(copyright).getText();
-		softAssert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL5", "buildversion.properties"));
-		extentTest.log(PASS, "==> Version Text " + versiontext);
-		softAssert.assertAll();
+		try {
+			getDriver().get(versiontext);
+			WebdriverWaits.waitForElementVisible(copyright, 5);
+          versiontext = getDriver().findElement(copyright).getText();
+		}catch(Exception e) {
+			extentTest.log(FAIL, "Element not found Version Text " + versiontext);
+
+		}
+		Assertions sassert = new Assertions();
+		sassert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL5", "buildversion.properties"));
+
+
 	}
 
-	@Test(priority = 6, enabled = true, description = "Verfiy Sixth URL")
+	@Test(priority = 6, enabled = true, description = "Verfiy go.utilitybilling.com URL")
 	public void validateGoTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 
 		String versiontext = "https://go.utilitybilling.com/billing/";
-		versiontext = getDriver().findElement(copyright).getText();
-		softAssert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL6", "buildversion.properties"));
-		extentTest.log(PASS, "==> Version Text " + versiontext);
-		softAssert.assertAll();
+		try {
+			getDriver().get(versiontext);
+			WebdriverWaits.waitForElementVisible(copyright, 5);
+          versiontext = getDriver().findElement(copyright).getText();
+		}catch(Exception e) {
+			extentTest.log(FAIL, "Element not found Version Text " + versiontext);
+
+		}
+		Assertions sassert = new Assertions();
+		sassert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL6", "buildversion.properties"));
+
+
 	}
 
-	@Test(priority = 7, enabled = true, description = "Verfiy Seventh URL")
+	@Test(priority = 7, enabled = true, description = "Verfiy test.utilitybilling.com URL")
 	public void validateUtilityMarketTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 
 		String versiontext = "https://test.utilitybilling.com/marketbilling/";
-		versiontext = getDriver().findElement(copyright).getText();
-		softAssert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL7", "buildversion.properties"));
-		extentTest.log(PASS, "==> Version Text " + versiontext);
-		softAssert.assertAll();
+		try {
+			getDriver().get(versiontext);
+			WebdriverWaits.waitForElementVisible(copyright, 5);
+          versiontext = getDriver().findElement(copyright).getText();
+		}catch(Exception e) {
+			extentTest.log(FAIL, "Element not found Version Text " + versiontext);
+
+		}
+		Assertions sassert = new Assertions();
+		sassert.assertEquals(versiontext, PropertiesUtil.getPropertyValue("URL7", "buildversion.properties"));
+
+
 	}
 
 //	@Test(priority = 8, enabled = true, description = "verify Customer Tabs")
