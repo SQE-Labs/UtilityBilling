@@ -95,12 +95,10 @@ public class ActionEngine extends BaseTest {
         } catch (Exception e) {
             //log failure in extent
             extentTest.log(FAIL, "Unable to click on field: " + var + " due to exception: \n " + e);
-            throw new RuntimeException(e);
+           throw new RuntimeException(e);
 
         }
-       
     }
-
 
     //clear data from field
     public void clear_custom(By element) {

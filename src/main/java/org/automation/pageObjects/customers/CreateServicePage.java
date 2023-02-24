@@ -69,15 +69,15 @@ public class CreateServicePage extends BasePage {
 
     public void clickOnOverview() {
 
-        clickBtn_custom(Overviewtab, "Overview");
+    	click_custom(Overviewtab, "Overview");
     }
 
     public void clickRetailElectricity() {
-        clickBtn_custom(AddRetailelect, "Retail Electricity Icon");
+    	click_custom(AddRetailelect, "Retail Electricity Icon");
     }
 
     public void selectPlan(String selectPlanText) {
-        clickBtn_custom(SelectPlan, "Plan");
+    	click_custom(SelectPlan, "Plan");
         selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
     }
 
@@ -97,29 +97,29 @@ public class CreateServicePage extends BasePage {
     }
 
     public void selectMeterConfiguration(String MeterConfigurationText) {
-        clickBtn_custom(MeterConfig, "Meter Cnfiguration");
+    	clickBtn_custom(MeterConfig, "Meter Cnfiguration");
         selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText, "Meter Configuration");
     }
 
     public void selectreadType(String readingTypeText) {
         scrollIntoView(ReadType);
-        clickBtn_custom(ReadType, "Reading Type");
+        click_custom(ReadType, "Reading Type");
         selectDropDownByVisibleText_custom(ReadType, readingTypeText, "Reading Type");
     }
 
     public void clickDemandToggleButton() {
-        clickBtn_custom(DemandReadsToggle, "Enable Demand Type");
+    	click_custom(DemandReadsToggle, "Enable Demand Type");
 
     }
 
     public void clickCreateService() {
         scrollIntoView(CreateElectServ);
-        clickBtn_custom(CreateElectServ, "Create Service");
+        click_custom(CreateElectServ, "Create Service");
 
     }
 
     public void clickOkButton() {
-        clickBtn_custom(OK_btn, "Ok");
+    	click_custom(OK_btn, "Ok");
 
     }
 
@@ -132,11 +132,11 @@ public class CreateServicePage extends BasePage {
     {
     	sendKeys_custom(recordId, recordIdText, "Record Id");
     	WebdriverWaits.waitForElementVisible(searchBtn, 10);
-    	clickBtn_custom(searchBtn, "Search icon");
+    	click_custom(searchBtn, "Search icon");
     	 
     	
     }
-    public void newRetailElectricitySevice(String recordIdText,String selectPlanText, String MeterConfigurationText, String readingTypeText) {
+    public void newRetailElectricitySevice(String recordIdText,String selectPlanText, String MeterConfigurationText, String readingTypeText) throws InterruptedException {
         // 1. Customer is already created using Customer flow.
         // 2. Adding electricity service to a customer.
         // 3. Overview > Electricity
@@ -144,6 +144,7 @@ public class CreateServicePage extends BasePage {
         clickOnSearchBtn(recordIdText);
         clickOnOverview();
         clickRetailElectricity();
+      //  Thread.sleep(1000);
         selectPlan(selectPlanText);
         enterMeterNumber();
         selectMeterConfiguration(MeterConfigurationText);

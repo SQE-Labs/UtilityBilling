@@ -33,20 +33,20 @@ public class ChargePage extends BasePage {
     String SUCCESS_MSG = "Showing 1 to 1 of 1 entries";
 
     public void clickOnChargeTab() {
-        clickBtn_custom(Chargetab, "Charge");
+        click_custom(Chargetab, "Charge");
     }
 
     public void clickOnSaveBtn() {
         scrollIntoView(SaveButton);
-        clickBtn_custom(SaveButton, "Save");
+        click_custom(SaveButton, "Save");
     }
 
     public void clickOnPlusIcon() {
-        clickBtn_custom(AddIconForManualCharge, "Plus Icon");
+    	click_custom(AddIconForManualCharge, "Plus Icon");
     }
 
     public void selectService(int serviceByIndex) {
-        clickBtn_custom(ServiceDropdownField, "Service");
+    	click_custom(ServiceDropdownField, "Service");
         selectDropDownByIndex_custom(ServiceDropdownField, serviceByIndex, "Service");
     }
 
@@ -59,8 +59,8 @@ public class ChargePage extends BasePage {
     }
 
     public void enterStartDate() {
-        clickBtn_custom(ClickOnDatepickerField, "Start Date");
-        clickBtn_custom(ActiveDayField, "Datepicker");
+    	click_custom(ClickOnDatepickerField, "Start Date");
+    	click_custom(ActiveDayField, "Datepicker");
     }
 
     public void enterUnitsRate(String unitText) {
@@ -77,25 +77,25 @@ public class ChargePage extends BasePage {
     }
 
     public void clickOkButton() {
-        clickBtn_custom(clickOnOkButton, "Ok");
+    	click_custom(clickOnOkButton, "Ok");
     }
 
     public void clickOnRecurringPlusIcon() {
-        clickBtn_custom(AddIconForRecurringCharge, "Plus Icon ");
+    	click_custom(AddIconForRecurringCharge, "Plus Icon ");
     }
 
     public void enterServiceDropdownOption(int serviceText) {
-        clickBtn_custom(ServiceDropdownRecurringField, "Service");
+    	click_custom(ServiceDropdownRecurringField, "Service");
         selectDropDownByIndex_custom(ServiceDropdownRecurringField, serviceText, "Service");
     }
 
     public void enterChargeDescriptionDropdownOption(int chargeText) {
-        clickBtn_custom(CodeField, "Charge Description");
+    	click_custom(CodeField, "Charge Description");
         selectDropDownByIndex_custom(CodeField, chargeText, "Charge Description");
     }
 
     public void clickOnGoingToggleBtn() {
-        clickBtn_custom(ChargeOngoingField, "On Going - always Recurring");
+    	click_custom(ChargeOngoingField, "On Going - always Recurring");
     }
 
     public void enterPeriodOFCharge(String PeriodOfChargeText) {

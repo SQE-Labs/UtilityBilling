@@ -34,7 +34,6 @@ import org.openqa.selenium.By;
 	        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
 	    }
 	   
-	    
 	    public void clickAddRange() {
 	    	click_custom(addRange);
 	        WebdriverWaits.waitForElementVisible(addRange, 2);
@@ -55,8 +54,6 @@ import org.openqa.selenium.By;
 
 	    public void clickAdd() {
 	    	 WebdriverWaits.waitForElementVisible(addTarrif, 2);
-	    	click_custom(addButton);
-	        WebdriverWaits.waitForElementVisible(addButton, 2);
 	        click_custom(addButton);
 	    }
 

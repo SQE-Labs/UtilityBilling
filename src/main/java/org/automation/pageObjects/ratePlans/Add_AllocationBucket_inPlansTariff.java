@@ -23,7 +23,7 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage{
     By successMsg = By.xpath("//*[@id=\"successPlnAlrt\"]/div/center/p/strong");
     By crossIcon = By.xpath("//*[@id=\"closePlnBtn\"]/i");
 
-    String SUCCESS_MESG = "Adam johhons has been sucessfully updated.";
+    String SUCCESS_MESG = "Commercial plan has been successfully updated.";
 
 
     public void assertSuccessMessage() {

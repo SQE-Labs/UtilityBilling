@@ -35,7 +35,7 @@ public class ElecPlanManagementTest extends BaseTest {
 		tarifPlan.addTarif("Usage charge","None","Electricity Charges","Tester1","Network Usage Flat Rate","Kilowatt (KW)","65");		
 	   }
 	
-	@Test(priority = -1, description = "Add Monthly Tarif")
+	@Test(priority = 3, description = "Add Monthly Tarif")
 	public void addMonthlyTarif() throws InterruptedException {
 		monthlyTarif.addMonthlyTarif("monthly administration fee","None","Electricity Charges","Tester1","Usage Tiered Monthly","Kilowatt (kW)","No Tax","10","100","1000");		
 	   }
@@ -62,7 +62,7 @@ public class ElecPlanManagementTest extends BaseTest {
 	
 	@Test(priority = 8, description = "Add Allocation Bucket in Plans Tariff")
 	public void addAllocationBucket() throws InterruptedException {
-	addAllocation.add_Allocation("Commercial Plan","Electric Discount","None","Add New Bucket2 105414","Electricity Charges","Usage Flat Rate","Kilowatt (kW)","10");
+	addAllocation.add_Allocation("Commercial Plan","Electric Discount","None","Add New Bucket2 105414","Electricity Charges","Usage Flat Rate","Kilowatt (KW)","10");
 	}
 	
 	@Test(priority = 9, description = "Autogenrate_Four_plans")

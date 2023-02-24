@@ -28,6 +28,7 @@ public class AddTarifPlan extends BasePage{
     String SUCCESS_MESG = "The following errors have occured:";
 
     public void assertSuccessMessage() {
+    	WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
         ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
     }
@@ -105,7 +106,9 @@ public class AddTarifPlan extends BasePage{
 		enterRollupDescriptrion(rollupText);
 		selectChargeType(chargeTypeText);
 		selectAllocation(allocationText);
+		Thread.sleep(2000);
 		selectRatingMethod(ratingMethodText);
+		Thread.sleep(1000);
 		enterRate(rateText);
 		selectUnit(unitText);
 		clickAdd();
