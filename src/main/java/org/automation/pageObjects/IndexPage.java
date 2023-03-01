@@ -1,7 +1,6 @@
 package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
-<<<<<<< HEAD
 import org.automation.pageObjects.customers.Details;
 import org.openqa.selenium.By;
 

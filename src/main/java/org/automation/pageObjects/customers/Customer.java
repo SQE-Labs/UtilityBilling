@@ -6,7 +6,6 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-<<<<<<< HEAD
 public class Customer extends BasePage {
 
 
@@ -32,41 +31,23 @@ public class Customer extends BasePage {
     public By customerID = By.xpath("(//label[@class='col-sm-12 control-label'])[1]");
     Assertions as;
     String SUCCESS_MESG = "Successfully saved customer.";
-=======
-public class Customer  extends BasePage {
 	BasePage bp=new BasePage();
-    String SUCCESS_MESG="Successfully saved customer.";
->>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3
 
     public By customer_id = By.xpath("//label[@class=\"col-sm-12 control-label\"]");
-    public  By customerTab = By.xpath("//a[@title='Customer']"); 
     public static By CustomerTypedropdown = By.xpath("//select[@id='custTypeEl']");
-	public  By categoryDropdownField = By.xpath("//select[@name='category']"); 
 	public By Tittle = By.xpath("//input[@name=\"sal\"]");
-	public  By firstNameField= By.xpath("//input[@name='firstName']");
-	public  By lastNameField= By.xpath("//input[@name='surname']");
-	public  By phoneNumberField= By.xpath("//input[@name='contact_mobile']");
 	public By Fax = By.xpath("//input[@name='contact_fax']");
 	public By Reminder = By.xpath("//input[@name='agedRec']");
-	public  By emailField= By.xpath("//input[@name='contact_email']");
-	public  By billingEmailField= By.xpath("//input[@name='billingEmail']");
-	public  By addressOneField= By.xpath("//input[@name='hAddress']");
-	public  By addressTwoField= By.xpath("//input[@name='hAddress2']");
-	public  By companyNameField= By.xpath("(//input[@name='company'])[1]");
-	public By TradingName = By.xpath("//input[@name='legalEntity']");
-	public  By cityField= By.xpath("//input[@name='hSuburb']");
-	public  By stateField= By.xpath("//input[@name='hState']");
-	public  By zipCodeField= By.xpath("//input[@name='pcode']");
-	public  By countryField= By.xpath("//input[@name='hCountry']");
-	// Billing Adress Xpath 
+		public By TradingName = By.xpath("//input[@name='legalEntity']");
+		// Billing Adress Xpath
 	public By Address1 = By.xpath("//input[@name='tmpaddr1']");
 	public By Address2 = By.xpath("//input[@name='tmpaddr2']");
 	public By CityTown = By.xpath("//input[@name='tmpsuburb']");
 	public By State = By.xpath("//input[@name='tmpstate']");
 	public By ZipCode = By.xpath("//input[@name='postcode']");
 	public By Country = By.xpath("//input[@name='tmpel_country']");
-	
-	// Authentication Details Xpath 
+
+	// Authentication Details Xpath
 	public By AccountNameField = By.xpath("//input[@name='crn']");
 	public By AuthenticationTypeDropDown = By.xpath("//select[@name='custAuthorityType']");
 	public By AuthenticationNoField = By.xpath("//input[@name='custAuthorityNo']");
@@ -75,7 +56,7 @@ public class Customer  extends BasePage {
 	public By ContactNumberRefereeField = By.xpath("//input[@name='refNumber']");
 	public By RefereerelationshiptenantField = By.xpath("//input[@name='refRelationship']");
 	//Banking Details Xpath
-	
+
 	public By BankAccountName = By.xpath("//input[@name='bankAccountName']");
 	public By BankAccountType = By.xpath("//select[@name='bankAccountType']");
 	public By BankAccountNo = By.xpath("//input[@name='bankAccountNo']");
@@ -89,115 +70,115 @@ public class Customer  extends BasePage {
 	public  By saveCustomerbutton= By.xpath("//div[@class='col-lg-12 text-left']/a/i");
 	public  By okbutton= By.xpath("//button[contains(text(),'OK')]");
 	public  By successMessageForCustomerCreation= By.xpath("//div[@id='notification']//center");
-	
+
 	public By CustomerPortalToogle = By.xpath("//label[text()='Allow Access']/following::span[1]");
 	public By NewCustomerDefaultToggle1 = By.xpath("//input[@name=\"defaultInvoiceSetting\"]/following::span[1]");
 	public By NewCustomerDefaultToggle2 = By.xpath("//input[@name=\"defaultBillingOption\"]/following::span[1]");
 	public By CustomerPortalPassword = By.xpath("//input[@name='password']");
 	public By Note = By.xpath("//textarea[@name=\"notes\"]");
 
-	 
 
-	    public void selectCategoryDropdownField(String categoryText) 
+
+	    public void selectCategoryDropdownField(String categoryText)
 	    {
 	    	//clickBtn_custom(categoryDropdownField, "Category");
 	    	selectDropDownByVisibleText_custom(categoryDropdownField, categoryText,"Category");
 	    }
-	    
-	    public void enterCompanyNameField(String companyNameText) 
+
+	    public void enterCompanyNameField(String companyNameText)
 	    {
 	    	sendKeys_custom(companyNameField, companyNameText, "Company Name");
 	    }
-	    public void enterFirstNameField(String firstNameText) 
+	    public void enterFirstNameField(String firstNameText)
 	    {
 	    	sendKeys_custom(firstNameField, firstNameText, "First Name");
 	    }
-	    
-	    public void enterLastNameField(String lastnameText) 
+
+	    public void enterLastNameField(String lastnameText)
 	    {
 	    	sendKeys_custom(lastNameField,lastnameText, "Last Name");
 	    }
-	    
-	    public void enterPhoneNumber(String phoneNumberText) 
+
+	    public void enterPhoneNumber(String phoneNumberText)
 	    {
 	    	sendKeys_custom(phoneNumberField, phoneNumberText, "Phone");
 	    }
-	    
-	    public void enterEmailField(String emailText) 
+
+	    public void enterEmailField(String emailText)
 	    {
 	    	bp.scrollIntoView(emailField);
 	    	sendKeys_custom(emailField, emailText, "Email");
 	    }
-	    
-	    public void enterBillingEmailField(String billingEmailText) 
+
+	    public void enterBillingEmailField(String billingEmailText)
 	    {
 	    	sendKeys_custom(billingEmailField, billingEmailText, "Billing Email");
 	    }
-	    
-	    public void enterAddressOneField(String addressOneText) 
+
+	    public void enterAddressOneField(String addressOneText)
 	    {
 	    	sendKeys_custom(addressOneField,addressOneText, "Address1");
 	    }
-	    
-	    public void enterAddressTwoField(String addressTwoText) 
+
+	    public void enterAddressTwoField(String addressTwoText)
 	    {
 	    	sendKeys_custom(addressTwoField,addressTwoText, "Address2");
 	    }
-	    
-	    public void enterCityField(String cityText) 
+
+	    public void enterCityField(String cityText)
 	    {
 	    	sendKeys_custom(cityField,cityText, "City");
 	    }
-	    public void enterStateField(String stateText) 
+	    public void enterStateField(String stateText)
 	    {
 	    	sendKeys_custom(stateField,stateText, "State");
 	    }
-	    public void enterZipCodeField(String zipCodeText) 
+	    public void enterZipCodeField(String zipCodeText)
 	    {
 	    	sendKeys_custom(zipCodeField,zipCodeText, "State");
 	    }
-	    
-	    public void enterCountryField(String countryText) 
+
+	    public void enterCountryField(String countryText)
 	    {
 	    	sendKeys_custom(countryField,countryText, "Country");
 	    }
-	   public void clickPhysicalAddressToggleBtn() 
+	   public void clickPhysicalAddressToggleBtn()
 	    {
 	    	clickBtn_custom(physicalAddressTogglebutton, "Use Physical Address ?");
 	    }
-	    public void clickSaveCustomerBtn() 
+	    public void clickSaveCustomerBtn()
 	    {
 	    	bp.scrollIntoView(saveCustomerbutton);
 	    	clickBtn_custom(saveCustomerbutton, "Save Customer");
 	    }
-	    public void clickOkBtn() 
+	    public void clickOkBtn()
 	    {
 	    	clickBtn_custom(okbutton, "Ok");
 	    }
-	    
+
 	    public String getCustomerId()
 	    {
 	    	 String id = getText_custom(customerID);
 	    	 System.out.println(id);
 	    	   return id ;
-	    	
-	    	
+
+
 	    }
-	    
+
 	    public String getSuccessMsgText()
-	    
+
 	    {
 	    	WebdriverWaits.waitForElementVisible(successMessageForCustomerCreation, 10);
 	    	return getText_custom(successMessageForCustomerCreation);
 	    }
 
-	
+
     public void clickCustomerTab()
-    
+
     {
     	clickBtn_custom(customerTab, "Customers");
     }
-    
+
     public void enterAccountType(String CustomerTypeText,String categoryText)
     {
     	 selectDropDownByValue_custom(CustomerTypedropdown, CustomerTypeText, "CustomerType");
@@ -234,10 +215,10 @@ public class Customer  extends BasePage {
 	    	sendKeys_custom(countryField,countryText, "Country");
     	}
     	public void enterBillingAddressDetails(String addressOneText,String addressTwoText,String cityText,String stateText,String zipCodeText,String countryText)
-    	{   
+    	{
      	    	sendKeys_custom(Address1,addressOneText, "Address1");
      	    	sendKeys_custom(Address2,addressOneText, "Address2");
-     	    	sendKeys_custom(CityTown,cityText, "City");  
+     	    	sendKeys_custom(CityTown,cityText, "City");
      	    	sendKeys_custom(State,stateText, "State");
      	    	sendKeys_custom(ZipCode,zipCodeText, "State");
      	    	sendKeys_custom(Country,countryText, "Country");
@@ -263,24 +244,24 @@ public class Customer  extends BasePage {
 	    	sendKeys_custom(BankRoute,BankRoutefieldText, "Bank Route");
 	    	sendKeys_custom(BankName, BankNameText, "Bank Name");
     	}
-      	    
-    	    public void selectPlanDropdownField(String PlanText) 
+
+    	    public void selectPlanDropdownField(String PlanText)
     	    {
     	    	clickBtn_custom(planDropdownField, "Plan");
-    	    	selectDropDownByVisibleText_custom(planDropdownField, PlanText,"Plan ");	
+    	    	selectDropDownByVisibleText_custom(planDropdownField, PlanText,"Plan ");
     	    }
-    	        
+
     	 public void entercustomerPortaldetails(String AllowAccessToggleText,String PasswprdText)
     	  {
-    		  
+
  	    	clickBtn_custom(CustomerPortalToogle, "Allow Access");
- 	    	
+
  	    	sendKeys_custom(CustomerPortalPassword, PasswprdText, "Password");
  	    	clickBtn_custom(CustomerPortalPassword, "Password");
 
     	 }
-    	 
-    	    
+
+
     	  public void newCustomerDefaultSetting(String ToggleText1,String ToggleText2 )
     	  {
    	    	clickBtn_custom(NewCustomerDefaultToggle1, "Apply Group's Invoice Setting?");
@@ -299,7 +280,7 @@ public class Customer  extends BasePage {
     		    String ID = getText_custom( customer_id);
     		    System.out.println(ID);
     	  }
-    	  
+
     	  public String createCustomer(String category , String companyName, String firstName, String lastName, String phoneNumber, String email, String billingEmail, String addressOne, String addressTwo, String city , String zipCode, String country,String plan) throws InterruptedException
     	    {
     	    	Assertions as=new Assertions();
@@ -325,8 +306,8 @@ public class Customer  extends BasePage {
     	    	return getCustomerId();
     		}
 
-   
-   
+
+
     public String createCustomer( String CustomerType,String category ,String companyName, String Tradename,String Tittle, String firstName, String lastName, String phoneNumber, String Fax, String email, String billingEmail, String reminder, String addressOne, String addressTwo, String city, String state,String ZipCode1,String AddressCompany,String Address1,String Address2,String City,String State,String ZipCode,String Country ,String AccountName, String AuthenticationType,String AuthenticationNo,String DOB,String Refrence,String Contactno,String RefreeRelationship,String BankAccountName,String BankAccountType,String BankAccountNo,String BankRoute,String BankName,String a,String b,String Note) throws InterruptedException
     {
     	Assertions as=new Assertions();
@@ -338,21 +319,15 @@ public class Customer  extends BasePage {
         }
       enterGeneralDetails(Tittle,firstName,lastName,phoneNumber,Fax,email,billingEmail,reminder);
       enterPhysicalAddressDetails(addressOne,addressTwo,city,state,ZipCode1,AddressCompany);
-      enterBillingAddressDetails(addressOne,addressTwo,city,state,ZipCode1,AddressCompany); 
+      enterBillingAddressDetails(addressOne,addressTwo,city,state,ZipCode1,AddressCompany);
       enterAuthenticationDetails(AccountName,AuthenticationType, AuthenticationNo, DOB, Refrence, Contactno, RefreeRelationship);
       enterBankingDetails(BankAccountName, BankAccountType, BankAccountNo, BankRoute, BankName);
-      entercustomerPortaldetails(a,b); 
+      entercustomerPortaldetails(a,b);
       enterNoteAndSave(Note);
       //ne wline added
       Thread.sleep(5000);
 
   	return getCustomerId();
-	
+
     }
     }
-<<<<<<< HEAD
-
-
-}
-=======
->>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3

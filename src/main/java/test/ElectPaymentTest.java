@@ -13,18 +13,11 @@ import org.testng.annotations.Test;
 public class ElectPaymentTest extends BaseTest
 
 {
-<<<<<<< HEAD:src/main/java/test/ElectPaymentTest.java
 	Customer customer = new Customer();
 	Charges charges = new Charges();
 	CreateServicePage service = new CreateServicePage();
 	GroupPayment gPayment = new GroupPayment();
-=======
-	String customerId;
-	Customer cp = new Customer();
-	ChargePage sn = new ChargePage();
-	CreateServicePage cs = new CreateServicePage();
-	PaymentsPage pp = new PaymentsPage();
->>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3:src/main/java/test/ElectPayment.java
+
 
 
 

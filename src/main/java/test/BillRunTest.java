@@ -6,7 +6,6 @@ import org.automation.pageObjects.AddCycle;
 import org.automation.pageObjects.CreateCustForChangeCustEmail;
 import org.automation.pageObjects.CreateServicePage;
 import org.automation.pageObjects.admin.billing.BillWithDownloadPdfAndCommit;
->>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3:src/main/java/test/BillRun.java
 import org.automation.pageObjects.admin.commmunications.EmailTemplateSetup;
 import org.automation.pageObjects.LoginPage;
 import org.automation.pageObjects.admin.commmunications.SMSTemplateSetup;

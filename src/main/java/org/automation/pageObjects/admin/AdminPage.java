@@ -4,11 +4,6 @@ import org.automation.base.BasePage;
 import org.automation.pageObjects.admin.groupManager.EditGroup;
 import org.automation.pageObjects.admin.importSetupTools.Imports;
 import org.automation.pageObjects.admin.miscellaneous.InvoiceSetup;
-<<<<<<< HEAD
-=======
-import org.automation.utilities.ActionEngine;
-import org.automation.utilities.WebdriverWaits;
->>>>>>> 7f1cd701d9ca4cf8988c6cb15fb9af7636edf7b3
 import org.openqa.selenium.By;
 import test.BillRunTest;
 
