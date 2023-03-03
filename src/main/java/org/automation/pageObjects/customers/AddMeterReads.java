@@ -73,18 +73,25 @@ public void clickOnMeterReadsTab()
 
 public void clickOnAddReads()
 {
+	scrollIntoView(AddRead);
+
 	clickBtn_custom(AddRead, "Add Read");
 }
-public void selectOptionFromMeterNumberDropdownlist(int indexNo)
+public void selectMeterNumberDD(int indexNo)
 {
 	selectDropDownByIndex_custom(SelectMeterNumbr,indexNo, "Meter Number");
-	
+
 }
+	public void clickMeterNumberDD()
+	{
+		click_custom(SelectMeterNumbr, "Meter Number");
+
+	}
 
 public void selectReadTypeFromDropdownlist(String categoryText)
 {
 	selectDropDownByVisibleText_custom(ReadType, categoryText, "Add Read Type");
-	
+
 }
 
 
@@ -92,13 +99,13 @@ public void selectReadDateFromDatepickerForToday()
 {
 	clickBtn_custom(ReadDate, "Read Date");
 	clickBtn_custom(TodayDate, "Date");
-	
+
 }
 public void selectReadDateFromDatepickerForNxtDay()
 {
 	clickBtn_custom(ReadDate, "Read Date");
 	clickBtn_custom(NextDate, "Date");
-	
+
 }
 public void sendMeterReadings(String meterReadingText)
 {
@@ -108,20 +115,24 @@ public void selectReadDateFromDatepickerForNextDay()
 {
 	clickBtn_custom(ReadDate, "Read Date");
 	clickBtn_custom(NextDate, "Date");
-	
+
 }
 public void clickOnSaveBtn()
 {
 	clickBtn_custom(SaveReads, "Save");
 }
 
-public void addMeterReadsForInitial(int indexNo,String categoryText,String meterReadingText )
-{
-	clickOnMeterReadsTab();
-	selectOptionFromMeterNumberDropdownlist(indexNo);
+public void addMeterReads(String categoryText,String meterReadingText ) throws InterruptedException {
+
+
 	clickOnAddReads();
 	selectReadTypeFromDropdownlist(categoryText);
-	selectReadDateFromDatepickerForToday();
+	if (categoryText.equalsIgnoreCase("estimate")){
+		selectReadDateFromDatepickerForNextDay();
+	}
+	else
+		selectReadDateFromDatepickerForToday();
+
 	sendMeterReadings(meterReadingText);
 	clickOnSaveBtn();
 }
@@ -130,30 +141,9 @@ public void clickOnSearchBtn(String recordIdText)
 	sendKeys_custom(recordId, recordIdText, "Record Id");
 	WebdriverWaits.waitForElementVisible(searchBtn, 10);
 	clickBtn_custom(searchBtn, "Search icon");
-	 
-	
-}
-public void addMeterReadsForActual(int indexNo,String categoryText,String meterReadingText )
-{
-	clickOnMeterReadsTab();
-	selectOptionFromMeterNumberDropdownlist(indexNo);
-	clickOnAddReads();
-	selectReadTypeFromDropdownlist(categoryText);
-	selectReadDateFromDatepickerForNextDay();
-	sendMeterReadings(meterReadingText);
-	clickOnSaveBtn();
+
+
 }
 
-public void addMeterReadsForEstimate(String recordIdText,int indexNo,String categoryText,String meterReadingText )
-{
-	clickOnSearchBtn(recordIdText);
-	clickOnMeterReadsTab();
-	selectOptionFromMeterNumberDropdownlist(indexNo);
-	clickOnAddReads();
-	selectReadTypeFromDropdownlist(categoryText);
-	selectReadDateFromDatepickerForNxtDay();
-	sendMeterReadings(meterReadingText);
-	clickOnSaveBtn();
-}
 }
 ;

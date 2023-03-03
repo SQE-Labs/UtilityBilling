@@ -10,9 +10,9 @@ import org.testng.Assert;
 
 
 public class Assertions extends BaseTest {
-	
 
-    public void assertEquals(String actual, String expected) {
+
+    public static void assertEquals(String actual, String expected) {
 
     	try {
     		Assert.assertEquals(actual, expected);
@@ -24,9 +24,9 @@ public class Assertions extends BaseTest {
     	}
     }
 
-    
-    public void assertNotEquals(String actual, String expected) {
-       
+
+    public static void assertNotEquals(String actual, String expected) {
+
     	try {
     		Assert.assertNotEquals(actual, expected);
            extentTest.log(PASS, "Assertion passed , Value is : "+actual);
@@ -36,9 +36,9 @@ public class Assertions extends BaseTest {
             extentTest.log(FAIL, "Assertion failed : "+"Actual Value is "+ actual + " , Expected Value is " + expected );
     	}
     }
-    
-    
-    public void assertTrue(boolean value) {
+
+
+    public  static void assertTrue(boolean value) {
     	try {
         Assert.assertTrue(value);
         extentTest.log(PASS, "Assertion passed  : "+value );
@@ -50,8 +50,8 @@ public class Assertions extends BaseTest {
     	}
 
     }
-    
-    public void assertFalse(boolean value) {
+
+    public  static void assertFalse(boolean value) {
     	try {
         Assert.assertFalse(value);
         extentTest.log(PASS, "Assertion passed :  "+value );
@@ -63,7 +63,7 @@ public class Assertions extends BaseTest {
     	}
 
     }
-    
+
     public void assertNotNull(String value) {
     	try {
         Assert.assertNotNull(FAIL);

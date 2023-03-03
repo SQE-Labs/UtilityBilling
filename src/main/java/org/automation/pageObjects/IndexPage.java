@@ -19,7 +19,11 @@ public class IndexPage extends BasePage {
         clickBtn_custom(SearchIcon);
         return new Details();
     }
+    public void searchCustomerFromSearchPanel(String customerId){
 
+        sendKeys_custom(SearchField, customerId);
+        clickBtn_custom(SearchIcon);
+    }
     public  String getTextVersion(){
        return getText_custom(footerVersion)    ;
     }

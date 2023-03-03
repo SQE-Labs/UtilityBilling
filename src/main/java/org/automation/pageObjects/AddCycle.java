@@ -7,8 +7,8 @@ import org.automation.utilities.WebdriverWaits;
 public class AddCycle extends BasePage
 
 {
-	
-	
+
+
 	public  By Admin = By.xpath("//a[@title='Administration']");
 	public  By SMTPicon = By.xpath("(//i[@class='icon-hdd'])[2]");
 	public  By SrverField = By.xpath("//input[@name='smtpServer']");
@@ -40,7 +40,7 @@ public class AddCycle extends BasePage
 	public  By CycleName = By.xpath("//input[@id='cyclename']");
 	public  By SearchCustForCycle = By.xpath("//input[@class='filter form-control']");
 	public  By SelectCust = By.xpath("//select[@name='custnos_helper1']/option");
-	public  By RightArrow = By.xpath("(//i[@class='glyphicon glyphicon-arrow-right'])[3]");
+	public  By RightArrow = By.xpath("(//i[@class='glyphicon glyphicon-arrow-right'])[1]");
 	public  By SaveCyc = By.xpath("//button[@id='saveCycle']");
 	public  By CycleSavedSuccess = By.xpath("//span[@id='resultMsg']");
 	public  By MainCustSearch = By.xpath("//input[@id='search_input']");
@@ -65,31 +65,31 @@ public class AddCycle extends BasePage
 	public  By CycleNumber = By.xpath("//select[@id='cycleno']");
 	public  By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
 	public  By NextDay = By.xpath("//td[@class='new day']");
-	
-	
 
-	
+
+
+
 	public void clickOnAdminTab(	)
 	{
 		clickBtn_custom(Admin, "Admin");
 	}
-	
+
 	public void clickBillRunCycleBtn()
 	{
 		clickBtn_custom(BillRunCycle, "Bill Run Cycle");
 	}
-	
-	public void createCycle()
+
+	public void click_createCycle()
 	{
 		clickBtn_custom(CreateCycle, "Create New");
 	}
-	
+
 	public void sendCycleName(String cycleNameText)
 	{
-		 WebdriverWaits.waitForElementVisible(CycleName, 5);
+		 WebdriverWaits.waitForElementVisible(CycleName, 15);
 		sendKeys_custom(CycleName, cycleNameText,"Cycle Name");
 	}
-	public void searchCycleName(String cycleNameText)
+	public void searchCustomerName(String cycleNameText)
 	{
 		sendKeys_custom(SearchCustForCycle,cycleNameText,"Filter");
 	}
@@ -97,11 +97,11 @@ public class AddCycle extends BasePage
 	{
 		sendKeys_custom(SelectCust, "Select Cycle");
 	}
-	
+
 	public void clickOnRightArrow() {
 		clickBtn_custom(RightArrow, "Right Arrow");
 	}
-	
+
 	public void clickOnSaveBtn() {
 		clickBtn_custom(SaveCyc, "Save");
 	}
@@ -109,18 +109,16 @@ public class AddCycle extends BasePage
 		clickBtn_custom(SaveCyc, "Save");
 	}
 
-	
-	public void AddANewCycle(String cycleNameText,String cycleNameTextForSearch)
+
+	public void AddANewCycle(String cycleNameText,String customerId)
 	{
-		
+
 		clickOnAdminTab();
 		clickBillRunCycleBtn();
-		createCycle();
+		click_createCycle();
 		sendCycleName(cycleNameText);
-		searchCycleName(cycleNameTextForSearch);
-		selectCustCycle();
+		searchCustomerName(customerId);
 		clickOnRightArrow();
 		clickOnSaveBtn();
 	}
 }
-

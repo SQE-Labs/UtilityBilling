@@ -20,7 +20,7 @@ import static com.relevantcodes.extentreports.LogStatus.PASS;
 
 
 public class ActionEngine extends BaseTest {
-	
+
 	public void click_custom(By path, String... label) {
 	    String var = "";
 	    try {
@@ -95,10 +95,12 @@ public class ActionEngine extends BaseTest {
         } catch (Exception e) {
             //log failure in extent
             extentTest.log(FAIL, "Unable to click on field: " + var + " due to exception: \n " + e);
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
 
         }
+
     }
+
 
     //clear data from field
     public void clear_custom(By element) {
@@ -176,13 +178,13 @@ public class ActionEngine extends BaseTest {
     }
 
     //Select dropdown list by index
-    public void selectDropDownByIndex_custom(By path, int ddValue, String... fieldName) {
+    public void selectDropDownByIndex_custom(By path, int index, String... fieldName) {
         String var = "";
         try {
             var = fieldName.length > 0 ? fieldName[0] : path.toString();
             DropDown dd = new DropDown(var, path);
-            dd.selectByIndex(ddValue);
-            extentTest.log(PASS, var + "==> Dropdown Value Selected by visible text: " + ddValue);
+            dd.selectByIndex(index);
+            extentTest.log(PASS, var + "==> Dropdown Value Selected by index : " + index);
         } catch (Exception e) {
             extentTest.log(FAIL, "Dropdown value not selected for field: " + var + "  due to exception: " + e);
             throw new RuntimeException(e);
