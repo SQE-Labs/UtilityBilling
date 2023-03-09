@@ -85,7 +85,9 @@ public class BillRunPage extends BasePage {
         clickBtn_custom(DueDate, "Due Date");
         clickBtn_custom(TodayDate, "Today Date");
     }
-
+    public void clickOnOkButton() {
+        clickBtn_custom(OKbtnn, "OK button ");
+    }
     public void selectRunBillCycleOptionFromDropdownlist(String cycleNoText) {
         selectDropDownByVisibleText_custom(CycleNumber, cycleNoText, "Bill Run Cycle");
     }
@@ -102,8 +104,10 @@ public class BillRunPage extends BasePage {
         clickOnReccurringDate();
         clickOnIssueDate();
         clickOnDueDate();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         selectRunBillCycleOptionFromDropdownlist(cycleNoText);
         clickonBillRunBtn();
+        Thread.sleep(6000);
+        clickOnOkButton();
     }
 }
