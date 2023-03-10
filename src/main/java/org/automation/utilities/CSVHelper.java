@@ -3,7 +3,10 @@ package org.automation.utilities;
 
 import org.automation.base.BaseTest;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class CSVHelper extends BaseTest {
@@ -101,17 +104,19 @@ public class CSVHelper extends BaseTest {
         }
 
     }
-    public static Map<String,String> readCsvFile() throws FileNotFoundException {
-        Map<String,String> mapping=new HashMap<String,String>();
-        Scanner look=new Scanner (new File("C:\\Users\\sa\\Desktop\\look.csv"));
-        String[] keys=look.nextLine().split(",");
-        String[] values=look.nextLine().split(",");
 
-        for(int i=0;i<keys.length;++i)
-            mapping.put(keys[i],values[i]);
+    public static Map<String, String> readCsvFile() throws FileNotFoundException {
+        Map<String, String> mapping = new HashMap<String, String>();
+        Scanner look = new Scanner(new File("C:\\Users\\sa\\Desktop\\look.csv"));
+        String[] keys = look.nextLine().split(",");
+        String[] values = look.nextLine().split(",");
+
+        for (int i = 0; i < keys.length; ++i)
+            mapping.put(keys[i], values[i]);
         return mapping;
     }
-//    public static void writeCsvFile(String filePath) throws FileNotFoundException {
+
+    //    public static void writeCsvFile(String filePath) throws FileNotFoundException {
 //        Scanner main = new Scanner(new File("C:\\Users\\sa\\Desktop\\hotel2\\all.csv"));
 //
 ////        PrintWriter mainOutput = new PrintWriter  (new File("C:\\Users\\sa\\Desktop\\hotel2\\all.out.csv"));
@@ -161,7 +166,7 @@ public class CSVHelper extends BaseTest {
 //            e.printStackTrace();
 //        }
 //    }
-    public static void createCSVGeneric(String fileName, String [] headerList, String [] rowValues) throws Exception {
+    public static void createCSVGeneric(String fileName, String[] headerList, String[] rowValues) throws Exception {
 
         FileWriter fileWriter = null;
         ArrayList<String> rowList = new ArrayList<String>(
@@ -171,7 +176,7 @@ public class CSVHelper extends BaseTest {
 
 
         try {
-            if (columnList.size()!=rowList.size()){
+            if (columnList.size() != rowList.size()) {
                 throw new Exception("rows and columns size is not equal in csv file");
             }
 

@@ -42,7 +42,7 @@ public class WorkFlowTypes extends BasePage {
     }
 
     public void enterSearchLog(String userNameText) {
-    	 WebdriverWaits.waitForElementVisible(searchLog, 2);
+        WebdriverWaits.waitForElementVisible(searchLog, 2);
         sendKeys_custom(searchLog, userNameText);
     }
 

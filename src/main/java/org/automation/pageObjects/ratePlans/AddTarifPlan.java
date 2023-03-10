@@ -5,9 +5,9 @@ import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class AddTarifPlan extends BasePage{
-	
-	By ratePlans = By.xpath("//*[@title='Plans']");
+public class AddTarifPlan extends BasePage {
+
+    By ratePlans = By.xpath("//*[@title='Plans']");
     By createNewPlan = By.xpath("//*[@id='addBtn']");
     By addTarrif = By.id("addTrfBtn");
     By chargeDescription = By.xpath("//*[@name='charge-desc']");
@@ -15,49 +15,50 @@ public class AddTarifPlan extends BasePage{
     By chargeType = By.xpath("//*[@name='charge-type']");
     By allocation = By.xpath("//*[@name='alloc']");
     By ratingMethod = By.xpath("//*[@name='method-type']");
-  //*[@id="unit-type"]
+    //*[@id="unit-type"]
     By unit = By.xpath("//*[@id='unit-type']");
     By rate = By.xpath("//*[@name='rate']");
     By taxType = By.xpath("//*[@name='tax-type']");
     By addButton = By.id("addTrf");
     By publish = By.id("publishBtn");
-    By crossIcon = By.xpath("//*[@id='closeBtn']/i"); 
+    By crossIcon = By.xpath("//*[@id='closeBtn']/i");
     By successMsg = By.xpath("//*[@id=\"errAlert\"]/div/center/text()");
-    
+
 
     String SUCCESS_MESG = "The following errors have occured:";
 
     public void assertSuccessMessage() {
-    	WebdriverWaits.sleep(2);
+        WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
         ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
     }
 
     public void clickPublish() {
-    	click_custom(publish);
+        click_custom(publish);
     }
 
 
     public void clickCrossIcon() {
-    	click_custom(crossIcon);
+        click_custom(crossIcon);
     }
+
     public void clickAdd() {
-    	click_custom(addButton);
+        click_custom(addButton);
     }
 
 
     public void clickRatePlans() {
-    	click_custom(ratePlans);
+        click_custom(ratePlans);
     }
 
     public void clickCreateNewPlan() {
-    	click_custom(createNewPlan);
+        click_custom(createNewPlan);
     }
 
     public void clickAddTarif() {
-    	// WebdriverWaits.waitForElementVisible(addTarrif, 2);
-    	click_custom(addTarrif);
-      //  WebdriverWaits.waitForElementVisible(addTarrif, 2);
+        // WebdriverWaits.waitForElementVisible(addTarrif, 2);
+        click_custom(addTarrif);
+        //  WebdriverWaits.waitForElementVisible(addTarrif, 2);
     }
 
     public void enterChargeDescriptrion(String descriptionText) {
@@ -83,14 +84,14 @@ public class AddTarifPlan extends BasePage{
     }
 
     public void selectRatingMethod(String ratingMethodText) {
-    	WebdriverWaits.waitForElementClickable(ratingMethod, 4);
-    	click_custom(ratingMethod);
+        WebdriverWaits.waitForElementClickable(ratingMethod, 4);
+        click_custom(ratingMethod);
         selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
-       
+
     }
 
-    public void selectUnit(String unitText){
-    	click_custom(unit);
+    public void selectUnit(String unitText) {
+        click_custom(unit);
         selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
     }
@@ -98,23 +99,24 @@ public class AddTarifPlan extends BasePage{
     public void selectTaxType(String textTypeText) {
         selectDropDownByVisibleText_custom(taxType, textTypeText, "Select TaxType");
     }
-    public void addTarif(String descriptionText,String rollupText, String chargeTypeText,String allocationText,String ratingMethodText,String unitText,String rateText) throws InterruptedException {
-    	clickRatePlans();
-		clickCreateNewPlan();
-		clickAddTarif();
-		enterChargeDescriptrion(descriptionText);
-		enterRollupDescriptrion(rollupText);
-		selectChargeType(chargeTypeText);
-		selectAllocation(allocationText);
-		Thread.sleep(2000);
-		selectRatingMethod(ratingMethodText);
-		Thread.sleep(1000);
-		enterRate(rateText);
-		selectUnit(unitText);
-		clickAdd();
-		assertSuccessMessage();
-		clickCrossIcon();
-		
+
+    public void addTarif(String descriptionText, String rollupText, String chargeTypeText, String allocationText, String ratingMethodText, String unitText, String rateText) throws InterruptedException {
+        clickRatePlans();
+        clickCreateNewPlan();
+        clickAddTarif();
+        enterChargeDescriptrion(descriptionText);
+        enterRollupDescriptrion(rollupText);
+        selectChargeType(chargeTypeText);
+        selectAllocation(allocationText);
+        Thread.sleep(2000);
+        selectRatingMethod(ratingMethodText);
+        Thread.sleep(1000);
+        enterRate(rateText);
+        selectUnit(unitText);
+        clickAdd();
+        assertSuccessMessage();
+        clickCrossIcon();
+
     }
 
 }

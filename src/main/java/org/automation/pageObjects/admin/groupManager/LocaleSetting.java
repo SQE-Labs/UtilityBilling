@@ -22,21 +22,22 @@ public class LocaleSetting extends BasePage {
 
 
     public void clickAdmin() {
-    	click_custom(adminTab);
+        click_custom(adminTab);
         //	WebdriverWaits.waitForElementVisible(editGroup, 2);
     }
-    
+
     public void clickDateFormat() {
-    	click_custom(dateFormat);
+        click_custom(dateFormat);
         //	WebdriverWaits.waitForElementVisible(editGroup, 2);
     }
+
     public void clickTimeFormat() {
-    	click_custom(timeFormat);
+        click_custom(timeFormat);
         //	WebdriverWaits.waitForElementVisible(editGroup, 2);
     }
 
     public void clickLocalesetting() {
-    	click_custom(localeSubTab);
+        click_custom(localeSubTab);
     }
 
     public void selectCurrencySymbol(String currencySymbolText) {
@@ -60,7 +61,7 @@ public class LocaleSetting extends BasePage {
     }
 
     public void selectDateFormat(String dateFormatText) {
-    	 WebdriverWaits.waitForElementVisible(dateFormat, 2);
+        WebdriverWaits.waitForElementVisible(dateFormat, 2);
         selectDropDownByVisibleText_custom(dateFormat, dateFormatText, "Select Date Format");
     }
 
@@ -71,11 +72,11 @@ public class LocaleSetting extends BasePage {
 
     public void enterDecimalSymbol(String userNameText) {
         sendKeys_withClear(decimalSymbol, userNameText);
-      
+
     }
 
     public void clickSaveChanges() {
-    	click_custom(saveChanges);
+        click_custom(saveChanges);
 
     }
 

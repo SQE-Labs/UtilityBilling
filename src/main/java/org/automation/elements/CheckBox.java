@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 
 public final class CheckBox extends Element {
@@ -51,8 +52,10 @@ public final class CheckBox extends Element {
      * @return true if checked, false if un-checked
      */
     public boolean isChecked() {
-        Log.info("Is [" + description + "] checkbox checked");
-        return wait.until(elementToBeClickable(locator)).isSelected();
+
+        boolean value = wait.until(visibilityOfElementLocated(locator)).isSelected();
+        Log.info("Is [" + description + "] checkbox checked : " + value);
+        return value;
     }
 
 }

@@ -8,7 +8,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.*;
 
 
-
 public final class TestRunListener extends BaseTest implements ITestListener, ISuiteListener {
 
     @Override

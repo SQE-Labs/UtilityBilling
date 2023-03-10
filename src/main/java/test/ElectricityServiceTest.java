@@ -4,21 +4,22 @@ import org.automation.pageObjects.IndexPage;
 import org.automation.pageObjects.customers.RetailElectricityService;
 import org.testng.annotations.Test;
 
-public class ElectricityServiceTest  extends IndexPage {
+public class ElectricityServiceTest extends IndexPage {
 
-    String customerId="230527";
+    String customerId = "230527";
     String electricityServiceId;
     String genericServiceId;
     String waterServiceId;
     String gasServiceId;
 
     RetailElectricityService retailElectricityService = new RetailElectricityService();
+
     @Test
     public void createRetailElectricityService() throws InterruptedException {
         searchCustomer(customerId);
-        electricityServiceId= retailElectricityService.addRetailElectricityService();
+        electricityServiceId = retailElectricityService.addRetailElectricityService();
     }
-    
+
 //    @Test
 //    public void editRetailElectricityService() throws InterruptedException {
 //         retailElectricityService.editServiceStatus();
@@ -50,4 +51,4 @@ public class ElectricityServiceTest  extends IndexPage {
 //    public void editGenericService() throws InterruptedException {
 //        retailElectricityService.editServiceStatus();
 //    }
-    }
+}

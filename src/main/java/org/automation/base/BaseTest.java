@@ -11,8 +11,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.automation.elements.Element;
 import org.automation.listeners.TestReporter;
 import org.automation.listeners.TestRunListener;
-import org.automation.pageObjects.LoginPage;
-import org.automation.utilities.ActionEngine;
 import org.automation.utilities.PropertiesUtil;
 import org.automation.utilities.Screenshot;
 import org.openqa.selenium.By;
@@ -28,10 +26,8 @@ import java.net.MalformedURLException;
 import java.util.*;
 
 import static java.io.File.separator;
-import static java.lang.System.getProperty;
 import static java.nio.file.Files.lines;
 import static java.nio.file.Paths.get;
-import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 import static org.automation.logger.Log.error;
 
@@ -48,7 +44,7 @@ public class BaseTest {
     }
 
 
-   public static void closeDriver() {
+    public static void closeDriver() {
         getDriver().close();
         //driver.remove();
     }
@@ -106,8 +102,7 @@ public class BaseTest {
             String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
             extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
 
-        }
-        else if(result.getStatus() == ITestResult.SUCCESS) {
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
             String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
             extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(screenshotPath));
 
@@ -116,13 +111,14 @@ public class BaseTest {
         extent.flush();
         getDriver().navigate().refresh();
     }
+
     public void login() {
         try {
-           Element username=  new Element("var", By.xpath("//input[@name='j_username']"));
+            Element username = new Element("var", By.xpath("//input[@name='j_username']"));
             username.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("userName"));
-            Element password=  new Element("var", By.xpath("//input[@name='predigpass']"));
+            Element password = new Element("var", By.xpath("//input[@name='predigpass']"));
             password.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("password"));
-            Element button=  new Element("var", By.xpath("//*[@name='submit']"));
+            Element button = new Element("var", By.xpath("//*[@name='submit']"));
             button.getWebElement().click();
         } catch (Exception e) {
             e.printStackTrace();

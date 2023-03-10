@@ -35,9 +35,10 @@ public class PropertiesUtil {
 
         return value;
     }
-    public static String getPropertyValue(String key,String configFile) {
+
+    public static String getPropertyValue(String key, String configFile) {
         //1. load data from properties file
-        String propFilePath = System.getProperty("user.dir") + "/src/main/java/org/automation/config/"+configFile;
+        String propFilePath = System.getProperty("user.dir") + "/src/main/java/org/automation/config/" + configFile;
         FileInputStream fis;
         try {
             fis = new FileInputStream(propFilePath);

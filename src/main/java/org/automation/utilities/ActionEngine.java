@@ -1,8 +1,5 @@
 package org.automation.utilities;
 
-import com.aventstack.extentreports.Status;
-import org.apache.log4j.Logger;
-import org.automation.base.BasePage;
 import org.automation.base.BaseTest;
 import org.automation.elements.Button;
 import org.automation.elements.CheckBox;
@@ -13,7 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 
 import static com.relevantcodes.extentreports.LogStatus.FAIL;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
@@ -21,32 +17,32 @@ import static com.relevantcodes.extentreports.LogStatus.PASS;
 
 public class ActionEngine extends BaseTest {
 
-	public void click_custom(By path, String... label) {
-	    String var = "";
-	    try {
+    public void click_custom(By path, String... label) {
+        String var = "";
+        try {
 
-	        var = label.length > 0 ? label[0] : path.toString();
+            var = label.length > 0 ? label[0] : path.toString();
 
-	        Element btn = new Element(var, path);
-	        btn.click();
-	        Log.info("Clicked on " + var);
-	        //log success message in exgent report
-	        extentTest.log(PASS, "==> Clicked element Successfully! " + var);
-	    } catch (Exception e) {
-	        extentTest.log(FAIL, "==> Unable to click on => " + var+" due to exception "+e);
+            Element btn = new Element(var, path);
+            btn.click();
+            Log.info("Clicked on " + var);
+            //log success message in exgent report
+            extentTest.log(PASS, "==> Clicked element Successfully! " + var);
+        } catch (Exception e) {
+            extentTest.log(FAIL, "==> Unable to click on => " + var + " due to exception " + e);
 
-	    }
+        }
 
-	}
+    }
 
-	public void click_custom(WebElement element, String... label) {
-	    try {
-	        element.click();
-	        extentTest.log(PASS, "==> Clicked element Successfully! " + label);
-	    } catch (Exception e) {
-	        extentTest.log(FAIL, "==> Unable to click  " + label+" due to exception "+e);
-	    }
-	}
+    public void click_custom(WebElement element, String... label) {
+        try {
+            element.click();
+            extentTest.log(PASS, "==> Clicked element Successfully! " + label);
+        } catch (Exception e) {
+            extentTest.log(FAIL, "==> Unable to click  " + label + " due to exception " + e);
+        }
+    }
 
     public void sendKeys_custom(By path, String valueToBeSent, String... label) {
         String var = "";
@@ -55,10 +51,10 @@ public class ActionEngine extends BaseTest {
             Element element = new Element(var, path);
             element.getWebElement().sendKeys(valueToBeSent);
             //log success message in extent report
-            extentTest.log(PASS, "Entered value  in field "+var+ "as: " + valueToBeSent);
+            extentTest.log(PASS, "Entered value  in field " + var + "as: " + valueToBeSent);
         } catch (Exception e) {
             //log failure in extent
-            extentTest.log(FAIL, "Sendkeys in field: "+var+" is failed due to exception:        " + e);
+            extentTest.log(FAIL, "Sendkeys in field: " + var + " is failed due to exception:        " + e);
             throw new RuntimeException(e);
         }
     }
@@ -72,10 +68,10 @@ public class ActionEngine extends BaseTest {
             element.clear();
             element.getWebElement().sendKeys(valueToBeSent);
             //log success message in extent report
-            extentTest.log(PASS, "Entered value  in field "+var+ "as: " + valueToBeSent);
+            extentTest.log(PASS, "Entered value  in field " + var + "as: " + valueToBeSent);
         } catch (Exception e) {
             //  log failure in extent
-            extentTest.log(FAIL, "Sendkeys in field: "+var+" is failed due to exception:     " + e);
+            extentTest.log(FAIL, "Sendkeys in field: " + var + " is failed due to exception:     " + e);
             throw new RuntimeException(e);
 
         }
@@ -91,7 +87,7 @@ public class ActionEngine extends BaseTest {
             Button btn = new Button(var, path);
             btn.click();
             //log success message in exgent report
-            extentTest.log(PASS, "Clicked Successfully! "+var );
+            extentTest.log(PASS, "Clicked Successfully! " + var);
         } catch (Exception e) {
             //log failure in extent
             extentTest.log(FAIL, "Unable to click on field: " + var + " due to exception: \n " + e);
@@ -118,17 +114,17 @@ public class ActionEngine extends BaseTest {
 
     //custom mouseHover
     public void moveToElement_custom(By element, String fieldName) {
-            try{
-                JavascriptExecutor executor = (JavascriptExecutor) getDriver();
-                executor.executeScript("arguments[0].scrollIntoView(true);", element);
-                Actions actions = new Actions(getDriver());
-                actions.moveToElement(getDriver().findElement(element)).build().perform();
-                extentTest.log(PASS, fieldName+"==> Mouse hovered Successfully! ");
-                Thread.sleep(1000);
-            }catch(Exception e){
-               extentTest.log(FAIL, "Unable to hover mouse on field: " +fieldName +" due to exception: "+e);
-               throw new RuntimeException(e);
-            }
+        try {
+            JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+            executor.executeScript("arguments[0].scrollIntoView(true);", element);
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(getDriver().findElement(element)).build().perform();
+            extentTest.log(PASS, fieldName + "==> Mouse hovered Successfully! ");
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            extentTest.log(FAIL, "Unable to hover mouse on field: " + fieldName + " due to exception: " + e);
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -137,7 +133,7 @@ public class ActionEngine extends BaseTest {
         boolean flag = false;
         try {
             flag = element.isDisplayed();
-            extentTest.log(PASS,  "==> Is  "+fieldName +" element present => " +flag);
+            extentTest.log(PASS, "==> Is  " + fieldName + " element present => " + flag);
             return flag;
         } catch (Exception e) {
             extentTest.log(FAIL, "Checking for presence of field: " + fieldName + " not tested due to exception: " + e);
@@ -211,17 +207,17 @@ public class ActionEngine extends BaseTest {
 
 
     public void selectCheckBox(By path, String... fieldName) {
-    	try {
-        String var = fieldName.length > 0 ? fieldName[0] : path.toString();
-        CheckBox checkBox = new CheckBox(var, path);
+        try {
+            String var = fieldName.length > 0 ? fieldName[0] : path.toString();
+            CheckBox checkBox = new CheckBox(var, path);
 
-        checkBox.check();
-        extentTest.log(PASS, "Check box selected");
+            checkBox.check();
+            extentTest.log(PASS, "Check box selected");
 
-    	 } catch (Exception e) {
-             extentTest.log(FAIL, "Unable to get text due to exception : \n" + e);
+        } catch (Exception e) {
+            extentTest.log(FAIL, "Unable to get text due to exception : \n" + e);
 
-         }
+        }
     }
 
     public void uncheckCheckBox(By path, String... fieldName) {
