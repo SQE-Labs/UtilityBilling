@@ -23,8 +23,6 @@ public class Imports extends BasePage {
     public void meterNumberImport(String path) throws InterruptedException, IOException {
         // AdminPage.navigateToHomePage();
         clickBtn_custom(AdminIcon);
-
-
         scrollIntoView(MeterNumbersIcon);
         clickBtn_custom(MeterNumbersIcon);
         importFile(path, "Meter Number");

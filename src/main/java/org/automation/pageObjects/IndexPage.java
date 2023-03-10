@@ -10,7 +10,18 @@ public class IndexPage extends BasePage {
     public By SearchField = By.xpath("//*[@id=\"search_input\"]");
     public By SearchIcon = By.xpath("//*[@class=\"glyphicon glyphicon-search\"]");
     public By OverviewTab = By.xpath("//*[@class=\"icon-eye-open\"]"); // //*[contains(text(),'Overview')]
-    public By footerVersion = By.xpath("//footer/div[2]");
+   // public By footerVersion = By.xpath("//footer/div[2]");
+    public By footerVersion = By.cssSelector(".footerLinks div:nth-child(2)");
+    public By searchIcon = By.xpath("//*[@class=\"glyphicon glyphicon-search\"]");
+    public By dropDown = By.xpath("//button[@class='btn btn-default dropdown-toggle']");
+
+    public By customer = By.xpath("//a[text()='Customer']");
+    public By customerAddress = By.xpath("//a[text()='Customer Address']");
+    public By marketService = By.xpath("//a[text()='Market Service ID']");
+    public By serviceAddress = By.xpath("//a[text()='Service Address']");
+    public By meterNumber = By.xpath("//a[text()='Market Service ID']");
+    public By all = By.xpath("#");
+    public By searchInput=By.xpath("//div[@class='input-group search-panel-holder']//input[@id='search_input']");
 
     public Details searchCustomer(String customerId) {
         clickBtn_custom(SearchIcon);
@@ -26,7 +37,47 @@ public class IndexPage extends BasePage {
         clickBtn_custom(SearchIcon);
     }
 
-    public String getTextVersion() {
-        return getText_custom(footerVersion);
+
+
+        public String getTextVersion() {
+            return getText_custom(footerVersion);
+        }
+
+        public void searchAllCustomer() {
+            click_custom(dropDown,"dropDown");
+            click_custom(customer,"customer");
+
+            click_custom(searchIcon,"searchIcon");
+
+        }
+        public void searchAll() {
+            click_custom(searchIcon,"searchIcon");
+        }
+        public void searchAll(String searchText) {
+            sendKeys_custom(searchInput,searchText);
+            click_custom(searchIcon,"searchIcon");
+        }
+
+        public SearchResult searchAllMeterNumber() {
+            click_custom(dropDown,"dropDown");
+            click_custom(meterNumber,"meterNumber");
+            click_custom(searchIcon,"searchIcon");
+            return new SearchResult();
+
+        }
+        public void searchAllServiceAddress() {
+            click_custom(dropDown,"dropDown");
+            click_custom(serviceAddress,"serviceAddress");
+            click_custom(searchIcon,"searchIcon");
+        }
+        public void searchAllCustomerAddress() {
+            click_custom(dropDown,"dropDown");
+            click_custom(customerAddress,"customerAddress");
+            click_custom(searchIcon,"searchIcon");
+        }
+        public void searchAllServiceId() {
+            click_custom(dropDown,"dropDown");
+            click_custom(marketService,"marketService");
+            click_custom(searchIcon,"searchIcon");
+        }
     }
-}

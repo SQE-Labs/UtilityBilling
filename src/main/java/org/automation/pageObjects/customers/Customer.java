@@ -2,13 +2,22 @@ package org.automation.pageObjects.customers;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;
+import org.automation.utilities.RandomGenerator;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
+import org.testng.asserts.SoftAssert;
 
 public class Customer extends BasePage {
-    public static By CustomerTypedropdown = By.xpath("//select[@id='custTypeEl']");
-    public By customer_id = By.xpath("//label[@class=\"col-sm-12 control-label\"]");
+    public By recentCustomerId = By.xpath("(//td[@class=\"sorting_1\"]/a)[1]");
     public By customerTab = By.xpath("//a[@title='Customer']");
+    public By detailsTab = By.xpath("//a[contains(text(),'Details')]");
+    public By nmiTab = By.xpath("//a[contains(text(),'NMI')]");
+    public By market = By.xpath("(//a[contains(text(),' Market')])[1]");
+    public By service = By.xpath("//a[contains(text(),'Services')]");
+
+
+    public  By CustomerTypedropdown = By.xpath("//select[@id='custTypeEl']");
+    public By customer_id = By.xpath("//label[@class=\"col-sm-12 control-label\"]");
     public By categoryDropdownField = By.xpath("//select[@name='category']");
     public By Tittle = By.xpath("//input[@name=\"sal\"]");
     public By firstNameField = By.xpath("//input[@name='firstName']");
@@ -60,6 +69,90 @@ public class Customer extends BasePage {
     public By Note = By.xpath("//textarea[@name=\"notes\"]");
     BasePage bp = new BasePage();
     String SUCCESS_MESG = "Successfully saved customer.";
+
+
+    public  By MeterReads_Tab = By.xpath("//*[@class='icon-bar-chart']");
+    public  By ServiceName_Dropdown = By.xpath("//*[@id='nmis']");
+    public  By ServiceName_DropdownOpn = By.xpath("//*[@id='nmis']/option[2]");
+    public  By MeterNumber_Dropdown = By.xpath("//*[@id='meterNo']");
+    public  By MeterNumber_DropdownOpn = By.xpath("//*[@id='meterNo']/option[2]");
+    public  By ViewMeterReads = By.xpath("//*[@id='viewMeterReads']");
+    public  By viewDemandReads = By.xpath("//*[@id='viewDemandReads']");
+    // public  By viewKvarhReads = By.xpath("//*[@id='viewKvarhReads']");
+    public  By viewTOUReads = By.xpath("//*[@id='viewTOUReads']");
+    public  By viewTOUDailyReads = By.xpath("//*[@id='viewTOUDailyReads']");
+    public  By viewNEM13Reads = By.xpath("//*[@id='viewNEM13Reads']");
+    public  By retrieveTOUDailyReads = By.id("viewNEM13Reads");
+    public  By retrieveTOUReads = By.id("retrieveTOUReads");
+    public  By exportNEM13Reads = By.id("exportNEM13Reads");
+    public  By retrieveNEM13Reads = By.id("retrieveNEM13Reads");
+
+
+    //Market Page
+    public  By b2bNotAndRequest = By.id("b2bNotAndRequest");
+    public  By SORD = By.id("SORD");
+    public  By CATS = By.xpath("//a[@id='CATS']");
+    public  By NMID = By.id("NMID");
+    public  By newNMIDButton = By.id("newNMIDButton");
+    public  By CATSCategory = By.id("CATSCategory");
+    public  By newSOButton = By.id("newSOButton");
+    public  By B2BCategory = By.id("B2BCategory");
+
+//Services
+
+    public  By editService = By.xpath("//button[@title='View']");
+    public  By backToServices = By.xpath("//a[@value='Back']");
+
+    public By CustomerIcontab = By.xpath("//span[text()='Customers']");
+    public By detailsIcon = By.className("icon-reorder");
+    public By Categorydropdown = By.xpath("//*[@id='category']");
+    public By Address1field = By.xpath("//*[@id='hAddress']");
+    public By Cityfield = By.xpath("//*[@id='hSuburb']");
+    public By Statedropdown = By.xpath("//*[@id='hState']");
+    public By PostalCodefield = By.xpath("//*[@name='pcode']");
+    // Company/Business Details
+    public By CompanyNameField = By.xpath("//*[@id=\"company\"]");
+    public By ABNField = By.xpath("//*[@id=\"abn\"]");
+    // Contact Details
+    public By TitleDropdown = By.xpath("//*[@name='sal']");
+    public By GivenNameField = By.xpath("//*[@name='firstName']");
+    public By SurnameField = By.xpath("//*[@name='surname']");
+    public By PhoneBHField = By.xpath("//*[@name='contact_phone']");
+    public By EmailField = By.xpath("//*[@name='contact_email']");
+    public By AccountManagementSection = By.xpath("//*[@id='accountManagementPlus']");
+    public By ContractStartDate_Datepicker = By.id("contract_start_date");
+    public By PaymentTermMethod_Dropdown = By.xpath("//*[@id='payment_term']");
+    public By PaymentTermMethod_DropdownOpnC2 = By.xpath("//*[@id='payment_term']/option[2]");
+    public By PaymentTermMethod_DropdownOpn_B3 = By.xpath("//*[@id='payment_term']/option[3]");
+    public By PaymentTermMethod_DropdownOpnE1 = By.xpath("//*[@id='payment_term']/option[1]");
+    public By CurrentDate = By.xpath("//*[@class=\"active day\"]");
+    public By ContractTerm_Field = By.xpath("//*[@id='contract_term']");
+    // Scroll to last of the page
+    public By SaveCustomerButton = By.xpath("//*[@value='Save Customer']");
+    public By SaveOnlyButton = By.xpath("//button[contains(text(),'Save Only')]");
+    public By groupTag = By.xpath("(//label[@class=\"col-sm-12 control-label\"]/b)[1]");
+
+
+    public void clickDetailsTab() {
+        clickBtn_custom(detailsTab, "Details Tab");
+    }
+    public void clickNMITab() {
+        clickBtn_custom(nmiTab, "NMI Tab");
+    }
+    public void clickMarketTab() {
+        clickBtn_custom(market, "Market Tab");
+    }
+
+    public void clickServiceTab() {
+        clickBtn_custom(service, "Servcie Tab");
+    }
+    public String getGroupName() {
+        String groupName = getText_custom(groupTag);
+        System.out.println("GroupName of customer is " + groupName);
+        return groupName;
+
+
+    }
 
     public void selectCategoryDropdownField(String categoryText) {
         //clickBtn_custom(categoryDropdownField, "Category");
@@ -139,6 +232,9 @@ public class Customer extends BasePage {
     public String getSuccessMsgText() {
         WebdriverWaits.waitForElementVisible(successMessageForCustomerCreation, 10);
         return getText_custom(successMessageForCustomerCreation);
+    }
+    public void clickCustomerTab(String tabName) {
+        clickBtn_custom(By.xpath("//a[contains(text(),'" + tabName + "')]"), tabName);
     }
 
 
@@ -286,5 +382,139 @@ public class Customer extends BasePage {
 
         return getCustomerId();
 
+    }
+    public void addMeterInformation(String serviceName , String meterNumber){
+        click_custom(ServiceName_Dropdown,"ServiceName");
+        click_custom(ServiceName_DropdownOpn);
+        click_custom(MeterNumber_Dropdown,"Meter Number");
+        click_custom(MeterNumber_DropdownOpn);
+
+    }
+    public void verifyMeterReadsTabs(){
+        click_custom(ViewMeterReads,"Meter Reads Tab");
+        click_custom(viewDemandReads," Demand Reads Tab");
+
+        //isElementPresent_custom();
+        SoftAssert softAssert = new SoftAssert();
+        click_custom(viewNEM13Reads,"NEM 13 Raw Reads Tab");
+
+        softAssert.assertTrue(isElementPresent_custom(retrieveNEM13Reads,"Retrieve Button"));
+        softAssert.assertFalse(isExceptionOrErrorPresent());
+        click_custom(viewTOUDailyReads,"Tou Aggregated Reads Tab");
+
+        softAssert.assertTrue(isElementPresent_custom(retrieveTOUDailyReads,"Retrieve Button"));
+        softAssert.assertFalse(isExceptionOrErrorPresent());
+
+        click_custom(viewTOUReads,"Tou Raw Reads Tab ");
+
+        softAssert.assertTrue(isElementPresent_custom(retrieveTOUReads, "Retrieve Button"));
+        softAssert.assertFalse(isExceptionOrErrorPresent());
+
+        softAssert.assertAll();
+
+    }
+    public void verifyMarketTabs(){
+        SoftAssert softAssert = new SoftAssert();
+        click_custom(NMID,"CATS NMI Discovery Tab");
+
+        softAssert.assertTrue(isElementPresent_custom(newNMIDButton,"Retrieve Button"));
+        softAssert.assertFalse(isExceptionOrErrorPresent());
+
+        click_custom(CATS,"Change request Tab");
+        softAssert.assertTrue(isElementPresent_custom(CATSCategory,"CATSCategory Box"));
+        softAssert.assertFalse(isExceptionOrErrorPresent());
+
+        click_custom(SORD,"Service Order Tab ");
+        softAssert.assertTrue(isElementPresent_custom(newSOButton, "newSOButton Button"));
+
+        click_custom(b2bNotAndRequest,"Notifications/request Tab");
+        softAssert.assertTrue(isElementPresent_custom(B2BCategory, "Category selection box "));
+        softAssert.assertFalse(isExceptionOrErrorPresent());
+
+        softAssert.assertAll();
+
+    }
+    public void verifyServiceEdit(){
+
+        click_custom(editService,"Edit Service Button");
+        scrollIntoView(backToServices);
+        click_custom(backToServices,"Back To Services Button");
+    }
+    public String clickRecentCustomerId() {
+        String customerId = getText_custom(recentCustomerId);
+        click_custom(recentCustomerId);
+        return customerId;
+
+    }
+    public void addContactDetails(String email) throws InterruptedException {
+        clickBtn_custom(Address1field,"Address1field");
+        sendKeys_custom(Address1field, "Madirma R-Town");
+        clickBtn_custom(Cityfield,"Cityfield");
+        sendKeys_custom(Cityfield, "Mills NY");
+        clickBtn_custom(Statedropdown);
+        selectDropDownByVisibleText_custom(Statedropdown,"WA");
+        clickBtn_custom(PostalCodefield);
+        sendKeys_custom(PostalCodefield, "1265");
+        scrollIntoView(TitleDropdown);
+
+        clickBtn_custom(TitleDropdown);
+        selectDropDownByVisibleText_custom(TitleDropdown,"Dr.");
+        clickBtn_custom(GivenNameField);
+        RandomGenerator randomGenerator = new RandomGenerator();
+        sendKeys_custom(GivenNameField, "Name"+ randomGenerator.requiredCharacters(4));
+        clickBtn_custom(SurnameField);
+        Thread.sleep(2000);
+        sendKeys_custom(SurnameField, "SurName"+ randomGenerator.requiredCharacters(4));
+        scrollIntoView(PhoneBHField);
+
+        clickBtn_custom(PhoneBHField);
+        sendKeys_custom(PhoneBHField,  randomGenerator.requiredDigits(10));
+        Thread.sleep(2000);
+        scrollIntoView(EmailField);
+
+        Thread.sleep(1000);
+        clickBtn_custom(EmailField);
+        sendKeys_custom(EmailField, email);
+    }
+
+    public void addBusinessDetails() throws InterruptedException {
+        clickBtn_custom(CompanyNameField);
+        sendKeys_custom(CompanyNameField, "FranklinCovey");
+        scrollIntoView(ABNField);
+
+        clickBtn_custom(ABNField);
+        sendKeys_custom(ABNField, "32165485216");
+        Thread.sleep(2000);
+    }
+
+    public void addAccountManagement(String category) throws InterruptedException {
+        scrollIntoView(AccountManagementSection);
+        if (category != "Commercial")
+            clickBtn_custom(AccountManagementSection);
+        scrollIntoView(ContractStartDate_Datepicker);
+        Thread.sleep(3000);
+        clickBtn_custom(ContractStartDate_Datepicker);
+        clickBtn_custom(CurrentDate);
+        clickBtn_custom(ContractTerm_Field);
+        sendKeys_custom(ContractTerm_Field, "10");
+    }
+
+    public void createCustomer(String type, String category, String email) throws InterruptedException {
+        //Account Type
+        clickBtn_custom(CustomerIcontab,"CustomerIcontab");
+        clickBtn_custom(CustomerTypedropdown,"CustomerTypedropdown");
+       selectDropDownByVisibleText_custom(CustomerTypedropdown,type);
+        clickBtn_custom(Categorydropdown);
+       selectDropDownByVisibleText_custom(Categorydropdown,category);
+        //Contact Details
+        if (category.equals("Business") || category.equals("Commercial")) {
+            addBusinessDetails();
+        }
+        addContactDetails(email);
+        addAccountManagement(category);
+        scrollIntoView(SaveCustomerButton);
+        clickBtn_custom(SaveCustomerButton,"SaveCustomerButton");
+        clickBtn_custom(SaveOnlyButton,"SaveOnlyButton");
+        Thread.sleep(2000);
     }
 }

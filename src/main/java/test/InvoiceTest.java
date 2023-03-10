@@ -19,24 +19,7 @@ public class InvoiceTest extends BaseTest {
     createNewInvoiceSetupPage createInvoice = new createNewInvoiceSetupPage();
     invoiveSetupPageAction finish = new invoiveSetupPageAction();
     EditGroup editGroup = new EditGroup();
-    String invoiceName = "vikas";
-
-
-    @BeforeClass
-    public void login() {
-        try {
-
-            LoginPage loginPage = new LoginPage();
-            System.out.println(getDriver().getTitle());
-            loginPage.login(PropertiesUtil.getPropertyValue("userName"), PropertiesUtil.getPropertyValue("password"));
-
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-
-        }
-
-    }
+    String  invoiceName = "vikas";
 
     @Test(priority = 1, description = "Create New Invoice")
     public void create_NewInvoice() throws InterruptedException {

@@ -145,4 +145,9 @@ public class AdminPage extends BasePage {
         return new Imports();
 
     }
+    public  EditGroup navigateToGroupEdit(){
+        click_custom(AdminIcon);
+        click_custom(groupEditBtn);
+        return  new EditGroup();
+    }
 }

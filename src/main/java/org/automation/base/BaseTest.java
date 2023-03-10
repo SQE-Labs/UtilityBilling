@@ -79,7 +79,7 @@ public class BaseTest {
 
         getDriver().manage().window().maximize();
         getDriver().navigate().to(url);
-        login();
+        validLoginBaseTest();
     }
 
     /**
@@ -112,7 +112,7 @@ public class BaseTest {
         getDriver().navigate().refresh();
     }
 
-    public void login() {
+    public void validLoginBaseTest() {
         try {
             Element username = new Element("var", By.xpath("//input[@name='j_username']"));
             username.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("userName"));

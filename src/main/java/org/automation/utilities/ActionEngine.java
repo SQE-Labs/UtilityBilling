@@ -231,4 +231,59 @@ public class ActionEngine extends BaseTest {
         CheckBox checkBox = new CheckBox(var, path);
         return checkBox.isChecked();
     }
+    public String getAttributevalue(By path ,String attribute) {
+        String value ;
+        try {
+            Element element = new Element("fieldName", path);
+            value = element.getAttributeValue(attribute);
+            return value;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public boolean isElementPresent_custom(By path, String fieldName) {
+        boolean flag = false;
+        try {
+            Element element = new Element(fieldName, path);
+            flag = element.isVisible();
+               return flag;
+        } catch (Exception e) {
+            extentTest.log(FAIL, "****Checking for presence of element : " + fieldName + " not tested due to exception: " + e);
+            return flag;
+        }
+    }
+    public boolean isExceptionOrErrorPresent() {
+        boolean flag = false;
+        By exception= By.xpath("(//*[contains( text(),'Exception')])[2]");
+          By error= By.xpath("//text()[contains(translate(., 'Error', 'error'), 'error')]");
+
+        try {
+            Element exceptionEle = new Element("fieldName", exception);
+              Element errorEle = new Element("fieldName", error);
+            flag= exceptionEle.isVisible() ;
+             Log.debug( " Exception or Error  is present -->" + flag);
+
+            return flag;
+        } catch (Exception e) {
+            extentTest.log(FAIL, "Error or Exception Presence" + " : " + flag);
+            return flag;
+        }
+    }
+    public boolean isExceptionOrErrorPresent(int exceptionTextCount) {
+        boolean flag = false;
+        By exception= By.xpath("(//*[contains( text(),'Exception')])["+exceptionTextCount+"]");
+        By error= By.xpath("//text()[contains(translate(., 'Error', 'error'), 'error')]");
+
+        try {
+            Element exceptionEle = new Element("fieldName", exception);
+            Element errorEle = new Element("fieldName", error);
+            flag= exceptionEle.isVisible() || errorEle.isVisible();
+             Log.debug( " Exception or Error  is present -->" + flag);
+
+            return flag;
+        } catch (Exception e) {
+            extentTest.log(FAIL, "Error or Exception Presence" + " : " + flag);
+            return flag;
+        }
+    }
 }
