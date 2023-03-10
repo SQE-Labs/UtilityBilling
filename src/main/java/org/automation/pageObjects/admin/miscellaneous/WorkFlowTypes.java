@@ -1,6 +1,7 @@
 package org.automation.pageObjects.admin.miscellaneous;
 
 import org.automation.base.BasePage;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class WorkFlowTypes extends BasePage {
@@ -12,7 +13,7 @@ public class WorkFlowTypes extends BasePage {
     By displayNameField = By.xpath("//*[@name='display_name']");
     By typeNameField = By.xpath("//*[@name='type_name']");
     By saveButton = By.xpath("//button[@class='btn btn-primary save-logtype']");
-    By searchLog = By.xpath("//*[@id=\"datatableLogType_filter\"]/label/input");
+    By searchLog = By.xpath("//*[@id='datatableLogType_filter']/label/input");
     By firstRecord = By.xpath("//tbody[@id='logtypeListBody']//tr[1]//td[]");
 
 
@@ -41,6 +42,7 @@ public class WorkFlowTypes extends BasePage {
     }
 
     public void enterSearchLog(String userNameText) {
+        WebdriverWaits.waitForElementVisible(searchLog, 2);
         sendKeys_custom(searchLog, userNameText);
     }
 

@@ -1,11 +1,21 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.customers;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
-public class BillRunCycle extends BasePage {
-    public static String CUSTnum;
+public class AddMeterReads extends BasePage {
+    public By searchBtn = By.xpath("//button[@id=\"btn_search\"]");
+    public By recordId = By.xpath("//input[@id='search_input']");
+    public By Admin = By.xpath("//a[@title='Administration']");
+    public By SMTPicon = By.xpath("(//i[@class='icon-hdd'])[2]");
+    public By SrverField = By.xpath("//input[@name='smtpServer']");
+    public By PortField = By.xpath("//input[@name='smtpPort']");
+    public By UserAuthCheckbox = By.xpath("//input[@id='auth']");
+    public By Username = By.xpath("//input[@class='auth-inputs']");
+    public By Password = By.xpath("(//input[@class='auth-inputs'])[2]");
+    public By UpdateSMTPbutton = By.xpath("//a[@class='btn btn-large btn-primary']");
+
     public By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
     public By MsgType = By.xpath("//select[@id='email_message_type']");
     public By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -33,14 +43,7 @@ public class BillRunCycle extends BasePage {
     public By CycleSavedSuccess = By.xpath("//span[@id='resultMsg']");
     public By MainCustSearch = By.xpath("//input[@id='search_input']");
     public By SearchIcon = By.xpath("//button[@id='btn_search']");
-    public By Admin = By.xpath("//a[@title='Administration']");
-    public By SMTPicon = By.xpath("(//i[@class='icon-hdd'])[2]");
-    public By SrverField = By.xpath("//input[@name='smtpServer']");
-    public By PortField = By.xpath("//input[@name='smtpPort']");
-    public By UserAuthCheckbox = By.xpath("//input[@id='auth']");
-    public By Username = By.xpath("//input[@class='auth-inputs']");
-    public By Password = By.xpath("(//input[@class='auth-inputs'])[2]");
-    public By UpdateSMTPbutton = By.xpath("//a[@class='btn btn-large btn-primary']");
+
     public By MeterReadsTab = By.xpath("//ul[@class='nav nav-tabs']/li[4]");
     public By AddRead = By.xpath("//a[@class='btn btn-mini btn-primary addRead']");
     public By ReadType = By.xpath("//select[@id='modalReadType']");
@@ -51,6 +54,7 @@ public class BillRunCycle extends BasePage {
     public By ReadTypeSaved = By.xpath("//tr[@id='0']/td[4]");
     public By SelectMeterNumbr = By.xpath("//select[@name='meterNo']");
     public By NextDate = By.xpath("//td[@class='active day']/following-sibling::td");
+
     public By BillRunTab = By.xpath("//a[@title='Saas Bill Run']/i");
     public By RunTheBills = By.xpath("//button[@class='btn btn-success']");
     public By Reccurringdate = By.xpath("//input[@id='cycleDate']");
@@ -59,33 +63,81 @@ public class BillRunCycle extends BasePage {
     public By CycleNumber = By.xpath("//select[@id='cycleno']");
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
-    WebdriverWaits ww = new WebdriverWaits();
-    String SUCCESS_MSG = "Successfully saved message.";
 
-    public void getSuccessMsgText() {
-        WebdriverWaits.waitForElementVisible(CustNumberCreated, 5);
-        getText_custom(CustNumberCreated);
+
+    public void clickOnMeterReadsTab() {
+        clickBtn_custom(MeterReadsTab, "Meter Reads");
     }
 
-    public void clickOnAdminTab() {
-        clickBtn_custom(Admin, "Admin");
+    public void clickOnAddReads() {
+        scrollIntoView(AddRead);
+
+        clickBtn_custom(AddRead, "Add Read");
     }
 
-    public void clickOnBillRunIcon() {
-        clickBtn_custom(BillRunCycle, "Bill Run");
+    public void selectMeterNumberDD(int indexNo) {
+        selectDropDownByIndex_custom(SelectMeterNumbr, indexNo, "Meter Number");
+
     }
 
-    public void clickOnCreateCycle() {
-        clickBtn_custom(CreateCycle, "Create New");
+    public void clickMeterNumberDD() {
+        click_custom(SelectMeterNumbr, "Meter Number");
+
     }
 
-    public void sendCycleName() {
-        sendKeys_custom(CycleName, CUSTnum, "Cycle Name");
+    public void selectReadTypeFromDropdownlist(String categoryText) {
+        selectDropDownByVisibleText_custom(ReadType, categoryText, "Add Read Type");
+
     }
 
-    public void sendSearchCustForCycle() {
-        sendKeys_custom(SearchCustForCycle, CUSTnum, "Filter");
+
+    public void selectReadDateFromDatepickerForToday() {
+        clickBtn_custom(ReadDate, "Read Date");
+        clickBtn_custom(TodayDate, "Date");
+
     }
 
+    public void selectReadDateFromDatepickerForNxtDay() {
+        clickBtn_custom(ReadDate, "Read Date");
+        clickBtn_custom(NextDate, "Date");
+
+    }
+
+    public void sendMeterReadings(String meterReadingText) {
+        sendKeys_custom(ReadReadings, meterReadingText, "Meter Read(flat)");
+    }
+
+    public void selectReadDateFromDatepickerForNextDay() {
+        clickBtn_custom(ReadDate, "Read Date");
+        clickBtn_custom(NextDate, "Date");
+
+    }
+
+    public void clickOnSaveBtn() {
+        clickBtn_custom(SaveReads, "Save");
+    }
+
+    public void addMeterReads(String categoryText, String meterReadingText) throws InterruptedException {
+
+
+        clickOnAddReads();
+        selectReadTypeFromDropdownlist(categoryText);
+        if (categoryText.equalsIgnoreCase("estimate")) {
+            selectReadDateFromDatepickerForNextDay();
+        } else
+            selectReadDateFromDatepickerForToday();
+
+        sendMeterReadings(meterReadingText);
+        clickOnSaveBtn();
+    }
+
+    public void clickOnSearchBtn(String recordIdText) {
+        sendKeys_custom(recordId, recordIdText, "Record Id");
+        WebdriverWaits.waitForElementVisible(searchBtn, 10);
+        clickBtn_custom(searchBtn, "Search icon");
+
+
+    }
 
 }
+;

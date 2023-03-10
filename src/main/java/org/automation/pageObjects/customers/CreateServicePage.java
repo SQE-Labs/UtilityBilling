@@ -1,4 +1,4 @@
-package org.automation.pageObjects;
+package org.automation.pageObjects.customers;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;
@@ -10,9 +10,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class CreateServicePage extends BasePage {
+
     static String waterPlan = "Water Flat Template Plan";
     static String gasPlan = "Gas Flat Template Plan";
     static String notesstr = "Editing done";
+    public By searchBtn = By.xpath("//button[@id='btn_search']");
+    public By recordId = By.xpath("//input[@id='search_input']");
     public By Overviewtab = By.xpath("//i[@class='icon-eye-open']");
     public By AddRetailelect = By.xpath("(//a[@class='addicon'])[2]");
     public By SelectPlan = By.xpath("//select[@id='planNo']");
@@ -66,15 +69,15 @@ public class CreateServicePage extends BasePage {
 
     public void clickOnOverview() {
 
-        clickBtn_custom(Overviewtab, "Overview");
+        click_custom(Overviewtab, "Overview");
     }
 
     public void clickRetailElectricity() {
-        clickBtn_custom(AddRetailelect, "Retail Electricity Icon");
+        click_custom(AddRetailelect, "Retail Electricity Icon");
     }
 
     public void selectPlan(String selectPlanText) {
-        clickBtn_custom(SelectPlan, "Plan");
+        click_custom(SelectPlan, "Plan");
         selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
     }
 
@@ -100,23 +103,23 @@ public class CreateServicePage extends BasePage {
 
     public void selectreadType(String readingTypeText) {
         scrollIntoView(ReadType);
-        clickBtn_custom(ReadType, "Reading Type");
+        click_custom(ReadType, "Reading Type");
         selectDropDownByVisibleText_custom(ReadType, readingTypeText, "Reading Type");
     }
 
     public void clickDemandToggleButton() {
-        clickBtn_custom(DemandReadsToggle, "Enable Demand Type");
+        click_custom(DemandReadsToggle, "Enable Demand Type");
 
     }
 
     public void clickCreateService() {
         scrollIntoView(CreateElectServ);
-        clickBtn_custom(CreateElectServ, "Create Service");
+        click_custom(CreateElectServ, "Create Service");
 
     }
 
     public void clickOkButton() {
-        clickBtn_custom(OK_btn, "Ok");
+        click_custom(OK_btn, "Ok");
 
     }
 
@@ -125,13 +128,23 @@ public class CreateServicePage extends BasePage {
         return getText_custom(AssertElectricity);
     }
 
-    public void newRetailElectricitySevice(String selectPlanText, String MeterConfigurationText, String readingTypeText) {
+    public void clickOnSearchBtn(String recordIdText) {
+        sendKeys_custom(recordId, recordIdText, "Record Id");
+        WebdriverWaits.waitForElementVisible(searchBtn, 10);
+        click_custom(searchBtn, "Search icon");
+
+
+    }
+
+    public void newRetailElectricitySevice(String recordIdText, String selectPlanText, String MeterConfigurationText, String readingTypeText) throws InterruptedException {
         // 1. Customer is already created using Customer flow.
         // 2. Adding electricity service to a customer.
         // 3. Overview > Electricity
         as = new Assertions();
+        clickOnSearchBtn(recordIdText);
         clickOnOverview();
         clickRetailElectricity();
+        //  Thread.sleep(1000);
         selectPlan(selectPlanText);
         enterMeterNumber();
         selectMeterConfiguration(MeterConfigurationText);
@@ -139,7 +152,7 @@ public class CreateServicePage extends BasePage {
         clickDemandToggleButton();
         clickCreateService();
         clickOkButton();
-        as.assertStrings(createNewRetailElectrcityService(), SUCCESS_MSG);
+        as.assertEquals(createNewRetailElectrcityService(), SUCCESS_MSG);
     }
 
 }

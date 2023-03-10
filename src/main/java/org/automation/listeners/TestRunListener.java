@@ -18,8 +18,9 @@ public final class TestRunListener extends BaseTest implements ITestListener, IS
     @Override
     public void onTestSuccess(ITestResult result) {
         Log.info("Test [" + result.getName() + "] passed");
+        result.setAttribute("SuccessScreenshot", Screenshot.takeScreenShot("Success_" + result.getName()));
         if (Boolean.getBoolean("remoteDriver")) {
-            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            JavascriptExecutor jse = (JavascriptExecutor) getDriver();
             jse.executeScript(
                     "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\"}}");
         }

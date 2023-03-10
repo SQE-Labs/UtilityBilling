@@ -52,6 +52,13 @@ public final class Configuration {
         return Optional.ofNullable(properties.getProperty(property)).orElse("");
     }
 
+    public static void setProperty(String key, String value) {
+        if (properties == null) {
+            load();
+        }
+        properties.setProperty(key, value);
+    }
+
     /**
      * Print all the properties fetched.
      */

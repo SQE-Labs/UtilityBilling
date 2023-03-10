@@ -45,8 +45,8 @@ public final class Screenshot extends BaseTest {
             try {
                 base64 = writeScreenshotToFile(getDriver(), screenshot);
             } catch (ClassCastException e) {
-                	WebDriver driver = new Augmenter().augment(getDriver());
-                	base64 = writeScreenshotToFile(driver, screenshot);
+                WebDriver driver = new Augmenter().augment(getDriver());
+                base64 = writeScreenshotToFile(driver, screenshot);
             }
         } catch (IOException e) {
             Log.error("Unable to take screen shot", e);

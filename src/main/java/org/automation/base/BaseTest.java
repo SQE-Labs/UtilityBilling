@@ -11,8 +11,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.automation.elements.Element;
 import org.automation.listeners.TestReporter;
 import org.automation.listeners.TestRunListener;
-import org.automation.pageObjects.LoginPage;
-import org.automation.utilities.ActionEngine;
 import org.automation.utilities.PropertiesUtil;
 import org.automation.utilities.Screenshot;
 import org.openqa.selenium.By;
@@ -28,10 +26,8 @@ import java.net.MalformedURLException;
 import java.util.*;
 
 import static java.io.File.separator;
-import static java.lang.System.getProperty;
 import static java.nio.file.Files.lines;
 import static java.nio.file.Paths.get;
-import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 import static org.automation.logger.Log.error;
 
@@ -47,9 +43,10 @@ public class BaseTest {
         return driver.get();
     }
 
+
     public static void closeDriver() {
         getDriver().close();
-        driver.remove();
+        //driver.remove();
     }
 
     @BeforeSuite
@@ -82,12 +79,13 @@ public class BaseTest {
 
         getDriver().manage().window().maximize();
         getDriver().navigate().to(url);
-        login();
+        validLoginBaseTest();
     }
 
     /**
      * Method to execute at the end of each test method execution.
      */
+
 
     @BeforeMethod
     public void beforeMethod(Method method) {
@@ -104,17 +102,23 @@ public class BaseTest {
             String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
             extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
 
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(screenshotPath));
+
         }
         extent.endTest(extentTest);
         extent.flush();
+        getDriver().navigate().refresh();
     }
-    public void login() {
+
+    public void validLoginBaseTest() {
         try {
-           Element username=  new Element("var", By.xpath("//input[@name='j_username']"));
+            Element username = new Element("var", By.xpath("//input[@name='j_username']"));
             username.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("userName"));
-            Element password=  new Element("var", By.xpath("//input[@name='predigpass']"));
+            Element password = new Element("var", By.xpath("//input[@name='predigpass']"));
             password.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("password"));
-            Element button=  new Element("var", By.xpath("//*[@name='submit']"));
+            Element button = new Element("var", By.xpath("//*[@name='submit']"));
             button.getWebElement().click();
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,7 +129,7 @@ public class BaseTest {
      * Method to execute at the end of the suite execution
      */
     @AfterClass(alwaysRun = true)
-    public void afterMethod() {
+    public void afterClass() {
         closeDriver();
     }
 

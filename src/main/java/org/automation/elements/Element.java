@@ -70,6 +70,11 @@ public class Element extends BaseTest {
         wait.until(visibilityOfElementLocated(locator)).clear();
     }
 
+    public void click() {
+        Log.debug("Clicking [" + description + "] button");
+        wait.until(elementToBeClickable(locator)).click();
+    }
+
 
     /**
      * Get the value of the specified attribute.

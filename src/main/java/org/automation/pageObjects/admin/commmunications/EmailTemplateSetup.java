@@ -106,6 +106,6 @@ public class EmailTemplateSetup extends BasePage {
         enterEmailBcc(emailText);
         enterEmailSubject(EmailSubjectText);
         clickOnSaveBtn();
-        as.assertStrings(newRowAddUnderRecurringCharge(), SUCCESS_MSG);
+        Assertions.assertEquals(newRowAddUnderRecurringCharge(), SUCCESS_MSG);
     }
 }
