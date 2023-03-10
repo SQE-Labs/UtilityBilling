@@ -51,7 +51,6 @@ public class RetailElectricityService extends IndexPage {
 //        scrollIntoView(SaveChanges_Button);
 //        clickBtn_custom(SaveChanges_Button);
 //        clickBtn_custom(OkButton);
-//
 //    }
 //    public  void navigateToEditServices() throws InterruptedException {
 //        clickBtn_custom(ServiceTab);

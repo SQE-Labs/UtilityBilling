@@ -16,8 +16,8 @@ public class ElectricityServiceTest  extends IndexPage {
     @Test
     public void createRetailElectricityService() throws InterruptedException {
         searchCustomer(customerId);
-        electricityServiceId= retailElectricityService.addRetailElectricityService();
-    }
+        electricityServiceId = retailElectricityService.addRetailElectricityService();
+    }   
     
 //    @Test
 //    public void editRetailElectricityService() throws InterruptedException {

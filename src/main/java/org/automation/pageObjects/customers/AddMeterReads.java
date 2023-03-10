@@ -69,6 +69,8 @@ public class AddMeterReads extends BasePage
 public void clickOnMeterReadsTab()
 {
 	clickBtn_custom(MeterReadsTab, "Meter Reads");
+	 scrollIntoView(AddRead);
+	
 }
 
 public void clickOnAddReads()
@@ -155,5 +157,15 @@ public void addMeterReadsForEstimate(String recordIdText,int indexNo,String cate
 	sendMeterReadings(meterReadingText);
 	clickOnSaveBtn();
 }
+
+public void addMeterReadsForWater(int indexNo,String categoryText,String meterReadingText )
+{
+	clickOnMeterReadsTab();
+	clickOnAddReads();
+	selectReadTypeFromDropdownlist(categoryText);
+	selectReadDateFromDatepickerForToday();
+	sendMeterReadings(meterReadingText);
+	clickOnSaveBtn();
+    }
 }
 ;

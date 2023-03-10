@@ -322,4 +322,10 @@ public class Customer  extends BasePage {
   	return getCustomerId();
 	
     }
+    
+    //multiple  mehods to navigaet on particular tab
+    
+     public void clickCustomerTab(String tabName) {
+    	 
+     }
     }

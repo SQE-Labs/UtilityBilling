@@ -216,7 +216,7 @@ public class BuildTest extends BaseTest {
 //
 //	}
 
-	@Test(priority = 9, enabled = true, description = "verify Customer Tabs")
+	@Test(priority = 8, enabled = true, description = "verify Customer Tabs")
 	public void verifyBuild() {
 
 		By copyright = By.xpath("/html/body/div[3]/p/span[1]");
