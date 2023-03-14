@@ -159,8 +159,8 @@ public class BuildTest extends BaseTest {
 
     }
 
-    @Test(priority = 9, enabled = true, description = "verify Customer Tabs")
-    public void verifyBuild() {
+//    @Test(priority = 9, enabled = true, description = "verify Customer Tabs")
+//    public void verifyBuild() {
 
 //	@Test(priority = 8, enabled = true, description = "verify Customer Tabs")
 //	public void verifyBuild() {
@@ -235,5 +235,5 @@ public class BuildTest extends BaseTest {
 //
 //}
 
-}
+
 
