@@ -12,17 +12,17 @@ public class SetupAllocationBucket_Test extends BaseTest {
     UpdateAllocationBucket updateBucket = new UpdateAllocationBucket();
     DeleteAllocationBucket deleteBucket = new DeleteAllocationBucket();
 
-    @Test(priority = 1, description = "Setup Allocation Bucket")
+    @Test(priority = 1,enabled = true, description = "Setup Allocation Bucket")
     public void set_Bucket() throws InterruptedException {
         newBucket.setUpBucket("");
     }
 
-    @Test(priority = 2, description = "Update Allocation Bucket")
+    @Test(priority = 2, enabled = true,description = "Update Allocation Bucket")
     public void update_Bucket() throws InterruptedException {
         updateBucket.updateBucket("");
     }
 
-    @Test(priority = 3, description = "Delete Allocation Bucket")
+    @Test(priority = 3,enabled = true, description = "Delete Allocation Bucket")
     public void delete_Bucket() throws InterruptedException {
         deleteBucket.deleteBucket("");
     }

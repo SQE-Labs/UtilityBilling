@@ -21,7 +21,7 @@ public class InvoiceTest extends BaseTest {
     EditGroup editGroup = new EditGroup();
     String  invoiceName = "vikas";
 
-    @Test(priority = 1, description = "Create New Invoice")
+    @Test(priority = 1,enabled = true, description = "Create New Invoice")
     public void create_NewInvoice() throws InterruptedException {
         //ss.clickOnAdminTab();
         invoiceSetup = adminPage.navigateToInvoiceSetup();
@@ -36,7 +36,7 @@ public class InvoiceTest extends BaseTest {
 
     }
 
-    @Test(priority = 2, description = "Edit Existing invoice")
+    @Test(priority = 2,enabled = true, description = "Edit Existing invoice")
     public void edit_invoice() {
         invoiceSetup.search(invoiceName);
         invoiceSetup.clkSeachInvoice();
@@ -44,7 +44,7 @@ public class InvoiceTest extends BaseTest {
         invoiceSetup = finish.clkFininshBtn();
     }
 
-    @Test(priority = 3, description = "Updating invoice setting in Edit group")
+    @Test(priority = 3,enabled = true, description = "Updating invoice setting in Edit group")
     public void update_invoice_settings() {
         editGroup.clickAdmin();
         editGroup.clickEditGroup();

@@ -12,19 +12,19 @@ public class WorkFlowTypesTest extends BaseTest {
     public Select select;
     public Date date = new Date();
 
-    @Test(priority = 1, description = "To Edit User ")
+    @Test(priority = 1 ,enabled = true,description = "To Edit User ")
     public void workFlowTypes() {
-        WorkFlowTypes wft = new WorkFlowTypes();
-        wft.clickAdmin();
-        wft.clickWorkFlowTypes();
-        wft.clickCreateNewlog();
+        WorkFlowTypes workFlow = new WorkFlowTypes();
+        workFlow.clickAdmin();
+        workFlow.clickWorkFlowTypes();
+        workFlow.clickCreateNewlog();
         String clname = date.toString();
         clname = clname.replace(":", "");
         clname = clname.replace(" ", "");
-        wft.enterTypename("AA TN" + clname);
-        wft.enterDisplayName("AA DN" + clname);
-        wft.clickSaveButton();
-        wft.clickSaveButton();
-        wft.enterSearchLog("AA TN" + clname);
+        workFlow.enterTypename("AA TN" + clname);
+        workFlow.enterDisplayName("AA DN" + clname);
+        workFlow.clickSaveButton();
+        workFlow.clickSaveButton();
+        workFlow.enterSearchLog("AA TN" + clname);
     }
 }
