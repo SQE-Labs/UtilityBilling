@@ -1,3 +1,2 @@
-*Meter Number,*Date of Read,Flat Rate Read,Peak Read,Shoulder Read,Off Peak Read,*Read Type [I-Initial / A-Actual / C - Consumption / E-Estimate],Notes,Is Flat Rate Read Rollover? [Yes/No],Is Peak Read Rollover? [Yes/No],Is Shoulder Read Rollover? [Yes/No],Is Off Peak Read Rollover? [Yes/No],Unit? [GAC-Cubic meter (m3)/GAB-Cubic feet (ft3)/GAA-British thermal unit (btu)/GAD-Kilowatt hour (kWh)/GAE-Mega joules (MJ)/GAF-Therms (th)]
-110001,1/01/2015,100,200,300,50,I,Initial Read,,,,,
-110001,2/01/2015,150,250,350,100,A,Actual Read,,,,,
+*Service ID,*Meter Number,*Date of Read,*Meter Read,*Period,*Read Type [I-Initial / A-Actual / C - Consumption / E-Estimate],Notes,Is Read Rollover? [Yes/No],Unit? [GAC-Cubic meter (m3)/GAB-Cubic feet (ft3)/GAA-British thermal unit (btu)/GAD-Kilowatt hour (kWh)/GAE-Mega joules (MJ)/GAF-Therms (th)],Datastream,Special Type
+Ele104132,Ele104132,09/03/2023,100,P,I,notes,,,E1,none

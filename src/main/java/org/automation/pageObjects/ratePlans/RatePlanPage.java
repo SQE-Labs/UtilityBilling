@@ -40,28 +40,28 @@ public class RatePlanPage extends BasePage {
     }
 
     public void clickCrossIcon() {
-    	click_custom(crossIcon);
-      //  WebdriverWaits.waitForElementVisible(crossIcon, 2);
+        click_custom(crossIcon);
+        //  WebdriverWaits.waitForElementVisible(crossIcon, 2);
     }
 
     public void clickPublish() {
-    	click_custom(publish);
+        click_custom(publish);
         WebdriverWaits.waitForElementVisible(publish, 2);
     }
 
     public void clickAdd() {
-    	 WebdriverWaits.waitForElementVisible(addTarrif, 2);
-    	click_custom(addButton);
+        WebdriverWaits.waitForElementVisible(addTarrif, 2);
+        click_custom(addButton);
         WebdriverWaits.waitForElementVisible(publish, 2);
     }
 
     public void clickRatePlans() {
-    	click_custom(ratePlans);
+        click_custom(ratePlans);
         WebdriverWaits.waitForElementVisible(ratePlans, 2);
     }
 
     public void clickCreateNewPlan() {
-    	click_custom(createNewPlan);
+        click_custom(createNewPlan);
         //WebdriverWaits.waitForElementVisible(dateValidFrom, 2);
     }
 
@@ -80,27 +80,27 @@ public class RatePlanPage extends BasePage {
     }
 
     public void clickCurrentDateFrom() {
-    	click_custom(dateValidFrom);
-     //   WebdriverWaits.waitForElementVisible(dateValidFrom, 5);
+        click_custom(dateValidFrom);
+        //   WebdriverWaits.waitForElementVisible(dateValidFrom, 5);
     }
 
     public void clickCurrentDateTo() {
-    	click_custom(dateValidTo);
-      //  WebdriverWaits.waitForElementVisible(dateValidTo, 1);
+        click_custom(dateValidTo);
+        //  WebdriverWaits.waitForElementVisible(dateValidTo, 1);
     }
 
     public void clickDateFrom() {
-    	click_custom(dateFromValid);
+        click_custom(dateFromValid);
         WebdriverWaits.waitForElementVisible(dateValidFrom, 2);
     }
 
     public void clickDateTo() {
-    	click_custom(dateToValid);
+        click_custom(dateToValid);
         WebdriverWaits.waitForElementVisible(dateValidTo, 2);
     }
 
     public void clickAddTarif() {
-    	click_custom(addTarrif);
+        click_custom(addTarrif);
         WebdriverWaits.waitForElementVisible(addTarrif, 2);
     }
 
@@ -127,14 +127,14 @@ public class RatePlanPage extends BasePage {
     }
 
     public void selectRatingMethod(String ratingMethodText) {
-    	click_custom(ratingMethod);
+        click_custom(ratingMethod);
         WebdriverWaits.waitForElementVisible(ratingMethod, 3);
         selectDropDownByVisibleText_custom(ratingMethod, ratingMethodText, "Select Rating Method");
-      
+
     }
 
     public void selectUnit(String unitText) {
-    	click_custom(unit);
+        click_custom(unit);
         WebdriverWaits.waitForElementVisible(addButton, 5);
         selectDropDownByVisibleText_custom(unit, unitText, "Select Unit");
 
@@ -144,32 +144,32 @@ public class RatePlanPage extends BasePage {
         WebdriverWaits.waitForElementVisible(taxType, 1);
         selectDropDownByVisibleText_custom(taxType, textTypeText, "Select TaxType");
     }
-    
-    public void createPlan(String groupSelect, String usagetype, String nameText,String descriptionText,String rollupText, String chargeTypeText,String allocationText,String ratingMethodText,String unitText,String rateText) throws InterruptedException {
-    
-    	clickRatePlans();
-		clickCreateNewPlan();
-		selectGroup(groupSelect);
-		selectUsageTypes(usagetype);
-		enterName(nameText);
-		clickDateFrom();
-		clickCurrentDateFrom();
-		clickDateTo();
-		clickCurrentDateTo();
-		clickAddTarif();
-		enterChargeDescriptrion(descriptionText);
-		enterRollupDescriptrion(rollupText);
-		selectChargeType(chargeTypeText);
-		selectAllocation(allocationText);
-		Thread.sleep(1000);
-		selectRatingMethod(ratingMethodText);
-		Thread.sleep(1000);
-		selectUnit(unitText);
-		enterRate(rateText);
-		clickAdd();
-		clickPublish();
-		assertSuccessMessage();
-		clickCrossIcon();
+
+    public void createPlan(String groupSelect, String usagetype, String nameText, String descriptionText, String rollupText, String chargeTypeText, String allocationText, String ratingMethodText, String unitText, String rateText) throws InterruptedException {
+
+        clickRatePlans();
+        clickCreateNewPlan();
+        selectGroup(groupSelect);
+        selectUsageTypes(usagetype);
+        enterName(nameText);
+        clickDateFrom();
+        clickCurrentDateFrom();
+        clickDateTo();
+        clickCurrentDateTo();
+        clickAddTarif();
+        enterChargeDescriptrion(descriptionText);
+        enterRollupDescriptrion(rollupText);
+        selectChargeType(chargeTypeText);
+        selectAllocation(allocationText);
+        Thread.sleep(1000);
+        selectRatingMethod(ratingMethodText);
+        Thread.sleep(1000);
+        selectUnit(unitText);
+        enterRate(rateText);
+        clickAdd();
+        clickPublish();
+        assertSuccessMessage();
+        clickCrossIcon();
     }
 
 

@@ -1,6 +1,5 @@
 package org.automation.pageObjects.customers;
 
-import org.automation.base.BasePage;
 import org.automation.pageObjects.IndexPage;
 import org.automation.utilities.Assertions;
 import org.automation.utilities.Configuration;
@@ -33,7 +32,7 @@ public class RetailElectricityService extends IndexPage {
         clickBtn_custom(planNo);
         selectDropDownByVisibleText_custom(planNo, "Electricity Residential Plan");
         Configuration.setProperty("RetailElectricityServiceId", serviceId);
-        sendKeys_custom(meterNumber,serviceId);
+        sendKeys_custom(meterNumber, serviceId);
         selectDropDownByVisibleText_custom(meterConfig, "Flat Rate");
         selectDropDownByVisibleText_custom(readingType, "Reads");
         scrollIntoView(createServiceBtn);

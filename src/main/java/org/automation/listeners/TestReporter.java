@@ -49,7 +49,7 @@ public final class TestReporter implements IReporter {
      */
     private void init(List<XmlSuite> xmlSuites) {
         String suiteName = xmlSuites.get(0).getName();
-        Path report = Paths.get(System.getProperty("user.dir"),  "extent-reports",
+        Path report = Paths.get(System.getProperty("user.dir"), "extent-reports",
                 "Extent Report_" + System.currentTimeMillis() + "_" + suiteName + ".html");
         if (Files.notExists(report.getParent(), NOFOLLOW_LINKS)) {
             try {

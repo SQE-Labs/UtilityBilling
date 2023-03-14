@@ -6,15 +6,15 @@ import java.util.Random;
 
 public class RandomGenerator {
 
-    public  void random(By path, String valueToBeSent) {
+    public void random(By path, String valueToBeSent) {
         Random objGenerator = new Random();
         for (int iCount = 0; iCount < 10; iCount++) {
             int randomNumber = objGenerator.nextInt(100);
             System.out.println("Random No : " + randomNumber);
         }
     }
-    public  String requiredString(int n)
-    {
+
+    public String requiredString(int n) {
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "abcdefghijklmnopqrstuvxyz" + "               ";
         StringBuilder s = new StringBuilder(n);
         int y;
@@ -25,9 +25,8 @@ public class RandomGenerator {
         return s.toString();
     }
 
-    public  String requiredCharacters(int n)
-    {
-        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +  "abcdefghijklmnopqrstuvxyz";
+    public String requiredCharacters(int n) {
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "abcdefghijklmnopqrstuvxyz";
         StringBuilder s = new StringBuilder(n);
         int y;
         for (y = 0; y < n; y++) {
@@ -37,8 +36,7 @@ public class RandomGenerator {
         return s.toString();
     }
 
-    public  String requiredDigits(int n)
-    {
+    public String requiredDigits(int n) {
         String AlphaNumericString = "1234567890";
         StringBuilder s = new StringBuilder(n);
         int y;

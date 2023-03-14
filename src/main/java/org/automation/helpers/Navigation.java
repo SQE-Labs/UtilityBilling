@@ -11,9 +11,10 @@ public class Navigation extends BasePage {
 
 
     }
-    public Overview navigateToOverviewPage(){
-      //   clickBtn_custom(OverviewTab);
-     return new Overview();
+
+    public Overview navigateToOverviewPage() {
+        //   clickBtn_custom(OverviewTab);
+        return new Overview();
     }
 
 

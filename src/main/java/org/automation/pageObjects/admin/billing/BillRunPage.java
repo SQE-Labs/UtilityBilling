@@ -3,10 +3,9 @@ package org.automation.pageObjects.admin.billing;
 import org.automation.base.BasePage;
 import org.openqa.selenium.By;
 
-public class BillWithDownloadPdfAndCommit extends BasePage
-{
-	
-	public  String CUSTnum;
+public class BillRunPage extends BasePage {
+
+    public String CUSTnum;
     public By TemplateIcon = By.xpath("//i[@class='glyphicon glyphicon-comment']");
     public By MsgType = By.xpath("//select[@id='email_message_type']");
     public By Emailfrom = By.xpath("//input[@id='email_rem_from']");
@@ -60,52 +59,56 @@ public class BillWithDownloadPdfAndCommit extends BasePage
     public By CycleNumber = By.xpath("//select[@id='cycleno']");
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
-    
-    
-    public void clickOnBillRunTab()
-    {
-    	 clickBtn_custom(BillRunTab, "Bill Run");
+
+
+    public void clickOnBillRunTab() {
+        clickBtn_custom(BillRunTab, "Bill Run");
     }
-    public void clickOnRuntheBillBtn()
-    {
-    	 clickBtn_custom(RunTheBills, "Run the Bill");
+
+    public void clickOnRuntheBillBtn() {
+        clickBtn_custom(RunTheBills, "Run the Bill");
     }
-    public void clickOnReccurringDate()
-    {
-    	 clickBtn_custom(Reccurringdate, "Reccurring Date");
-    	 clickBtn_custom(TodayDate, "Today Date");
-    	 
+
+    public void clickOnReccurringDate() {
+        clickBtn_custom(Reccurringdate, "Reccurring Date");
+        clickBtn_custom(TodayDate, "Today Date");
+
     }
-    public void clickOnIssueDate()
-    {
-    	
-    	 clickBtn_custom(IssueDate, "Issue Date");
-    	 clickBtn_custom(TodayDate, "Today Date");
+
+    public void clickOnIssueDate() {
+
+        clickBtn_custom(IssueDate, "Issue Date");
+        clickBtn_custom(TodayDate, "Today Date");
     }
-    public void clickOnDueDate()
-    {
-    	 clickBtn_custom(DueDate, "Due Date");
-    	 clickBtn_custom(TodayDate, "Today Date");
+
+    public void clickOnDueDate() {
+        clickBtn_custom(DueDate, "Due Date");
+        clickBtn_custom(TodayDate, "Today Date");
     }
-    
-    public void selectRunBillCycleOptionFromDropdownlist(String cycleNoText)
-    		{
-    	selectDropDownByVisibleText_custom(CycleNumber, cycleNoText, "Bill Run Cycle");
-    		}
-    public void clickonBillRunBtn()
-	{
-    	 clickBtn_custom(RunBillBtn, "Run Bill");
-	}
-    
-    
-    public void runTheBillRunCycle(String cycleNoText)
-    {
-    	clickOnBillRunTab();
-    	clickOnRuntheBillBtn();
-    	clickOnReccurringDate();
-    	clickOnIssueDate();
-    	 clickOnDueDate();
-    	 selectRunBillCycleOptionFromDropdownlist(cycleNoText);
-    	 clickonBillRunBtn();
+
+    public void clickOnOkButton() {
+        clickBtn_custom(OKbtnn, "OK button ");
+    }
+
+    public void selectRunBillCycleOptionFromDropdownlist(String cycleNoText) {
+        selectDropDownByVisibleText_custom(CycleNumber, cycleNoText, "Bill Run Cycle");
+    }
+
+    public void clickonBillRunBtn() {
+        clickBtn_custom(RunBillBtn, "Run Bill");
+    }
+
+
+    public void runTheBillRunCycle(String cycleNoText) throws InterruptedException {
+        clickOnBillRunTab();
+        clickOnRuntheBillBtn();
+        clickOnReccurringDate();
+        clickOnIssueDate();
+        clickOnDueDate();
+        Thread.sleep(2000);
+        selectRunBillCycleOptionFromDropdownlist(cycleNoText);
+        clickonBillRunBtn();
+        Thread.sleep(6000);
+        clickOnOkButton();
     }
 }

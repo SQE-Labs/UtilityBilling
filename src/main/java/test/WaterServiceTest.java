@@ -1,5 +1,6 @@
 package test;
 
+import org.testng.annotations.Test;
 import org.automation.base.BaseTest;
 import org.automation.pageObjects.customers.AddMeterReads;
 import org.automation.pageObjects.customers.CreateServicePage;
@@ -22,7 +23,7 @@ public class WaterServiceTest extends BaseTest{
     		  "t12@gmail.com", "38 Decca Road", "37 Decca Road", "Goldsborough", "3156", 
     		  "Australia", "Electricity Residential plan");    
     createService.waterSevice(customerId,"Water Flat Template Plan","Flat Rate", "Reads");  
-       }	
+       
     }
-
+}
 

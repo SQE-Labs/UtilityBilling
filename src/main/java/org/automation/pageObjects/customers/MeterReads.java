@@ -105,12 +105,13 @@ public class MeterReads extends BasePage {
         return registerId;
     }
 
-    public void assertSuccessMesg(){
+    public void assertSuccessMesg() {
         // Validate Successfully created meter register.
         String ActualSucessMsg = getText_custom(CustomerSuccessMeterRegister);
         String ExpectedSucessMsg1 = "Successfully created meter register.";
         softAssert.assertEquals(ExpectedSucessMsg1, ActualSucessMsg);
     }
+
     public void addMeterReads(String readType, String peakValue, String offPeakValue, String shoulderValue) throws InterruptedException {
         Thread.sleep(3000);
         clickBtn_custom(MeterReads_Tab);

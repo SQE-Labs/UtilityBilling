@@ -8,7 +8,7 @@ public class PaymentsandManagingAllocationsTest extends BaseTest {
 	
 	AllocateStatementafterMakepayment asmp = new AllocateStatementafterMakepayment();
 	
-	@Test
+	@Test(priority=0)
 	public void AllocateStatementafterMakepayment() throws InterruptedException {
 		asmp.clickSearchBtn();
 		asmp.clickCustomerNumber();
@@ -23,8 +23,6 @@ public class PaymentsandManagingAllocationsTest extends BaseTest {
 		asmp.clickDelete();
 		asmp.enterDeleteDescription("Delete Transaction");
 		asmp.clickDeleteConfirmation();
-		
-		
 		
 	}
 }

@@ -10,12 +10,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class CreateServicePage extends BasePage {
-	
-	public By searchBtn=By.xpath("//button[@id='btn_search']");
-	public By recordId=By.xpath("//input[@id='search_input']");
+
     static String waterPlan = "Water Flat Template Plan";
     static String gasPlan = "Gas Flat Template Plan";
     static String notesstr = "Editing done";
+    public By searchBtn = By.xpath("//button[@id='btn_search']");
+    public By recordId = By.xpath("//input[@id='search_input']");
     public By Overviewtab = By.xpath("//i[@class='icon-eye-open']");
     public By AddRetailelect = By.xpath("(//a[@class='addicon'])[2]");
     public By SelectPlan = By.xpath("//select[@id='planNo']");
@@ -212,7 +212,7 @@ public class CreateServicePage extends BasePage {
 
     public void clickOnOverview() {
 
-    	click_custom(Overviewtab, "Overview");
+        click_custom(Overviewtab, "Overview");
     }
     
     public void clickGenericService() {
@@ -221,7 +221,7 @@ public class CreateServicePage extends BasePage {
     }
 
     public void clickRetailElectricity() {
-    	click_custom(AddRetailelect, "Retail Electricity Icon");
+        click_custom(AddRetailelect, "Retail Electricity Icon");
     }
     
     public void clickWaterElectricity() {
@@ -236,7 +236,7 @@ public class CreateServicePage extends BasePage {
 
 
     public void selectPlan(String selectPlanText) {
-    	click_custom(SelectPlan, "Plan");
+        click_custom(SelectPlan, "Plan");
         selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
     }
 
@@ -257,7 +257,7 @@ public class CreateServicePage extends BasePage {
     }
 
     public void selectMeterConfiguration(String MeterConfigurationText) {
-    	clickBtn_custom(MeterConfig, "Meter Cnfiguration");
+        clickBtn_custom(MeterConfig, "Meter Cnfiguration");
         selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText, "Meter Configuration");
       //  scrollIntoView(CreateElectServ);
     }
@@ -269,7 +269,7 @@ public class CreateServicePage extends BasePage {
     }
 
     public void clickDemandToggleButton() {
-    	click_custom(DemandReadsToggle, "Enable Demand Type");
+        click_custom(DemandReadsToggle, "Enable Demand Type");
 
     }
 
@@ -280,7 +280,7 @@ public class CreateServicePage extends BasePage {
     }
 
     public void clickOkButton() {
-    	click_custom(OK_btn, "Ok");
+        click_custom(OK_btn, "Ok");
 
     }
     
@@ -299,9 +299,15 @@ public class CreateServicePage extends BasePage {
     	sendKeys_custom(recordId, recordIdText, "Record Id");
     	WebdriverWaits.waitForElementVisible(searchBtn, 10);
     	click_custom(searchBtn, "Search icon");
-    	 
+    	
     }
-    public void newRetailElectricitySevice(String recordIdText,String selectPlanText, String MeterConfigurationText, String readingTypeText) throws InterruptedException {
+    public void clickkOnSearchBtn(String recordIdText) {
+        sendKeys_custom(recordId, recordIdText, "Record Id");
+        WebdriverWaits.waitForElementVisible(searchBtn, 10);
+        click_custom(searchBtn, "Search icon");
+    }
+
+    public void newRetailElectricitySevice(String recordIdText, String selectPlanText, String MeterConfigurationText, String readingTypeText) throws InterruptedException {
         // 1. Customer is already created using Customer flow.
         // 2. Adding electricity service to a customer.
         // 3. Overview > Electricity
@@ -309,7 +315,7 @@ public class CreateServicePage extends BasePage {
         clickOnSearchBtn(recordIdText);
         clickOnOverview();
         clickRetailElectricity();
-      //  Thread.sleep(1000);
+        //  Thread.sleep(1000);
         selectPlan(selectPlanText);
         enterMeterNumber();
         selectMeterConfiguration(MeterConfigurationText);
