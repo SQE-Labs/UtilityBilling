@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class LateFeesTest extends BaseTest {
     AdminPage admin = new AdminPage();
 
-    @Test(priority = 0, description = "Change Password")
+    @Test(priority = 0, enabled = true,description = "Change Password")
     public void enable_ElectricityFlatUsage_LateFees() {
         LateFeeSettings lateFeesPage = admin.navigateToLateFees();
         lateFeesPage.enterSearchText("Electricity flat usage");
@@ -19,7 +19,7 @@ public class LateFeesTest extends BaseTest {
 
     }
 
-    @Test(priority = 1, description = "Change Password")
+    @Test(priority = 1,enabled = true, description = "Change Password")
     public void disable_ElectricityFlatUsage_LateFees() {
         LateFeeSettings lateFeesPage = admin.navigateToLateFees();
         lateFeesPage.enterSearchText("Electricity flat usage");

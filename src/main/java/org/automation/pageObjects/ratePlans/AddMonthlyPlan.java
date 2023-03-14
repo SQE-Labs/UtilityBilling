@@ -24,6 +24,7 @@ public class AddMonthlyPlan extends BasePage {
     By tieredRatesRate = By.id("rateR");
     By addRange = By.id("addRangeBtn");
     By successMsg = By.xpath("//*[@id='datatablePreview_info']");
+    By crossIcon = By.xpath("//*[@class='icon-remove']");
 
     String SUCCESS_MESG = "Showing 1 to 1 of 1 entries";
 
@@ -113,6 +114,10 @@ public class AddMonthlyPlan extends BasePage {
         WebdriverWaits.waitForElementVisible(taxType, 1);
         selectDropDownByVisibleText_custom(taxType, textTypeText, "Select TaxType");
     }
+    
+    public void clickCrossIcon() {
+    	click_custom(crossIcon);
+    }
 
     public void addMonthlyPlan(String descriptionText, String rollupText, String chargeTypeText, String allocationText, String ratingMethodText, String unitText, String textTypeText, String fromRateText, String toRateText, String rateText) throws InterruptedException {
         clickRatePlans();
@@ -133,6 +138,7 @@ public class AddMonthlyPlan extends BasePage {
         clickAddRange();
         clickAdd();
         assertSuccessMessage();
+        clickCrossIcon();
 
 
     }

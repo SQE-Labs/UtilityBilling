@@ -10,7 +10,7 @@ public class GenericServiceTest extends BaseTest {
 	String customerId;
 	CreateServicePage createService = new CreateServicePage();
 	
-	@Test(priority=0)
+	@Test(priority=0,enabled = true)
 	 public void createGenericService() throws InterruptedException {
 		    Customer customer = new Customer ();
 		    customerId=customer.createCustomer("Business",
@@ -20,7 +20,7 @@ public class GenericServiceTest extends BaseTest {
 		    createService.genericService(customerId,"Net Eelect","","","12","Generic Services","NetworkCharges", "None", "Account Level Charges", "Day", "100");
 			}
 	
-	@Test(priority=1)
+	@Test(priority=1,enabled = true)
 	public void editGenericService() throws InterruptedException {
 	    createService.editGenericService("Electreicityy","25","Edit Generic Services","None", "Electricity Charges","Flat rate","Generic service is successfully saved.");
 		}

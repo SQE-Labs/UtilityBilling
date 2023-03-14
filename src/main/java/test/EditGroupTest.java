@@ -6,15 +6,13 @@ import org.testng.annotations.Test;
 
 public class EditGroupTest extends BaseTest {
 
-    @Test
+    @Test(enabled = true)
     public void editGroup() {
         EditGroup groupPage = new EditGroup();
 
         groupPage.clickAdmin();
         groupPage.clickEditGroup();
         groupPage.enterCompanyName("testing002");
-
-        //groupPage.editCompany("name");
 
         groupPage.entergroupOwner_1("Aida");
         groupPage.entergroupOwner_2("Barkley");
@@ -73,9 +71,6 @@ public class EditGroupTest extends BaseTest {
         groupPage.selectPrimaryBackInvoice("Full Bill Version 1.0");
         groupPage.selectSecondaryFrontInvoice("Full Bill Version 1.0");
         groupPage.selectSecondaryBackInvoice("Full Bill Version 1.0");
-
-//		groupPage.enableAllocationBucketOption();
-//		groupPage.enableAttachmentsCustomer();
 
         groupPage.enterTiabNotes("making notes for admin tab");
         groupPage.enterFranchiseeNotes("making notes for admin tab");

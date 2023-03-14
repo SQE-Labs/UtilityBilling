@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class ChangePasswordTest extends BaseTest {
 
 	
-    @Test(priority = 1, description = "Change Password")
+    @Test(priority = 1,enabled = true, description = "Change Password")
     public void changePassword() {
         Password cp = new Password();
         cp.clickAdmin();

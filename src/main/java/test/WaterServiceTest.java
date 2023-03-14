@@ -15,7 +15,7 @@ public class WaterServiceTest extends BaseTest{
 	AddMeterReads addMeterReads = new AddMeterReads();
 	String customerId;
 	
-	@Test(priority = 1, description = "Create Water Service")
+	@Test(priority = 1,enabled = true, description = "Create Water Service")
     public void createWaterService() throws InterruptedException {
     Customer customer = new Customer ();
     customerId=customer.createCustomer("Business",

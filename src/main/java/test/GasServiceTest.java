@@ -15,7 +15,7 @@ public class GasServiceTest extends BaseTest{
 	MeterReads meterReads = new MeterReads();
 	String customerId;
 	
-	@Test(priority = 1, description = "Create Gas Service")
+	@Test(priority = 1,enabled = true, description = "Create Gas Service")
     public void createGasService() throws InterruptedException {
     Customer customer = new Customer ();
     customerId=customer.createCustomer("Business",
