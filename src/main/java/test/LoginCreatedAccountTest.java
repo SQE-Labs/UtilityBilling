@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class LoginCreatedAccountTest extends BaseTest {
 
-    @Test
+    @Test(enabled = true)
     public void loginAccount() {
         LoginCreatedAccount userPage = new LoginCreatedAccount();
         LoginPage login = new LoginPage();

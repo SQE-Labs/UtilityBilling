@@ -14,10 +14,13 @@ public class ElectricityServiceTest extends IndexPage {
 
     RetailElectricityService retailElectricityService = new RetailElectricityService();
 
-    @Test
+    @Test(enabled = true)
     public void createRetailElectricityService() throws InterruptedException {
         searchCustomer(customerId);
         electricityServiceId = retailElectricityService.addRetailElectricityService();
+
+    }   
+
     }
 
 //    @Test
@@ -51,4 +54,4 @@ public class ElectricityServiceTest extends IndexPage {
 //    public void editGenericService() throws InterruptedException {
 //        retailElectricityService.editServiceStatus();
 //    }
-}
+

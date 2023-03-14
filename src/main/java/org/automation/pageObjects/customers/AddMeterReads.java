@@ -65,9 +65,15 @@ public class AddMeterReads extends BasePage {
     public By NextDay = By.xpath("//td[@class='new day']");
 
 
-    public void clickOnMeterReadsTab() {
-        clickBtn_custom(MeterReadsTab, "Meter Reads");
-    }
+
+public void clickOnMeterReadsTab()
+{
+	clickBtn_custom(MeterReadsTab, "Meter Reads");
+	 scrollIntoView(AddRead);
+	
+}
+
+  
 
     public void clickOnAddReads() {
         scrollIntoView(AddRead);
@@ -139,5 +145,16 @@ public class AddMeterReads extends BasePage {
 
     }
 
+
+public void addMeterReadsForWater(int indexNo,String categoryText,String meterReadingText )
+{
+	clickOnMeterReadsTab();
+	clickOnAddReads();
+	selectReadTypeFromDropdownlist(categoryText);
+	selectReadDateFromDatepickerForToday();
+	sendMeterReadings(meterReadingText);
+	clickOnSaveBtn();
+    }
 }
-;
+
+

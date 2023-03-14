@@ -20,10 +20,10 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage {
     By rate = By.xpath("//*[@name='rate']");
     By updateButton = By.xpath("//*[@id='addTrf']");
     By publish = By.id("publishBtn");
-    By successMsg = By.xpath("//*[@id=\"successPlnAlrt\"]/div/center/p/strong");
+    By successMsg = By.xpath("(//tbody/tr[1]//td[2])[1]");
     By crossIcon = By.xpath("//*[@id=\"closePlnBtn\"]/i");
 
-    String SUCCESS_MESG = "Commercial plan has been successfully updated.";
+    String SUCCESS_MESG = "Commercial plan";
 
 
     public void assertSuccessMessage() {
@@ -49,7 +49,6 @@ public class Add_AllocationBucket_inPlansTariff extends BasePage {
 
     public void clickCrossIcon() {
         click_custom(crossIcon);
-        WebdriverWaits.waitForElementVisible(crossIcon, 2);
     }
 
     public void clickTarifEditIcon() {

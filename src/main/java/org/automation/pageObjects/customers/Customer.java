@@ -383,6 +383,8 @@ public class Customer extends BasePage {
         return getCustomerId();
 
     }
+    
+
     public void addMeterInformation(String serviceName , String meterNumber){
         click_custom(ServiceName_Dropdown,"ServiceName");
         click_custom(ServiceName_DropdownOpn);
@@ -516,5 +518,6 @@ public class Customer extends BasePage {
         clickBtn_custom(SaveCustomerButton,"SaveCustomerButton");
         clickBtn_custom(SaveOnlyButton,"SaveOnlyButton");
         Thread.sleep(2000);
-    }
+    
+}
 }
