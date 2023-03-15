@@ -58,7 +58,7 @@ public class ImportServicesTest extends BaseTest {
 
 
     @Test(priority = 3, enabled = true)
-    public void Import_Meter_Reads_Initial() throws Exception {
+    public void Import_Meter_Reads() throws Exception {
 //        extentTest = extent.startTest(" Meter Reads Import ");
 //        extentTest.setDescription(" Verify that User is able to   Import Meter reads");
         String path = System.getProperty("user.dir") + "/src/main/resources/Meter Read Import Template.csv";
@@ -82,21 +82,6 @@ public class ImportServicesTest extends BaseTest {
 
     }
 
-    @Test(priority = 4, enabled = true)
-    public void Import_Meter_Reads_Consumption() throws Exception {
-        String path = System.getProperty("user.dir") + "/TestData/Meter Read Import Template - Manual.csv";
-
-        String readDate = dateGenerator.DateTimeGenerator("dd/MM/yyyy");
-        String column[] = {"Alternative Customer Number", "Salutation [DR/MISS/MR/MRS/MS/MSTR]", "*First Name", "*Surname", "*Billing Address", "Billing Address2", "Billing Suburb", "Billing State", "Billing Postal Code", "Billing Country", "Phone Number", "*Mobile Number", "Fax Number", "Email", "Company", "Notes/Feedbacks", "Legal Entity", "ABN", "ACN", "*Is Home Address Same As Billing Address? [Yes/No]", "Home Address", "Home Address2", "Home Suburb", "Home State", "Home Postal Code", "Home Country", "Category [B-Business/R-Residential]", "Billing Email", "Account Name", "Authentication Type[AC/DL/PA/PN/PI/UB]", "Authentication  No.", "Date of Birth", "Referee Name", "Referee Contact Number", "Referee relationship to tenant", "Enable Internet Access? [Yes/No]", "Password", "Secondary Customer Name", "Secondary Phone Number", "Secondary Mobile Number", "Secondary Fax Number", "Secondary Email", "Is life support? [Yes/No]", "guarantorFirstName", "guarantorLastName", "guarantorAddress1", "guarantorAddress2", "guarantorCity", "guarantorState", "guarantorZipCode", "guarantorMobilePhone", "guarantorHomePhone", "guarantorEmail", "guarantorAuthType", "guarantorAuthNo", "cycleNo"};
-        String filePath = System.getProperty("user.dir") + "/src/main/resources/Customer Import Template.csv";
-        String rowData = ",Mr,Sands,Hello,3090 Satellite Boulevard,,Duluth,GA,30096,United States,+1 800-001-0001,211 995 500 00 00 01,+1 800-001-0011,peter.andrews@alpha.mail.com,Basics Group of Companies,New customer,,96365484275,,Yes,,,,,,,B,pandrews@wideworld.com,Peter Andrews,AC,10012345,,Matt Andrews,+1 800-001-0100,Brother,No,pass123,Matt Andrews,+1 800-001-0011,211 995 500 00 00 11,,matt.andrews@worldmail.com,No,Mary,Palmer,Parker,Hills,White Pine Bay,Oregon,90414,3232332526,3233453423,rer@gmail.com,AC,78956,0";
-        String[] row = rowData.split(",");
-        CSVHelper.createCSVGeneric(filePath, column, row);
-        AdminPage admin = new AdminPage();
-        Imports importObj = admin.navigateToMeterReadingsImports();
-        importObj.importFile(filePath, "Meter Read consumption");
-
-    }
 
     @Test(priority = 5, enabled = true)
     public void Import_Customers() throws Exception {
@@ -128,7 +113,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Recurring Charge");
     }
 
-    @Test(priority = 7, enabled = false)
+    @Test(priority = 7, enabled = true)
     public void Import_Generic_Service() throws Exception {
         String columnData = "Customer No,Product/Charge Description,Prorata Date,End Date,Quantity,Notes,Rollup Description,Unit,Rate,Is Once Off?,Charge Type";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/genericServiceImportTemplate.csv";
@@ -143,7 +128,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Generic Service");
     }
 
-    @Test(priority = 8, enabled = false)
+    @Test(priority = 8, enabled = true)
     public void Import_Payments() throws Exception {
         String columnData = "Customer No,Alternative Customer No,Transaction Type,Payment Method,Card Type,Amount,Transaction Date,Comments,Auto Allocate,Batch No\n";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/paymentImportTemplate.csv";
@@ -174,7 +159,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Demand Reads");
     }
 
-    @Test(priority = 11, enabled = true)
+    @Test(priority = 11, enabled = false)
     public void Import_Prorated_Tariff() throws Exception {
         String columnData = "Plan No,Code,Date Start,Date End,Rate";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/ProratedTariffImportTemplate.csv";
@@ -191,7 +176,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Prorated Tariff");
     }
 
-    @Test(priority = 4, enabled = false)
+    @Test(priority = 4, enabled = true)
     public void Import_Security_Deposit() throws Exception {
         String columnData = "Customer No,Alternative Customer No,Transaction Type,Payment Method,Amount,Transaction Date,Comments";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/SecurityDepositsImportTemplate.csv";

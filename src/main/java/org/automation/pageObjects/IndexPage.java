@@ -19,7 +19,7 @@ public class IndexPage extends BasePage {
     public By customerAddress = By.xpath("//a[text()='Customer Address']");
     public By marketService = By.xpath("//a[text()='Market Service ID']");
     public By serviceAddress = By.xpath("//a[text()='Service Address']");
-    public By meterNumber = By.xpath("//a[text()='Market Service ID']");
+    public By meterNumber = By.xpath("//a[text()='Market Number']");
     public By all = By.xpath("#");
     public By searchInput=By.xpath("//div[@class='input-group search-panel-holder']//input[@id='search_input']");
 
