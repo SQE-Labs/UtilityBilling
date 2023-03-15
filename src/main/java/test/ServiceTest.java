@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 public class ServiceTest extends IndexPage {
 
-    //String customerId = "230527";
     String electricityServiceId;
     String genericServiceId;
     String waterServiceId;
