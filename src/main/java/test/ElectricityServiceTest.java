@@ -19,7 +19,7 @@ public class ElectricityServiceTest extends IndexPage {
         searchCustomer(customerId);
         electricityServiceId = retailElectricityService.addRetailElectricityService();
 
-    }   
+    }
 
     }
 
@@ -54,4 +54,3 @@ public class ElectricityServiceTest extends IndexPage {
 //    public void editGenericService() throws InterruptedException {
 //        retailElectricityService.editServiceStatus();
 //    }
-
