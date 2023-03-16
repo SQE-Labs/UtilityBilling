@@ -80,7 +80,7 @@ public class BillRunTest extends BaseTest {
         addMeterRead.clickOnMeterReadsTab();
         Thread.sleep(5000);
         addMeterRead.selectMeterNumberDD(1);
-        addMeterRead.addMeterReads("Estimate", "500");
+        addMeterRead.addMeterReads("Consumption", "500");
 
     }
 

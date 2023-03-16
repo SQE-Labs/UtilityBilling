@@ -59,7 +59,7 @@ public class createNewInvoiceSetupPage extends BasePage {
     }
 
     public void setCategory() {
-        ScrollDownThePage(0, 1000);
+        ScrollDownThePageMax();
         selectCheckBox(category2, "CHARGESUMMARY");
         selectCheckBox(category3, "CHARGESUMMARY-LIST");
         selectCheckBox(category4, "ITEMIZATION");
@@ -67,7 +67,7 @@ public class createNewInvoiceSetupPage extends BasePage {
     }
 
     public invoiveSetupPageAction saveInvoice() {
-        ScrollDownThePageMax(800);
+        ScrollDownThePageMax();
         clickBtn_custom(saveInvoiceBtn, "Save Invoice");
         return new invoiveSetupPageAction();
     }

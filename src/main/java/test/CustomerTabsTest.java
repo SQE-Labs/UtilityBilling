@@ -7,10 +7,8 @@ import org.automation.pageObjects.SearchResult;
 import org.automation.pageObjects.admin.AdminPage;
 import org.automation.pageObjects.admin.groupManager.EditGroup;
 import org.automation.pageObjects.customers.Customer;
-import org.automation.pageObjects.customers.FastNMI;
 import org.automation.utilities.PropertiesUtil;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -45,17 +43,11 @@ public class CustomerTabsTest extends BaseTest {
         indexPage.searchAll();
         softAssert.assertTrue(searchPage.getHeaderText().contains("Customers Found"));
         indexPage.ScrollDownThePageMax();
-        softAssert.assertTrue(searchPage.getHeader2Text().contains("Market Services Found"));
+        softAssert.assertTrue(searchPage.getHeader2Text().contains("Meters Found"));
         softAssert.assertAll();
     }
 
-    @Test(priority = 5, enabled = true, description = "verify all customer Search box")
-    public void search_All_Market_ServiceID() {
 
-        indexPage.searchAllServiceId();
-        Assert.assertTrue(searchPage.getHeaderText().contains("Market Services Found"));
-
-    }
 
     @Test(priority = 5, enabled = true, description = "verify all customer Search box")
     public void search_All_Customer_Address() {
@@ -70,14 +62,14 @@ public class CustomerTabsTest extends BaseTest {
     public void search_All_Service_Address() {
 
         indexPage.searchAllServiceAddress();
-        Assert.assertTrue(searchPage.getHeaderText().contains("Market Services Found"));
+        Assert.assertTrue(searchPage.getHeaderText().contains("Meters Found"));
 
     }
 
     @Test(priority = 5, enabled = true, description = "verify all customer Search box")
     public void search_All_Meter_Number() {
         indexPage.searchAllMeterNumber();
-        Assert.assertTrue(searchPage.getHeaderText().contains("Market Services Found"));
+        Assert.assertTrue(searchPage.getHeaderText().contains("Customers Found"));
 
     }
 

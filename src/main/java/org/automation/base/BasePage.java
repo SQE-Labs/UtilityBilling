@@ -156,30 +156,16 @@ public class BasePage extends ActionEngine {
         getDriver().switchTo().defaultContent();
     }
 
-    public void ScrollDownThePage(int x, int y) {
+    public void ScrollThePage(int x, int y) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("window.scrollBy(x, y)", "");
+        js.executeScript("window.scrollBy("+x+", "+y+")", "");
     }
-
-    public void ScrollDownThePageMax(int x) {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("window.scrollBy(x,document.body.scrollHeight)", "");
-    }
-
-
 
     public void ScrollDownThePageMax() {
-        JavascriptExecutor js = (JavascriptExecutor) BaseTest.getDriver();
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight)", "");
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
     }
 
-
-
-
-    public void ScrollUpThePage(int x, int y) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(x, y)", "");
-    }
 
     public void scrollIntoView(By element) {
         JavascriptExecutor jse = (JavascriptExecutor) getDriver();
