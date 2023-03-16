@@ -19,32 +19,32 @@ public class ElecPlanManagementTest extends BaseTest {
 
     @Test(priority = 1,enabled = true, description = "Create Plan")
     public void createPlan() throws InterruptedException {
-        plan.createPlan("testing002", "Retail Electricity", "Adam Johhns", "Usage charge", "None", "Water Charges", "New Bucket270", "Network Usage Flat Rate", "Kiloliter (kL)", "65");
+        plan.createPlan("testing002", "Retail Electricity", "Adam Johhns", "Usage charge", "None", "Water Charges", "New Bucket217", "Usage Flat Rate", "Kiloliter (kL)", "65");
     }
 
     @Test(priority = 2,enabled = true, description = "Add Tarif")
     public void addTarif() throws InterruptedException {
-        tarifPlan.addTarif("Usage charge", "None", "Electricity Charges", "New Bucket270", "Network Usage Flat Rate", "Kilowatt (KW)", "65");
+        tarifPlan.addTarif("Usage charge", "None", "Electricity Charges", "New Bucket217", "Network Usage Flat Rate", "Kilowatt (KW)", "65");
     }
 
     @Test(priority = 3, enabled = true,description = "Add Monthly Tarif")
     public void addMonthlyTarif() throws InterruptedException {
-        monthlyTarif.addMonthlyTarif("monthly administration fee", "None", "Electricity Charges", "New Bucket270", "Usage Tiered Monthly", "Kilowatt (kW)", "No Tax", "10", "100", "1000");
+        monthlyTarif.addMonthlyTarif("monthly administration fee", "None", "Electricity Charges", "New Bucket217", "Usage Tiered Monthly", "Kilowatt (kW)", "No Tax", "10", "100", "1000");
     }
 
     @Test(priority = 4, enabled = true, description = "Add Tarif Connection Fee")
     public void addTarifConnectionFee() throws InterruptedException {
-        connectionFee.addTarifConnection("Connection Fee", "None", "Account Level Charges", "New Bucket270", "Access Fee Per Day", "Month", "60", "No Tax");
+        connectionFee.addTarifConnection("Connection Fee", "None", "Account Level Charges", "New Bucket217", "Access Fee Per Day", "Month", "60", "No Tax");
     }
 
     @Test(priority = 5, enabled = true, description = "Create Commercial Plan")
     public void addCommercialPlan() throws InterruptedException {
-        commercialPlan.createCommercialPlan("testing002", "Retail Electricity", "Adams Johhons", "Usage commerical", "None", "Electricity Charges", "New Bucket270", "Usage Peak", "Kilowatt (kW)", "65");
+        commercialPlan.createCommercialPlan("testing002", "Retail Electricity", "Adams Johhons", "Usage commerical", "None", "Electricity Charges", "New Bucket217", "Usage Peak", "Kilowatt (kW)", "65");
     }
 
     @Test(priority = 6, enabled = true, description = "Add Monthly Plan")
     public void addMonthlyPlan() throws InterruptedException {
-        monthlyPlan.addMonthlyPlan("monthly administration fee", "None", "Electricity Charges", "New Bucket270", "Usage Tiered Monthly", "Kilowatt (kW)", "No Tax", "20", "100", "1000");
+        monthlyPlan.addMonthlyPlan("monthly administration fee", "None", "Electricity Charges", "New Bucket217", "Usage Tiered Monthly", "Kilowatt (kW)", "No Tax", "20", "100", "1000");
     }
 
     @Test(priority = 7, enabled = true, description = "Edit Allocation Bucket in Plans Tariff")

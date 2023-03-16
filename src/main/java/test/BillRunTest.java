@@ -59,7 +59,7 @@ public class BillRunTest extends BaseTest {
     }
 
 
-    @Test(priority = 6, description = "Create a service.")
+    @Test(priority = 6, enabled = false, description = "Create a service.")
     public void createAService() throws InterruptedException {
         CreateServicePage createServicePage = new CreateServicePage();
         //customerId="230736";
@@ -67,7 +67,7 @@ public class BillRunTest extends BaseTest {
         createServicePage.newRetailElectricitySevice(customerId, "Electricity Flat Template Plan", "Flat Rate", "Consumption");
     }
 
-    @Test(priority = 7, description = "Add meter for Actual and Initial")
+    @Test(priority = 7, enabled = true, description = "Add meter for Actual and Initial")
     public void addMEterReadsForInitialAndActual() throws InterruptedException {
         addMeterRead.clickOnMeterReadsTab();
         Thread.sleep(5000);
@@ -75,7 +75,7 @@ public class BillRunTest extends BaseTest {
         addMeterRead.addMeterReads("Initial", "100");
     }
 
-    @Test(priority = 8, description = "Add meter for Estimate")
+    @Test(priority = 8,enabled = true, description = "Add meter for Estimate")
     public void addMEterReadsForEstimate() throws InterruptedException {
         addMeterRead.clickOnMeterReadsTab();
         Thread.sleep(5000);
@@ -84,19 +84,19 @@ public class BillRunTest extends BaseTest {
 
     }
 
-    @Test(priority = 9, description = "Add a cycle.")
+    @Test(priority = 9,enabled = true, description = "Add a cycle.")
     public void addNewBillCycle() throws InterruptedException {
         addcycle.AddANewCycle(customerId, customerId);
 
     }
 
-    @Test(priority = 10, description = "Run the Bill Run Cycle")
+    @Test(priority = 10,enabled = true, description = "Run the Bill Run Cycle")
     public void runTheBillRunCycle() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.runTheBillRunCycle(customerId);
     }
 
-    @Test(priority = 11, description = "Add a Payment from Credit Card")
+    @Test(priority = 11, enabled = true,description = "Add a Payment from Credit Card")
     public void addPaymentFromCreditCard() throws InterruptedException {
         PaymentsPage addPayment = new PaymentsPage();
         index.searchCustomerFromSearchPanel(customerId);
@@ -104,7 +104,7 @@ public class BillRunTest extends BaseTest {
                 "Hey!!! this is the comment section under payment tab");
     }
 
-    @Test(priority = 8, description = "Add meter for Estimate")
+    @Test(priority = 8, enabled = true,description = "Add meter for Estimate")
     public void secondBillRun() throws InterruptedException {
         addMeterRead.clickOnMeterReadsTab();
         Thread.sleep(5000);
@@ -116,7 +116,7 @@ public class BillRunTest extends BaseTest {
         runTheCycle.runTheBillRunCycle(customerId);
     }
 
-    @Test(priority = 8, description = "Add meter for Estimate")
+    @Test(priority = 8, enabled = true,description = "Add meter for Estimate")
     public void secondBillRun_Rollback() throws InterruptedException {
         addMeterRead.clickOnMeterReadsTab();
         Thread.sleep(5000);

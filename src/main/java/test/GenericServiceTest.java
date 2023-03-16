@@ -17,11 +17,11 @@ public class GenericServiceTest extends BaseTest {
 		    		  "SSLabs", "Dallas", "Mathew", "9988907865", "test12@gmail.com",
 		    		  "t12@gmail.com", "38 Decca Road", "37 Decca Road", "Goldsborough", "3156", 
 		    		  "Australia", "Electricity Residential plan");    
-		    createService.genericService(customerId,"Net Eelect","","","12","Generic Services","NetworkCharges", "None", "Account Level Charges", "Day", "100");
+		    createService.genericService(customerId,"","","","12","Generic Services","NetworkCharges", "None", "Account Level Charges", "Day", "100");
 			}
 	
 	@Test(priority=1,enabled = true)
 	public void editGenericService() throws InterruptedException {
-	    createService.editGenericService("Electreicityy","25","Edit Generic Services","None", "Electricity Charges","Flat rate","Generic service is successfully saved.");
+	    createService.editGenericService("","25","Edit Generic Services","None", "Electricity Charges","Flat rate","Generic service is successfully saved.");
 		}
 }

@@ -22,6 +22,6 @@ public class GasServiceTest extends BaseTest{
     		  "SSLabs", "Dallas", "Mathew", "9988907865", "test12@gmail.com",
     		  "t12@gmail.com", "38 Decca Road", "37 Decca Road", "Goldsborough", "3156", 
     		  "Australia", "Electricity Residential plan");    
-    createService.gasService(customerId,"Water Flat Template Plan","Flat Rate", "Reads");  
+    createService.gasService(customerId,"Gas Flat Template Plan","Flat Rate", "Reads");  
 	}
 }
