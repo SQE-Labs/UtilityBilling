@@ -75,6 +75,7 @@ public class AddMonthlyPlan extends BasePage {
     }
 
     public void enterChargeDescriptrion(String descriptionText) {
+        WebdriverWaits.waitForElementVisible(chargeDescription, 2);
         sendKeys_withClear(chargeDescription, descriptionText);
     }
 

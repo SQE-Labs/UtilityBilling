@@ -72,7 +72,7 @@ public class SMSTemplateSetup extends BasePage {
     }
 
     public void clickOnSMSTab() {
-        clickBtn_custom(SMStab, "SMS");
+        click_custom(SMStab, "SMS");
     }
 
     public void selectMessageDropdownOption(int messageText) {

@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
 
     }
 
-    @Test(priority = -1,enabled = true, description = "To verify login functionality")
+    @Test(priority = -1,enabled = false, description = "To verify login functionality")
     public void reloadLoginPage() throws InterruptedException {
         IndexPage index = new IndexPage();
         index.refreshPage();

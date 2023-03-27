@@ -22,15 +22,13 @@ public class RetailElectricityService extends IndexPage {
     public By OverviewTab = By.xpath("//*[@class=\"icon-eye-open\"]"); // //*[contains(text(),'Overview')]
     public By okBtn = By.xpath("//button[contains(text(),'OK')]");
 
-    public DateGenerator dateGenerator = new DateGenerator();
-    public RandomGenerator random = new RandomGenerator();
 
-    public String addRetailElectricityService() throws InterruptedException {
+
+    public String addRetailElectricityService(String serviceId,String planType) throws InterruptedException {
         clickBtn_custom(OverviewTab);
-        String serviceId = random.requiredDigits(10);
         clickBtn_custom(RetailElectricity_Plus_Subtab);
-        clickBtn_custom(planNo);
-        selectDropDownByVisibleText_custom(planNo, "Electricity Residential Plan");
+        click_custom(planNo);
+        selectDropDownByVisibleText_custom(planNo, planType);
         Configuration.setProperty("RetailElectricityServiceId", serviceId);
         sendKeys_custom(meterNumber, serviceId);
         selectDropDownByVisibleText_custom(meterConfig, "Flat Rate");

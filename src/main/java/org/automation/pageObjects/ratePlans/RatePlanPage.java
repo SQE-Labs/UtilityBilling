@@ -161,7 +161,7 @@ public class RatePlanPage extends BasePage {
         enterRollupDescriptrion(rollupText);
         selectChargeType(chargeTypeText);
         selectAllocation(allocationText);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         selectRatingMethod(ratingMethodText);
         Thread.sleep(1000);
         selectUnit(unitText);

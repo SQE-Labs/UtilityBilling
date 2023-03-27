@@ -43,7 +43,6 @@ public class AddMeterReads extends BasePage {
     public By CycleSavedSuccess = By.xpath("//span[@id='resultMsg']");
     public By MainCustSearch = By.xpath("//input[@id='search_input']");
     public By SearchIcon = By.xpath("//button[@id='btn_search']");
-
     public By MeterReadsTab = By.xpath("//ul[@class='nav nav-tabs']/li[4]");
     public By AddRead = By.xpath("//a[@class='btn btn-mini btn-primary addRead']");
     public By ReadType = By.xpath("//select[@id='modalReadType']");
@@ -53,7 +52,9 @@ public class AddMeterReads extends BasePage {
     public By SaveReads = By.xpath("(//button[@class='btn btn-primary'])[2]");
     public By ReadTypeSaved = By.xpath("//tr[@id='0']/td[4]");
     public By SelectMeterNumbr = By.xpath("//select[@name='meterNo']");
-    public By NextDate = By.xpath("//td[@class='active day']/following-sibling::td");
+   // public By NextDate = By.xpath("(//td[@class='active day']/following-sibling::td)[4]");
+
+    public By NextDate = By.xpath("//td[@class='active day']/../preceding-sibling::tr/td[contains(text(),'26')]");
 
     public By BillRunTab = By.xpath("//a[@title='Saas Bill Run']/i");
     public By RunTheBills = By.xpath("//button[@class='btn btn-success']");
@@ -63,27 +64,43 @@ public class AddMeterReads extends BasePage {
     public By CycleNumber = By.xpath("//select[@id='cycleno']");
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
+    public By cross = By.xpath("//*[@class='bootstrap-dialog-close-button']");
+    public By comsumptionDate = By.xpath("(//div[@class='datepicker-days']//tr/td[@class='day'])[28]");
+    public By Date = By.id("modalReadDate");
+
+    public By meterPeak = By.id("modalReadingP");
+    public By offPeak = By.id("modalReadingO");
+    public By shoulder = By.id("modalReadingS");
+
+
+    public void sendPeakMeterReads(String peakText) {
+        sendKeys_custom(meterPeak, peakText, "Meter Read(flat)");
+    }
+
+    public void sendOffPeakMeterReads(String offPeakText) {
+        sendKeys_custom(offPeak, offPeakText, "Meter Read(flat)");
+    }
+
+    public void sendShoulderMeterReads(String shoulderText) {
+        sendKeys_custom(shoulder, shoulderText, "Meter Read(flat)");
+    }
 
 
 
-public void clickOnMeterReadsTab()
-{
-	clickBtn_custom(MeterReadsTab, "Meter Reads");
-	 scrollIntoView(AddRead);
-	
-}
+    public void clickOnMeterReadsTab() {
+        clickBtn_custom(MeterReadsTab, "Meter Reads");
+        scrollIntoView(AddRead);
+    }
 
-  
 
     public void clickOnAddReads() {
         scrollIntoView(AddRead);
-
         clickBtn_custom(AddRead, "Add Read");
     }
 
     public void selectMeterNumberDD(int indexNo) {
+        WebdriverWaits.waitForElementVisible(SelectMeterNumbr, 2);
         selectDropDownByIndex_custom(SelectMeterNumbr, indexNo, "Meter Number");
-
     }
 
     public void clickMeterNumberDD() {
@@ -124,15 +141,25 @@ public void clickOnMeterReadsTab()
     }
 
     public void addMeterReads(String categoryText, String meterReadingText) throws InterruptedException {
-
-
         clickOnAddReads();
         selectReadTypeFromDropdownlist(categoryText);
-        if (categoryText.equalsIgnoreCase("estimate")) {
-            selectReadDateFromDatepickerForNextDay();
-        } else
-            selectReadDateFromDatepickerForToday();
+//        if (categoryText.equalsIgnoreCase("estimate")) {
+//            selectReadDateFromDatepickerForNextDay();
+//        } else
+//            selectReadDateFromDatepickerForToday();
+        //String date =  dateGenerator.getDateWithDays("dd/MM/yyyy",45);
 
+        selectReadDateFromDatepickerForToday();
+        sendMeterReadings(meterReadingText);
+        clickOnSaveBtn();
+    }
+
+    public void addComsumptionReads(String categoryText, String meterReadingText) throws InterruptedException {
+        clickOnAddReads();
+        selectReadTypeFromDropdownlist(categoryText);
+        selectReadDateFromDatepickerForNextDay();
+//        click_custom(Date);
+//        click_custom(comsumptionDate);
         sendMeterReadings(meterReadingText);
         clickOnSaveBtn();
     }
@@ -142,18 +169,50 @@ public void clickOnMeterReadsTab()
         WebdriverWaits.waitForElementVisible(searchBtn, 10);
         clickBtn_custom(searchBtn, "Search icon");
 
-
     }
 
 
-public void addMeterReadsForWater(int indexNo,String categoryText,String meterReadingText )
-{
-	clickOnMeterReadsTab();
-	clickOnAddReads();
-	selectReadTypeFromDropdownlist(categoryText);
-	selectReadDateFromDatepickerForToday();
-	sendMeterReadings(meterReadingText);
-	clickOnSaveBtn();
+    public void clickCross() {
+        click_custom(cross);
+    }
+
+    public void addMeterReadsForWater(int indexNo, String categoryText, String meterReadingText) {
+        clickOnMeterReadsTab();
+        clickOnAddReads();
+        selectReadTypeFromDropdownlist(categoryText);
+        selectReadDateFromDatepickerForNextDay();
+        sendMeterReadings(meterReadingText);
+        clickOnSaveBtn();
+    }
+
+
+    public void addMeterReading(String categoryText, String peakText,String offPeakText,String shoulderText) throws InterruptedException {
+        clickOnAddReads();
+        selectReadTypeFromDropdownlist(categoryText);
+//        if (categoryText.equalsIgnoreCase("estimate")) {
+//            selectReadDateFromDatepickerForNextDay();
+//        } else
+//            selectReadDateFromDatepickerForToday();
+        //String date =  dateGenerator.getDateWithDays("dd/MM/yyyy",45);
+
+        selectReadDateFromDatepickerForToday();
+        // sendMeterReadings(meterReadingText);
+        sendPeakMeterReads(peakText);
+        sendOffPeakMeterReads(offPeakText);
+        sendShoulderMeterReads(shoulderText);
+        clickOnSaveBtn();
+    }
+
+    public void addComsumptionReading(String categoryText, String peakText,String offPeakText,String shoulderText) throws InterruptedException {
+        clickOnAddReads();
+        selectReadTypeFromDropdownlist(categoryText);
+        selectReadDateFromDatepickerForNextDay();
+//        click_custom(Date);
+//        click_custom(comsumptionDate);
+        sendPeakMeterReads(peakText);
+        sendOffPeakMeterReads(offPeakText);
+        sendShoulderMeterReads(shoulderText);
+        clickOnSaveBtn();
     }
 }
 

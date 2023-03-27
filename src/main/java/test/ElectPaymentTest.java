@@ -44,7 +44,7 @@ public class ElectPaymentTest extends BaseTest {
 
     @Test(priority = 6,enabled = true, description = "Add a Security Deposit")
     public void addSecurityDeposit() throws InterruptedException {
-        gPayment.PaymentsFromCreditCard("Security Deposit", "Deposit", "sqelabs11@gmail.com", "75",
+        gPayment.AddSecurityDepositFromCC("Security Deposit", "Deposit", "sqelabs11@gmail.com", "75",
                 "Hey!!! this is the comment section under payment tab(Security Tab)");
     }
 

@@ -58,14 +58,22 @@ public class BillRunPage extends BasePage {
     public By DueDate = By.xpath("//input[@id='dueDate']");
     public By CycleNumber = By.xpath("//select[@id='cycleno']");
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
-    public By NextDay = By.xpath("//td[@class='new day']");
+    public  By commitStatement = By.id("commit-statement");
+    public  By view_Icon = By.xpath("//*[text()='View']");
+    public  By Rollback_Button = By.id("rollback-and-fix");
+    public  By continueRollback = By.xpath("//button[text()='Continue rollback']");
+    public  By RollbackCross_Icon = By.xpath("(//button[@class='close'])[4]");
+    public  By continueCommit = By.xpath("//button[text()='Continue commit']");
 
+    public By ok = By.xpath("//button[text()='Ok']");
 
     public void clickOnBillRunTab() {
+        scrollIntoView(BillRunTab);
         clickBtn_custom(BillRunTab, "Bill Run");
     }
 
     public void clickOnRuntheBillBtn() {
+        scrollIntoView(RunTheBills);
         clickBtn_custom(RunTheBills, "Run the Bill");
     }
 
@@ -108,7 +116,29 @@ public class BillRunPage extends BasePage {
         Thread.sleep(2000);
         selectRunBillCycleOptionFromDropdownlist(cycleNoText);
         clickonBillRunBtn();
-        Thread.sleep(6000);
-        clickOnOkButton();
+        Thread.sleep(70000);
+    }
+
+    public  void rollback() throws InterruptedException {
+
+        click_custom(view_Icon);
+        Thread.sleep(3000);
+        click_custom(Rollback_Button);
+        Thread.sleep(3000);
+        click_custom(continueRollback);
+        Thread.sleep(3000);
+        click_custom(RollbackCross_Icon);
+        Thread.sleep(3000);
+
+    }
+
+    public void commit_Statement() throws InterruptedException {
+        click_custom(view_Icon);
+        Thread.sleep(3000);
+        click_custom(commitStatement);
+        Thread.sleep(3000);
+        click_custom(continueCommit);
+        Thread.sleep(3000);
+        click_custom(ok);
     }
 }

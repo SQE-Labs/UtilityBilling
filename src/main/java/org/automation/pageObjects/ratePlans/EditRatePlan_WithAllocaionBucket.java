@@ -73,11 +73,12 @@ public class EditRatePlan_WithAllocaionBucket extends BasePage {
     }
 
 
-    public void edit_Allocation(String planNameText, String allocationText, String rateText) {
+    public void edit_Allocation(String planNameText, String allocationText, String rateText) throws InterruptedException {
         clickRatePlans();
         enterPlanName(planNameText);
         clickPlanEditIcon();
         clickTarifEditIcon();
+        Thread.sleep(2000);
         selectAllocation(allocationText);
         enterRate(rateText);
         clickUpdateTarif();
