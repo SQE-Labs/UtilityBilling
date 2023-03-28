@@ -7,6 +7,7 @@ import org.automation.pageObjects.customers.Customer;
 import org.automation.pageObjects.customers.RetailElectricityService;
 import org.automation.utilities.CSVHelper;
 import org.automation.utilities.DateGenerator;
+import org.automation.utilities.RandomGenerator;
 import org.testng.annotations.Test;
 
 import java.util.Random;
@@ -33,7 +34,7 @@ public class ImportServicesTest extends BaseTest {
 
     }
 
-    @Test(priority = 1, enabled = false)
+    @Test(priority = 1, enabled = true)
     public void Import_Meter_Number() throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/resources/Meter  Number Import Template.csv";
         String columnStr = "Customer Number,Alternative Customer Number,*Plan Number,*Meter Number,*Meter Configuration [1-Flat / 2-Peak/OffPeak/Shoulder],*Prorata Date,*Meter Type [HE - Electricity / WT - Water],*Meter Read Type [R-Reads/C-Consumption],Enable Demand Reads? [Yes/No],*Kfactor,Phase Type,Gas Cook,Master Meter,Walk Order,NMI,SubAddress Type,SubAddress Number,Street Number,Street Name,Street type,Suburb,State/County,Post/Zip Code,Special Type [0 - Normal / 1 - Solar],Route,High Reading,Low Reading,Modem Number,IMEI Number,Sim Number,Seal Number,Meter Size";
@@ -58,7 +59,7 @@ public class ImportServicesTest extends BaseTest {
 
 
     @Test(priority = 3, enabled = true)
-    public void Import_Meter_Reads_Initial() throws Exception {
+    public void Import_Meter_Reads() throws Exception {
 //        extentTest = extent.startTest(" Meter Reads Import ");
 //        extentTest.setDescription(" Verify that User is able to   Import Meter reads");
         String path = System.getProperty("user.dir") + "/src/main/resources/Meter Read Import Template.csv";
@@ -70,6 +71,7 @@ public class ImportServicesTest extends BaseTest {
         String rowData = "10000,110001,09/03/2023,150,1,HE,R,No,1,,,,,1200-1,APT,Apartment 7,24,Hermit Park,APT,Mount Louisa,AUSTRALIA,4814,0,,,,,,,,";
         rowData = rowData.replace("10000", serviceId);
         rowData = rowData.replace("10000", meterNo);
+        rowData = rowData.replace("09/03/2023", currentDate);
 
         String[] row = rowData.split(",");
         String[] column = rowData.split(",");
@@ -82,29 +84,16 @@ public class ImportServicesTest extends BaseTest {
 
     }
 
-    @Test(priority = 4, enabled = true)
-    public void Import_Meter_Reads_Consumption() throws Exception {
-        String path = System.getProperty("user.dir") + "/TestData/Meter Read Import Template - Manual.csv";
-
-        String readDate = dateGenerator.DateTimeGenerator("dd/MM/yyyy");
-        String column[] = {"Alternative Customer Number", "Salutation [DR/MISS/MR/MRS/MS/MSTR]", "*First Name", "*Surname", "*Billing Address", "Billing Address2", "Billing Suburb", "Billing State", "Billing Postal Code", "Billing Country", "Phone Number", "*Mobile Number", "Fax Number", "Email", "Company", "Notes/Feedbacks", "Legal Entity", "ABN", "ACN", "*Is Home Address Same As Billing Address? [Yes/No]", "Home Address", "Home Address2", "Home Suburb", "Home State", "Home Postal Code", "Home Country", "Category [B-Business/R-Residential]", "Billing Email", "Account Name", "Authentication Type[AC/DL/PA/PN/PI/UB]", "Authentication  No.", "Date of Birth", "Referee Name", "Referee Contact Number", "Referee relationship to tenant", "Enable Internet Access? [Yes/No]", "Password", "Secondary Customer Name", "Secondary Phone Number", "Secondary Mobile Number", "Secondary Fax Number", "Secondary Email", "Is life support? [Yes/No]", "guarantorFirstName", "guarantorLastName", "guarantorAddress1", "guarantorAddress2", "guarantorCity", "guarantorState", "guarantorZipCode", "guarantorMobilePhone", "guarantorHomePhone", "guarantorEmail", "guarantorAuthType", "guarantorAuthNo", "cycleNo"};
-        String filePath = System.getProperty("user.dir") + "/src/main/resources/Customer Import Template.csv";
-        String rowData = ",Mr,Sands,Hello,3090 Satellite Boulevard,,Duluth,GA,30096,United States,+1 800-001-0001,211 995 500 00 00 01,+1 800-001-0011,peter.andrews@alpha.mail.com,Basics Group of Companies,New customer,,96365484275,,Yes,,,,,,,B,pandrews@wideworld.com,Peter Andrews,AC,10012345,,Matt Andrews,+1 800-001-0100,Brother,No,pass123,Matt Andrews,+1 800-001-0011,211 995 500 00 00 11,,matt.andrews@worldmail.com,No,Mary,Palmer,Parker,Hills,White Pine Bay,Oregon,90414,3232332526,3233453423,rer@gmail.com,AC,78956,0";
-        String[] row = rowData.split(",");
-        CSVHelper.createCSVGeneric(filePath, column, row);
-        AdminPage admin = new AdminPage();
-        Imports importObj = admin.navigateToMeterReadingsImports();
-        importObj.importFile(filePath, "Meter Read consumption");
-
-    }
 
     @Test(priority = 5, enabled = true)
     public void Import_Customers() throws Exception {
         String columnData = "Alternative Customer Number,Salutation [DR/MISS/MR/MRS/MS/MSTR],*First Name,*Surname,*Billing Address,Billing Address2,Billing Suburb,Billing State,Billing Postal Code,Billing Country,Phone Number,*Mobile Number,Fax Number,Email,Company,Notes/Feedbacks,Legal Entity,ABN,ACN,*Is Home Address Same As Billing Address? [Yes/No],Home Address,Home Address2,Home Suburb,Home State,Home Postal Code,Home Country,Category [B-Business/R-Residential],Billing Email,Account Name,Authentication Type[AC/DL/PA/PN/PI/UB],Authentication  No.,Date of Birth,Referee Name,Referee Contact Number,Referee relationship to tenant,Enable Internet Access? [Yes/No],Password,Secondary Customer Name,Secondary Phone Number,Secondary Mobile Number,Secondary Fax Number,Secondary Email,Is life support? [Yes/No],guarantorFirstName,guarantorLastName,guarantorAddress1,guarantorAddress2,guarantorCity,guarantorState,guarantorZipCode,guarantorMobilePhone,guarantorHomePhone,guarantorEmail,guarantorAuthType,guarantorAuthNo,cycleNo\n";
 
         String filePath = System.getProperty("user.dir") + "/src/main/resources/Customer Import Template.csv";
-        String rowData = ",Mr,Sands,Hello,3090 Satellite Boulevard,,Duluth,GA,30096,United States,+1 800-001-0001,211 995 500 00 00 01,+1 800-001-0011,peter.andrews@alpha.mail.com,Basics Group of Companies,New customer,,96365484275,,Yes,,,,,,,B,pandrews@wideworld.com,Peter Andrews,AC,10012345,,Matt Andrews,+1 800-001-0100,Brother,No,pass123,Matt Andrews,+1 800-001-0011,211 995 500 00 00 11,,matt.andrews@worldmail.com,No,Mary,Palmer,Parker,Hills,White Pine Bay,Oregon,90414,3232332526,3233453423,rer@gmail.com,AC,78956,0";
-        // rowData= rowData.replace();
+        String rowData = ",Mr,Sands,Surname,3090 Satellite Boulevard,,Duluth,GA,30096,United States,+1 800-001-0001,211 995 500 00 00 01,+1 800-001-0011,peter.andrews@alpha.mail.com,Basics Group of Companies,New customer,,96365484275,,Yes,,,,,,,B,pandrews@wideworld.com,Peter Andrews,AC,10012345,,Matt Andrews,+1 800-001-0100,Brother,No,pass123,Matt Andrews,+1 800-001-0011,211 995 500 00 00 11,,matt.andrews@worldmail.com,No,Mary,Palmer,Parker,Hills,White Pine Bay,Oregon,90414,3232332526,3233453423,rer@gmail.com,AC,78956,0";
+        RandomGenerator random = new RandomGenerator();
+
+        rowData= rowData.replace("Sands","First_"+random.requiredString(5));
         String[] row = rowData.split(",");
         String[] column = columnData.split(",");
 
@@ -118,21 +107,25 @@ public class ImportServicesTest extends BaseTest {
 
     @Test(priority = 6, enabled = true)
     public void Import_Recurring_Charge() throws Exception {
-        String column[] = {"Alternative Customer Number", "Salutation [DR/MISS/MR/MRS/MS/MSTR]", "*First Name", "*Surname", "*Billing Address", "Billing Address2", "Billing Suburb", "Billing State", "Billing Postal Code", "Billing Country", "Phone Number", "*Mobile Number", "Fax Number", "Email", "Company", "Notes/Feedbacks", "Legal Entity", "ABN", "ACN", "*Is Home Address Same As Billing Address? [Yes/No]", "Home Address", "Home Address2", "Home Suburb", "Home State", "Home Postal Code", "Home Country", "Category [B-Business/R-Residential]", "Billing Email", "Account Name", "Authentication Type[AC/DL/PA/PN/PI/UB]", "Authentication  No.", "Date of Birth", "Referee Name", "Referee Contact Number", "Referee relationship to tenant", "Enable Internet Access? [Yes/No]", "Password", "Secondary Customer Name", "Secondary Phone Number", "Secondary Mobile Number", "Secondary Fax Number", "Secondary Email", "Is life support? [Yes/No]", "guarantorFirstName", "guarantorLastName", "guarantorAddress1", "guarantorAddress2", "guarantorCity", "guarantorState", "guarantorZipCode", "guarantorMobilePhone", "guarantorHomePhone", "guarantorEmail", "guarantorAuthType", "guarantorAuthNo", "cycleNo"};
-        String filePath = System.getProperty("user.dir") + "/src/main/resources/ManualRecurringChargeImportTemplate.csv";
-        String rowData = ",Mr,Sands,Hello,3090 Satellite Boulevard,,Duluth,GA,30096,United States,+1 800-001-0001,211 995 500 00 00 01,+1 800-001-0011,peter.andrews@alpha.mail.com,Basics Group of Companies,New customer,,96365484275,,Yes,,,,,,,B,pandrews@wideworld.com,Peter Andrews,AC,10012345,,Matt Andrews,+1 800-001-0100,Brother,No,pass123,Matt Andrews,+1 800-001-0011,211 995 500 00 00 11,,matt.andrews@worldmail.com,No,Mary,Palmer,Parker,Hills,White Pine Bay,Oregon,90414,3232332526,3233453423,rer@gmail.com,AC,78956,0";
+        String columnData = "Customer Number,Meter Number,Charge Description,Rollup Description,Model,Start Date,End Date,Is Ongoing (Yes/No),Is Prorata (Yes/No),Period Of Charge,No. of Periods,Amount per recurring,Unit Price,Tax Id";
+                String filePath = System.getProperty("user.dir") + "/src/main/resources/ManualRecurringChargeImportTemplate.csv";
+        String rowData = "10053,1000050,Access Fee,Account Charges,,20/03/2023,,Yes,No,,,0.15,,0";
+         rowData = rowData.replace("10053", customerId);
+        rowData = rowData.replace("1000050", meterNo);
         String[] row = rowData.split(",");
+        String[] column = columnData.split(",");
+
         CSVHelper.createCSVGeneric(filePath, column, row);
         AdminPage admin = new AdminPage();
         Imports importObj = admin.navigateToRecurringCharge();
         importObj.importFile(filePath, "Recurring Charge");
     }
 
-    @Test(priority = 7, enabled = false)
+    @Test(priority = 7, enabled = true)
     public void Import_Generic_Service() throws Exception {
         String columnData = "Customer No,Product/Charge Description,Prorata Date,End Date,Quantity,Notes,Rollup Description,Unit,Rate,Is Once Off?,Charge Type";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/genericServiceImportTemplate.csv";
-        String rowData = "10005,Car,27/11/2023,,1,This is just a test.,Elec Rollup Description,KW,1.5,No,Electricity Charges\n";
+        String rowData = "10005,Car,27/11/2023,,1,This is just a test.,Elec Rollup Description,KW,1.5,No,Electricity Charges,,,";
         rowData = rowData.replace("10005", customerId);
 
         String[] row = rowData.split(",");
@@ -143,7 +136,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Generic Service");
     }
 
-    @Test(priority = 8, enabled = false)
+    @Test(priority = 8, enabled = true)
     public void Import_Payments() throws Exception {
         String columnData = "Customer No,Alternative Customer No,Transaction Type,Payment Method,Card Type,Amount,Transaction Date,Comments,Auto Allocate,Batch No\n";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/paymentImportTemplate.csv";
@@ -191,7 +184,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Prorated Tariff");
     }
 
-    @Test(priority = 4, enabled = false)
+    @Test(priority = 4, enabled = true)
     public void Import_Security_Deposit() throws Exception {
         String columnData = "Customer No,Alternative Customer No,Transaction Type,Payment Method,Amount,Transaction Date,Comments";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/SecurityDepositsImportTemplate.csv";

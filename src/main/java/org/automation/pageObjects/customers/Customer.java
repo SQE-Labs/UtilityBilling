@@ -305,6 +305,7 @@ public class Customer extends BasePage {
     }
 
     public void selectPlanDropdownField(String PlanText) {
+        scrollIntoView(planDropdownField);
         click_custom(planDropdownField, "Plan");
         selectDropDownByVisibleText_custom(planDropdownField, PlanText, "Plan ");
     }
@@ -383,7 +384,7 @@ public class Customer extends BasePage {
         return getCustomerId();
 
     }
-    
+
 
     public void addMeterInformation(String serviceName , String meterNumber){
         click_custom(ServiceName_Dropdown,"ServiceName");
@@ -518,6 +519,6 @@ public class Customer extends BasePage {
         clickBtn_custom(SaveCustomerButton,"SaveCustomerButton");
         clickBtn_custom(SaveOnlyButton,"SaveOnlyButton");
         Thread.sleep(2000);
-    
+
 }
 }

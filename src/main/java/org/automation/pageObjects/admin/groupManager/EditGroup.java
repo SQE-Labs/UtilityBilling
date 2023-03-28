@@ -334,7 +334,7 @@ public class EditGroup extends BasePage {
     }
 
     public void clickSaveChanges() {
-        ScrollDownThePageMax(0);
+        ScrollDownThePageMax();
         clickBtn_custom(saveChanges);
 
     }

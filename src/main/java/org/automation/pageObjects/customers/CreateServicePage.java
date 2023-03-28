@@ -68,7 +68,7 @@ public class CreateServicePage extends BasePage {
     public By marketType = By.id("marketTypeSel");
     public By transferType = By.id("transferType");
     public By water = By.xpath("(//a[@class='addicon'])[4]");
-    public By gas = By.xpath("//*[@class='icon-fire']");
+    public By gas = By.xpath("//i[@class='icon-fire']/../../a[1]");
     public By generic = By.xpath("//*[@id=\"content\"]/div[2]/div[3]/div[1]/div[1]/ul[2]/li/a[1]/i");
     public By chargeToggle  = By.id("chargeToggle");
     public By productDescription = By.id("meterName");
@@ -86,125 +86,125 @@ public class CreateServicePage extends BasePage {
     public By okButton = By.xpath("(//*[@class='btn btn-primary'])[2]");
     public By finish = By.id("finishBtn");
     public By services = By.xpath("(//*[@class='icon-user'])[5]");
-    public By editService = By.xpath("(//*[@class='btn btn-primary toolt'])[1]");    
+    public By editService = By.xpath("(//*[@class='btn btn-primary toolt'])[1]");
     public By updateService = By.id("updateSrv");
     public By editOkButton = By.xpath("(//*[@class='btn btn-primary'])[2]");
     public By SUCCESSALERT = By.id("successAlert");
-    
+
     String SUCCESS_MESG = "Generic service is successfully saved.";
-    
+
     public void validateUpdateService(String validateText) {
     	 scrollIntoView(services);
         WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
         ass.assertEquals(SUCCESS_MESG, getText_custom(SUCCESSALERT));
     }
-    
+
     public void clickFinish() {
     	click_custom(finish);
     }
-    
+
     public void clickUpdateService() throws InterruptedException {
     	 scrollIntoView(updateService);
     	click_custom(updateService);
     	Thread.sleep(1000);
     	click_custom(editOkButton);
     }
-    
+
     public void clickEditService() {
     	 scrollIntoView(editService);
     	click_custom(editService);
     }
-    
-    
+
+
     public void clickChargeToggle() {
     	click_custom(chargeToggle);
     }
-    
+
     public void enterProductDescription(String productText) {
  	        sendKeys_withClear(productDescription, productText);
  	    }
-    
+
     public void enterProrataDate(String prorataText) {
 	        sendKeys_withClear(prorataDate, prorataText);
 	    }
-    
+
     public void enterEndDate(String dateText) {
 	        sendKeys_withClear(endDate, dateText);
 	    }
-    
+
     public void enterQuantity(String quantityText) {
 	        sendKeys_withClear(quantity, quantityText);
 	    }
-    
+
     public void enterNotes(String notesText) {
 	        sendKeys_withClear(notes, notesText);
 	    }
-    
+
     public void enterChargeDescription(String chargeText) {
 	        sendKeys_withClear(chargeDescription, chargeText);
 	        WebdriverWaits.waitForElementVisible(rollupDescription, 2);
-	        
+
 	    }
     public void enterRollupDescription(String rollupText) {
     	WebdriverWaits.waitForElementVisible(rollupDescription, 2);
         sendKeys_withClear(rollupDescription, rollupText);
     }
-    
+
     public void enterRate(String rateText) {
-    
+
         sendKeys_withClear(rate, rateText);
         scrollIntoView(saveService);
-        
+
     }
-    
+
     public void selectChargeType(String typeText) {
     	click_custom(chargeType);
         WebdriverWaits.waitForElementVisible(chargeType, 2);
         selectDropDownByVisibleText_custom(chargeType, typeText);
-        
+
     }
-    
+
     public void selectUnitType(String unitText) {
     	click_custom(unitType);
         WebdriverWaits.waitForElementVisible(unitType, 3);
         selectDropDownByVisibleText_custom(unitType, unitText);
     }
-    
+
     public void clickSaveService(){
     	click_custom(saveService);
     	click_custom(okButton);
-    	
+
     }
-    
+
     public void selectProrataDate(String prorataText){
     	click_custom(prorataDate, prorataText);
     	click_custom(currentProrataDate, prorataText);
-    	
+
     }
     public void selectEndDate(String endText){
     	click_custom(endDate,endText);
     }
-    
+
     Assertions as;
     String SUCCESS_MSG = "Electricity";
-    
+
     public void clickWaterService() {
     	click_custom(water);
     }
-    
+
     public void selectTransferType(String TransferType) {
     	click_custom(transferType, "Type");
-        selectDropDownByVisibleText_custom(transferType, TransferType, "Type");	
+        selectDropDownByVisibleText_custom(transferType, TransferType, "Type");
     }
-    
-    
+
+
     public void selectMarketType(String MarketType) {
     	click_custom(marketType, "Type");
         selectDropDownByVisibleText_custom(marketType, MarketType, "Type");
     }
-    
-    
+
+
     public void selectServiceType(String ServiceType) {
     	click_custom(serviceType, "Type");
         selectDropDownByVisibleText_custom(serviceType, ServiceType, "Type");
@@ -214,7 +214,7 @@ public class CreateServicePage extends BasePage {
 
         click_custom(Overviewtab, "Overview");
     }
-    
+
     public void clickGenericService() {
 
     	click_custom(generic, "Generic Service");
@@ -223,12 +223,12 @@ public class CreateServicePage extends BasePage {
     public void clickRetailElectricity() {
         click_custom(AddRetailelect, "Retail Electricity Icon");
     }
-    
+
     public void clickWaterElectricity() {
     	click_custom(water, "Water Icon");
     }
-    
-    
+
+
     public void clickGasElectricity() {
     	click_custom(gas, "Gas Icon");
     }
@@ -236,7 +236,7 @@ public class CreateServicePage extends BasePage {
 
 
     public void selectPlan(String selectPlanText) {
-        click_custom(SelectPlan, "Plan");
+      //  click_custom(SelectPlan, "Plan");
         selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
     }
 
@@ -283,7 +283,7 @@ public class CreateServicePage extends BasePage {
         click_custom(OK_btn, "Ok");
 
     }
-    
+
     public void clickServices() {
     	click_custom(services);
 
@@ -299,7 +299,7 @@ public class CreateServicePage extends BasePage {
     	sendKeys_custom(recordId, recordIdText, "Record Id");
     	WebdriverWaits.waitForElementVisible(searchBtn, 10);
     	click_custom(searchBtn, "Search icon");
-    	
+
     }
     public void clickkOnSearchBtn(String recordIdText) {
         sendKeys_custom(recordId, recordIdText, "Record Id");
@@ -329,15 +329,15 @@ public class CreateServicePage extends BasePage {
         selectServiceType(ServiceType);
         selectMarketType(MarketType);
         selectTransferType(TransferType);
-          
+
     }
-    
+
     public void addTransferDetails(String servicType , String marketTYpe , String transferType) throws InterruptedException {
         // 1. Customer is already created using Customer flow.
         // 2. Adding electricity service to a customer.
-        // 3. Overview > Electricity      
+        // 3. Overview > Electricity
     }
-    
+
     public void waterSevice(String recordIdText,String selectPlanText, String MeterConfigurationText, String readingTypeText) throws InterruptedException {
         // 1. Customer is already created using Customer flow.
         // 2. Adding water service to a customer.
@@ -355,9 +355,9 @@ public class CreateServicePage extends BasePage {
         Thread.sleep(2000);
         clickCreateService();
         clickOkButton();
-        
+
     }
-    
+
     public void gasService(String recordIdText,String selectPlanText, String MeterConfigurationText, String readingTypeText) throws InterruptedException {
         // 1. Customer is already created using Customer flow.
         // 2. Adding water service to a customer.
@@ -374,10 +374,10 @@ public class CreateServicePage extends BasePage {
         selectreadType(readingTypeText);
         Thread.sleep(2000);
         clickCreateService();
-        clickOkButton();     
+        clickOkButton();
     }
 
-    
+
     public void genericService(String recordIdText,String productText,String prorataText,String dateText,String quantityText,String notesText,String chargeText,String rollupText,String typeText ,String unitText, String rateText) throws InterruptedException {
     	 as = new Assertions();
          clickOnSearchBtn(recordIdText);
@@ -388,7 +388,7 @@ public class CreateServicePage extends BasePage {
          enterProductDescription(productText);
          selectProrataDate(prorataText);
          enterQuantity(quantityText);
-         enterNotes(notesText);    
+         enterNotes(notesText);
          enterRollupDescription(rollupText);
          selectChargeType(typeText);
          Thread.sleep(1000);
@@ -397,9 +397,9 @@ public class CreateServicePage extends BasePage {
         // Thread.sleep(1000);
          clickSaveService();
          clickFinish();
-                
+
     }
-    
+
     public void editGenericService(String productText,String quantityText,String notesText,String rollupText,String typeText ,String unitText,String validateText) throws InterruptedException {
    	 as = new Assertions();
         clickServices();
@@ -414,10 +414,7 @@ public class CreateServicePage extends BasePage {
      //   enterRate(rateText);
         clickUpdateService();
         validateUpdateService(validateText);
-        
+
     }
-       
+
 }
-
-
-    
