@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class EditUserTest extends BaseTest {
 
 
-    @Test(priority = 1, enabled = true,description = "To Edit User ")
+    @Test(priority = 24, enabled = true,description = "To Edit User ")
     public void EditUser() throws InterruptedException {
         UserDetails Eu = new UserDetails();
         Eu.clickAdmin();

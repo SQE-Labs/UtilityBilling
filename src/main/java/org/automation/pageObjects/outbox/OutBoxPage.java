@@ -1,6 +1,8 @@
 package org.automation.pageObjects.outbox;
 
 import org.automation.base.BasePage;
+import org.automation.pageObjects.admin.commmunications.ReminderSetup;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class OutBoxPage extends BasePage {
@@ -10,6 +12,18 @@ public class OutBoxPage extends BasePage {
     private By searchBox = By.xpath("//input[@type='search']");
     private By viewVoiceBtn = By.xpath("//a[@title='View Invoice']");
     private By deleteRemBtn = By.xpath("//a[@title='Delete Reminder']");
+    public By outbox = By.xpath("//*[@id='navbar-menu']/div/ul/li[8]/a");
+
+    public By customerCheckbox = By.xpath("(//input[@class='chkDelete_'])[1]");
+
+    public By send = By.xpath("(//button[@class='btn btn-large dropdown-toggle btn-primary'])[2]");
+
+    public By selectedCustomers = By.xpath("//a[text()=' Selected customers']");
+
+    public By confirmSend = By.xpath("(//*[@class='btn btn-primary'])[14]");
+
+    public By closeOutbox = By.id("sendEmailResultClose");
+
 
     public void clickGenerateReminderBtn() {
         clickBtn_custom(generateRemindersBtn, "Generate Reminders");
@@ -24,6 +38,38 @@ public class OutBoxPage extends BasePage {
     public void enter_in_SearchBox(String searchText) {
         sendKeys_custom(searchBox, searchText, "Search");
 
+    }
+    public void navigateToOutbox(){
+        click_custom(outbox);
+    }
+
+    public void clickCustomerCheckbox(){
+        click_custom(customerCheckbox);
+    }
+
+    public void clickSend(){
+        click_custom(send);
+    }
+
+    public void clickSelectedCustomer(){
+        click_custom(selectedCustomers);
+
+    }
+
+    public void clickConfirmSend(){
+        click_custom(confirmSend);
+    }
+
+    public void clickCloseOutbox(){
+        click_custom(closeOutbox);
+    }
+
+    public void sendEmail_SelectedCustomer(){
+        clickCustomerCheckbox();
+        clickSend();
+        clickSelectedCustomer();
+        clickConfirmSend();
+        clickCloseOutbox();
     }
 
 }

@@ -20,7 +20,7 @@ public class CustomerTabsTest extends BaseTest {
     SearchResult searchPage = new SearchResult();
 
     String serviceID;
-    @Test(priority = 3, enabled = false, description = "verify  page reload")
+    @Test(priority = 65, enabled = false, description = "verify  page reload")
     public void reload_Page() {
         indexPage.refreshPage();
         if (PropertiesUtil.getPropertyValue("group").contains("single")) {
@@ -30,13 +30,9 @@ public class CustomerTabsTest extends BaseTest {
 
     }
 
-    @Test(priority = 4, enabled = false, description = "verify create new customer")
-    public void create_new_Customer() throws InterruptedException {
-        Customer customer = new Customer();
-        customer.createCustomer("Tenant", "Business", "business123@yopmail.com");
-    }
 
-    @Test(priority = 5, enabled = true, description = "verify all customer Search box")
+
+    @Test(priority = 67, enabled = true, description = "verify all customer Search box")
     public void search_All() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -49,7 +45,7 @@ public class CustomerTabsTest extends BaseTest {
 
 
 
-    @Test(priority = 5, enabled = true, description = "verify all customer Search box")
+    @Test(priority = 68, enabled = true, description = "verify all customer Search box")
     public void search_All_Customer_Address() {
 
         indexPage.searchAllCustomerAddress();
@@ -58,7 +54,7 @@ public class CustomerTabsTest extends BaseTest {
 
     }
 
-    @Test(priority = 5, enabled = true, description = "verify all customer Search box")
+    @Test(priority = 69, enabled = true, description = "verify all customer Search box")
     public void search_All_Service_Address() {
 
         indexPage.searchAllServiceAddress();
@@ -67,14 +63,14 @@ public class CustomerTabsTest extends BaseTest {
     }
 
     //TODO
-    @Test(priority = 5, enabled = true, description = "verify all customer Search box")
+    @Test(priority = 70, enabled = true, description = "verify all customer Search box")
     public void search_All_Meter_Number() throws InterruptedException {
         indexPage.searchAllMeterNumber();
        // Assert.assertTrue(searchPage.getHeaderText().contains("Customers Found"));
 
     }
 
-    @Test(priority = 5, enabled = true, description = "verify all customer Search box")
+    @Test(priority = 71, enabled = true, description = "verify all customer Search box")
     public void search_All_Customers() {
 
         indexPage.searchAllCustomer();
@@ -83,7 +79,7 @@ public class CustomerTabsTest extends BaseTest {
 
     }
 
-    @Test(priority = 6, enabled = true, description = "verify Customer group Name ")
+    @Test(priority = 72, enabled = true, description = "verify Customer group Name ")
     public void search_Recent_Customers_groupName() {
         AdminPage admin = new AdminPage();
         EditGroup groupEdit = admin.navigateToGroupEdit();
@@ -102,7 +98,7 @@ public class CustomerTabsTest extends BaseTest {
        softAssert.assertAll();
 
     }
-    @Test(priority = 7, enabled = true, description = "verify  Customer Tab")
+    @Test(priority = 73, enabled = true, description = "verify  Customer Tab")
     public void Click_CustomerTabs() throws InterruptedException {
         String tabs []=PropertiesUtil.getPropertyValue("customerTabs").split(",");
         SoftAssert softAssert= new SoftAssert();

@@ -20,7 +20,7 @@ public class ServiceTest extends IndexPage {
     RetailElectricityService retailElectricityService = new RetailElectricityService();
     DateGenerator dateGenerator = new DateGenerator();
     String productName;
-    @Test(enabled = true,priority = 20)
+    @Test(enabled = true,priority = 44)
     public void createRetailElectricityService() throws InterruptedException {
         Customer customer = new Customer();
         customerId = customer.createCustomer("Business",
@@ -35,13 +35,13 @@ public class ServiceTest extends IndexPage {
 
     }
 
-    @Test(priority = 21, enabled = true, description = "Create Gas Service")
+    @Test(priority = 45, enabled = true, description = "Create Gas Service")
 
     public void createGasService() throws InterruptedException {
         createService.gasService(customerId, "Gas Flat Template Plan", "Flat Rate", "Reads");
     }
 
-    @Test(priority = 22, enabled = true)
+    @Test(priority = 46, enabled = true)
 
     public void createGenericService() throws InterruptedException {
         String currDate = dateGenerator.getCurrentDate();
@@ -50,12 +50,12 @@ public class ServiceTest extends IndexPage {
             createService.genericService(customerId, productName, currDate, endDate, "12", "Generic Services", "NetworkCharges", "RollUp Descrition", "Account Level Charges", "Day", "100");
     }
 
-    @Test(priority = 23)
+    @Test(priority = 47,enabled=true)
     public void editGenericService() throws InterruptedException {
 
         createService.editGenericService(productName, "25", "Edit Generic Services", "RollUp Description edited", "Electricity Charges", "Flat rate", "Generic service is successfully saved.");
     }
-    @Test(priority = 24,enabled = true, description = "Create Water Service")
+    @Test(priority = 48,enabled = true, description = "Create Water Service")
     public void createWaterService() throws InterruptedException {
         createService.waterSevice(customerId,"Water Flat Template Plan","Flat Rate", "Reads");
 

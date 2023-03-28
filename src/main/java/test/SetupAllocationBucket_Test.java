@@ -13,7 +13,7 @@ public class SetupAllocationBucket_Test extends BaseTest {
     UpdateAllocationBucket updateBucket = new UpdateAllocationBucket();
     DeleteAllocationBucket deleteBucket = new DeleteAllocationBucket();
 
-    @Test(priority = 1,enabled = true, description = "Setup Allocation Bucket")
+    @Test(priority = 49,enabled = true, description = "Setup Allocation Bucket")
     public void set_Bucket() throws InterruptedException {
         RandomGenerator randomGenerator = new RandomGenerator();
 
@@ -21,14 +21,14 @@ public class SetupAllocationBucket_Test extends BaseTest {
         newBucket.setUpBucket(allocationBucket);
     }
 
-    @Test(priority = 2, enabled = true,description = "Update Allocation Bucket")
+    @Test(priority = 50, enabled = true,description = "Update Allocation Bucket")
     public void update_Bucket() throws InterruptedException {
         RandomGenerator randomGenerator = new RandomGenerator();
         String allocationBucket = "New Bucket" + randomGenerator.requiredDigits(3);
         updateBucket.updateBucket(allocationBucket);
     }
 
-    @Test(priority = 3,enabled = true, description = "Delete Allocation Bucket")
+    @Test(priority = 51,enabled = true, description = "Delete Allocation Bucket")
     public void delete_Bucket() throws InterruptedException {
         deleteBucket.deleteBucket("");
     }

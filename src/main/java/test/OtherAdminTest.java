@@ -12,7 +12,7 @@ public class OtherAdminTest extends BaseTest {
 	Penalty penalty = new Penalty();
 	CustomerPortalSettings custPortal = new CustomerPortalSettings();
 
-	@Test(priority = 0,enabled = true)
+	@Test(priority = 38,enabled = true)
 	public void paymentBatchTest() {
 
 		payBatch.clickAdmin();
@@ -28,7 +28,7 @@ public class OtherAdminTest extends BaseTest {
 
 	}
 
-	@Test(priority = 1,enabled = true)
+	@Test(priority = 39,enabled = true)
 	public void createPenaltyTest() throws InterruptedException {
 
 		penalty.clickAdmin();
@@ -41,7 +41,7 @@ public class OtherAdminTest extends BaseTest {
 		penalty.validatePenalty("Successfully added new penalty.");
 	}
 
-	@Test(priority = 2,enabled = true)
+	@Test(priority = 40,enabled = true)
 	public void updatePenaltyTest() {
 		penalty.clickEditPenalty();
 		penalty.enterPenaltyDescription("Penalty Check");
@@ -50,14 +50,14 @@ public class OtherAdminTest extends BaseTest {
 
 	}
 
-	@Test(priority = 3,enabled = true)
+	@Test(priority = 41,enabled = true)
 	public void deletePenaltyTest() {
 		penalty.clickDeletePenalty();
 		penalty.clickOKButton();
 
 	}
 
-	@Test(priority = 4,enabled = true)
+	@Test(priority = 42,enabled = true)
 	public void customerPortalSettings() throws InterruptedException {
 		custPortal.clickAdmin();
 		custPortal.clickCustomerPortal();

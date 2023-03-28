@@ -2,6 +2,7 @@ package org.automation.pageObjects.admin;
 
 import org.automation.base.BasePage;
 import org.automation.pageObjects.admin.billing.LateFeeSettings;
+import org.automation.pageObjects.admin.commmunications.ReminderSetup;
 import org.automation.pageObjects.admin.groupManager.EditGroup;
 import org.automation.pageObjects.admin.importSetupTools.Imports;
 import org.automation.pageObjects.admin.invoice.invoiceSetupPage;
@@ -29,7 +30,9 @@ public class AdminPage extends BasePage {
     public By payments = By.xpath("//p[text()='Payments']");
     public By genericService = By.xpath("//p[text()='Generic Service']");
     public By recurring = By.xpath("//p[text()='Recurring Charge']");
+    public By reminderTab = By.xpath("(//div[@class='box-content quicklinksbox']//div)[13]");
 
+    ;
     public invoiceSetupPage navigateToInvoiceSetup() {
         clickBtn_custom(AdminIcon);
         clickBtn_custom(invoiceSetupBtn);
@@ -150,4 +153,11 @@ public class AdminPage extends BasePage {
         click_custom(groupEditBtn);
         return  new EditGroup();
     }
+    public  ReminderSetup navigateToReminder(){
+        click_custom(AdminIcon);
+        click_custom(reminderTab);
+        return  new ReminderSetup();
+    }
+
+
 }

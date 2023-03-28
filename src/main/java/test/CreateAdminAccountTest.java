@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class CreateAdminAccountTest extends BaseTest {
 
 
-    @Test(enabled = true)
+    @Test(priority=1,enabled = true)
     public void createAccount() throws InterruptedException {
 
         CreateAdminAccount adminPage = new CreateAdminAccount();

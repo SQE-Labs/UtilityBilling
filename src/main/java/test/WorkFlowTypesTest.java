@@ -12,7 +12,7 @@ public class WorkFlowTypesTest extends BaseTest {
     public Select select;
     public Date date = new Date();
 
-    @Test(priority = 1 ,enabled = true,description = "To Edit User ")
+    @Test(priority = 52 ,enabled = true,description = "To Edit User ")
     public void workFlowTypes() {
         WorkFlowTypes workFlow = new WorkFlowTypes();
         workFlow.clickAdmin();

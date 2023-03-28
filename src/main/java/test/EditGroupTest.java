@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class EditGroupTest extends BaseTest {
 
-    @Test(enabled = true)
+    @Test(priority=23,enabled = true)
     public void editGroup() throws InterruptedException {
         EditGroup groupPage = new EditGroup();
 
