@@ -1,7 +1,10 @@
 package org.automation.pageObjects.admin.commmunications;
 
 import org.automation.base.BasePage;
+import org.automation.utilities.ActionEngine;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.RandomGenerator;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class ReminderSetup extends BasePage {
@@ -9,21 +12,21 @@ public class ReminderSetup extends BasePage {
     RandomGenerator randomGenerator = new RandomGenerator();
 
 
-    public By reminderName = By.xpath("(//*[@name='Rem1'])[2]");
+    public By reminderName = By.xpath("(//*[@name='Rem2'])[2]");
 
-    public By numberOfDays = By.xpath("(//*[@name='days1'])[2]");
+    public By numberOfDays = By.xpath("(//*[@name='days2'])[2]");
 
 
-    public By dueDate = By.xpath("//*[@name='cut1']");
+    public By dueDate = By.xpath("(//*[@name='cutoff2'])[2]");
 
-    public By minimumAmount = By.xpath("(//*[@id='min1'])[2]");
+    public By minimumAmount = By.xpath("(//*[@id='min2'])[2]");
 
-    public By autoSend = By.xpath("(//*[@id='out1'])[2]");
-    public By followUpActivity = By.xpath("(//*[@id='follow1'])[2]");
+    public By autoSend = By.xpath("(//*[@id='out2'])[2]");
+    public By followUpActivity = By.xpath("//*[@id='follow2']");
 
-    public By deliveryEmail = By.xpath("(//*[@id='email1'])[2]");
+    public By deliveryEmail = By.xpath("(//*[@id='email2'])[2]");
 
-    public By deliveryPost = By.xpath("(//*[@id='post1'])[1]");
+    public By deliveryPost = By.xpath("(//*[@id='post2'])[1]");
 
     public By updateReminder = By.id("reminders-schedule-update");
 
@@ -31,9 +34,25 @@ public class ReminderSetup extends BasePage {
 
     public By AdminIcon = By.xpath("//a[@title='Administration']/i");
 
+    public By addNewRow = By.xpath("(//button[@class='btn btn-expand'])[2]");
+
+
 
     public void enter_ReminderName(String nameText) {
         sendKeys_withClear(reminderName,nameText);
+    }
+
+    public void clickAdminIcon(){
+        click_custom(AdminIcon);
+    }
+
+    public void clickDeleteReminder(String reminderName){
+        reminderName="New Reminder";
+        click_custom(By.xpath("//td/input[@value='"+reminderName+"']/../../td[9]/a"));
+    }
+
+    public void clickAddNewRow(){
+        click_custom(addNewRow);
     }
 
     public void enter_NumberOfDays(String numberOfDaysText) {
@@ -51,7 +70,8 @@ public class ReminderSetup extends BasePage {
         click_custom(updateReminder);
     }
 
-    public void update_Reminder(String reminderName,String numberOfDaysText,String dueDateText,String amountValue) throws InterruptedException {
+    public void add_Delete_Reminder(String reminderName,String numberOfDaysText,String dueDateText,String amountValue) throws InterruptedException {
+        clickAddNewRow();
         enter_ReminderName(reminderName)     ;
         enter_NumberOfDays(numberOfDaysText);
         enter_DueDate(dueDateText);
@@ -61,10 +81,10 @@ public class ReminderSetup extends BasePage {
         click_custom(followUpActivity);
         click_custom(deliveryEmail);
         click_custom(deliveryPost);
-        click_UpdateReminder();
+        clickDeleteReminder(reminderName);
         click_custom(okButton);
         Thread.sleep(2000);
-        click_custom(AdminIcon);
+
 
     }
 }

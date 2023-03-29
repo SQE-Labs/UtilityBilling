@@ -1,6 +1,8 @@
 package org.automation.pageObjects.admin.userManager;
 
 import org.automation.base.BasePage;
+import org.automation.utilities.Assertions;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class Password extends BasePage {
@@ -12,6 +14,7 @@ public class Password extends BasePage {
     By changePasswordBtn = By.xpath("//*[@class='buttonLrg']");
     By confirmationPopUp = By.xpath("//button[@class='btn btn-primary']");
     By informationMessage = By.xpath("//p[@class='message']");
+    By success_msg = By.xpath("//div//p[@class='message']");
 
 
     public void clickAdmin() {
@@ -40,5 +43,12 @@ public class Password extends BasePage {
 
     public void getInformationMessage() {
         clickBtn_custom(informationMessage);
+    }
+
+    public void validateSuccessMessage(String expectedValue) {
+        WebdriverWaits.sleep(2);
+        Assertions ass = new Assertions();
+        ass.assertEquals(expectedValue, getText_custom(success_msg));
+
     }
 }

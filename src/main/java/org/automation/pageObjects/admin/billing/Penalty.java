@@ -20,6 +20,9 @@ public class Penalty extends BasePage {
 	public By deletePenalty = By.xpath("(//*[@class='btn btn-danger'])[2]");
 	public By ButtonOK = By.xpath("(//*[@class='btn btn-primary'])[6]");
 
+	public By penaltydescription = By.xpath("//tbody/tr[1]//td[2]");
+
+
 	String RESULT_MSG = "Successfully added new penalty.";
 
 	public void clickAdmin() {
@@ -77,4 +80,12 @@ public class Penalty extends BasePage {
 		Assertions ass = new Assertions();
 		ass.assertEquals(RESULT_MSG, getText_custom(resultMsg));
 	}
+
+	public void validateUpdatePenalty(String validateText) {
+		WebdriverWaits.sleep(2);
+		Assertions ass = new Assertions();
+		ass.assertEquals(validateText, getText_custom(penaltydescription));
+	}
+
+
 }

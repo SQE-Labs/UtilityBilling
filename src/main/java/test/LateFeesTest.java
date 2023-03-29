@@ -14,8 +14,7 @@ public class LateFeesTest extends BaseTest {
         LateFeeSettings lateFeesPage = admin.navigateToLateFees();
         lateFeesPage.enterSearchText("Electricity flat usage");
         lateFeesPage.enableCheckBox();
-        // Assert.assertTrue( lateFeesPage.isEnabledCheckBox());
-
+        Assert.assertTrue( lateFeesPage.isEnabledCheckBox());
 
     }
 

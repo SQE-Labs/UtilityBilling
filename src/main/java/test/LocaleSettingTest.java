@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class LocaleSettingTest extends BaseTest {
 
-	@Test(priority=36,enabled = true)
+	@Test(priority=36,enabled = true,description = "Update Locale Setting")
 	public void localeSetting() throws InterruptedException {
 		LocaleSetting localePage = new LocaleSetting();
 

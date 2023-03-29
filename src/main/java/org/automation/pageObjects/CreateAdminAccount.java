@@ -2,6 +2,7 @@ package org.automation.pageObjects;
 
 
 import org.automation.base.BasePage;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
@@ -16,8 +17,16 @@ public class CreateAdminAccount extends BasePage {
     By username = By.id("uid");
     By Password = By.id("predigpass");
     By saveUser = By.xpath("(//*[@class='btn btn-primary'])[2]");
+    By search = By.xpath("//*[@id='DataTables_Table_0_filter']/label/input");
+
+    By createdUser = By.xpath("//tbody/tr[1]//td[1]");
 
 
+    public void validateNewUser(String usernameText) {
+        sendKeys_withClear(search,usernameText);
+        Assertions ass = new Assertions();
+        ass.assertEquals(usernameText, getText_custom(createdUser));
+    }
     public void clickAdmin() {
         clickBtn_custom(adminTab);
         WebdriverWaits.waitForElementVisible(users, 3);

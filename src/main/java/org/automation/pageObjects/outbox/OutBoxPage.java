@@ -2,6 +2,7 @@ package org.automation.pageObjects.outbox;
 
 import org.automation.base.BasePage;
 import org.automation.pageObjects.admin.commmunications.ReminderSetup;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
@@ -23,6 +24,8 @@ public class OutBoxPage extends BasePage {
     public By confirmSend = By.xpath("(//*[@class='btn btn-primary'])[14]");
 
     public By closeOutbox = By.id("sendEmailResultClose");
+
+    public By validateOutbox = By.xpath("(//div/h4[@class='modal-title'])[2]");
 
 
     public void clickGenerateReminderBtn() {
@@ -64,6 +67,12 @@ public class OutBoxPage extends BasePage {
         click_custom(closeOutbox);
     }
 
+
+    public void ValidateOutbox(String expectedValue){
+        WebdriverWaits.sleep(2);
+        Assertions ass = new Assertions();
+        ass.assertEquals(expectedValue, getText_custom(validateOutbox));
+    }
     public void sendEmail_SelectedCustomer(){
         clickCustomerCheckbox();
         clickSend();

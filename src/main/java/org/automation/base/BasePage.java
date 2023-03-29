@@ -4,6 +4,7 @@ package org.automation.base;
 import org.automation.elements.Element;
 import org.automation.logger.Log;
 import org.automation.utilities.ActionEngine;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchWindowException;
@@ -171,6 +172,11 @@ public class BasePage extends ActionEngine {
         JavascriptExecutor jse = (JavascriptExecutor) getDriver();
         WebElement ele = getDriver().findElement(element);
         jse.executeScript("arguments[0].scrollIntoView(true);", ele);
+
+    }
+    public static  void waitForSpinner(){
+     WebdriverWaits.waitForElementNotVisible(By.className("spinner"),10);
+
 
     }
 }

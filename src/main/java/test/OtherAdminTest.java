@@ -12,7 +12,7 @@ public class OtherAdminTest extends BaseTest {
 	Penalty penalty = new Penalty();
 	CustomerPortalSettings custPortal = new CustomerPortalSettings();
 
-	@Test(priority = 38,enabled = true)
+	@Test(priority = 38,enabled = true,description = "To verify payment batch")
 	public void paymentBatchTest() {
 
 		payBatch.clickAdmin();
@@ -28,7 +28,7 @@ public class OtherAdminTest extends BaseTest {
 
 	}
 
-	@Test(priority = 39,enabled = true)
+	@Test(priority = 39,enabled = true,description = "Verify that user is able to create penalty")
 	public void createPenaltyTest() throws InterruptedException {
 
 		penalty.clickAdmin();
@@ -41,23 +41,24 @@ public class OtherAdminTest extends BaseTest {
 		penalty.validatePenalty("Successfully added new penalty.");
 	}
 
-	@Test(priority = 40,enabled = true)
+	@Test(priority = 40,enabled = true,description = "Verify that user is able to update penalty")
 	public void updatePenaltyTest() {
 		penalty.clickEditPenalty();
 		penalty.enterPenaltyDescription("Penalty Check");
 		penalty.enterGraceDays("20");
 		penalty.clickSavePenalty();
+		penalty.validateUpdatePenalty("Penalty Check");
 
 	}
 
-	@Test(priority = 41,enabled = true)
+	@Test(priority = 41,enabled = true,description = "Verify that user is able to delete penalty")
 	public void deletePenaltyTest() {
 		penalty.clickDeletePenalty();
 		penalty.clickOKButton();
 
 	}
 
-	@Test(priority = 42,enabled = true)
+	@Test(priority = 42,enabled = true,description = "Verify that user is able to change customer setting")
 	public void customerPortalSettings() throws InterruptedException {
 		custPortal.clickAdmin();
 		custPortal.clickCustomerPortal();

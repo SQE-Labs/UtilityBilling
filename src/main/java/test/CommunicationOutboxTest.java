@@ -13,19 +13,19 @@ public class CommunicationOutboxTest extends BaseTest {
     AdminPage admin = new AdminPage();
     OutBoxPage outbox = new OutBoxPage();
     ReminderSetup reminder = new ReminderSetup();
-
     RandomGenerator randomGenerator = new RandomGenerator();
 
     @Test(priority = 74, enabled = true, description = "Verify user is able to create new reminder")
-    public void reminder_Section() throws InterruptedException {
+    public void add_Delete_Reminder_Section() throws InterruptedException {
         ReminderSetup reminder   =admin.navigateToReminder();
         String newReminder = "Reminder" + randomGenerator.requiredDigits(3);
-        reminder.update_Reminder(newReminder,"13","12","100");
+        reminder.add_Delete_Reminder(newReminder,"13","12","100");
     }
 
     @Test(priority = 75, enabled = true, description = "Verify user is able tpo generate reminder")
     public void outbox_To_Communication(){
         outbox.navigateToOutbox();
         outbox.sendEmail_SelectedCustomer();
+        outbox.ValidateOutbox("Send Email Results");
     }
 }

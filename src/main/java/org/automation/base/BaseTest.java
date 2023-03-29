@@ -43,7 +43,7 @@ public class BaseTest {
 	}
 
 	public static void closeDriver() {
-		//getDriver().close();
+		getDriver().close();
 		// driver.remove();
 	}
 
@@ -105,7 +105,7 @@ public class BaseTest {
 		}
 		extent.endTest(extentTest);
 		extent.flush();
-		// getDriver().navigate().refresh();
+		getDriver().navigate().refresh();
 	}
 
 	public void validLoginBaseTest() {

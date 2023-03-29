@@ -67,7 +67,10 @@ public class WebdriverWaits extends BaseTest {
         WebElement e = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return e;
     }
-
+    public static void waitForElementNotVisible(By locator, int waitTime) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), waitTime);
+    wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
     /**
      * Waits for the page to have a given title
      * <p>
@@ -121,5 +124,6 @@ public class WebdriverWaits extends BaseTest {
 
 		Thread.sleep(3000);
 	}
+
 
 }

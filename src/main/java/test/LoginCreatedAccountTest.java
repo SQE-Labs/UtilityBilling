@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class LoginCreatedAccountTest extends BaseTest {
 
-    @Test(priority=37,enabled = true)
+    @Test(priority=37,enabled = true,description = "Verify that user is to login account")
     public void loginAccount() {
         LoginCreatedAccount userPage = new LoginCreatedAccount();
         LoginPage login = new LoginPage();

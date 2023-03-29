@@ -128,7 +128,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Generic Service");
     }
 
-    @Test(priority = 8, enabled = false)
+    @Test(priority = 76, enabled = true)
     public void Import_Payments() throws Exception {
         String columnData = "Customer No,Alternative Customer No,Transaction Type,Payment Method,Card Type,Amount,Transaction Date,Comments,Auto Allocate,Batch No\n";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/paymentImportTemplate.csv";
@@ -176,7 +176,7 @@ public class ImportServicesTest extends BaseTest {
         importObj.importFile(filePath, "Prorated Tariff");
     }
 
-    @Test(priority = 4, enabled = true)
+    @Test(priority = 77, enabled = true)
     public void Import_Security_Deposit() throws Exception {
         String columnData = "Customer No,Alternative Customer No,Transaction Type,Payment Method,Amount,Transaction Date,Comments";
         String filePath = System.getProperty("user.dir") + "/src/main/resources/SecurityDepositsImportTemplate.csv";

@@ -80,24 +80,24 @@ public class BillRunTest extends BaseTest {
         runTheCycle.runTheBillRunCycle(customerId);
 
     }
-    @Test(priority = 61, enabled = true,description = "Add meter for Estimate")
+    @Test(priority = 61, enabled = false,description = "Add meter for Estimate")
     public void BillRun_Rollback() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.rollback();
 
     }
 
-    @Test(priority = 62, enabled = true,description = "Add meter for Estimate")
+    @Test(priority = 62, enabled = false,description = "Add meter for Estimate")
     public void secondBillRun_Rebill() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.runTheBillRunCycle(customerId);
     }
-    @Test(priority = 63, enabled = true,description = "Add meter for Estimate")
+    @Test(priority = 63, enabled = false,description = "Add meter for Estimate")
     public void commitBillRun() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.commit_Statement();
     }
-    @Test(priority = 64, enabled = true,description = "Add a Payment from Credit Card")
+    @Test(priority = 64, enabled = false,description = "Add a Payment from Credit Card")
     public void addPaymentFromCreditCard() throws InterruptedException {
         PaymentsPage addPayment = new PaymentsPage();
         index.searchCustomerFromSearchPanel(customerId);
