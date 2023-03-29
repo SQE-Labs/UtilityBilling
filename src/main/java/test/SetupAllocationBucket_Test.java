@@ -4,6 +4,7 @@ import org.automation.base.BaseTest;
 import org.automation.pageObjects.admin.DeleteAllocationBucket;
 import org.automation.pageObjects.admin.SetUpAddNewBucket;
 import org.automation.pageObjects.admin.UpdateAllocationBucket;
+import org.automation.utilities.RandomGenerator;
 import org.testng.annotations.Test;
 
 public class SetupAllocationBucket_Test extends BaseTest {
@@ -14,12 +15,17 @@ public class SetupAllocationBucket_Test extends BaseTest {
 
     @Test(priority = 1,enabled = true, description = "Setup Allocation Bucket")
     public void set_Bucket() throws InterruptedException {
-        newBucket.setUpBucket("");
+        RandomGenerator randomGenerator = new RandomGenerator();
+
+        String allocationBucket = "New Bucket" + randomGenerator.requiredDigits(3);
+        newBucket.setUpBucket(allocationBucket);
     }
 
     @Test(priority = 2, enabled = true,description = "Update Allocation Bucket")
     public void update_Bucket() throws InterruptedException {
-        updateBucket.updateBucket("");
+        RandomGenerator randomGenerator = new RandomGenerator();
+        String allocationBucket = "New Bucket" + randomGenerator.requiredDigits(3);
+        updateBucket.updateBucket(allocationBucket);
     }
 
     @Test(priority = 3,enabled = true, description = "Delete Allocation Bucket")

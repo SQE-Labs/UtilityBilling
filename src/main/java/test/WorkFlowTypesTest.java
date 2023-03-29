@@ -25,6 +25,11 @@ public class WorkFlowTypesTest extends BaseTest {
         workFlow.enterDisplayName("AA DN" + clname);
         workFlow.clickSaveButton();
         workFlow.clickSaveButton();
+        try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
         workFlow.enterSearchLog("AA TN" + clname);
     }
 }

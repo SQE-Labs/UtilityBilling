@@ -24,10 +24,11 @@ public class PaymentsPage extends BasePage {
     String SUCCESS_MSG_SECURITY = "Showing 1 to 2 of 2 entries";
 
     public void clickOnTransactionTab() {
-        clickBtn_custom(transactionsubtab, "Transaction");
+        click_custom(transactionsubtab, "Transaction");
     }
 
     public void selectTransactionTypeOption(String transactionTypeText) {
+        click_custom(transactintypedropdownfield);
         selectDropDownByVisibleText_custom(transactintypedropdownfield, transactionTypeText,
                 " Transaction Type");
     }
@@ -57,19 +58,24 @@ public class PaymentsPage extends BasePage {
     }
 
     public void clickSubmitTransactionButton() {
-        clickBtn_custom(transactionsubmitbutton, "Submit Transaction");
+        scrollIntoView(transactionsubmitbutton);
+        click_custom(transactionsubmitbutton, "Submit Transaction");
     }
 
     public void clickOkButton() {
-        clickBtn_custom(okbuttonfortransaction, "Ok");
+        WebdriverWaits.waitForElementVisible(okbuttonfortransaction, 2);
+        click_custom(okbuttonfortransaction, "Ok");
     }
 
     public void clickOnMakePaymentButton() {
+        scrollIntoView(makeNewPaymentButton);
+        // WebdriverWaits.waitForElementVisible(makeNewPaymentButton, 2);
         clickBtn_custom(makeNewPaymentButton, "Make New Payment");
     }
 
     public void clickOnViewHistoryButton() {
-        clickBtn_custom(viewHistoryButton, "View History");
+        WebdriverWaits.waitForElementVisible(viewHistoryButton, 2);
+        click_custom(viewHistoryButton, "View History");
     }
 
     public String entryMsgOnAddingPaymentByCreditCard() {
@@ -115,6 +121,24 @@ public class PaymentsPage extends BasePage {
         clickSubmitTransactionButton();
         clickOkButton();
         as.assertEquals(entryMsgOnAddingPaymentByCreditCard(), SUCCESS_MSG_SECURITY);
+
+    }
+
+    public void AddSecurityDepositFromCC(String transactionTypeText, String paymentMethodTypeText,
+                                         String receiptEmailText, String amountText, String commentText) throws InterruptedException {
+        as = new Assertions();
+        clickOnTransactionTab();
+        selectTransactionTypeOption(transactionTypeText);
+        Thread.sleep(3000);
+        selectPaymentMethodOption(paymentMethodTypeText);
+        enterReceiptEmail(receiptEmailText);
+        enterAmount(amountText);
+        clickduplicateCheckBoxToggleButton();
+        enterComments(commentText);
+        clickSubmitTransactionButton();
+        clickOkButton();
+        as.assertEquals(entryMsgOnAddingPaymentByCreditCard(), SUCCESS_MSG);
+
 
     }
 }

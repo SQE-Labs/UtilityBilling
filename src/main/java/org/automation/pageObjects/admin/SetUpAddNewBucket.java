@@ -17,7 +17,6 @@ public class SetUpAddNewBucket extends BasePage {
     public By saveChanges = By.xpath("//*[@class='btn btn-mini btn-success']");
     public By successMsg = By.id("successMsg");
     BasePage bp = new BasePage();
-    RandomGenerator randomGenerator = new RandomGenerator();
     String SUCCESS_MESG = "Allocation setup has been successfully saved.";
 
     public void clickSaveChanges() {
@@ -53,12 +52,11 @@ public class SetUpAddNewBucket extends BasePage {
         ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
     }
 
-    public void setUpBucket(String discriptionText) throws InterruptedException {
+    public void setUpBucket(String bucketName) throws InterruptedException {
         clickAdmin();
         clickAllocation();
         clickAddAllocation();
-        String allocationBucket = "New Bucket" + randomGenerator.requiredDigits(3);
-        sendKeys_custom(discription, allocationBucket);
+        sendKeys_custom(discription, bucketName);
         Thread.sleep(1000);
         clickAddToList();
         fetchBucket();

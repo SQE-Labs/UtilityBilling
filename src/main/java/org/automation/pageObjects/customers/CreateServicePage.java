@@ -2,6 +2,7 @@ package org.automation.pageObjects.customers;
 
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;
+import org.automation.utilities.DateGenerator;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
@@ -11,6 +12,7 @@ import java.util.Calendar;
 
 public class CreateServicePage extends BasePage {
 
+    DateGenerator dateGeneration = new DateGenerator();
     static String waterPlan = "Water Flat Template Plan";
     static String gasPlan = "Gas Flat Template Plan";
     static String notesstr = "Editing done";
@@ -89,6 +91,11 @@ public class CreateServicePage extends BasePage {
     public By editService = By.xpath("(//*[@class='btn btn-primary toolt'])[1]");
     public By updateService = By.id("updateSrv");
     public By editOkButton = By.xpath("(//*[@class='btn btn-primary'])[2]");
+
+    public By proRataDate = By.id("proRataDate");
+    public By prevMonthArrow = By.xpath("(//*[@class='prev'])[1]");
+
+    public By previousDate = By.xpath("/html/body/div[12]/div[1]/table/tbody/tr[3]/td[5]");
     public By SUCCESSALERT = By.id("successAlert");
 
     String SUCCESS_MESG = "Generic service is successfully saved.";
@@ -104,6 +111,18 @@ public class CreateServicePage extends BasePage {
     	click_custom(finish);
     }
 
+    public void clickProRataDate() {
+        click_custom(proRataDate);
+    }
+
+    public void clickPrevMonthArrow() {
+        click_custom(prevMonthArrow);
+    }
+
+    public void clickPreviousDate() {
+        click_custom(previousDate);
+    }
+
     public void clickUpdateService() throws InterruptedException {
     	 scrollIntoView(updateService);
     	click_custom(updateService);
@@ -116,6 +135,11 @@ public class CreateServicePage extends BasePage {
     	click_custom(editService);
     }
 
+    public void clickEditService(String serviceName) {
+        By var =  By.xpath("//td[contains(text(),'"+serviceName+"')]/../td[9]/button");
+        scrollIntoView(var);
+        click_custom( var);
+    }
 
     public void clickChargeToggle() {
     	click_custom(chargeToggle);
@@ -211,7 +235,6 @@ public class CreateServicePage extends BasePage {
     }
 
     public void clickOnOverview() {
-
         click_custom(Overviewtab, "Overview");
     }
 
@@ -241,7 +264,7 @@ public class CreateServicePage extends BasePage {
     }
 
     public void enterMeterNumber() {
-
+        //dateGeneration.getCurrentDate(-29);
         DateFormat dateFormat = new SimpleDateFormat("HHmmss");
         Calendar cal = Calendar.getInstance();
         System.out.println(dateFormat.format(cal.getTime()));
@@ -251,13 +274,12 @@ public class CreateServicePage extends BasePage {
         sendKeys_custom(MeterNo, "Ele" + mno, "First Name");
         String MeterNumberEntered = getText_custom(MeterNo);
         scrollIntoView(MeterConfig);
-
         System.out.println("........");
         System.out.println(MeterNumberEntered);
     }
 
     public void selectMeterConfiguration(String MeterConfigurationText) {
-        clickBtn_custom(MeterConfig, "Meter Cnfiguration");
+        clickBtn_custom(MeterConfig, "Meter Configuration");
         selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText, "Meter Configuration");
       //  scrollIntoView(CreateElectServ);
     }
@@ -312,6 +334,7 @@ public class CreateServicePage extends BasePage {
         // 2. Adding electricity service to a customer.
         // 3. Overview > Electricity
         as = new Assertions();
+        DateGenerator dateGenerator = new DateGenerator();
         clickOnSearchBtn(recordIdText);
         clickOnOverview();
         clickRetailElectricity();
@@ -320,7 +343,14 @@ public class CreateServicePage extends BasePage {
         enterMeterNumber();
         selectMeterConfiguration(MeterConfigurationText);
         selectreadType(readingTypeText);
+
         clickDemandToggleButton();
+        clickProRataDate();
+        clickPrevMonthArrow();
+        clickPrevMonthArrow();
+
+        clickPreviousDate();
+
         clickCreateService();
         clickOkButton();
         as.assertEquals(createNewRetailElectrcityService(), SUCCESS_MSG);
@@ -403,8 +433,8 @@ public class CreateServicePage extends BasePage {
     public void editGenericService(String productText,String quantityText,String notesText,String rollupText,String typeText ,String unitText,String validateText) throws InterruptedException {
    	 as = new Assertions();
         clickServices();
-        clickEditService();
-        enterProductDescription(productText);
+        clickEditService(productText);
+        enterProductDescription(productText+"Description");
         enterQuantity(quantityText);
         enterNotes(notesText);
         enterRollupDescription(rollupText);

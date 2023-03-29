@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class EditGroupTest extends BaseTest {
 
     @Test(enabled = true)
-    public void editGroup() {
+    public void editGroup() throws InterruptedException {
         EditGroup groupPage = new EditGroup();
 
         groupPage.clickAdmin();
@@ -76,6 +76,7 @@ public class EditGroupTest extends BaseTest {
         groupPage.enterFranchiseeNotes("making notes for admin tab");
         groupPage.clickSaveChanges();
         groupPage.clickOkButton();
+        Thread.sleep(2000);
         groupPage.assertSuccessMessage();
 
     }

@@ -70,6 +70,7 @@ public class AddCycle extends BasePage {
     }
 
     public void clickBillRunCycleBtn() {
+        scrollIntoView(BillRunCycle);
         clickBtn_custom(BillRunCycle, "Bill Run Cycle");
     }
 

@@ -130,7 +130,7 @@ public class Customer extends BasePage {
     // Scroll to last of the page
     public By SaveCustomerButton = By.xpath("//*[@value='Save Customer']");
     public By SaveOnlyButton = By.xpath("//button[contains(text(),'Save Only')]");
-    public By groupTag = By.xpath("(//label[@class=\"col-sm-12 control-label\"]/b)[1]");
+    public By groupTag = By.xpath("(//label[@class=\"col-sm-12 control-label\"]/b)[2]/p");
 
 
     public void clickDetailsTab() {
@@ -330,6 +330,7 @@ public class Customer extends BasePage {
         sendKeys_custom(Note, NoteText, "Notes");
         bp.scrollIntoView(saveCustomerbutton);
         click_custom(saveCustomerbutton, "Save Customer");
+        WebdriverWaits.waitForElementVisible(okbutton,2);
         click_custom(okbutton, "OK");
     }
 

@@ -15,7 +15,7 @@ public class CreateCustForChangeCustEmail extends BasePage {
     String SUCCESS_MESG = "Successfully saved customer.";
 
     public void clickOnCustomerDetailsTab() {
-        clickBtn_custom(CustDetailsTab, " Details");
+        click_custom(CustDetailsTab, " Details");
     }
 
     public void clearPreviousEnteredEmailAddress(String emailText) {
@@ -26,7 +26,7 @@ public class CreateCustForChangeCustEmail extends BasePage {
 
     public void clickSaveCustomerBtn() {
         bp.scrollIntoView(saveCustomerbutton);
-        clickBtn_custom(saveCustomerbutton, "Save Customer");
+        click_custom(saveCustomerbutton, "Save Customer");
     }
 
     public void clickOkBtn() {

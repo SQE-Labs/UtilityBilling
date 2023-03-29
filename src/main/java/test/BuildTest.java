@@ -33,7 +33,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 1, enabled = false, description = "Verify markettest.utilibill.com URL")
+	@Test(priority = 1, enabled = true, description = "Verify markettest.utilibill.com URL")
 	public void validate_MarketTest() {
 		By copyright = By.className("copyright-text");
 		String versiontext = "https://markettest.utilibill.com.au/marketbilling/";

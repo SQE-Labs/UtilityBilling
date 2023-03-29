@@ -81,6 +81,7 @@ public class ChargePage extends BasePage {
     }
 
     public void clickOnRecurringPlusIcon() {
+        scrollIntoView(AddIconForRecurringCharge);
         click_custom(AddIconForRecurringCharge, "Plus Icon ");
     }
 

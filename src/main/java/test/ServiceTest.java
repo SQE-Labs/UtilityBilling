@@ -19,14 +19,19 @@ public class ServiceTest extends IndexPage {
     RandomGenerator randomGenerator = new RandomGenerator();
     RetailElectricityService retailElectricityService = new RetailElectricityService();
     DateGenerator dateGenerator = new DateGenerator();
+    String productName;
     @Test(enabled = true,priority = 20)
     public void createRetailElectricityService() throws InterruptedException {
         Customer customer = new Customer();
         customerId = customer.createCustomer("Business",
                 "SSLabs", "Dallas", "Mathew", "9988907865", "test12@gmail.com",
                 "t12@gmail.com", "38 Decca Road", "37 Decca Road", "Goldsborough", "3156",
-                "Australia", "Electricity Residential plan");
-        electricityServiceId = retailElectricityService.addRetailElectricityService();
+                "Australia", "Adam Johhns");
+         DateGenerator dateGenerator = new DateGenerator();
+         RandomGenerator random = new RandomGenerator();
+        String serviceId = random.requiredDigits(10);
+
+        electricityServiceId = retailElectricityService.addRetailElectricityService(serviceId,"Electricity Residential plan");
 
     }
 
@@ -39,17 +44,16 @@ public class ServiceTest extends IndexPage {
     @Test(priority = 22, enabled = true)
 
     public void createGenericService() throws InterruptedException {
-
         String currDate = dateGenerator.getCurrentDate();
         String endDate = dateGenerator.getDateWithDays("dd/MM/yyyy", 60);
-        String description = "Generic_" + randomGenerator.requiredCharacters(5);
-            createService.genericService(customerId, description, currDate, endDate, "12", "Generic Services", "NetworkCharges", "RollUp Descrition", "Account Level Charges", "Day", "100");
+         productName = "Generic_" + randomGenerator.requiredCharacters(5);
+            createService.genericService(customerId, productName, currDate, endDate, "12", "Generic Services", "NetworkCharges", "RollUp Descrition", "Account Level Charges", "Day", "100");
     }
 
     @Test(priority = 23)
     public void editGenericService() throws InterruptedException {
-        String description = "Generic_U" + randomGenerator.requiredCharacters(5);
-        createService.editGenericService(description, "25", "Edit Generic Services", "RollUp Description edited", "Electricity Charges", "Flat rate", "Generic service is successfully saved.");
+
+        createService.editGenericService(productName, "25", "Edit Generic Services", "RollUp Description edited", "Electricity Charges", "Flat rate", "Generic service is successfully saved.");
     }
     @Test(priority = 24,enabled = true, description = "Create Water Service")
     public void createWaterService() throws InterruptedException {
