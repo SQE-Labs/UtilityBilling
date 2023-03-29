@@ -1,89 +1,141 @@
 package org.automation.base;
 
-import static java.io.File.separator;
-import static java.lang.System.getProperty;
-import static java.nio.file.Files.lines;
-import static java.nio.file.Paths.get;
-import static java.util.Optional.ofNullable;
-import static java.util.stream.Collectors.toList;
-import static org.automation.logger.Log.error;
-
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.automation.listeners.TestReporter;
-import org.automation.listeners.TestRunListener;
-import org.automation.utilities.BrowserFactory;
-import org.automation.utilities.PropertiesUtil;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
-
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.automation.elements.Element;
+import org.automation.listeners.TestReporter;
+import org.automation.listeners.TestRunListener;
+import org.automation.utilities.PropertiesUtil;
+import org.automation.utilities.Screenshot;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 
-/**
- * To extend every test class created.
- * 
- * @author Sujay Sawant
- * @version 1.0.0
- * @since 6/11/2020
- *
- */
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.util.*;
+
+import static java.io.File.separator;
+import static java.nio.file.Files.lines;
+import static java.nio.file.Paths.get;
+import static java.util.stream.Collectors.toList;
+import static org.automation.logger.Log.error;
+
 @Listeners({ TestRunListener.class, TestReporter.class })
-public  class BaseTest {
-	/**
-	 * Method to execute at the start of the suite execution.
-	 */
-	public  WebDriver driver;
+public class BaseTest {
+
+	public static ExtentReports extent;
+	public static ExtentTest extentTest;
+	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+
+	public static WebDriver getDriver() {
+		return driver.get();
+	}
+
+	public static void closeDriver() {
+		getDriver().close();
+		// driver.remove();
+	}
+
+	@BeforeSuite
+	public void setExtent() throws InterruptedException, IOException {
+		extent = new ExtentReports(System.getProperty("user.dir") + "/test-report/ExtentReportResult.html", true);
+		extent.addSystemInfo("Environment", "QA");
+		extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
+	}
 
 	@BeforeClass(alwaysRun = true)
-	public void beforeSuite() throws MalformedURLException {
-		BrowserFactory bf = new BrowserFactory();
+	public void beforeClass() throws MalformedURLException {
 		String browser = PropertiesUtil.getPropertyValue("browser");
-		String url = 	PropertiesUtil.getPropertyValue("url");
-		driver = bf.createBrowserInstance(browser);
-		driver.manage().window().maximize();
-		driver.navigate().to(url);
+		String url = PropertiesUtil.getPropertyValue("url");
+
+		switch (browser) {
+		case "chrome":
+			WebDriverManager.chromedriver().setup();
+			// driver = new ChromeDriver(BrowserOptions.getChromeOptions());
+			driver.set(new ChromeDriver());
+			break;
+
+		case "fireFox":
+			// WebDriverManager.firefoxdriver().setup();
+			// driver = new FirefoxDriver(BrowserOptions.getFirefoxOptions());
+			break;
+		default:
+			throw new IllegalStateException("Unexpected value: " + browser);
+		}
+		// driver.set(Objects.requireNonNull(driver));
+
+		getDriver().manage().window().maximize();
+		getDriver().navigate().to(url);
+		validLoginBaseTest();
 	}
 
 	/**
 	 * Method to execute at the end of each test method execution.
 	 */
-	@AfterMethod(alwaysRun = true)
-	public void afterMethod() {
-		//clearCookies();
-
-	}
 
 	@BeforeMethod
-	public void LaunchApplication() throws Exception {
-
+	public void beforeMethod(Method method) {
+		Test test = method.getAnnotation(Test.class);
+		extentTest = extent.startTest(method.getName());
+		extentTest.setDescription(test.description());
 	}
 
+	@AfterMethod
+	public void tearDown(ITestResult result) throws IOException {
+
+		if (result.getStatus() == ITestResult.FAILURE) {
+			String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
+			extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
+
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			String screenshotPath = Screenshot.getScreenshot(getDriver(), result.getName());
+			extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(screenshotPath));
+
+		}
+		extent.endTest(extentTest);
+		extent.flush();
+		getDriver().navigate().refresh();
+	}
+
+	public void validLoginBaseTest() {
+		try {
+			Element username = new Element("var", By.xpath("//input[@name='j_username']"));
+			username.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("userName"));
+			Element password = new Element("var", By.xpath("//input[@name='predigpass']"));
+			password.getWebElement().sendKeys(PropertiesUtil.getPropertyValue("password"));
+			Element button = new Element("var", By.xpath("//*[@name='submit']"));
+			button.getWebElement().click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Method to execute at the end of the suite execution
 	 */
-	@AfterSuite(alwaysRun = true)
-	public void afterSuite() {
-		closeDriverObjects();
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		closeDriver();
 	}
 
-	private void closeDriverObjects() {
-		driver.quit();
+	@AfterSuite(alwaysRun = true)
+	public void afterSuite() {
 	}
 
 	/**
 	 * Data Provider method to get data from Excel file.
-	 * 
+	 *
 	 * @param method test method executed
 	 * @return excel data
 	 */
@@ -119,7 +171,7 @@ public  class BaseTest {
 
 	/**
 	 * Data Provider method to get data from CSV file.
-	 * 
+	 *
 	 * @param method test method executed
 	 * @return CSV data
 	 */
@@ -147,26 +199,6 @@ public  class BaseTest {
 			throw new RuntimeException("Could not read " + pathName + " file.\n" + e.getStackTrace().toString());
 		}
 		return csvData.iterator();
-	}
-
-	/**
-	 * Get the user name from the command line.
-	 * 
-	 * @return user name
-	 */
-	protected String getUsername() {
-		return ofNullable(getProperty("username"))
-				.orElseThrow(() -> new NullPointerException("Username was not provided"));
-	}
-
-	/**
-	 * Get the password from the command line.
-	 * 
-	 * @return password
-	 */
-	protected String getPassword() {
-		return ofNullable(getProperty("password"))
-				.orElseThrow(() -> new NullPointerException("Password was not provided"));
 	}
 
 }

@@ -3,4 +3,9 @@ target
 test-output
 .project
 .classpath
-
+.idea/
+extent-reports
+.idea
+test-report
+test-report/
+/.metadata/
