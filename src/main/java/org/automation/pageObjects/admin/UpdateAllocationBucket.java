@@ -56,10 +56,10 @@ public class UpdateAllocationBucket extends BasePage {
     }
 
 
-    public void assertSuccessMessage() {
+    public void assertSuccessMessage(String expectedText) {
         WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
-        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
+        ass.assertEquals(expectedText, getText_custom(successMsg));
     }
 
 
@@ -72,7 +72,6 @@ public class UpdateAllocationBucket extends BasePage {
         clickUpdate();
         fetchdetails();
         clickSaveChanges();
-        assertSuccessMessage();
 
     }
 }

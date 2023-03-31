@@ -105,7 +105,7 @@ public class BaseTest {
 		}
 		extent.endTest(extentTest);
 		extent.flush();
-		getDriver().navigate().refresh();
+		//getDriver().navigate().refresh();
 	}
 
 	public void validLoginBaseTest() {

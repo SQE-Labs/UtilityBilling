@@ -42,10 +42,10 @@ public class DeleteAllocationBucket extends BasePage {
     }
 
 
-    public void assertSuccessMessage() {
+    public void assertSuccessMessage(String expectedText) {
         WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
-        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
+        ass.assertEquals(expectedText, getText_custom(successMsg));
     }
 
     public void deleteBucket(String discriptionText) throws InterruptedException {
@@ -54,7 +54,6 @@ public class DeleteAllocationBucket extends BasePage {
         clickDeleteAllocation();
         clickOkButton();
         clickSaveChanges();
-        assertSuccessMessage();
 
     }
 }

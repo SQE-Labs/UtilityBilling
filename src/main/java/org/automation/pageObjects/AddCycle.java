@@ -1,6 +1,7 @@
 package org.automation.pageObjects;
 
 import org.automation.base.BasePage;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
@@ -64,6 +65,8 @@ public class AddCycle extends BasePage {
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
 
+    public By success_Msg = By.id("resultMsg");
+
 
     public void clickOnAdminTab() {
         clickBtn_custom(Admin, "Admin");
@@ -104,6 +107,11 @@ public class AddCycle extends BasePage {
     }
 
 
+    public void assertSuccessMsg(String successMessage){
+        WebdriverWaits.sleep(2);
+        Assertions ass = new Assertions();
+        ass.assertEquals(successMessage,getText_custom(success_Msg));
+    }
     public void AddANewCycle(String cycleNameText, String customerId) {
 
         clickOnAdminTab();

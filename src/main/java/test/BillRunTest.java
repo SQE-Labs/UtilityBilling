@@ -25,12 +25,13 @@ public class BillRunTest extends BaseTest {
     public void smtpInformationSetup() throws InterruptedException {
         SMTPSetup smtp = new SMTPSetup();
         smtp.smtpInformation("mail.utilibill.com.au", "25", "testingkk464@gmail.com", "swaan321");
+        smtp.assertSuccessMsg("SMTP server is successfully updated.");
     }
 
     @Test(priority = 54, enabled = true, description = "Email Setup")
     public void setEmailSetup() throws InterruptedException {
-        EmailTemplateSetup et = new EmailTemplateSetup();
-        et.emailSetup("Invoice", "testingkk464@gmail.com", "Email Template Subject");
+        EmailTemplateSetup emailSetup = new EmailTemplateSetup();
+        emailSetup.emailSetup("Invoice", "testingkk464@gmail.com", "Email Template Subject");
     }
 
     @Test(priority = 55, enabled = true, description = "SMS Setup") // to fix
@@ -45,13 +46,13 @@ public class BillRunTest extends BaseTest {
                 "SSLabs", "Dallas", "Mathew", "9988907865", "test12@gmail.com",
                 "t12@gmail.com", "38 Decca Road", "37 Decca Road", "Goldsborough", "3156",
                 "Australia", "Electricity Residential plan");
+        customer.successMessage("Successfully saved customer.");
     }
 
     @Test(priority = 57, enabled = true, description = "Create a service.")
     public void createAService() throws InterruptedException {
         CreateServicePage createServicePage = new CreateServicePage();
         //customerId="230736";
-        index.searchCustomerFromSearchPanel(customerId);
         createServicePage.newRetailElectricitySevice(customerId, "Electricity Flat Template Plan", "Peak, Off Peak, Shoulder", "Reads");
     }
 
@@ -71,6 +72,7 @@ public class BillRunTest extends BaseTest {
     @Test(priority = 59,enabled = true, description = "Add a cycle.")
     public void addNewBillCycle() throws InterruptedException {
         addcycle.AddANewCycle(customerId, customerId);
+        addcycle.assertSuccessMsg("Successfully added new bill run cycle.");
 
     }
 
@@ -78,26 +80,28 @@ public class BillRunTest extends BaseTest {
     public void runTheBillRunCycle() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.runTheBillRunCycle(customerId);
+        runTheCycle.assert_SuccessMessage("Bill Run Complete!");
 
     }
-    @Test(priority = 61, enabled = false,description = "Add meter for Estimate")
+    @Test(priority = 61, enabled = true,description = "Add meter for Estimate")
     public void BillRun_Rollback() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.rollback();
 
     }
 
-    @Test(priority = 62, enabled = false,description = "Add meter for Estimate")
+    @Test(priority = 62, enabled = true,description = "Add meter for Estimate")
     public void secondBillRun_Rebill() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.runTheBillRunCycle(customerId);
     }
-    @Test(priority = 63, enabled = false,description = "Add meter for Estimate")
+
+    @Test(priority = 63, enabled = true,description = "Add meter for Estimate")
     public void commitBillRun() throws InterruptedException {
         BillRunPage runTheCycle = new BillRunPage();
         runTheCycle.commit_Statement();
     }
-    @Test(priority = 64, enabled = false,description = "Add a Payment from Credit Card")
+    @Test(priority = 64, enabled = true,description = "Add a Payment from Credit Card")
     public void addPaymentFromCreditCard() throws InterruptedException {
         PaymentsPage addPayment = new PaymentsPage();
         index.searchCustomerFromSearchPanel(customerId);

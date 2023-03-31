@@ -46,10 +46,10 @@ public class SetUpAddNewBucket extends BasePage {
         click_custom(list);
     }
 
-    public void assertSuccessMessage() {
+    public void assertSuccessMessage(String expectedText) {
         WebdriverWaits.sleep(2);
         Assertions ass = new Assertions();
-        ass.assertEquals(SUCCESS_MESG, getText_custom(successMsg));
+        ass.assertEquals(expectedText, getText_custom(successMsg));
     }
 
     public void setUpBucket(String bucketName) throws InterruptedException {
@@ -61,7 +61,6 @@ public class SetUpAddNewBucket extends BasePage {
         clickAddToList();
         fetchBucket();
         clickSaveChanges();
-        assertSuccessMessage();
 
     }
 }

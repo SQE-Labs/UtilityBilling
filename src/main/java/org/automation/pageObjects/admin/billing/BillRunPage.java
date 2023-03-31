@@ -1,6 +1,8 @@
 package org.automation.pageObjects.admin.billing;
 
 import org.automation.base.BasePage;
+import org.automation.utilities.Assertions;
+import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 
 public class BillRunPage extends BasePage {
@@ -67,6 +69,10 @@ public class BillRunPage extends BasePage {
 
     public By ok = By.xpath("//button[text()='Ok']");
 
+    public By noCustomerMessage = By.xpath("//p[@class='error']");
+
+    public By billRunComplete = By.xpath("//strong[text()='Bill Run Complete!']");
+
     public void clickOnBillRunTab() {
         scrollIntoView(BillRunTab);
         clickBtn_custom(BillRunTab, "Bill Run");
@@ -107,6 +113,14 @@ public class BillRunPage extends BasePage {
     }
 
 
+    public void assert_SuccessMessage(String successMessage){
+        WebdriverWaits.sleep(2);
+        Assertions ass = new Assertions();
+        ass.assertEquals(successMessage,getText_custom(billRunComplete));
+
+    }
+
+
     public void runTheBillRunCycle(String cycleNoText) throws InterruptedException {
         clickOnBillRunTab();
         clickOnRuntheBillBtn();
@@ -116,7 +130,7 @@ public class BillRunPage extends BasePage {
         Thread.sleep(2000);
         selectRunBillCycleOptionFromDropdownlist(cycleNoText);
         clickonBillRunBtn();
-        Thread.sleep(70000);
+        Thread.sleep(120000);
     }
 
     public  void rollback() throws InterruptedException {

@@ -3,8 +3,10 @@ package org.automation.pageObjects.customers;
 import org.automation.base.BasePage;
 import org.automation.utilities.Assertions;
 import org.automation.utilities.DateGenerator;
+import org.automation.utilities.RandomGenerator;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,6 +24,8 @@ public class CreateServicePage extends BasePage {
     public By AddRetailelect = By.xpath("(//a[@class='addicon'])[2]");
     public By SelectPlan = By.xpath("//select[@id='planNo']");
     public By MeterNo = By.xpath("//input[@id='userName']");
+    public By MesgFlag = By.xpath("//span[@id='msgFlag']");
+
     public By MeterConfig = By.xpath("//select[@id='meterConfig']");
     public By ReadType = By.xpath("//select[@id='readType']");
     public By DemandReadsToggle = By.xpath("//span[@class='switch-label']");
@@ -263,25 +267,23 @@ public class CreateServicePage extends BasePage {
         selectDropDownByVisibleText_custom(SelectPlan, selectPlanText, "Plan");
     }
 
-    public void enterMeterNumber() {
+    public void enterMeterNumber() throws InterruptedException {
         //dateGeneration.getCurrentDate(-29);
-        DateFormat dateFormat = new SimpleDateFormat("HHmmss");
-        Calendar cal = Calendar.getInstance();
-        System.out.println(dateFormat.format(cal.getTime()));
-        String mno = cal.getTime().toString();
-        System.out.println(mno = mno.substring(11, 19));
-        mno = mno.replaceAll(":", "");
-        sendKeys_custom(MeterNo, "Ele" + mno, "First Name");
-        String MeterNumberEntered = getText_custom(MeterNo);
-        scrollIntoView(MeterConfig);
-        System.out.println("........");
-        System.out.println(MeterNumberEntered);
+DateGenerator dateGenerator= new DateGenerator();
+String date=dateGenerator.DateTimeGenerator("ddhhmmss");
+        RandomGenerator randomGenerator = new RandomGenerator();
+        sendKeys_custom(MeterNo, randomGenerator.requiredDigits(3) + date, "");
+      //  Thread.sleep(5000);
+      //String text =  getText_custom(MesgFlag);
+      //  Assert.assertNotEquals(text,"Meter Number is not available.");
+
     }
 
     public void selectMeterConfiguration(String MeterConfigurationText) {
+        scrollIntoView(MeterConfig);
+
         clickBtn_custom(MeterConfig, "Meter Configuration");
         selectDropDownByVisibleText_custom(MeterConfig, MeterConfigurationText, "Meter Configuration");
-      //  scrollIntoView(CreateElectServ);
     }
 
     public void selectreadType(String readingTypeText) {
@@ -302,6 +304,7 @@ public class CreateServicePage extends BasePage {
     }
 
     public void clickOkButton() {
+
         click_custom(OK_btn, "Ok");
 
     }
@@ -334,11 +337,9 @@ public class CreateServicePage extends BasePage {
         // 2. Adding electricity service to a customer.
         // 3. Overview > Electricity
         as = new Assertions();
-        DateGenerator dateGenerator = new DateGenerator();
         clickOnSearchBtn(recordIdText);
         clickOnOverview();
         clickRetailElectricity();
-        //  Thread.sleep(1000);
         selectPlan(selectPlanText);
         enterMeterNumber();
         selectMeterConfiguration(MeterConfigurationText);
@@ -352,6 +353,7 @@ public class CreateServicePage extends BasePage {
         clickPreviousDate();
 
         clickCreateService();
+        Thread.sleep(2000);
         clickOkButton();
         as.assertEquals(createNewRetailElectrcityService(), SUCCESS_MSG);
     }

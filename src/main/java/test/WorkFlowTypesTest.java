@@ -31,5 +31,6 @@ public class WorkFlowTypesTest extends BaseTest {
 			e.printStackTrace();
 		}
         workFlow.enterSearchLog("AA TN" + clname);
+        workFlow.assertTextValue("AA TN" + clname);
     }
 }

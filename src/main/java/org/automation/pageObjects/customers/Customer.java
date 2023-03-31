@@ -146,6 +146,15 @@ public class Customer extends BasePage {
     public void clickServiceTab() {
         clickBtn_custom(service, "Servcie Tab");
     }
+
+    public By successMsg = By.xpath("//center[text()='Successfully saved customer.']");
+
+
+    public void successMessage(String successMessage){
+        WebdriverWaits.sleep(2);
+        Assertions ass = new Assertions();
+        ass.assertEquals(successMessage,getText_custom(successMsg));
+    }
     public String getGroupName() {
         String groupName = getText_custom(groupTag);
         System.out.println("GroupName of customer is " + groupName);
@@ -360,6 +369,7 @@ public class Customer extends BasePage {
         clickSaveCustomerBtn();
         clickOkBtn();
         as.assertEquals(getSuccessMsgText(), SUCCESS_MESG);
+        Thread.sleep(5000);
         return getCustomerId();
     }
 

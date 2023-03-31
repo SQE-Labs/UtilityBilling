@@ -59,6 +59,7 @@ public class EmailTemplateSetup extends BasePage {
     public By CycleNumber = By.xpath("//select[@id='cycleno']");
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
+    public By success_Msg = By.xpath("//p[text()=' Successfully saved message. ']");
     BasePage bp = new BasePage();
     Assertions as;
     String SUCCESS_MSG = "Successfully saved message.";

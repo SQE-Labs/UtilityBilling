@@ -1,6 +1,7 @@
 package org.automation.pageObjects.admin.commmunications;
 
 import org.automation.base.BasePage;
+import org.automation.utilities.Assertions;
 import org.automation.utilities.WebdriverWaits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -60,6 +61,8 @@ public class SMTPSetup extends BasePage {
     public By CycleNumber = By.xpath("//select[@id='cycleno']");
     public By RunBillBtn = By.xpath("//button[@class='btn btn-primary']");
     public By NextDay = By.xpath("//td[@class='new day']");
+
+    public By success_Msg = By.xpath("//p[text()=' SMTP server is successfully updated. ']");
     BasePage bp = new BasePage();
     String SUCCESS_MSG = "Successfully saved message.";
 
@@ -104,6 +107,12 @@ public class SMTPSetup extends BasePage {
         clickBtn_custom(UpdateSMTPbutton, "Update");
     }
 
+    public void assertSuccessMsg(String expectedSuccessMsg){
+        WebdriverWaits.sleep(2);
+        Assertions ass = new Assertions();
+        ass.assertEquals(expectedSuccessMsg,getText_custom(success_Msg));
+    }
+
     public void smtpInformation(String serverNameText, String portNameText, String usernameText, String passwordText) {
         clickOnAdminTab();
         clickOnSMTPIcon();
@@ -113,6 +122,7 @@ public class SMTPSetup extends BasePage {
         sendUsername(usernameText);
         sendPassword(passwordText);
         clickOnUpdateButton();
+
 
 
     }
