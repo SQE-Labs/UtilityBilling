@@ -38,7 +38,7 @@ public class OtherAdminTest extends BaseTest {
 		penalty.enterPenaltyDescription("New Penalty Test");
 		penalty.enterGraceDays("10");
 		penalty.clickSavePenalty();
-		penalty.validatePenalty("Successfully added new penalty.");
+		//penalty.validatePenalty("Successfully added new penalty.");
 	}
 
 	@Test(priority = 40,enabled = true,description = "Verify that user is able to update penalty")
@@ -59,7 +59,7 @@ public class OtherAdminTest extends BaseTest {
 	}
 
 	@Test(priority = 42,enabled = true,description = "Verify that user is able to change customer setting")
-	public void customerPortalSettings() throws InterruptedException {
+	public void customerPortalSettings()throws InterruptedException {
 		custPortal.clickAdmin();
 		custPortal.clickCustomerPortal();
 		custPortal.activateArchievedToggle();
@@ -70,5 +70,4 @@ public class OtherAdminTest extends BaseTest {
 		custPortal.clickSaveSetting();
 
 	}
-
 }

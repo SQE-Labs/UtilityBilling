@@ -33,7 +33,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 1, enabled = false, description = "Verify markettest.utilibill.com URL")
+	@Test(priority = 1, enabled = true, description = "Verify markettest.utilibill.com URL")
 	public void validate_MarketTest() {
 		By copyright = By.className("copyright-text");
 		String versiontext = "https://markettest.utilibill.com.au/marketbilling/";
@@ -50,7 +50,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 2, enabled = false, description = "Verify utbr8.utilibill.com URL")
+	@Test(priority = 2, enabled = true, description = "Verify utbr8.utilibill.com URL")
 	public void validate_Utbr8Test() {
 
 		String versiontext = "https://utbr8.utilibill.com.au/billing/";
@@ -67,7 +67,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 3, enabled = false, description = "Verfiy nuruat.utilibill.com URL")
+	@Test(priority = 3, enabled = true, description = "Verfiy nuruat.utilibill.com URL")
 	public void validateNuruatTest() {
 
 		String versiontext = "https://nuruat.utilibill.com.au/nur/";
@@ -84,7 +84,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 4, enabled = false, description = "Verfiy utbr8uat.utilibill.com URL")
+	@Test(priority = 4, enabled = true, description = "Verfiy utbr8uat.utilibill.com URL")
 	public void validateUtbr8uatTest() {
 
 		String versiontext = "https://utbr8uat.utilibill.com.au/billing";
@@ -101,7 +101,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 5, enabled = false, description = "Verfiy test.utilitybilling.com URL")
+	@Test(priority = 5, enabled = true, description = "Verfiy test.utilitybilling.com URL")
 	public void validatetestTest() {
 
 		String versiontext = "https://test.utilitybilling.com/billing/";
@@ -118,7 +118,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 6, enabled = false, description = "Verfiy go.utilitybilling.com URL")
+	@Test(priority = 6, enabled = true, description = "Verfiy go.utilitybilling.com URL")
 	public void validateGoTest() {
 
 		String versiontext = "https://go.utilitybilling.com/billing/";
@@ -135,7 +135,7 @@ public class BuildTest extends BaseTest {
 
 	}
 
-	@Test(priority = 7, enabled = false, description = "Verfiy test.utilitybilling.com URL")
+	@Test(priority = 7, enabled = true, description = "Verfiy test.utilitybilling.com URL")
 	public void validateUtilityMarketTest() {
 		String versiontext = "https://test.utilitybilling.com/marketbilling/";
 		try {

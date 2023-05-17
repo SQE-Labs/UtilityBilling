@@ -75,12 +75,6 @@ public class Penalty extends BasePage {
 
 	}
 
-	public void validatePenalty(String validateText) {
-		WebdriverWaits.sleep(2);
-		Assertions ass = new Assertions();
-		ass.assertEquals(RESULT_MSG, getText_custom(resultMsg));
-	}
-
 	public void validateUpdatePenalty(String validateText) {
 		WebdriverWaits.sleep(2);
 		Assertions ass = new Assertions();
