@@ -23,7 +23,7 @@ public class BuildTest extends BaseTest {
 
 		switch (browser) {
 		case "chrome":
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
 			driver.set(new ChromeDriver());
 			break;
 		default:

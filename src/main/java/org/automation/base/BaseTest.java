@@ -16,6 +16,7 @@ import org.automation.utilities.Screenshot;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -36,15 +37,15 @@ public class BaseTest {
 
 	public static ExtentReports extent;
 	public static ExtentTest extentTest;
-	public static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
+	public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
 	public static WebDriver getDriver() {
 		return driver.get();
 	}
 
 	public static void closeDriver() {
-		//getDriver().close();
-		// driver.remove();
+		getDriver().close();
+		 driver.remove();
 	}
 
 	@BeforeSuite
@@ -60,22 +61,28 @@ public class BaseTest {
 		String url = PropertiesUtil.getPropertyValue("url");
 
 		switch (browser) {
-		case "chrome":
-			WebDriverManager.chromedriver().setup();
-			// driver = new ChromeDriver(BrowserOptions.getChromeOptions());
-			driver.set(new ChromeDriver());
+			case "chrome":
+				// Setup WebDriverManager for ChromeDriver with version 116 or higher
+			//	WebDriverManager.chromedriver().driverVersion("127.0.6533.73").setup();
+				driver.set(new ChromeDriver());
+				// Alternatively, to always get the latest version:
+				// WebDriverManager.chromedriver().setup();
+
+//			WebDriverManager.chromedriver().setup();
+//			driver.set(new ChromeDriver());
 			break;
 
-		case "fireFox":
-			// WebDriverManager.firefoxdriver().setup();
-			// driver = new FirefoxDriver(BrowserOptions.getFirefoxOptions());
-			break;
-		default:
-			throw new IllegalStateException("Unexpected value: " + browser);
+
+			case "firefox":
+				WebDriverManager.firefoxdriver().setup();
+				//driver.set(new FirefoxDriver(BrowserOptions.getFirefoxOptions()));
+				break;
+
+			default:
+				throw new IllegalStateException("Unexpected value: " + browser);
 		}
-		// driver.set(Objects.requireNonNull(driver));
 
-		getDriver().manage().window().maximize();
+		Objects.requireNonNull(getDriver()).manage().window().maximize();
 		getDriver().navigate().to(url);
 		validLoginBaseTest();
 	}
@@ -200,5 +207,4 @@ public class BaseTest {
 		}
 		return csvData.iterator();
 	}
-
 }
